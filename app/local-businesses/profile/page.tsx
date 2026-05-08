@@ -50,7 +50,7 @@ export default function LocalBusinessProfilePage() {
       <Section width="wide">
         <SectionHeader title="Recent work" description="Examples of services connected to SKD parish life." />
         <div className="grid gap-4 md:grid-cols-3">
-          {(["people", "people", "people"] as const).map((p, i) => (
+          {(["retreat", "community", "volunteers"] as const).map((p, i) => (
             <Photo key={i} kind={p} ratio="4/3" rounded="rounded-2xl" />
           ))}
         </div>

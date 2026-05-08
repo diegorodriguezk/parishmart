@@ -87,7 +87,7 @@ export default function SponsorsCategoryPage() {
           right={<a href="#" className="font-bold text-pm-blue">View All</a>}
         />
         <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-          <SponsorOfferCard photo="people" initials="MS" title="Maria's Studios" offer="10% cash back" daysLeft="40d left" />
+          <SponsorOfferCard photo="retreat" initials="MS" title="Maria's Studios" offer="10% cash back" daysLeft="40d left" />
           <SponsorOfferCard photo="house" initials="BK" title="Community Bank" offer="$50 cash back" daysLeft="32d left" />
           <SponsorOfferCard photo="food" initials="BG" title="Baires Grill Weston" offer="5% cash back" daysLeft="18d left" />
           <SponsorOfferCard photo="merch" initials="PM" title="Pretzelmaker" offer="10% cash back" daysLeft="24d left" isNew />

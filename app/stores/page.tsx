@@ -245,7 +245,7 @@ export default function ParishStoreSKDPage() {
         />
         <div className="grid gap-4 md:grid-cols-4">
           <BusinessCard photo="business" initials="MS" title="Maria's Studios" description="Photography for parish events, retreats and families." offer="10% benefit" offerDescription="Parishioner family events" impactText="Supports Emmaus retreat memories." />
-          <BusinessCard photo="people" initials="CM" title="Casa Manresa" description="Retreat programs and spiritual formation services." offer="15% benefit" offerDescription="Selected retreat experiences" impactText="Helps fund parish retreats." />
+          <BusinessCard photo="retreat" initials="CM" title="Casa Manresa" description="Retreat programs and spiritual formation services." offer="15% benefit" offerDescription="Selected retreat experiences" impactText="Helps fund parish retreats." />
           <BusinessCard photo="house" initials="LR" title="Local Realty Supporter" description="Trusted community business supporting SKD families." offer="Free consult" offerDescription="Initial consultation" impactText="Free consult for SKD families." />
           <BusinessCard photo="business" initials="SP" title="Featured Sponsor" description="Featured local sponsor supporting parish causes." offer="$25 OFF" offerDescription="Limited time offer" impactText="Community sponsor visibility." />
         </div>

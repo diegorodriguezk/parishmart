@@ -122,7 +122,7 @@ export default function ShopCategoryPage() {
         />
         <div className="grid gap-4 md:grid-cols-4">
           <BusinessCard photo="business" initials="MS" title="Maria's Studios" description="Photography for parish events, retreats and families." tags={["Photography", "Weston, FL", "Supports Emmaus"]} offer="10% benefit" offerDescription="Family & event sessions" impactText="Supports Emmaus retreat memories and parish events." />
-          <BusinessCard photo="people" initials="CM" title="Casa Manresa" description="Retreats, spiritual formation and community experiences." tags={["Retreats", "Formation", "SKD Partner"]} offer="15% benefit" offerDescription="Selected retreat experiences" impactText="Supports faith formation and local retreat participation." />
+          <BusinessCard photo="retreat" initials="CM" title="Casa Manresa" description="Retreats, spiritual formation and community experiences." tags={["Retreats", "Formation", "SKD Partner"]} offer="15% benefit" offerDescription="Selected retreat experiences" impactText="Supports faith formation and local retreat participation." />
           <BusinessCard photo="house" initials="LR" title="Local Realty Supporter" description="Trusted community business supporting parish causes." tags={["Real Estate"]} offer="Free consult" offerDescription="Initial consultation" impactText="Free consult for SKD parishioners and families." />
           <BusinessCard photo="business" initials="SB" title="Local Business Service" description="Professional service offered to the SKD community." tags={["Professional"]} offer="Offer" offerDescription="Community offer" impactText="Promotes healthier and stronger local communities." />
         </div>
@@ -144,7 +144,7 @@ export default function ShopCategoryPage() {
           <SponsorOfferCard photo="business" initials="FS" title="Featured Sponsor" offer="$25 OFF" daysLeft="Up to 8% parishioner benefit" />
           <SponsorOfferCard photo="house" initials="FA" title="Family Services Sponsor" offer="10% OFF" daysLeft="Selected family services" />
           <SponsorOfferCard photo="business" initials="CS" title="Community Sponsor" offer="$50 OFF" daysLeft="Selected community offers" />
-          <SponsorOfferCard photo="people" initials="BS" title="Become a Sponsor" offer="Apply" daysLeft="Join the ecosystem" isNew />
+          <SponsorOfferCard photo="retreat" initials="BS" title="Become a Sponsor" offer="Apply" daysLeft="Join the ecosystem" isNew />
         </div>
       </Section>
 

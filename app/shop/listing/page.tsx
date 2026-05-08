@@ -45,7 +45,7 @@ export default function ProductListingPage() {
           <ProductCard photo="business" label="Local Service" title="Family Photography Session" meta="$150 · Maria's Studios · Supports a cause." price="$150" />
           <ProductCard photo="church" label="Bundle" title="SKD Community Bundle" meta="Curated bundle for parishioners and supporters." price="$39" />
           <ProductCard photo="merch" label="Apparel" title="Parish Hoodie" meta="Premium upgrade for community gatherings." price="$48" />
-          <ProductCard photo="people" label="Retreat" title="Retreat Support Kit" meta="A simple bundle for retreat participants." price="$45" />
+          <ProductCard photo="retreat" label="Retreat" title="Retreat Support Kit" meta="A simple bundle for retreat participants." price="$45" />
         </div>
       </Section>
 
