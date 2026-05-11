@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Minus, Plus } from "lucide-react";
 import { useCart } from "./cart/CartContext";
 
 export function FilterChipsClient({
@@ -124,7 +125,7 @@ export function QtyControl({
         className="grid h-8 w-8 place-items-center rounded-full text-pm-blue hover:bg-pm-soft"
         aria-label="Decrease"
       >
-        −
+        <Minus className="h-3.5 w-3.5" aria-hidden />
       </button>
       <span className="w-6 text-center font-bold text-pm-navy">{value}</span>
       <button
@@ -132,7 +133,7 @@ export function QtyControl({
         className="grid h-8 w-8 place-items-center rounded-full text-pm-blue hover:bg-pm-soft"
         aria-label="Increase"
       >
-        +
+        <Plus className="h-3.5 w-3.5" aria-hidden />
       </button>
     </div>
   );

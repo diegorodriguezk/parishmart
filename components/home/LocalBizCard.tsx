@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { Photo, PhotoKind } from "../Photo";
 
 export type LocalBizCardData = {
@@ -100,7 +101,10 @@ export function CommunityCard(p: CommunityCardData) {
         </Link>
         <p className="text-xs text-pm-muted">{p.description}</p>
         {p.location ? (
-          <p className="text-[11px] text-pm-muted">📍 {p.location}</p>
+          <p className="inline-flex items-center gap-1 text-[11px] text-pm-muted">
+            <MapPin className="h-3 w-3" aria-hidden />
+            {p.location}
+          </p>
         ) : null}
         {p.tags.length ? (
           <div className="flex flex-wrap gap-1.5">

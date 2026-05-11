@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Search, User } from "lucide-react";
 import { Logo, SubStoreBadge } from "./Logo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
@@ -27,7 +28,7 @@ export function Header() {
         </nav>
         <div className="ml-auto flex flex-1 items-center justify-end gap-2 lg:flex-none">
           <div className="hidden flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1 shadow-pm-soft lg:flex lg:max-w-md">
-            <span className="text-pm-muted" aria-hidden>🔍</span>
+            <Search className="h-4 w-4 text-pm-muted" aria-hidden />
             <input
               className="pm-input h-8 px-1 text-sm"
               placeholder="Search products, causes, communities…"
@@ -52,11 +53,11 @@ export function Header() {
           <CartButton compact />
           <Link
             href="/sign-in"
-            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-sm font-bold text-pm-navy hover:border-pm-blue hover:text-pm-blue"
+            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
             aria-label="Sign in"
             title="Sign in / Log in"
           >
-            👤
+            <User className="h-4 w-4" aria-hidden />
           </Link>
         </div>
       </div>
@@ -92,15 +93,15 @@ export function SubStoreHeader({
             <CartButton compact />
             <Link
               href="/sign-in"
-              className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-sm text-pm-navy"
+              className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy"
               aria-label="Sign in"
             >
-              👤
+              <User className="h-4 w-4" aria-hidden />
             </Link>
           </div>
         </div>
         <div className="flex flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft">
-          <span className="text-pm-muted" aria-hidden>🔍</span>
+          <Search className="h-4 w-4 text-pm-muted" aria-hidden />
           <input
             className="pm-input h-9 px-1"
             placeholder={searchPlaceholder}
@@ -124,10 +125,10 @@ export function SubStoreHeader({
           <CartButton compact />
           <Link
             href="/sign-in"
-            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-sm text-pm-navy hover:border-pm-blue hover:text-pm-blue"
+            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
             aria-label="Sign in"
           >
-            👤
+            <User className="h-4 w-4" aria-hidden />
           </Link>
         </div>
       </div>

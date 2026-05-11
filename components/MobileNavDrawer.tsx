@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Menu, Search, X } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const PRIMARY = [
@@ -40,11 +41,7 @@ export function MobileNavDrawer() {
         className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy lg:hidden"
         aria-label="Open menu"
       >
-        <span className="space-y-1.5" aria-hidden>
-          <span className="block h-0.5 w-5 bg-pm-navy" />
-          <span className="block h-0.5 w-5 bg-pm-navy" />
-          <span className="block h-0.5 w-5 bg-pm-navy" />
-        </span>
+        <Menu className="h-5 w-5" aria-hidden />
       </button>
 
       {open ? (
@@ -74,7 +71,7 @@ export function MobileNavDrawer() {
                 className="grid h-9 w-9 place-items-center rounded-full border border-pm-border text-pm-muted hover:text-pm-navy"
                 aria-label="Close menu"
               >
-                ✕
+                <X className="h-4 w-4" aria-hidden />
               </button>
             </header>
 
@@ -84,7 +81,7 @@ export function MobileNavDrawer() {
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-2 text-sm text-pm-muted hover:border-pm-blue"
               >
-                <span aria-hidden>🔍</span>
+                <Search className="h-4 w-4" aria-hidden />
                 <span>Search ParishMart…</span>
               </Link>
             </div>

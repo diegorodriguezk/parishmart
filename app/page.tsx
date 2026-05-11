@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Play } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
@@ -439,9 +440,11 @@ export default function HomePage() {
           </div>
           {/* TODO PM-016: embed ParishMart video here when public URL is provided */}
           <div className="mt-6 flex aspect-video items-center justify-center rounded-2xl border border-dashed border-white/30 bg-white/5 p-6 text-center text-xs text-white/60">
-            <div>
-              <p className="text-2xl">▶</p>
-              <p className="mt-2 font-bold uppercase tracking-wider">
+            <div className="flex flex-col items-center">
+              <span className="grid h-14 w-14 place-items-center rounded-full bg-white/10 text-white">
+                <Play className="h-6 w-6 fill-current" aria-hidden />
+              </span>
+              <p className="mt-3 font-bold uppercase tracking-wider">
                 ParishMart Video
               </p>
               <p className="mt-1">

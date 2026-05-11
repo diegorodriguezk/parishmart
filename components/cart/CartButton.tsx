@@ -1,5 +1,6 @@
 "use client";
 
+import { ShoppingCart } from "lucide-react";
 import { useCart } from "./CartContext";
 
 export function CartButton({ compact = false }: { compact?: boolean }) {
@@ -13,7 +14,7 @@ export function CartButton({ compact = false }: { compact?: boolean }) {
       }`}
       aria-label={`Open cart, ${count} item${count === 1 ? "" : "s"}`}
     >
-      <span aria-hidden>🛒</span>
+      <ShoppingCart className="h-4 w-4" aria-hidden />
       {!compact ? <span className="hidden sm:inline">Cart</span> : null}
       {count > 0 ? (
         <span className="grid h-5 min-w-[20px] place-items-center rounded-full bg-gradient-to-br from-pm-blue to-pm-cyan px-1.5 text-[10px] font-extrabold text-white">

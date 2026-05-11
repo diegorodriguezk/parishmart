@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown, Globe } from "lucide-react";
 
 export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   const [lang, setLang] = useState<"EN" | "ES">("EN");
@@ -12,12 +13,12 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         onBlur={() => window.setTimeout(() => setOpen(false), 150)}
-        className={`inline-flex items-center gap-1 rounded-full border border-pm-border bg-white px-3 py-2 text-sm font-bold text-pm-navy hover:border-pm-blue ${compact ? "px-2" : ""}`}
+        className={`inline-flex items-center gap-1.5 rounded-full border border-pm-border bg-white px-3 py-2 text-sm font-bold text-pm-navy hover:border-pm-blue ${compact ? "px-2" : ""}`}
         aria-label={`Language: ${lang}`}
       >
-        <span className="text-pm-blue" aria-hidden>🌐</span>
+        <Globe className="h-4 w-4 text-pm-blue" aria-hidden />
         <span>{lang}</span>
-        <span className="text-pm-muted" aria-hidden>▾</span>
+        <ChevronDown className="h-3.5 w-3.5 text-pm-muted" aria-hidden />
       </button>
       {open ? (
         <div className="absolute right-0 top-full mt-2 w-32 overflow-hidden rounded-2xl border border-pm-border bg-white shadow-pm-card">

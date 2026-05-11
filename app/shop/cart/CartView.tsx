@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/components/cart/CartContext";
 import { Photo, PhotoKind } from "@/components/Photo";
 import { ImpactBreakdown } from "@/components/ImpactBreakdown";
@@ -13,8 +14,10 @@ export function CartView() {
   if (cart.items.length === 0 && cart.donations.length === 0) {
     return (
       <div className="pm-card p-10 text-center">
-        <p className="text-3xl">🛍️</p>
-        <p className="mt-2 text-lg font-bold text-pm-navy">Your cart is empty</p>
+        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-pm-soft text-pm-blue">
+          <ShoppingBag className="h-7 w-7" aria-hidden />
+        </span>
+        <p className="mt-3 text-lg font-bold text-pm-navy">Your cart is empty</p>
         <p className="mt-1 text-sm text-pm-muted">
           Add products that support a cause or make a direct donation.
         </p>

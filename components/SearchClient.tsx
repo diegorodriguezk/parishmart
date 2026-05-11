@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { Search } from "lucide-react";
 
 type Result = {
   id: string;
@@ -102,8 +103,10 @@ export function SearchClient({ initialQuery = "Emmaus" }: { initialQuery?: strin
 
         {filtered.length === 0 ? (
           <div className="pm-card mt-5 p-8 text-center">
-            <p className="text-2xl">🔍</p>
-            <p className="mt-2 text-base font-bold text-pm-navy">
+            <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-pm-soft text-pm-blue">
+              <Search className="h-6 w-6" aria-hidden />
+            </span>
+            <p className="mt-3 text-base font-bold text-pm-navy">
               No exact match for "{query}"
             </p>
             <p className="mt-1 text-sm text-pm-muted">
