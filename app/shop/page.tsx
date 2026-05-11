@@ -46,7 +46,7 @@ export default function ShopCategoryPage() {
 
       <Section width="wide" className="!py-4">
         <FilterChips
-          items={["All", "Religious Gifts", "Parish Merch", "Local Biz Supporters", "Sponsors"]}
+          items={["All", "Religious Gifts", "Parish Merch", "Services", "Sponsors"]}
           active="All"
         />
       </Section>

@@ -15,7 +15,7 @@ export function ProductCard({
   rating,
   reviews,
   cause,
-  verified = true,
+  verified = false,
   cta = "Add",
 }: {
   href?: string;
@@ -91,6 +91,7 @@ export function CauseCard({
   description,
   raised,
   donors,
+  verified = false,
   cta = "Donate Now",
 }: {
   href?: string;
@@ -100,6 +101,7 @@ export function CauseCard({
   description?: string;
   raised?: string;
   donors?: string;
+  verified?: boolean;
   cta?: string;
 }) {
   return (
@@ -110,7 +112,7 @@ export function CauseCard({
       <div className="flex flex-1 flex-col gap-2 p-3">
         <div className="flex flex-wrap items-center gap-1.5">
           {label ? <span className="pm-label">{label}</span> : null}
-          <TrustBadge variant="verified" label="Verified parish" />
+          {verified ? <TrustBadge variant="verified" label="Verified parish" /> : null}
         </div>
         <Link href={href} className="block">
           <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
@@ -259,10 +261,11 @@ export function BusinessCard({
             <p className="mt-1 text-xs text-pm-muted">{description}</p>
           ) : null}
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <TrustBadge variant="approved" label="Approved biz" />
-          <StarRating value={rating} count={reviews} />
-        </div>
+        {reviews ? (
+          <div className="flex flex-wrap items-center gap-2">
+            <StarRating value={rating} count={reviews} />
+          </div>
+        ) : null}
         {tags?.length ? (
           <div className="flex flex-wrap gap-1.5">
             {tags.map((t) => (

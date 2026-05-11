@@ -6,7 +6,7 @@ import { Section } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { TrustBadge, StarRating } from "@/components/TrustBadge";
 import { ImpactBreakdown } from "@/components/ImpactBreakdown";
-import { AddToCartButton, AddDonationButton } from "@/components/cart/AddToCartButton";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 
 export const metadata = { title: "Emmaus Retreat T-Shirt · SKD Parish Store" };
 
@@ -160,25 +160,7 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
-            <div className="pm-card p-5">
-              <h3 className="text-base font-bold text-pm-navy">
-                Support Emmaus
-              </h3>
-              <p className="mt-1 text-xs text-pm-muted">
-                Add a donation to the Emmaus retreat mission before checkout.
-              </p>
-              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
-                {[10, 20, 50, 100].map((amt) => (
-                  <AddDonationButton
-                    key={amt}
-                    cause="Emmaus Retreat Fund"
-                    amount={amt}
-                    size="sm"
-                    label={`+$${amt}`}
-                  />
-                ))}
-              </div>
-            </div>
+            {/* PM-020: "Support Emmaus" donation block is deferred to Fase 2 */}
           </div>
         </div>
       </Section>

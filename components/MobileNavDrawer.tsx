@@ -2,21 +2,23 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const PRIMARY = [
   { href: "/shop", label: "Shop" },
   { href: "/give", label: "Give" },
-  { href: "/stores", label: "Parish Stores" },
-  { href: "/local-businesses", label: "Local Biz" },
+  { href: "/communities", label: "Communities" },
+  { href: "/local-businesses", label: "Businesses" },
   { href: "/sponsors", label: "Sponsors" },
   { href: "/search", label: "Search" },
 ];
 const SECONDARY = [
+  { href: "/onboarding", label: "Join Us" },
   { href: "/onboarding/parish", label: "Open Your Store" },
   { href: "/onboarding/seller", label: "Become a Seller" },
   { href: "/onboarding/sponsor", label: "Become a Sponsor" },
-  { href: "/onboarding/local-business", label: "Become a Local Biz" },
-  { href: "/sign-in", label: "Sign in" },
+  { href: "/onboarding/local-business", label: "Become a Business" },
+  { href: "/sign-in", label: "Sign in / Log in" },
 ];
 
 export function MobileNavDrawer() {
@@ -35,7 +37,7 @@ export function MobileNavDrawer() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy md:hidden"
+        className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy lg:hidden"
         aria-label="Open menu"
       >
         <span className="space-y-1.5" aria-hidden>
@@ -46,7 +48,7 @@ export function MobileNavDrawer() {
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-label="Menu">
+        <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-label="Menu">
           <button
             aria-label="Close overlay"
             onClick={() => setOpen(false)}
@@ -75,6 +77,17 @@ export function MobileNavDrawer() {
                 ✕
               </button>
             </header>
+
+            <div className="border-b border-pm-border bg-pm-soft/40 px-5 py-3">
+              <Link
+                href="/search"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-2 text-sm text-pm-muted hover:border-pm-blue"
+              >
+                <span aria-hidden>🔍</span>
+                <span>Search ParishMart…</span>
+              </Link>
+            </div>
 
             <nav className="flex-1 overflow-y-auto px-3 py-4">
               <p className="px-3 text-[10px] font-bold uppercase tracking-wider text-pm-blue">
@@ -109,6 +122,10 @@ export function MobileNavDrawer() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-5 flex items-center justify-between px-3">
+                <span className="text-xs text-pm-muted">Language</span>
+                <LanguageSwitcher compact />
+              </div>
             </nav>
 
             <div className="border-t border-pm-border p-4">

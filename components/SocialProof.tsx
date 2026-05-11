@@ -33,25 +33,40 @@ export function LiveProofTicker() {
   );
 }
 
-export function ParishStats() {
+export function ParishStats({
+  title = "ParishMart Impact",
+  description = "Cumulative activity across the platform.",
+}: {
+  title?: string;
+  description?: string;
+}) {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-      {[
-        { v: "$48.6K", l: "Raised across SKD this year" },
-        { v: "1,240", l: "Parishioner supporters" },
-        { v: "92", l: "Verified businesses" },
-        { v: "98%", l: "Approval rate" },
-      ].map((s) => (
-        <div
-          key={s.l}
-          className="pm-card p-4 text-center sm:text-left"
-        >
-          <p className="text-xl font-extrabold text-pm-navy sm:text-2xl">
-            {s.v}
-          </p>
-          <p className="mt-1 text-[11px] text-pm-muted">{s.l}</p>
+    <div>
+      <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
+        <div>
+          <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy md:text-3xl">
+            {title}
+          </h2>
+          {description ? (
+            <p className="mt-1 text-sm text-pm-muted">{description}</p>
+          ) : null}
         </div>
-      ))}
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {[
+          { v: "$48.6K", l: "Raised through ParishMart" },
+          { v: "1,240", l: "Parishioner supporters" },
+          { v: "92", l: "Active businesses" },
+          { v: "98%", l: "Approval rate" },
+        ].map((s) => (
+          <div key={s.l} className="pm-card p-4 text-center sm:text-left">
+            <p className="text-xl font-extrabold text-pm-navy sm:text-2xl">
+              {s.v}
+            </p>
+            <p className="mt-1 text-[11px] text-pm-muted">{s.l}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
