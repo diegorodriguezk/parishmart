@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 import { Section } from "@/components/Sections";
 import { Footer } from "@/components/Footer";
 
@@ -9,14 +10,7 @@ export default function SignInPage() {
     <>
       <header className="border-b border-pm-border/70 bg-white">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-4 py-3 sm:px-6">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan font-extrabold text-white shadow-pm-soft">
-              P
-            </span>
-            <span className="text-lg font-extrabold tracking-tight text-pm-navy">
-              ParishMart
-            </span>
-          </Link>
+          <Logo />
           <Link href="/" className="text-sm font-semibold text-pm-muted hover:text-pm-navy">
             Back to home
           </Link>

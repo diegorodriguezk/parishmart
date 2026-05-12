@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Search, User } from "lucide-react";
-import { Logo, SubStoreBadge } from "./Logo";
+import { Logo, LogoMark, SubStoreBadge } from "./Logo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -82,10 +82,10 @@ export function SubStoreHeader({
             <MobileNavDrawer />
             <Link
               href="/"
-              className="hidden h-10 w-10 sm:grid place-items-center rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan font-extrabold text-white shadow-pm-soft"
+              className="hidden sm:flex"
               aria-label="ParishMart home"
             >
-              P
+              <LogoMark className="h-10 w-auto" priority />
             </Link>
             <SubStoreBadge name={parishName} location={location} />
           </div>
@@ -140,23 +140,7 @@ export function OnboardingHeader({ subtitle }: { subtitle: string }) {
   return (
     <header className="border-b border-pm-border/70 bg-white">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <div className="flex items-center gap-3">
-          <Link
-            href="/"
-            className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan font-extrabold text-white shadow-pm-soft"
-            aria-label="ParishMart"
-          >
-            P
-          </Link>
-          <div className="flex flex-col leading-tight">
-            <span className="text-base font-extrabold tracking-tight text-pm-navy sm:text-lg">
-              ParishMart
-            </span>
-            <span className="text-[11px] font-medium text-pm-muted">
-              {subtitle}
-            </span>
-          </div>
-        </div>
+        <Logo subtitle={subtitle} />
         <div className="flex items-center gap-2 sm:gap-3">
           <Link href="/onboarding" className="pm-btn pm-btn-secondary !px-3 !py-2 text-xs sm:!px-4 sm:text-sm">
             Back
@@ -174,23 +158,7 @@ export function ActivationHeader() {
   return (
     <header className="border-b border-pm-border/70 bg-white">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <div className="flex items-center gap-3">
-          <Link
-            href="/"
-            className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan font-extrabold text-white shadow-pm-soft"
-            aria-label="ParishMart"
-          >
-            P
-          </Link>
-          <div className="flex flex-col leading-tight">
-            <span className="text-base font-extrabold tracking-tight text-pm-navy sm:text-lg">
-              ParishMart
-            </span>
-            <span className="text-[11px] font-medium text-pm-muted">
-              Activation submitted
-            </span>
-          </div>
-        </div>
+        <Logo subtitle="Activation submitted" />
         <div className="flex items-center gap-2 sm:gap-3">
           <Link href="/" className="pm-btn pm-btn-secondary !px-3 !py-2 text-xs sm:!px-4 sm:text-sm">
             Home

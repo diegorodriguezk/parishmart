@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, Search, X } from "lucide-react";
+import { LogoMark } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const PRIMARY = [
@@ -58,9 +59,7 @@ export function MobileNavDrawer() {
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-2"
               >
-                <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan font-extrabold text-white">
-                  P
-                </span>
+                <LogoMark className="h-9 w-auto" />
                 <span className="text-lg font-extrabold tracking-tight text-pm-navy">
                   ParishMart
                 </span>

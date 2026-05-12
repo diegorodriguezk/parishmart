@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoMark } from "./Logo";
 
 const COLS = [
   {
@@ -81,19 +82,21 @@ export function Footer() {
 
       <div className="mx-auto grid max-w-[1280px] gap-10 px-6 py-14 md:grid-cols-[1.2fr_repeat(3,_1fr)]">
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-pm-soft">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan font-extrabold text-white">
-              P
-            </span>
-            <div className="flex flex-col leading-tight">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-pm-soft"
+            aria-label="ParishMart home"
+          >
+            <LogoMark className="h-10 w-auto" />
+            <span className="flex flex-col leading-tight">
               <span className="text-lg font-extrabold tracking-tight text-pm-navy">
                 ParishMart
               </span>
               <span className="text-[9px] font-bold tracking-wider text-pm-blue">
                 SHOP WITH PURPOSE · GIVE WITH LOVE
               </span>
-            </div>
-          </div>
+            </span>
+          </Link>
           <p className="max-w-xs text-sm text-white/70">
             Unifying faith, commerce and compassion to build stronger
             communities.
