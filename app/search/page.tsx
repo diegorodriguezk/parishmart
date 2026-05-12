@@ -5,7 +5,14 @@ import { SearchClient } from "@/components/SearchClient";
 
 export const metadata = { title: "Search · ParishMart" };
 
-export default function SearchPage() {
+export default async function SearchPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const params = await searchParams;
+  const initialQuery = params?.q ?? "";
+
   return (
     <>
       <Header />
@@ -21,7 +28,7 @@ export default function SearchPage() {
             Find products, services, parish stores, ministries, causes and
             local businesses connected to community impact.
           </p>
-          <SearchClient initialQuery="Emmaus" />
+          <SearchClient initialQuery={initialQuery} />
         </div>
       </Section>
 

@@ -5,11 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, CauseCard, StatTile } from "@/components/Cards";
-import {
-  LiveProofTicker,
-  ParishStats,
-  Testimonial,
-} from "@/components/SocialProof";
+import { LiveProofTicker, Testimonial } from "@/components/SocialProof";
 import { LocalBizCard, CommunityCard } from "@/components/home/LocalBizCard";
 
 export const metadata = { title: "Home | ParishMart" };
@@ -90,9 +86,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section width="wide" className="!py-6">
-        <ParishStats />
-      </Section>
+      {/* QA: "ParishMart Impact" stats temporarily hidden per Observaciones 3.0 */}
 
       <Section width="wide">
         <SectionHeader
@@ -364,8 +358,9 @@ export default function HomePage() {
             category="Photography"
             title="Maria's Studios"
             description="Photography for families, retreats, parish events and community celebrations."
-            tags={["Supports SKD", "Event photos"]}
+            tags={[]}
             subtext="10% supports parish causes"
+            cta="View more"
           />
           <LocalBizCard
             href="/local-businesses/profile"
@@ -374,8 +369,9 @@ export default function HomePage() {
             category="Retreats"
             title="Casa Manresa"
             description="Retreat hosting, spiritual formation, meeting spaces and community programs."
-            tags={["Ministry friendly", "Retreats"]}
+            tags={[]}
             subtext="Featured supporter"
+            cta="View more"
           />
           <LocalBizCard
             href="/local-businesses/profile"
@@ -384,8 +380,9 @@ export default function HomePage() {
             category="Real Estate"
             title="Local Realty Supporter"
             description="Real estate guidance for families moving within the parish community."
-            tags={["Family services", "Local expert"]}
+            tags={[]}
             subtext="Supports youth ministry"
+            cta="View more"
           />
           <LocalBizCard
             href="/onboarding/local-business"
@@ -394,7 +391,7 @@ export default function HomePage() {
             category="Join the ecosystem"
             title="Become a Local Business Supporter"
             description="Offer products or services, gain visibility and support a parish cause with every sale or membership."
-            tags={["Products", "Services", "Sponsors"]}
+            tags={[]}
             subtext="Simple onboarding"
             cta="Apply now"
           />
@@ -474,9 +471,9 @@ export default function HomePage() {
             title="St. Katharine Drexel"
             description="Our first parish community using ParishMart to connect products, giving and local impact."
             location="Weston, FL"
-            tags={["Pilot parish", "Weston, FL"]}
+            tags={[]}
             subtext="Active pilot"
-            cta="View community"
+            cta="View more"
           />
           <CommunityCard
             href="/communities"
@@ -485,9 +482,10 @@ export default function HomePage() {
             category="Ministry"
             title="Emmaus Community"
             description="Retreat community creating opportunities for event products, ministry visibility and fundraising."
-            tags={["Retreats", "Event merch"]}
+            location="Weston, FL"
+            tags={[]}
             subtext="Community partner"
-            cta="View ministry"
+            cta="View more"
           />
           <CommunityCard
             href="/communities"
@@ -496,9 +494,10 @@ export default function HomePage() {
             category="Cause / Mission"
             title="Schoenstatt Mission"
             description="A faith-driven mission community connecting supporters with meaningful campaigns and events."
-            tags={["Mission", "Campaigns"]}
+            location="South Florida"
+            tags={[]}
             subtext="Cause supporter"
-            cta="View cause"
+            cta="View more"
           />
           <CommunityCard
             href="/onboarding/sponsor"
@@ -507,7 +506,8 @@ export default function HomePage() {
             category="Sponsor"
             title="Founding Sponsor"
             description="Early sponsors can support parish events, ministries and causes while gaining trusted community visibility."
-            tags={["Sponsors", "Local impact"]}
+            location="Florida"
+            tags={[]}
             subtext="Early access"
             cta="Become sponsor"
           />

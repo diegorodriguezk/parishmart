@@ -8,25 +8,33 @@ export const metadata = { title: "Join the ParishMart Ecosystem" };
 const PLAYERS = [
   {
     badge: "Parish",
-    title: "Parish / Cause",
+    title: "Parish",
     description:
-      "Activate your community, open a store and launch giving campaigns connected to your ministries.",
-    cta: "Activate Community",
+      "Activate your parish community, open a store and launch giving campaigns connected to your ministries.",
+    cta: "Activate Parish",
+    href: "/onboarding/parish",
+  },
+  {
+    badge: "Cause",
+    title: "Cause / Ministry",
+    description:
+      "Launch giving campaigns and impact pages for ministries, retreats and missions inside the ecosystem.",
+    cta: "Activate Cause",
     href: "/onboarding/parish",
   },
   {
     badge: "Seller",
-    title: "Start Selling",
+    title: "Seller — Products",
     description:
-      "Sell products or services connected to a cause that your customers care about.",
+      "Sell products connected to a cause that your customers care about.",
     cta: "Become a Seller",
     href: "/onboarding/seller",
   },
   {
     badge: "Local Biz",
-    title: "Local Business",
+    title: "Business Supporter — Services",
     description:
-      "Join as a mission-aligned business and offer parishioner benefits and visibility.",
+      "Join as a mission-aligned business and offer services with parishioner benefits and visibility.",
     cta: "Join as Business",
     href: "/onboarding/local-business",
   },
@@ -60,7 +68,7 @@ export default function JoinEcosystemPage() {
       </Section>
 
       <Section width="wide">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {PLAYERS.map((p) => (
             <Link key={p.title} href={p.href} className="pm-card flex flex-col gap-3 p-6 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
               <span className="pm-label">{p.badge}</span>

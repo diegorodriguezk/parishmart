@@ -38,19 +38,21 @@ export function LocalBizCard(p: LocalBizCardData) {
           </h3>
         </Link>
         <p className="text-xs text-pm-muted">{p.description}</p>
-        <div className="flex flex-wrap gap-1.5">
-          {p.tags.map((t) => (
-            <span key={t} className="pm-label !text-[10px]">
-              {t}
-            </span>
-          ))}
-        </div>
+        {p.tags.length ? (
+          <div className="flex flex-wrap gap-1.5">
+            {p.tags.map((t) => (
+              <span key={t} className="pm-label !text-[10px]">
+                {t}
+              </span>
+            ))}
+          </div>
+        ) : null}
         <div className="mt-auto flex items-end justify-between gap-3 pt-2">
           <Link
             href={p.href}
             className="text-sm font-bold text-pm-blue hover:text-pm-navy"
           >
-            {p.cta ?? "View profile"} →
+            {p.cta ?? "View more"} →
           </Link>
           {p.subtext ? (
             <p className="max-w-[120px] text-right text-[10px] leading-tight text-pm-muted">

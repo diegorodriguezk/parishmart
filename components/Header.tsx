@@ -27,20 +27,25 @@ export function Header() {
           ))}
         </nav>
         <div className="ml-auto flex flex-1 items-center justify-end gap-2 lg:flex-none">
-          <div className="hidden flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1 shadow-pm-soft lg:flex lg:max-w-md">
+          <form
+            action="/search"
+            method="get"
+            className="hidden flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1 shadow-pm-soft lg:flex lg:max-w-md"
+          >
             <Search className="h-4 w-4 text-pm-muted" aria-hidden />
             <input
+              name="q"
               className="pm-input h-8 px-1 text-sm"
               placeholder="Search products, causes, communities…"
               aria-label="Search"
             />
-            <Link
-              href="/search"
+            <button
+              type="submit"
               className="pm-btn pm-btn-primary !px-3 !py-1 text-xs"
             >
               Search
-            </Link>
-          </div>
+            </button>
+          </form>
           <Link
             href="/onboarding"
             className="hidden text-sm font-semibold text-pm-navy hover:text-pm-blue xl:block"
@@ -93,20 +98,25 @@ export function SubStoreHeader({
             </Link>
           </div>
         </div>
-        <div className="flex flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft">
+        <form
+          action="/search"
+          method="get"
+          className="flex flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft"
+        >
           <Search className="h-4 w-4 text-pm-muted" aria-hidden />
           <input
+            name="q"
             className="pm-input h-9 px-1"
             placeholder={searchPlaceholder}
             aria-label="Search"
           />
-          <Link
-            href="/search"
+          <button
+            type="submit"
             className="pm-btn pm-btn-primary !px-4 !py-2 text-xs sm:text-sm"
           >
             Search
-          </Link>
-        </div>
+          </button>
+        </form>
         <nav className="hidden items-center gap-5 text-sm font-medium text-pm-muted xl:flex">
           <Link href="/shop" className="hover:text-pm-navy">Shop</Link>
           <Link href="/give" className="hover:text-pm-navy">Give</Link>
