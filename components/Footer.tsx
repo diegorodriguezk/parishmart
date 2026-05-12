@@ -66,9 +66,10 @@ export function Footer() {
             {SPONSORS.map((s) => (
               <li
                 key={s.initials}
-                className="flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5"
+                className="flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5"
+                title={`${s.name} — logo placeholder`}
               >
-                <span className="grid h-7 w-7 place-items-center rounded-md bg-white/15 text-[10px] font-extrabold text-white">
+                <span className="grid h-7 w-7 place-items-center rounded-md bg-gradient-to-br from-white/30 to-white/10 text-[10px] font-extrabold tracking-tight text-white ring-1 ring-white/20">
                   {s.initials}
                 </span>
                 <span className="text-xs font-bold text-white/85 whitespace-nowrap">
@@ -77,6 +78,9 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          <p className="mt-3 text-[10px] text-white/40">
+            Logos shown as placeholders · final sponsor logos pending assets.
+          </p>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SubStoreHeader } from "@/components/Header";
+import { ParishProfileHeader } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
@@ -12,7 +12,12 @@ export const metadata = { title: "SKD Parish Storefront" };
 export default function ParishStoreSKDPage() {
   return (
     <>
-      <SubStoreHeader searchPlaceholder="Search store, products, services..." />
+      <ParishProfileHeader
+        parishName="SKD Parish Store"
+        parishInitials="SKD"
+        location="Weston, Florida"
+        searchPlaceholder="Search store, products, services..."
+      />
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Parish Stores", href: "/stores" }, { label: "St. Katharine Drexel" }]} />

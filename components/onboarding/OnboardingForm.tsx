@@ -66,6 +66,10 @@ export function useFieldValue(key: string): string {
   return useForm().state[key] ?? "";
 }
 
+export function useSetField(): (key: string, value: string) => void {
+  return useForm().set;
+}
+
 export function useMultiValue(key: string): string[] {
   return useForm().multi[key] ?? [];
 }

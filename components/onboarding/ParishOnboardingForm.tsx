@@ -71,8 +71,14 @@ export function ParishOnboardingForm() {
     <OnboardingFormProvider
       initial={{
         name: "Emmaus SKD Weston",
-        type: "Ministry / Cause",
-        city: "Weston, Florida · SKD",
+        state: "Florida",
+        city: "Weston",
+        address: "2501 South Post Road",
+        zip: "33327",
+        contactName: "Maria Gonzalez",
+        contactEmail: "contact@emmaus-skd.org",
+        churchName: "Saint Katharine Drexel Catholic Church",
+        nonProfit: "Yes — 501(c)(3) registered",
         goal: "Support retreat scholarships",
         cta: "Give with Love",
       }}
@@ -130,14 +136,46 @@ function ParishInner() {
         <FormField label="Community / Cause Name">
           <LiveInput field="name" />
         </FormField>
-        <FormField label="Type">
+        <FormField label="Church / Parish Name">
+          <LiveInput field="churchName" />
+        </FormField>
+        <FormField label="Address">
+          <LiveInput field="address" placeholder="Street address" />
+        </FormField>
+        <FormField label="Zip Code">
+          <LiveInput field="zip" placeholder="33327" />
+        </FormField>
+        <FormField label="City">
+          <LiveInput field="city" />
+        </FormField>
+        <FormField label="State">
           <LiveSelect
-            field="type"
-            options={["Ministry / Cause", "Parish", "Retreat", "Mission"]}
+            field="state"
+            options={[
+              "Florida",
+              "Texas",
+              "California",
+              "New York",
+              "Illinois",
+              "Other",
+            ]}
           />
         </FormField>
-        <FormField label="City / Parish">
-          <LiveInput field="city" />
+        <FormField label="Contact Name">
+          <LiveInput field="contactName" placeholder="Primary contact person" />
+        </FormField>
+        <FormField label="Contact Email">
+          <LiveInput field="contactEmail" placeholder="contact@parish.org" />
+        </FormField>
+        <FormField label="Non-profit status (optional)">
+          <LiveSelect
+            field="nonProfit"
+            options={[
+              "Not registered",
+              "Pending 501(c)(3)",
+              "Yes — 501(c)(3) registered",
+            ]}
+          />
         </FormField>
         <FormField label="Main Goal">
           <LiveSelect
@@ -175,12 +213,14 @@ function ParishInner() {
 }
 
 function ParishPreview() {
-  const type = useFieldValue("type");
+  const church = useFieldValue("churchName");
   const city = useFieldValue("city");
+  const state = useFieldValue("state");
   const goal = useFieldValue("goal");
   const modules = useMultiValue("modules");
 
-  const description = `A ${type.toLowerCase()} in ${city} focused on ${goal.toLowerCase()}.`;
+  const location = [city, state].filter(Boolean).join(", ");
+  const description = `Connected to ${church || "the parish"} in ${location || "your community"}, focused on ${goal.toLowerCase()}.`;
 
   return (
     <>

@@ -5,6 +5,7 @@ import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, FilterChips, DarkPanel } from "@/components/Sections";
 import { SponsorOfferCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { SponsorBannerCarousel } from "@/components/SponsorBannerCarousel";
 
 export const metadata = { title: "Sponsor Offers · ParishMart" };
 
@@ -49,31 +50,7 @@ export default function SponsorsCategoryPage() {
       </Section>
 
       <Section width="wide" className="!pt-3">
-        <div className="pm-dark-panel relative overflow-hidden">
-          <div className="absolute inset-0 -z-0 opacity-30">
-            <Photo kind="business" ratio="auto" rounded="rounded-none" className="!rounded-none h-full" />
-          </div>
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-6">
-            <div className="space-y-2">
-              <span className="pm-avatar !h-10 !w-10 rounded-xl bg-white/15">CH</span>
-              <h2 className="text-2xl font-extrabold md:text-3xl">Cleveland Hospital Sponsor</h2>
-              <p className="max-w-md text-sm text-white/80">
-                Featured premium banner placement for a major sponsor
-                supporting SKD families, wellness initiatives and community
-                health campaigns.
-              </p>
-              <div className="flex gap-3 pt-2">
-                <Link href="/sponsors/profile" className="pm-btn bg-white text-pm-navy">View Sponsor</Link>
-                <Link href="/share-impact" className="pm-btn bg-white/10 text-white">Redeem Benefit</Link>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-5 text-right">
-              <p className="text-[10px] uppercase tracking-wider text-white/70">Featured sponsor benefit</p>
-              <p className="mt-1 text-3xl font-extrabold">$100</p>
-              <p className="text-xs text-white/70">Health screening credit for SKD parishioners</p>
-            </div>
-          </div>
-        </div>
+        <SponsorBannerCarousel />
       </Section>
 
       <Section width="wide" className="!py-4">

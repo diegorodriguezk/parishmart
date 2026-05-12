@@ -70,6 +70,91 @@ export function Header() {
   );
 }
 
+export function ParishProfileHeader({
+  parishName = "SKD Parish Store",
+  parishInitials = "SKD",
+  location = "Weston, Florida",
+  searchPlaceholder = "Search store, products, services...",
+}: {
+  parishName?: string;
+  parishInitials?: string;
+  location?: string;
+  searchPlaceholder?: string;
+}) {
+  return (
+    <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/95 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-[1320px] flex-col gap-2 px-4 py-2.5 sm:px-6 lg:flex-row lg:items-center lg:gap-4">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-3">
+            <MobileNavDrawer />
+            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan text-sm font-extrabold text-white shadow-pm-soft">
+              {parishInitials}
+            </span>
+            <div className="flex flex-col leading-tight">
+              <span className="text-base font-extrabold tracking-tight text-pm-navy">
+                {parishName}
+              </span>
+              <span className="text-[11px] text-pm-muted">{location}</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 lg:hidden">
+            <CartButton compact />
+            <Link
+              href="/sign-in"
+              className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy"
+              aria-label="Sign in"
+            >
+              <User className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
+        </div>
+        <form
+          action="/search"
+          method="get"
+          className="flex flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft"
+        >
+          <Search className="h-4 w-4 text-pm-muted" aria-hidden />
+          <input
+            name="q"
+            className="pm-input h-9 px-1"
+            placeholder={searchPlaceholder}
+            aria-label="Search"
+          />
+          <button
+            type="submit"
+            className="pm-btn pm-btn-primary !px-4 !py-2 text-xs sm:text-sm"
+          >
+            Search
+          </button>
+        </form>
+        <nav className="hidden items-center gap-5 text-sm font-medium text-pm-muted xl:flex">
+          <Link href="/shop" className="hover:text-pm-navy">Shop</Link>
+          <Link href="/give" className="hover:text-pm-navy">Give</Link>
+          <Link href="/local-businesses" className="hover:text-pm-navy">Local Biz</Link>
+          <Link href="/sponsors" className="hover:text-pm-navy">Sponsors</Link>
+        </nav>
+        <div className="hidden items-center gap-2 lg:flex">
+          <LanguageSwitcher compact />
+          <CartButton compact />
+          <Link
+            href="/sign-in"
+            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
+            aria-label="Sign in"
+          >
+            <User className="h-4 w-4" aria-hidden />
+          </Link>
+          <Link
+            href="/"
+            className="rounded-full border border-pm-border px-3 py-1.5 text-[11px] font-bold text-pm-blue hover:border-pm-blue"
+          >
+            ← ParishMart
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+}
+
 export function SubStoreHeader({
   parishName = "SKD Parish Store",
   location = "Weston, Florida",

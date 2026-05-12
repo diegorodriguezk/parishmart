@@ -37,10 +37,24 @@ export function LocalBusinessOnboardingForm() {
       initial={{
         business: "Maria's Studios",
         category: "Photography",
-        city: "Weston, Florida",
+        address: "123 Town Center Dr",
+        city: "Weston",
+        state: "Florida",
+        phone: "(954) 555-0142",
+        contactName: "Maria Gonzalez",
+        contactEmail: "hello@mariastudios.com",
+        founderName: "Maria Gonzalez",
+        founderBio: "Local photographer serving SKD families since 2022.",
+        servicesDesc: "Family sessions · Retreat coverage · Event photography",
+        servicesPrice: "From $150",
+        website: "https://www.mariastudios.com",
+        social: "@mariastudios",
+        contactUrl: "https://www.mariastudios.com/contact",
         supports: "Emmaus Men",
         offer: "10% Off",
         visibility: "Featured",
+        membership: "Featured",
+        terms: "false",
       }}
     >
       <LocalBusinessInner />
@@ -104,8 +118,35 @@ function LocalBusinessInner() {
             ]}
           />
         </FormField>
+        <FormField label="Address">
+          <LiveInput field="address" placeholder="Street address" />
+        </FormField>
+        <FormField label="Phone">
+          <LiveInput field="phone" placeholder="(000) 000-0000" />
+        </FormField>
         <FormField label="City">
           <LiveInput field="city" />
+        </FormField>
+        <FormField label="State">
+          <LiveSelect
+            field="state"
+            options={["Florida", "Texas", "California", "New York", "Other"]}
+          />
+        </FormField>
+        <FormField label="Contact Name">
+          <LiveInput field="contactName" />
+        </FormField>
+        <FormField label="Contact Email">
+          <LiveInput field="contactEmail" placeholder="hello@example.com" />
+        </FormField>
+        <FormField label="Website">
+          <LiveInput field="website" placeholder="https://" />
+        </FormField>
+        <FormField label="Social handle (optional)">
+          <LiveInput field="social" placeholder="@yourbusiness" />
+        </FormField>
+        <FormField label="Contact Us link">
+          <LiveInput field="contactUrl" placeholder="https://your-site.com/contact" />
         </FormField>
         <FormField label="Supports">
           <LiveSelect
@@ -119,7 +160,48 @@ function LocalBusinessInner() {
           />
         </FormField>
       </div>
-      <p className="mt-6 text-xs font-bold text-pm-navy">Parishioner offer</p>
+
+      <p className="mt-7 text-xs font-bold text-pm-navy">Media uploads</p>
+      <div className="mt-2 grid gap-3 md:grid-cols-3">
+        {[
+          { label: "Logo", hint: "PNG/SVG · transparent · 512×512" },
+          { label: "Banner photo", hint: "JPG · 1920×720" },
+          { label: "Founder photo", hint: "JPG · 800×800" },
+        ].map((u) => (
+          <div
+            key={u.label}
+            className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-pm-border bg-pm-soft/30 p-4 text-center"
+          >
+            <p className="text-sm font-bold text-pm-navy">Upload {u.label}</p>
+            <p className="mt-1 text-[11px] text-pm-muted">{u.hint}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-7 text-xs font-bold text-pm-navy">Founder details</p>
+      <div className="mt-2 grid gap-4 md:grid-cols-2">
+        <FormField label="Founder name">
+          <LiveInput field="founderName" />
+        </FormField>
+        <FormField label="Founder bio (short)">
+          <LiveInput field="founderBio" />
+        </FormField>
+      </div>
+
+      <p className="mt-7 text-xs font-bold text-pm-navy">Services & pricing</p>
+      <div className="mt-2 grid gap-4 md:grid-cols-2">
+        <FormField label="Services description">
+          <LiveInput
+            field="servicesDesc"
+            placeholder="What services do you offer?"
+          />
+        </FormField>
+        <FormField label="Starting price (optional)">
+          <LiveInput field="servicesPrice" placeholder="From $150 / Quote" />
+        </FormField>
+      </div>
+
+      <p className="mt-7 text-xs font-bold text-pm-navy">Parishioner offer</p>
       <div className="mt-2">
         <LiveChips
           field="offer"
@@ -132,13 +214,26 @@ function LocalBusinessInner() {
           ]}
         />
       </div>
-      <p className="mt-6 text-xs font-bold text-pm-navy">Visibility plan</p>
+
+      <p className="mt-7 text-xs font-bold text-pm-navy">Membership plan</p>
       <div className="mt-2">
         <LiveChips
-          field="visibility"
+          field="membership"
           options={["Starter", "Featured", "Premium Placement"]}
         />
       </div>
+
+      <label className="mt-7 flex items-start gap-2 text-xs text-pm-ink">
+        <input type="checkbox" className="mt-0.5" required />
+        <span>
+          I have read and agree to the{" "}
+          <a href="#" className="font-bold text-pm-blue underline">
+            ParishMart terms & conditions
+          </a>
+          .
+        </span>
+      </label>
+
       <FormFooter primaryHref="/onboarding/success" />
     </OnboardingLayout>
   );
