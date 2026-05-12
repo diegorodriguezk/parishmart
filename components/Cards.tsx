@@ -89,19 +89,23 @@ export function CauseCard({
   label,
   title,
   description,
+  location,
   raised,
   donors,
   verified = false,
-  cta = "Donate Now",
+  showMetrics = false,
+  cta = "Support Now",
 }: {
   href?: string;
   photo: PhotoKind;
   label?: string;
   title: string;
   description?: string;
+  location?: string;
   raised?: string;
   donors?: string;
   verified?: boolean;
+  showMetrics?: boolean;
   cta?: string;
 }) {
   return (
@@ -119,17 +123,22 @@ export function CauseCard({
             {title}
           </h3>
         </Link>
+        {location ? (
+          <p className="text-[11px] font-medium text-pm-blue">{location}</p>
+        ) : null}
         {description ? (
           <p className="text-xs text-pm-muted">{description}</p>
         ) : null}
-        <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs text-pm-muted">
-          {raised ? (
-            <span>
-              <strong className="text-pm-navy">{raised}</strong> raised
-            </span>
-          ) : null}
-          {donors ? <span>· {donors}</span> : null}
-        </div>
+        {showMetrics ? (
+          <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs text-pm-muted">
+            {raised ? (
+              <span>
+                <strong className="text-pm-navy">{raised}</strong> raised
+              </span>
+            ) : null}
+            {donors ? <span>· {donors}</span> : null}
+          </div>
+        ) : null}
         <div className="mt-auto pt-2">
           <Link
             href={href}

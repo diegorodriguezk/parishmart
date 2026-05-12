@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Play } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
@@ -299,32 +298,28 @@ export default function HomePage() {
             label="Youth Ministry"
             title="Support Youth Ministry"
             description="Building tomorrow's leaders in faith."
-            raised="$7,850"
-            donors="45 donors"
+            location="SKD · Weston, FL"
           />
           <CauseCard
             photo="volunteers"
             label="Helping Hands"
             title="St Vincent de Paul"
             description="Helping families in need in our community."
-            raised="$5,420"
-            donors="32 donors"
+            location="SKD · Weston, FL"
           />
           <CauseCard
             photo="community"
             label="Retreats"
             title="Emmaus Retreat"
             description="Support upcoming retreat experiences and formation."
-            raised="$6,230"
-            donors="41 donors"
+            location="Emmaus · Weston, FL"
           />
           <CauseCard
             photo="chalice"
             label="Mission"
             title="Schoenstatt Mission Fund"
             description="Support missionary outreach and pilgrimage programs."
-            raised="$8,910"
-            donors="62 donors"
+            location="Schoenstatt · South Florida"
           />
         </div>
       </Section>
@@ -435,19 +430,15 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          {/* TODO PM-016: embed ParishMart video here when public URL is provided */}
-          <div className="mt-6 flex aspect-video items-center justify-center rounded-2xl border border-dashed border-white/30 bg-white/5 p-6 text-center text-xs text-white/60">
-            <div className="flex flex-col items-center">
-              <span className="grid h-14 w-14 place-items-center rounded-full bg-white/10 text-white">
-                <Play className="h-6 w-6 fill-current" aria-hidden />
-              </span>
-              <p className="mt-3 font-bold uppercase tracking-wider">
-                ParishMart Video
-              </p>
-              <p className="mt-1">
-                Video placeholder — embed coming soon
-              </p>
-            </div>
+          <div className="mt-6 aspect-video overflow-hidden rounded-2xl border border-white/15 bg-black">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/95emlzl9IBE?list=PLyUuquHB9XCeh_YKam0wQtM-hzMCZ8PNz&rel=0"
+              title="ParishMart"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="h-full w-full"
+            />
           </div>
         </DarkPanel>
       </Section>

@@ -1,15 +1,26 @@
 import Link from "next/link";
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader } from "@/components/Sections";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata = { title: "Maria's Studios · Local Business" };
 
 export default function LocalBusinessProfilePage() {
   return (
     <>
-      <SubStoreHeader />
+      <Header />
+
+      <Section width="wide" className="!py-4">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Local Biz Supporters", href: "/local-businesses" },
+            { label: "Maria's Studios" },
+          ]}
+        />
+      </Section>
 
       <Section width="wide">
         <div className="pm-card grid gap-0 overflow-hidden lg:grid-cols-[1.05fr_.95fr]">

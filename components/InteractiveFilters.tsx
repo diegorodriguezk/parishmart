@@ -96,7 +96,6 @@ export function AmountPickerClient({
         className="pm-btn pm-btn-primary w-full disabled:cursor-not-allowed disabled:opacity-50"
       >
         {cta}
-        {value ? ` · $${value.toFixed(2)}` : ""}
       </button>
       {cause ? (
         <p className="text-center text-[11px] text-pm-muted">

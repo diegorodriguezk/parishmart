@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, FilterChips, DarkPanel } from "@/components/Sections";
@@ -11,7 +11,7 @@ export const metadata = { title: "Sponsor Offers · ParishMart" };
 export default function SponsorsCategoryPage() {
   return (
     <>
-      <SubStoreHeader searchPlaceholder="Search sponsor offers, discounts, services..." />
+      <Header />
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Sponsor Offers" }]} />
@@ -108,8 +108,6 @@ export default function SponsorsCategoryPage() {
           description="Premium sponsors can own the banner while all sponsors appear as easy-to-redeem offers for parishioners."
           cta="Become a Sponsor"
           ctaHref="/onboarding/sponsor"
-          ctaSecondary="See Sponsor Plans"
-          ctaSecondaryHref="/onboarding/sponsor"
         />
       </Section>
 

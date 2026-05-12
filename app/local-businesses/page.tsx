@@ -1,4 +1,4 @@
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, FilterChips, DarkPanel } from "@/components/Sections";
@@ -10,7 +10,7 @@ export const metadata = { title: "Local Biz Supporters · ParishMart" };
 export default function LocalBusinessCategoryPage() {
   return (
     <>
-      <SubStoreHeader searchPlaceholder="Search local businesses, services, offers..." />
+      <Header />
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Local Biz Supporters" }]} />
@@ -35,7 +35,7 @@ export default function LocalBusinessCategoryPage() {
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <a className="pm-btn pm-btn-primary" href="#featured">Explore Businesses</a>
-                <a className="pm-btn pm-btn-secondary" href="/onboarding/local-business">Become a Biz Supporter</a>
+                <a className="pm-btn pm-btn-secondary" href="/onboarding">Become a Biz Supporter</a>
               </div>
             </div>
             <div className="pm-card !shadow-none p-4">
@@ -50,7 +50,7 @@ export default function LocalBusinessCategoryPage() {
 
       <Section width="wide" className="!py-4">
         <FilterChips
-          items={["All", "Photography", "Wellness", "Restaurants", "Real Estate", "Professional", "Family Services", "Supports Emmaus"]}
+          items={["All", "Photography", "Wellness", "Restaurants", "Real Estate", "Professional"]}
           active="All"
         />
       </Section>
@@ -77,10 +77,8 @@ export default function LocalBusinessCategoryPage() {
         <DarkPanel
           title="Become a Biz Supporter"
           description="Offer services to the community while supporting ministries, causes and parish initiatives."
-          cta="Join Now"
-          ctaHref="/onboarding/local-business"
-          ctaSecondary="Learn More"
-          ctaSecondaryHref="/onboarding"
+          cta="Join Us"
+          ctaHref="/onboarding"
         />
       </Section>
 

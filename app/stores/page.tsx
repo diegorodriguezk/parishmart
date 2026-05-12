@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SubStoreHeader } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
-import { Section, SectionHeader, DarkPanel, ProgressBar } from "@/components/Sections";
+import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, BusinessCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { StickyTabs } from "@/components/StickyTabs";
@@ -186,9 +186,9 @@ export default function ParishStoreSKDPage() {
         />
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { l: "Youth Ministry", t: "Support Youth Ministry", d: "Help fund formation, retreats and leadership activities.", v: "$7,850", pct: 60 },
-            { l: "Emmaus", t: "Emmaus Retreat Fund", d: "Support scholarships, formation and retreat logistics.", v: "$6,230", pct: 55 },
-            { l: "Helping Hands", t: "St Vincent de Paul", d: "Support families in need with parish-collected initiatives.", v: "$5,420", pct: 48 },
+            { l: "Youth Ministry", t: "Support Youth Ministry", d: "Help fund formation, retreats and leadership activities." },
+            { l: "Emmaus", t: "Emmaus Retreat Fund", d: "Support scholarships, formation and retreat logistics." },
+            { l: "Helping Hands", t: "St Vincent de Paul", d: "Support families in need with parish-collected initiatives." },
           ].map((c) => (
             <div key={c.t} className="pm-card flex flex-col gap-3 overflow-hidden p-3">
               <Photo kind={c.l === "Youth Ministry" ? "retreat" : c.l === "Emmaus" ? "community" : "volunteers"} ratio="16/9" rounded="rounded-2xl" />
@@ -196,8 +196,7 @@ export default function ParishStoreSKDPage() {
                 <span className="pm-label">{c.l}</span>
                 <h3 className="text-base font-bold text-pm-navy">{c.t}</h3>
                 <p className="text-xs text-pm-muted">{c.d}</p>
-                <ProgressBar value={c.pct} max={100} raised={c.v} />
-                <Link href="/give/cause" className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs">Give</Link>
+                <Link href="/give/cause" className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs">Support Now</Link>
               </div>
             </div>
           ))}

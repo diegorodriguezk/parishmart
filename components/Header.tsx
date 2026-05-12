@@ -122,6 +122,9 @@ export function SubStoreHeader({
           <Link href="/give" className="hover:text-pm-navy">Give</Link>
           <Link href="/local-businesses" className="hover:text-pm-navy">Businesses</Link>
           <Link href="/sponsors" className="hover:text-pm-navy">Sponsors</Link>
+          <Link href="/" className="ml-2 rounded-full border border-pm-border px-3 py-1 text-xs font-bold text-pm-blue hover:border-pm-blue">
+            ← Back to ParishMart
+          </Link>
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
           <LanguageSwitcher compact />
