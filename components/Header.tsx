@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Search, User } from "lucide-react";
-import { Logo, LogoMark, SubStoreBadge } from "./Logo";
+import { Logo, SubStoreBadge } from "./Logo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -80,13 +80,6 @@ export function SubStoreHeader({
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <MobileNavDrawer />
-            <Link
-              href="/"
-              className="hidden sm:flex"
-              aria-label="ParishMart home"
-            >
-              <LogoMark className="h-10 w-auto" priority />
-            </Link>
             <SubStoreBadge name={parishName} location={location} />
           </div>
           <div className="flex items-center gap-2 lg:hidden">
