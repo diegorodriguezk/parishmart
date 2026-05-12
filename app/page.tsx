@@ -394,53 +394,60 @@ export default function HomePage() {
       </Section>
 
       <Section width="wide">
-        <DarkPanel
-          title="How It Works"
-          description="Three simple steps. Infinite impact."
-        >
-          <div className="mt-6 grid gap-3">
-            {[
-              {
-                n: 1,
-                t: "Choose a parish or cause",
-                d: "Select the community, ministry, retreat or mission you want to support.",
-              },
-              {
-                n: 2,
-                t: "Shop, give or partner",
-                d: "Buy products, request services, make a donation or become a sponsor.",
-              },
-              {
-                n: 3,
-                t: "Create real impact",
-                d: "Every transaction helps generate measurable value for the community.",
-              },
-            ].map((s) => (
-              <div
-                key={s.n}
-                className="rounded-2xl border border-white/15 bg-white/5 p-4"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="grid h-7 w-7 place-items-center rounded-full bg-white/15 text-xs font-extrabold">
-                    {s.n}
-                  </span>
-                  <span className="text-sm font-bold">{s.t}</span>
-                </div>
-                <p className="mt-2 text-xs text-white/75">{s.d}</p>
+        <div className="pm-dark-panel !p-6 sm:!p-10">
+          <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+            <div>
+              <h2 className="text-2xl font-extrabold leading-tight md:text-3xl">
+                How It Works
+              </h2>
+              <p className="mt-2 text-sm text-white/85 md:text-base">
+                Three simple steps. Infinite impact.
+              </p>
+              <div className="mt-6 grid gap-3">
+                {[
+                  {
+                    n: 1,
+                    t: "Choose a parish or cause",
+                    d: "Select the community, ministry, retreat or mission you want to support.",
+                  },
+                  {
+                    n: 2,
+                    t: "Shop, give or partner",
+                    d: "Buy products, request services, make a donation or become a sponsor.",
+                  },
+                  {
+                    n: 3,
+                    t: "Create real impact",
+                    d: "Every transaction helps generate measurable value for the community.",
+                  },
+                ].map((s) => (
+                  <div
+                    key={s.n}
+                    className="rounded-2xl border border-white/15 bg-white/5 p-4"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-7 w-7 place-items-center rounded-full bg-white/15 text-xs font-extrabold">
+                        {s.n}
+                      </span>
+                      <span className="text-sm font-bold">{s.t}</span>
+                    </div>
+                    <p className="mt-2 text-xs text-white/75">{s.d}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="aspect-video overflow-hidden rounded-2xl border border-white/15 bg-black">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/95emlzl9IBE?list=PLyUuquHB9XCeh_YKam0wQtM-hzMCZ8PNz&rel=0"
+                title="ParishMart"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
           </div>
-          <div className="mt-6 aspect-video overflow-hidden rounded-2xl border border-white/15 bg-black">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/95emlzl9IBE?list=PLyUuquHB9XCeh_YKam0wQtM-hzMCZ8PNz&rel=0"
-              title="ParishMart"
-              loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="h-full w-full"
-            />
-          </div>
-        </DarkPanel>
+        </div>
       </Section>
 
       <Section width="wide">
