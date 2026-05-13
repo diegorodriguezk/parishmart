@@ -294,32 +294,36 @@ export default function HomePage() {
         />
         <div className="grid gap-4 md:grid-cols-4">
           <CauseCard
-            photo="retreat"
-            label="Youth Ministry"
-            title="Support Youth Ministry"
-            description="Building tomorrow's leaders in faith."
-            location="SKD · Weston, FL"
-          />
-          <CauseCard
             photo="volunteers"
+            cause="saint-vincent-de-paul"
             label="Helping Hands"
-            title="St Vincent de Paul"
+            title="St. Vincent de Paul"
             description="Helping families in need in our community."
             location="SKD · Weston, FL"
           />
           <CauseCard
             photo="community"
-            label="Retreats"
-            title="Emmaus Retreat"
-            description="Support upcoming retreat experiences and formation."
-            location="Emmaus · Weston, FL"
+            cause="marys-hope"
+            label="Family Support"
+            title="Mary's Hope Network"
+            description="Supporting mothers, families and the gift of life."
+            location="South Florida"
           />
           <CauseCard
-            photo="chalice"
+            photo="praying"
+            cause="christ-care-for-all"
+            label="Compassion"
+            title="Christlike Care for All"
+            description="Bringing Christ's compassion to those in need."
+            location="Catholic community"
+          />
+          <CauseCard
+            photo="stained-glass"
+            cause="schoenstatt-miami"
             label="Mission"
-            title="Schoenstatt Mission Fund"
-            description="Support missionary outreach and pilgrimage programs."
-            location="Schoenstatt · South Florida"
+            title="Schoenstatt Miami"
+            description="Light and path toward the Merciful Father."
+            location="Miami, FL"
           />
         </div>
       </Section>

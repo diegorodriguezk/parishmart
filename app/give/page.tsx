@@ -68,60 +68,101 @@ export default function GiveHomePage() {
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <CauseCard
-            photo="retreat"
-            label="Retreat Ministry"
-            title="Emmaus Men"
-            description="Faith, brotherhood, retreats and spiritual growth for men in the SKD community."
-            location="Weston, FL"
-          />
-          <CauseCard
-            photo="community"
-            label="Retreat Ministry"
-            title="Emmaus Women"
-            description="Women growing in faith, service, friendship and parish connection."
-            location="Weston, FL"
-          />
-          <CauseCard
             photo="volunteers"
+            cause="saint-vincent-de-paul"
             label="Outreach"
             title="St. Vincent de Paul"
             description="Helping families in need through food, support and community care."
-            location="SKD"
-          />
-          <CauseCard
-            photo="praying"
-            label="Youth Ministry"
-            title="Youth Ministry"
-            description="Faith formation, leadership opportunities and outreach for SKD youth."
-            location="SKD"
-          />
-          <CauseCard
-            photo="congregation"
-            label="Community"
-            title="Knights of Columbus"
-            description="Serving the parish through charity, fraternity and community projects."
-            location="SKD"
+            location="SKD · Weston, FL"
           />
           <CauseCard
             photo="community"
-            label="Family Ministry"
-            title="Family Ministry"
-            description="Programs and activities helping families grow together in faith."
-            location="SKD"
+            cause="marys-hope"
+            label="Family Support"
+            title="Mary's Hope Network"
+            description="A community network supporting mothers, families and the gift of life."
+            location="South Florida"
           />
           <CauseCard
-            photo="bible"
-            label="Faith Formation"
-            title="Faith Formation"
-            description="Catechesis, sacramental preparation and parish learning experiences."
-            location="SKD"
+            photo="praying"
+            cause="christ-care-for-all"
+            label="Compassion"
+            title="Christlike Care for All"
+            description="Bringing Christ's compassion to those in need through care and accompaniment."
+            location="Catholic community"
+          />
+          <CauseCard
+            photo="stained-glass"
+            cause="schoenstatt-miami"
+            label="Spiritual Formation"
+            title="Schoenstatt Miami"
+            description="Light and path toward the Merciful Father. 15 years of mission in Miami."
+            location="Miami, FL"
           />
           <CauseCard
             photo="church"
-            label="Parish Events"
-            title="Parish Events"
-            description="Festivals, campaigns and community drives across the parish."
-            location="SKD"
+            cause="miami-presente"
+            label="Local Mission"
+            title="Miami Presente"
+            description="Anchored in the Covenant — a Schoenstatt initiative serving Miami."
+            location="Miami, FL"
+          />
+          <CauseCard
+            photo="community"
+            cause="mater-18"
+            label="Youth"
+            title="Mater 18"
+            description="Marian youth movement forming young hearts in faith and mission."
+            location="Miami, FL"
+          />
+          <CauseCard
+            photo="retreat"
+            cause="forta"
+            label="Family Ministry"
+            title="FORTA · Marriage Strengthening"
+            description="Fortalecimiento Matrimonial — Schoenstatt's ministry for couples and marriages."
+            location="Schoenstatt"
+          />
+          <CauseCard
+            photo="business"
+            cause="face"
+            label="Entrepreneurs"
+            title="FACE"
+            description="Fellows Association of Catholic Entrepreneurs — UNIAPAC USA. Faith-driven business community."
+            location="USA"
+          />
+          <CauseCard
+            photo="bible"
+            cause="missionaries-of-hope"
+            label="Mission"
+            title="Missionaries of Hope"
+            description="Bringing hope through mission, evangelization and accompaniment."
+            location="Catholic mission"
+          />
+          <CauseCard
+            photo="congregation"
+            cause="cam"
+            label="Apostolate"
+            title="CAM"
+            description="A Catholic apostolic movement serving parishes and the wider Church."
+            location="Miami, FL"
+          />
+          <CauseCard
+            photo="house"
+            cause="goyito"
+            label="Memorial"
+            title="Goyito Was Here"
+            description="A cause carrying forward Goyito's memory through service and community."
+            location="Community-led"
+          />
+          <CauseCard
+            photo="church"
+            label="More causes"
+            title="Add your cause"
+            description="Parish ministries and faith-driven causes can launch a campaign on ParishMart."
+            location="Open to all parishes"
+            cta="Submit a cause"
+            href="/onboarding/parish"
           />
         </div>
         <p className="mt-6 text-xs text-pm-muted">

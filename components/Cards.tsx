@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import { Photo, PhotoKind } from "./Photo";
+import { CauseLogo, CauseKey } from "./CauseLogo";
 import { TrustBadge, StarRating } from "./TrustBadge";
 import { AddToCartButton } from "./cart/AddToCartButton";
 
@@ -86,6 +87,7 @@ export function ProductCard({
 export function CauseCard({
   href = "/give/cause",
   photo,
+  cause,
   label,
   title,
   description,
@@ -98,6 +100,7 @@ export function CauseCard({
 }: {
   href?: string;
   photo: PhotoKind;
+  cause?: CauseKey;
   label?: string;
   title: string;
   description?: string;
@@ -110,8 +113,15 @@ export function CauseCard({
 }) {
   return (
     <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
-      <Link href={href} className="block">
+      <Link href={href} className="relative block">
         <Photo kind={photo} ratio="4/3" rounded="rounded-2xl" />
+        {cause ? (
+          <CauseLogo
+            cause={cause}
+            size="md"
+            className="absolute left-3 top-3 ring-2 !ring-white"
+          />
+        ) : null}
       </Link>
       <div className="flex flex-1 flex-col gap-2 p-3">
         <div className="flex flex-wrap items-center gap-1.5">
