@@ -5,76 +5,103 @@ import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
-const NAV = [
-  { href: "/shop", label: "Shop" },
-  { href: "/give", label: "Give" },
-  { href: "/communities", label: "Communities" },
-  { href: "/local-businesses", label: "Businesses" },
-  { href: "/sponsors", label: "Sponsors" },
-];
+function SearchForm({
+  placeholder = "Search products, causes, businesses, gifts and services…",
+}: {
+  placeholder?: string;
+}) {
+  return (
+    <form
+      action="/search"
+      method="get"
+      className="flex flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1 shadow-pm-soft"
+      role="search"
+    >
+      <Search className="h-4 w-4 shrink-0 text-pm-muted" aria-hidden />
+      <input
+        name="q"
+        className="pm-input h-9 w-full px-1 text-sm"
+        placeholder={placeholder}
+        aria-label="Search"
+      />
+      <button
+        type="submit"
+        className="pm-btn pm-btn-primary !px-3 !py-1.5 text-xs sm:!px-4 sm:text-sm"
+      >
+        Search
+      </button>
+    </form>
+  );
+}
+
+function HeaderActions() {
+  return (
+    <div className="flex shrink-0 items-center gap-2">
+      <span className="hidden md:inline-flex">
+        <LanguageSwitcher compact />
+      </span>
+      <CartButton compact />
+      <Link
+        href="/sign-in"
+        className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
+        aria-label="My Account"
+        title="My Account · Sign in"
+      >
+        <User className="h-4 w-4" aria-hidden />
+      </Link>
+    </div>
+  );
+}
 
 export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-2.5 sm:px-6">
         <MobileNavDrawer />
-        <Logo />
-        <nav className="hidden items-center gap-5 text-sm font-medium text-pm-muted lg:flex">
-          {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-pm-navy">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="ml-auto flex flex-1 items-center justify-end gap-2 lg:flex-none">
-          <form
-            action="/search"
-            method="get"
-            className="hidden flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1 shadow-pm-soft lg:flex lg:max-w-md"
-          >
-            <Search className="h-4 w-4 text-pm-muted" aria-hidden />
-            <input
-              name="q"
-              className="pm-input h-8 px-1 text-sm"
-              placeholder="Search products, causes, communities…"
-              aria-label="Search"
-            />
-            <button
-              type="submit"
-              className="pm-btn pm-btn-primary !px-3 !py-1 text-xs"
-            >
-              Search
-            </button>
-          </form>
-          <Link
-            href="/onboarding"
-            className="hidden text-sm font-semibold text-pm-navy hover:text-pm-blue xl:block"
-          >
-            Join Us
-          </Link>
-          <span className="hidden md:inline-flex">
-            <LanguageSwitcher compact />
-          </span>
-          <CartButton compact />
-          <Link
-            href="/sign-in"
-            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
-            aria-label="Sign in"
-            title="Sign in / Log in"
-          >
-            <User className="h-4 w-4" aria-hidden />
-          </Link>
+        <div className="shrink-0">
+          <Logo />
         </div>
+        <div className="ml-3 hidden flex-1 md:flex">
+          <SearchForm />
+        </div>
+        <div className="ml-auto">
+          <HeaderActions />
+        </div>
+      </div>
+      <div className="border-t border-pm-border/70 px-4 pb-3 pt-2 sm:px-6 md:hidden">
+        <SearchForm />
       </div>
     </header>
   );
 }
 
+function ParishTabs() {
+  return (
+    <nav className="mx-auto flex max-w-[1320px] items-center gap-6 overflow-x-auto px-4 pb-2 text-sm font-medium text-pm-muted sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <Link href="/stores" className="whitespace-nowrap text-pm-navy">
+        Shop
+      </Link>
+      <Link href="/give" className="whitespace-nowrap hover:text-pm-navy">
+        Give
+      </Link>
+      <Link
+        href="/local-businesses"
+        className="whitespace-nowrap hover:text-pm-navy"
+      >
+        Supporters
+      </Link>
+      <Link href="/sponsors" className="whitespace-nowrap hover:text-pm-navy">
+        Sponsors
+      </Link>
+    </nav>
+  );
+}
+
 export function ParishProfileHeader({
-  parishName = "SKD Parish Store",
+  parishName = "Saint Katharine Drexel",
   parishInitials = "SKD",
-  location = "Weston, Florida",
-  searchPlaceholder = "Search store, products, services...",
+  location = "Weston, FL",
+  searchPlaceholder = "Search store, products, services…",
 }: {
   parishName?: string;
   parishInitials?: string;
@@ -83,82 +110,38 @@ export function ParishProfileHeader({
 }) {
   return (
     <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/95 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[1320px] flex-col gap-2 px-4 py-2.5 sm:px-6 lg:flex-row lg:items-center lg:gap-4">
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-3">
-            <MobileNavDrawer />
-            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan text-sm font-extrabold text-white shadow-pm-soft">
-              {parishInitials}
+      <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-2.5 sm:px-6">
+        <MobileNavDrawer />
+        <div className="flex shrink-0 items-center gap-3">
+          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan text-sm font-extrabold text-white shadow-pm-soft">
+            {parishInitials}
+          </span>
+          <div className="hidden flex-col leading-tight sm:flex">
+            <span className="text-sm font-extrabold tracking-tight text-pm-navy">
+              {parishName}
             </span>
-            <div className="flex flex-col leading-tight">
-              <span className="text-base font-extrabold tracking-tight text-pm-navy">
-                {parishName}
-              </span>
-              <span className="text-[11px] text-pm-muted">{location}</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 lg:hidden">
-            <CartButton compact />
-            <Link
-              href="/sign-in"
-              className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy"
-              aria-label="Sign in"
-            >
-              <User className="h-4 w-4" aria-hidden />
-            </Link>
+            <span className="text-[11px] text-pm-muted">{location}</span>
           </div>
         </div>
-        <form
-          action="/search"
-          method="get"
-          className="flex flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft"
-        >
-          <Search className="h-4 w-4 text-pm-muted" aria-hidden />
-          <input
-            name="q"
-            className="pm-input h-9 px-1"
-            placeholder={searchPlaceholder}
-            aria-label="Search"
-          />
-          <button
-            type="submit"
-            className="pm-btn pm-btn-primary !px-4 !py-2 text-xs sm:text-sm"
-          >
-            Search
-          </button>
-        </form>
-        <nav className="hidden items-center gap-5 text-sm font-medium text-pm-muted xl:flex">
-          <Link href="/shop" className="hover:text-pm-navy">Shop</Link>
-          <Link href="/give" className="hover:text-pm-navy">Give</Link>
-          <Link href="/local-businesses" className="hover:text-pm-navy">Local Biz</Link>
-          <Link href="/sponsors" className="hover:text-pm-navy">Sponsors</Link>
-        </nav>
-        <div className="hidden items-center gap-2 lg:flex">
-          <LanguageSwitcher compact />
-          <CartButton compact />
-          <Link
-            href="/sign-in"
-            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
-            aria-label="Sign in"
-          >
-            <User className="h-4 w-4" aria-hidden />
-          </Link>
-          <Link
-            href="/"
-            className="rounded-full border border-pm-border px-3 py-1.5 text-[11px] font-bold text-pm-blue hover:border-pm-blue"
-          >
-            ← ParishMart
-          </Link>
+        <div className="ml-3 hidden flex-1 md:flex">
+          <SearchForm placeholder={searchPlaceholder} />
+        </div>
+        <div className="ml-auto">
+          <HeaderActions />
         </div>
       </div>
+      <div className="px-4 pb-1 sm:px-6 md:hidden">
+        <SearchForm placeholder={searchPlaceholder} />
+      </div>
+      <ParishTabs />
     </header>
   );
 }
 
 export function SubStoreHeader({
-  parishName = "SKD Parish Store",
-  location = "Weston, Florida",
-  searchPlaceholder = "Search religious gifts, merch, services, sponsors...",
+  parishName = "Saint Katharine Drexel",
+  location = "Weston, FL",
+  searchPlaceholder = "Search religious gifts, merch, services, sponsors…",
 }: {
   parishName?: string;
   location?: string;
@@ -166,63 +149,22 @@ export function SubStoreHeader({
 }) {
   return (
     <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/95 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[1320px] flex-col gap-2 px-4 py-2.5 sm:px-6 lg:flex-row lg:items-center lg:gap-4">
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <MobileNavDrawer />
-            <SubStoreBadge name={parishName} location={location} />
-          </div>
-          <div className="flex items-center gap-2 lg:hidden">
-            <CartButton compact />
-            <Link
-              href="/sign-in"
-              className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy"
-              aria-label="Sign in"
-            >
-              <User className="h-4 w-4" aria-hidden />
-            </Link>
-          </div>
+      <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-2.5 sm:px-6">
+        <MobileNavDrawer />
+        <div className="shrink-0">
+          <SubStoreBadge name={parishName} location={location} />
         </div>
-        <form
-          action="/search"
-          method="get"
-          className="flex flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft"
-        >
-          <Search className="h-4 w-4 text-pm-muted" aria-hidden />
-          <input
-            name="q"
-            className="pm-input h-9 px-1"
-            placeholder={searchPlaceholder}
-            aria-label="Search"
-          />
-          <button
-            type="submit"
-            className="pm-btn pm-btn-primary !px-4 !py-2 text-xs sm:text-sm"
-          >
-            Search
-          </button>
-        </form>
-        <nav className="hidden items-center gap-5 text-sm font-medium text-pm-muted xl:flex">
-          <Link href="/shop" className="hover:text-pm-navy">Shop</Link>
-          <Link href="/give" className="hover:text-pm-navy">Give</Link>
-          <Link href="/local-businesses" className="hover:text-pm-navy">Businesses</Link>
-          <Link href="/sponsors" className="hover:text-pm-navy">Sponsors</Link>
-          <Link href="/" className="ml-2 rounded-full border border-pm-border px-3 py-1 text-xs font-bold text-pm-blue hover:border-pm-blue">
-            ← Back to ParishMart
-          </Link>
-        </nav>
-        <div className="hidden items-center gap-2 lg:flex">
-          <LanguageSwitcher compact />
-          <CartButton compact />
-          <Link
-            href="/sign-in"
-            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
-            aria-label="Sign in"
-          >
-            <User className="h-4 w-4" aria-hidden />
-          </Link>
+        <div className="ml-3 hidden flex-1 md:flex">
+          <SearchForm placeholder={searchPlaceholder} />
+        </div>
+        <div className="ml-auto">
+          <HeaderActions />
         </div>
       </div>
+      <div className="px-4 pb-1 sm:px-6 md:hidden">
+        <SearchForm placeholder={searchPlaceholder} />
+      </div>
+      <ParishTabs />
     </header>
   );
 }
