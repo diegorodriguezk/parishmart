@@ -6,6 +6,7 @@ import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, CauseCard, StatTile } from "@/components/Cards";
 import { LiveProofTicker, Testimonial } from "@/components/SocialProof";
 import { LocalBizCard, CommunityCard } from "@/components/home/LocalBizCard";
+import { getProduct, BUSINESSES } from "@/lib/catalog";
 
 export const metadata = { title: "Home | ParishMart" };
 
@@ -256,34 +257,26 @@ export default function HomePage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          <ProductCard
-            photo="apparel"
-            label="Supports SKD"
-            title="Emmaus Retreat T-Shirt"
-            meta="Custom apparel for retreats, ministries and events."
-            price="$22.00"
-          />
-          <ProductCard
-            photo="rosary"
-            label="Religious Gift"
-            title="Rosary Bracelet"
-            meta="Faith-inspired gifts for celebrations and blessings."
-            price="$25.00"
-          />
-          <ProductCard
-            photo="business"
-            label="Local Business"
-            title="Maria's Studios"
-            meta="Photography services for parish events and retreats."
-            price="From $150"
-          />
-          <ProductCard
-            photo="bible"
-            label="Service"
-            title="Retreat Planning"
-            meta="Services connected to Casa Manresa and community programs."
-            cta="Request"
-          />
+          {[
+            "skd-mens-microfleece-jacket",
+            "rosary",
+            "harps-club-tote",
+            "saint-benedict-crucifix",
+          ]
+            .map((id) => getProduct(id)!)
+            .map((p) => (
+              <ProductCard
+                key={p.id}
+                id={p.id}
+                photo={p.photo}
+                src={p.src}
+                label={p.label}
+                title={p.name}
+                meta={p.meta}
+                price={p.price}
+                cause={p.cause}
+              />
+            ))}
         </div>
       </Section>
 
@@ -360,39 +353,21 @@ export default function HomePage() {
           }
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <LocalBizCard
-            href="/local-businesses/profile"
-            photo="business"
-            initials="MS"
-            category="Photography"
-            title="Maria's Studios"
-            description="Photography for families, retreats, parish events and community celebrations."
-            tags={[]}
-            subtext="10% supports parish causes"
-            cta="View more"
-          />
-          <LocalBizCard
-            href="/local-businesses/profile"
-            photo="retreat"
-            initials="CM"
-            category="Retreats"
-            title="Casa Manresa"
-            description="Retreat hosting, spiritual formation, meeting spaces and community programs."
-            tags={[]}
-            subtext="Featured supporter"
-            cta="View more"
-          />
-          <LocalBizCard
-            href="/local-businesses/profile"
-            photo="house"
-            initials="RE"
-            category="Real Estate"
-            title="Local Realty Supporter"
-            description="Real estate guidance for families moving within the parish community."
-            tags={[]}
-            subtext="Supports youth ministry"
-            cta="View more"
-          />
+          {BUSINESSES.map((b, i) => (
+            <LocalBizCard
+              key={b.id}
+              href={b.href}
+              photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}
+              initials={b.initials}
+              logoSrc={b.logoSrc}
+              category={b.category}
+              title={b.name}
+              description={b.description}
+              tags={[]}
+              subtext={b.location}
+              cta="View more"
+            />
+          ))}
           <LocalBizCard
             href="/onboarding/local-business"
             photo="business"

@@ -4,6 +4,7 @@ import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, FilterChips, DarkPanel } from "@/components/Sections";
 import { BusinessCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { BUSINESSES } from "@/lib/catalog";
 
 export const metadata = { title: "Local Biz Supporters · ParishMart" };
 
@@ -61,15 +62,22 @@ export default function LocalBusinessCategoryPage() {
           description="Simple, visual and easy-to-scan business discovery experience."
           right={<a href="#" className="font-bold text-pm-blue">View All</a>}
         />
-        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-          <BusinessCard photo="retreat" initials="MS" title="Maria's Studios" description="Photography for families, Emmaus retreats and parish events." tags={["Photography", "Weston, FL", "Supports Emmaus"]} offer="10% OFF" offerDescription="Family & event sessions" impactText="Supports Emmaus retreat memories and parish events." primaryCta="Book" />
-          <BusinessCard photo="retreat" initials="CM" title="Casa Manresa" description="Retreats, spiritual formation and community experiences." tags={["Retreats", "Formation", "SKD Partner"]} offer="15% OFF" offerDescription="Selected retreat experiences" impactText="Supports faith formation and local retreat participation." primaryCta="Explore" />
-          <BusinessCard photo="house" initials="RE" title="Local Realty Supporter" description="Trusted real estate guidance for parishioners and families." tags={["Real Estate", "Local Biz", "Verified"]} offer="Free" offerLabel="Parishioner offer" offerDescription="Initial consultation" impactText="Supports parish events and community fundraising." primaryCta="Contact" />
-          <BusinessCard photo="food" initials="FD" title="Community Food Partner" description="Catering and hospitality services for retreats and events." tags={["Food", "Events", "Emmaus"]} offer="$25 OFF" offerDescription="Catering packages" impactText="Provides support for ministry and fundraising events." primaryCta="Order" />
-          <BusinessCard photo="business" initials="LF" title="Legal & Finance" description="Professional services helping families and businesses." tags={["Professional", "Family Services", "Verified"]} offer="20% OFF" offerDescription="Selected consultations" impactText="Contributes to parish community initiatives." primaryCta="Book" />
-        </div>
-        <div className="mt-4 grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-          <BusinessCard photo="business" initials="WL" title="Wellness Partner" description="Health and wellness support for parishioners and families." tags={["Wellness", "Family", "Community"]} offer="20% OFF" offerDescription="Selected wellness sessions" impactText="Promotes healthier and stronger local communities." primaryCta="Book" />
+        <div className="grid gap-4 md:grid-cols-3">
+          {BUSINESSES.map((b, i) => (
+            <BusinessCard
+              key={b.id}
+              photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}
+              initials={b.initials}
+              logoSrc={b.logoSrc}
+              title={b.name}
+              description={b.description}
+              tags={[b.category, b.location, "SKD Supporter"]}
+              offer="10% OFF"
+              offerDescription="For SKD parishioners"
+              impactText={`Supports SKD parish and ${b.category.toLowerCase()} programs.`}
+              primaryCta="View store"
+            />
+          ))}
         </div>
       </Section>
 

@@ -9,6 +9,7 @@ export function ProductCard({
   href = "/shop/product",
   id,
   photo,
+  src,
   label,
   title,
   meta,
@@ -22,6 +23,7 @@ export function ProductCard({
   href?: string;
   id?: string;
   photo: PhotoKind;
+  src?: string;
   label?: string;
   title: string;
   meta?: string;
@@ -37,7 +39,16 @@ export function ProductCard({
   return (
     <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
       <Link href={href} className="block">
-        <Photo kind={photo} ratio="4/3" rounded="rounded-2xl" />
+        <Photo
+          kind={photo}
+          src={src}
+          alt={title}
+          ratio="4/3"
+          rounded="rounded-2xl"
+          overlay={src ? "none" : "subtle"}
+          fit={src ? "contain" : "cover"}
+          className={src ? "bg-white" : ""}
+        />
       </Link>
       <div className="flex flex-1 flex-col gap-2 p-3">
         <div className="flex flex-wrap items-center gap-1.5">
@@ -226,7 +237,9 @@ export function SponsorOfferCard({
 export function BusinessCard({
   href = "/local-businesses/profile",
   photo,
+  photoSrc,
   initials,
+  logoSrc,
   title,
   description,
   tags,
@@ -242,7 +255,9 @@ export function BusinessCard({
 }: {
   href?: string;
   photo: PhotoKind;
+  photoSrc?: string;
   initials: string;
+  logoSrc?: string;
   title: string;
   description?: string;
   tags?: string[];
@@ -261,14 +276,26 @@ export function BusinessCard({
       <Link href={href} className="block">
         <Photo
           kind={photo}
+          src={photoSrc}
           ratio="16/9"
           rounded="rounded-none"
           className="!rounded-t-[24px] !rounded-b-none"
         />
       </Link>
-      <span className="pm-avatar absolute left-4 top-32 !h-10 !w-10 ring-4 ring-white">
-        {initials}
-      </span>
+      {logoSrc ? (
+        <span className="absolute left-4 top-32 grid !h-10 !w-10 place-items-center overflow-hidden rounded-2xl bg-white p-1 ring-4 ring-white shadow-pm-soft">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoSrc}
+            alt={title}
+            className="h-full w-full object-contain"
+          />
+        </span>
+      ) : (
+        <span className="pm-avatar absolute left-4 top-32 !h-10 !w-10 ring-4 ring-white">
+          {initials}
+        </span>
+      )}
       <div className="flex flex-1 flex-col gap-3 p-5 pt-7">
         <div>
           <Link href={href} className="block">

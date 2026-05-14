@@ -7,10 +7,19 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { TrustBadge, StarRating } from "@/components/TrustBadge";
 import { ImpactBreakdown } from "@/components/ImpactBreakdown";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { getProduct } from "@/lib/catalog";
 
-export const metadata = { title: "Emmaus Retreat T-Shirt · SKD Parish Store" };
+const PRODUCT = getProduct("skd-mens-microfleece-jacket")!;
+const RELATED_IDS = [
+  "skd-womens-microfleece-jacket",
+  "harps-club-crewneck",
+  "harps-club-cap",
+];
+
+export const metadata = { title: `${PRODUCT.name} · SKD Parish Store` };
 
 export default function ProductDetailPage() {
+  const numericPrice = Number(PRODUCT.price.replace(/[^0-9.]/g, ""));
   return (
     <>
       <SubStoreHeader />
@@ -20,8 +29,8 @@ export default function ProductDetailPage() {
           items={[
             { label: "Home", href: "/" },
             { label: "Shop with Purpose", href: "/shop" },
-            { label: "Emmaus Merch", href: "/shop/listing" },
-            { label: "Emmaus Retreat T-Shirt" },
+            { label: "Parish Merch", href: "/shop/listing" },
+            { label: PRODUCT.name },
           ]}
         />
       </Section>
@@ -29,28 +38,69 @@ export default function ProductDetailPage() {
       <Section width="wide" className="!pt-2">
         <div className="grid gap-6 md:gap-8 lg:grid-cols-[1.05fr_.95fr]">
           <div className="space-y-3">
-            <Photo kind="apparel" ratio="1/1" rounded="rounded-3xl" />
-            <div className="grid grid-cols-4 gap-2">
-              {(["apparel", "merch", "community", "rosary"] as const).map((p, i) => (
-                <Photo key={i} kind={p} ratio="1/1" rounded="rounded-xl" />
-              ))}
+            <Photo
+              kind={PRODUCT.photo}
+              src={PRODUCT.src}
+              alt={PRODUCT.name}
+              ratio="1/1"
+              rounded="rounded-3xl"
+              fit="contain"
+              overlay="none"
+              className="bg-white"
+            />
+            <div className="grid grid-cols-3 gap-2">
+              {RELATED_IDS.map((id) => {
+                const r = getProduct(id)!;
+                return (
+                  <Photo
+                    key={id}
+                    kind={r.photo}
+                    src={r.src}
+                    alt={r.name}
+                    ratio="1/1"
+                    rounded="rounded-xl"
+                    fit="contain"
+                    overlay="none"
+                    className="bg-white"
+                  />
+                );
+              })}
             </div>
             <div className="pm-card mt-4 p-5">
               <h3 className="text-base font-bold text-pm-navy">
                 Product &amp; cause details
               </h3>
               <p className="mt-1 text-xs text-pm-muted">
-                Everything in this product page is connected to Emmaus and the
-                SKD parish community.
+                Everything in this product page is connected to{" "}
+                {PRODUCT.cause ?? "the SKD parish community"}.
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {[
-                  { l: "Product type", t: "Customized parish merch", d: "Retreat T-Shirt for Emmaus participants, volunteers and supporters." },
-                  { l: "Cause supported", t: "Emmaus Retreat Fund", d: "Supports retreat formation, materials, meals and scholarships." },
-                  { l: "Impact rule", t: "10% supports Emmaus", d: "A portion of every purchase contributes to the retreat mission." },
-                  { l: "Recommended add-ons", t: "Mug · Cap · Hoodie", d: "Simple upsells from the same Emmaus collection." },
+                  {
+                    l: "Product type",
+                    t: "Parish merch",
+                    d: PRODUCT.meta,
+                  },
+                  {
+                    l: "Cause supported",
+                    t: PRODUCT.cause ?? "SKD Parish",
+                    d: "Supports ministries, formation and parish initiatives.",
+                  },
+                  {
+                    l: "Impact rule",
+                    t: "10% supports SKD",
+                    d: "A portion of every purchase contributes to the parish mission.",
+                  },
+                  {
+                    l: "Seller",
+                    t: PRODUCT.seller,
+                    d: "Approved seller inside the ParishMart ecosystem.",
+                  },
                 ].map((b) => (
-                  <div key={b.l} className="rounded-2xl border border-pm-border bg-white p-3">
+                  <div
+                    key={b.l}
+                    className="rounded-2xl border border-pm-border bg-white p-3"
+                  >
                     <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
                       {b.l}
                     </p>
@@ -65,30 +115,40 @@ export default function ProductDetailPage() {
           <div className="space-y-4">
             <div className="pm-card p-5 sm:p-6">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="pm-label">Supports Emmaus Retreat Fund</span>
+                <span className="pm-label">
+                  Supports {PRODUCT.cause ?? "SKD Parish"}
+                </span>
                 <TrustBadge variant="approved" label="Approved seller" />
               </div>
               <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-pm-navy md:text-4xl">
-                Emmaus Retreat T-Shirt
+                {PRODUCT.name}
               </h1>
               <div className="mt-2">
                 <StarRating value={4.8} count={42} />
               </div>
-              <p className="mt-2 text-sm text-pm-muted">
-                Customized retreat apparel for SKD Emmaus participants, team
-                members and parish supporters.
+              <p className="mt-2 text-sm text-pm-muted">{PRODUCT.meta}</p>
+              <p className="mt-4 text-3xl font-extrabold text-pm-navy">
+                {PRODUCT.price}
               </p>
-              <p className="mt-4 text-3xl font-extrabold text-pm-navy">$22.00</p>
 
               <div className="mt-4">
-                <ImpactBreakdown amount={22} causePct={10} platformPct={4} causeName="Emmaus Retreat Fund" />
+                <ImpactBreakdown
+                  amount={numericPrice}
+                  causePct={10}
+                  platformPct={4}
+                  causeName={PRODUCT.cause ?? "SKD Parish"}
+                />
               </div>
 
               <div className="mt-5 space-y-2">
                 <p className="text-xs font-bold text-pm-navy">Color</p>
                 <div className="flex flex-wrap gap-2">
-                  {["Navy", "White", "Heather Gray"].map((c, i) => (
-                    <span key={c} className="pm-chip" data-active={i === 0 ? "true" : undefined}>
+                  {["Black", "Navy", "Heather Gray"].map((c, i) => (
+                    <span
+                      key={c}
+                      className="pm-chip"
+                      data-active={i === 0 ? "true" : undefined}
+                    >
                       {c}
                     </span>
                   ))}
@@ -113,16 +173,19 @@ export default function ProductDetailPage() {
               <div className="mt-5 grid gap-2 sm:grid-cols-2">
                 <AddToCartButton
                   item={{
-                    id: "emmaus-tee",
-                    name: "Emmaus Retreat T-Shirt",
-                    meta: "Navy · M",
-                    price: 22,
-                    cause: "Emmaus Retreat Fund",
-                    photo: "apparel",
+                    id: PRODUCT.id,
+                    name: PRODUCT.name,
+                    meta: "Black · M",
+                    price: numericPrice,
+                    cause: PRODUCT.cause,
+                    photo: PRODUCT.photo,
                   }}
                   fullWidth
                 />
-                <Link href="/shop/cart" className="pm-btn pm-btn-secondary w-full">
+                <Link
+                  href="/shop/cart"
+                  className="pm-btn pm-btn-secondary w-full"
+                >
                   Buy Now
                 </Link>
               </div>
@@ -130,37 +193,46 @@ export default function ProductDetailPage() {
 
             <div className="pm-card p-5">
               <h3 className="text-base font-bold text-pm-navy">
-                Complete your Emmaus set
+                Complete your SKD set
               </h3>
               <div className="mt-3 grid grid-cols-3 gap-3">
-                {[
-                  { id: "emmaus-mug", p: "merch", n: "Emmaus Mug", price: 14 },
-                  { id: "emmaus-cap", p: "apparel", n: "Emmaus Cap", price: 18 },
-                  { id: "emmaus-hoodie", p: "merch", n: "Emmaus Hoodie", price: 48 },
-                ].map((u) => (
-                  <div key={u.id} className="space-y-2">
-                    <Photo kind={u.p as "merch" | "apparel"} ratio="1/1" rounded="rounded-xl" />
-                    <p className="text-xs font-bold text-pm-navy">{u.n}</p>
-                    <div className="flex items-center justify-between">
-                      <p className="text-[11px] text-pm-muted">+${u.price}</p>
-                      <AddToCartButton
-                        item={{
-                          id: u.id,
-                          name: u.n,
-                          price: u.price,
-                          cause: "Emmaus Retreat Fund",
-                          photo: u.p,
-                        }}
-                        size="sm"
-                        label="Add"
+                {RELATED_IDS.map((id) => {
+                  const r = getProduct(id)!;
+                  const rPrice = Number(r.price.replace(/[^0-9.]/g, ""));
+                  return (
+                    <div key={id} className="space-y-2">
+                      <Photo
+                        kind={r.photo}
+                        src={r.src}
+                        alt={r.name}
+                        ratio="1/1"
+                        rounded="rounded-xl"
+                        fit="contain"
+                        overlay="none"
+                        className="bg-white"
                       />
+                      <p className="line-clamp-2 text-xs font-bold text-pm-navy">
+                        {r.name}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-[11px] text-pm-muted">+{r.price}</p>
+                        <AddToCartButton
+                          item={{
+                            id: r.id,
+                            name: r.name,
+                            price: rPrice,
+                            cause: r.cause,
+                            photo: r.photo,
+                          }}
+                          size="sm"
+                          label="Add"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
-
-            {/* PM-020: "Support Emmaus" donation block is deferred to Fase 2 */}
           </div>
         </div>
       </Section>

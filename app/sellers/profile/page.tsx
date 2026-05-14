@@ -4,15 +4,17 @@ import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { getProduct } from "@/lib/catalog";
 
-export const metadata = { title: "Paleo Life Market · Seller" };
+export const metadata = { title: "SKD Parish Store · Seller" };
 
-const PRODUCTS = [
-  { id: "wellness-bundle", name: "Daily Wellness Bundle", seller: "Paleo Life Market", price: "$49.99", tag: "Gives back", photo: "food" as const },
-  { id: "coffee-pack", name: "Organic Coffee Pack", seller: "Local Roaster", price: "$24.00", tag: "10% support", photo: "food" as const },
-  { id: "gift-basket", name: "Family Gift Basket", seller: "Weston Gifts Co.", price: "$65.00", tag: "Local", photo: "merch" as const },
-  { id: "purpose-box", name: "Purpose Box", seller: "Community Sellers", price: "$39.00", tag: "Bundle", photo: "rosary" as const },
+const FEATURED_IDS = [
+  "skd-mens-microfleece-jacket",
+  "skd-womens-microfleece-jacket",
+  "harps-club-tote",
+  "harps-club-crewneck",
 ];
+const PRODUCTS = FEATURED_IDS.map((id) => getProduct(id)!);
 
 export default function SellerProfilePage() {
   return (
@@ -117,9 +119,18 @@ export default function SellerProfilePage() {
               href="/shop/product"
               className="pm-card group flex flex-col gap-3 overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
             >
-              <Photo kind={p.photo} ratio="1/1" rounded="rounded-2xl" />
+              <Photo
+                kind={p.photo}
+                src={p.src}
+                alt={p.name}
+                ratio="1/1"
+                rounded="rounded-2xl"
+                fit="contain"
+                overlay="none"
+                className="bg-white"
+              />
               <div className="space-y-1.5 px-2 pb-3">
-                <p className="text-sm font-bold text-pm-navy group-hover:text-pm-blue">
+                <p className="line-clamp-2 text-sm font-bold text-pm-navy group-hover:text-pm-blue">
                   {p.name}
                 </p>
                 <p className="text-[11px] text-pm-muted">{p.seller}</p>
@@ -127,9 +138,11 @@ export default function SellerProfilePage() {
                   <p className="text-base font-extrabold text-pm-navy">
                     {p.price}
                   </p>
-                  <span className="rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700">
-                    {p.tag}
-                  </span>
+                  {p.label ? (
+                    <span className="rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700">
+                      {p.label}
+                    </span>
+                  ) : null}
                 </div>
                 <span className="pm-btn pm-btn-secondary !w-full !px-3 !py-1.5 text-[11px]">
                   View Product

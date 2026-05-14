@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Section, SectionHeader, FilterChips } from "@/components/Sections";
 import { ProductCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { PRODUCTS } from "@/lib/catalog";
 
 export const metadata = { title: "Product Listing · ParishMart" };
 
@@ -40,12 +41,19 @@ export default function ProductListingPage() {
       <Section width="wide" className="!pt-2">
         <SectionHeader title="Trending products" description="Curated picks across the SKD ecosystem." />
         <div className="grid gap-4 md:grid-cols-3">
-          <ProductCard photo="apparel" label="Supports SKD Youth" title="Emmaus Retreat T-Shirt" meta="Custom retreat apparel · Supports formation." price="$22" />
-          <ProductCard photo="merch" label="Religious Gift" title="Rosary Gift Box" meta="Faith-inspired gift · Ships from local seller." price="$34" />
-          <ProductCard photo="business" label="Local Service" title="Family Photography Session" meta="$150 · Maria's Studios · Supports a cause." price="$150" />
-          <ProductCard photo="church" label="Bundle" title="SKD Community Bundle" meta="Curated bundle for parishioners and supporters." price="$39" />
-          <ProductCard photo="merch" label="Apparel" title="Parish Hoodie" meta="Premium upgrade for community gatherings." price="$48" />
-          <ProductCard photo="retreat" label="Retreat" title="Retreat Support Kit" meta="A simple bundle for retreat participants." price="$45" />
+          {PRODUCTS.slice(0, 9).map((p) => (
+            <ProductCard
+              key={p.id}
+              id={p.id}
+              photo={p.photo}
+              src={p.src}
+              label={p.label}
+              title={p.name}
+              meta={p.meta}
+              price={p.price}
+              cause={p.cause}
+            />
+          ))}
         </div>
       </Section>
 

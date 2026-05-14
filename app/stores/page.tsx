@@ -7,6 +7,7 @@ import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, BusinessCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { StickyTabs } from "@/components/StickyTabs";
+import { getProduct, BUSINESSES } from "@/lib/catalog";
 
 export const metadata = { title: "SKD Parish Storefront" };
 
@@ -179,10 +180,26 @@ export default function ParishStoreSKDPage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          <ProductCard photo="apparel" label="Supports Emmaus" title="Emmaus Retreat T-Shirt" meta="Custom retreat apparel for formation and events." price="$22" />
-          <ProductCard photo="rosary" label="Religious Gift" title="Rosary Bracelet" meta="A faith-inspired gift that supports Youth Ministry." price="$25" />
-          <ProductCard photo="business" label="Local Business" title="Maria's Studios" meta="Photography for parish events and family retreats." price="From $150" />
-          <ProductCard photo="bible" label="Parish Bundle" title="SKD Community Bundle" meta="Curated products for parishioners and supporters." price="$39" />
+          {[
+            "skd-mens-microfleece-jacket",
+            "rosary",
+            "harps-club-tote",
+            "saint-benedict-crucifix",
+          ]
+            .map((id) => getProduct(id)!)
+            .map((p) => (
+              <ProductCard
+                key={p.id}
+                id={p.id}
+                photo={p.photo}
+                src={p.src}
+                label={p.label}
+                title={p.name}
+                meta={p.meta}
+                price={p.price}
+                cause={p.cause}
+              />
+            ))}
         </div>
       </Section>
 
@@ -256,10 +273,29 @@ export default function ParishStoreSKDPage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          <BusinessCard photo="business" initials="MS" title="Maria's Studios" description="Photography for parish events, retreats and families." offer="10% benefit" offerDescription="Parishioner family events" impactText="Supports Emmaus retreat memories." />
-          <BusinessCard photo="retreat" initials="CM" title="Casa Manresa" description="Retreat programs and spiritual formation services." offer="15% benefit" offerDescription="Selected retreat experiences" impactText="Helps fund parish retreats." />
-          <BusinessCard photo="house" initials="LR" title="Local Realty Supporter" description="Trusted community business supporting SKD families." offer="Free consult" offerDescription="Initial consultation" impactText="Free consult for SKD families." />
-          <BusinessCard photo="business" initials="SP" title="Featured Sponsor" description="Featured local sponsor supporting parish causes." offer="$25 OFF" offerDescription="Limited time offer" impactText="Community sponsor visibility." />
+          {BUSINESSES.map((b, i) => (
+            <BusinessCard
+              key={b.id}
+              photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}
+              initials={b.initials}
+              logoSrc={b.logoSrc}
+              title={b.name}
+              description={b.description}
+              offer="10% benefit"
+              offerDescription="For SKD parishioners"
+              impactText={`Supports SKD and ${b.category.toLowerCase()} programs.`}
+            />
+          ))}
+          <BusinessCard
+            photo="business"
+            initials="SP"
+            title="Featured Sponsor"
+            description="Featured local sponsor supporting parish causes."
+            offer="$25 OFF"
+            offerDescription="Limited time offer"
+            impactText="Community sponsor visibility."
+            href="/sponsors/profile"
+          />
         </div>
       </Section>
 

@@ -77,6 +77,7 @@ export function Photo({
   src,
   alt,
   overlay = "subtle",
+  fit = "cover",
 }: {
   kind: PhotoKind | LegacyKind;
   ratio?: string;
@@ -86,6 +87,7 @@ export function Photo({
   src?: string;
   alt?: string;
   overlay?: "none" | "subtle" | "strong";
+  fit?: "cover" | "contain";
 }) {
   const resolved: PhotoKind =
     (LEGACY as Record<string, PhotoKind>)[kind] ?? (kind as PhotoKind);
@@ -107,7 +109,7 @@ export function Photo({
         <img
           src={finalSrc}
           alt={alt ?? resolved}
-          className="h-full w-full object-cover"
+          className={`h-full w-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
           loading="lazy"
         />
         {overlay !== "none" ? (

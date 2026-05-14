@@ -5,7 +5,9 @@ import { Photo, PhotoKind } from "../Photo";
 export type LocalBizCardData = {
   href: string;
   photo: PhotoKind;
+  photoSrc?: string;
   initials: string;
+  logoSrc?: string;
   category: string;
   title: string;
   description: string;
@@ -20,14 +22,26 @@ export function LocalBizCard(p: LocalBizCardData) {
       <Link href={p.href} className="block">
         <Photo
           kind={p.photo}
+          src={p.photoSrc}
           ratio="4/3"
           rounded="rounded-none"
           className="!rounded-t-[24px] !rounded-b-none"
         />
       </Link>
-      <span className="pm-avatar absolute left-4 top-28 !h-11 !w-11 rounded-2xl ring-4 ring-white sm:top-32">
-        {p.initials}
-      </span>
+      {p.logoSrc ? (
+        <span className="absolute left-4 top-28 grid !h-11 !w-11 place-items-center overflow-hidden rounded-2xl bg-white p-1 ring-4 ring-white shadow-pm-soft sm:top-32">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={p.logoSrc}
+            alt={p.title}
+            className="h-full w-full object-contain"
+          />
+        </span>
+      ) : (
+        <span className="pm-avatar absolute left-4 top-28 !h-11 !w-11 rounded-2xl ring-4 ring-white sm:top-32">
+          {p.initials}
+        </span>
+      )}
       <div className="flex flex-1 flex-col gap-2.5 p-5 pt-8">
         <span className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
           {p.category}

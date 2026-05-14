@@ -8,15 +8,26 @@ import {
   DarkPanel,
 } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { getProduct } from "@/lib/catalog";
 
 export const metadata = { title: "Emmaus · Cause" };
 
 const MERCH = [
-  { id: "emmaus-tee", name: "Emmaus Retreat T-Shirt", price: "$24.00", desc: "Soft cotton shirt for walkers, servers and ministry members.", photo: "apparel" as const },
-  { id: "emmaus-hoodie", name: "Emmaus Hoodie", price: "$48.00", desc: "A comfortable hoodie for retreats, meetings and community events.", photo: "merch" as const },
-  { id: "emmaus-cap", name: "Emmaus Cap", price: "$22.00", desc: "Simple ministry cap for parish events and retreat weekends.", photo: "apparel" as const },
-  { id: "emmaus-retreat", name: "Retreat Team Shirt", price: "$28.00", desc: "Campaign-style shirt for retreat teams, servers and volunteers.", photo: "merch" as const },
-];
+  "skd-mens-microfleece-jacket",
+  "skd-womens-microfleece-jacket",
+  "harps-club-crewneck",
+  "harps-club-cap",
+].map((id) => {
+  const p = getProduct(id)!;
+  return {
+    id: p.id,
+    name: p.name,
+    price: p.price,
+    desc: p.meta,
+    photo: p.photo,
+    src: p.src,
+  };
+});
 
 export default function CauseDetailPage() {
   return (
@@ -193,12 +204,21 @@ export default function CauseDetailPage() {
               href="/shop/product"
               className="pm-card group flex flex-col gap-3 overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
             >
-              <Photo kind={m.photo} ratio="1/1" rounded="rounded-2xl" />
+              <Photo
+                kind={m.photo}
+                src={m.src}
+                alt={m.name}
+                ratio="1/1"
+                rounded="rounded-2xl"
+                fit="contain"
+                overlay="none"
+                className="bg-white"
+              />
               <div className="space-y-1.5 px-2 pb-2">
-                <p className="text-sm font-bold text-pm-navy group-hover:text-pm-blue">
+                <p className="line-clamp-2 text-sm font-bold text-pm-navy group-hover:text-pm-blue">
                   {m.name}
                 </p>
-                <p className="text-[11px] text-pm-muted">{m.desc}</p>
+                <p className="line-clamp-2 text-[11px] text-pm-muted">{m.desc}</p>
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-sm font-extrabold text-pm-navy">
                     {m.price}
