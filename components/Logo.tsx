@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SkdLogo } from "./SkdLogo";
 
 export function LogoMark({
   variant = "color",
@@ -67,10 +68,8 @@ export function SubStoreBadge({
 }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="grid h-10 w-10 place-items-center rounded-full bg-pm-soft text-xs font-extrabold text-pm-blue ring-1 ring-pm-border">
-        SKD
-      </span>
-      <div className="flex flex-col leading-tight">
+      <SkdLogo size="md" />
+      <div className="hidden flex-col leading-tight sm:flex">
         <span className="text-sm font-bold text-pm-navy">{name}</span>
         <span className="text-[11px] text-pm-muted">{location}</span>
       </div>

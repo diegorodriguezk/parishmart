@@ -89,7 +89,9 @@ export default function CommunitiesPage() {
           <CommunityCard
             href="/stores"
             photo="church"
+            photoSrc="/brand/skd/church.jpg"
             initials="SKD"
+            logoSrc="/brand/skd/logo.png"
             category="Parish Store"
             title="St. Katharine Drexel"
             description="Our pilot parish community connecting products, giving and local impact."

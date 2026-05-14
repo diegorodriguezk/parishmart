@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Search, User } from "lucide-react";
 import { Logo, SubStoreBadge } from "./Logo";
+import { SkdLogo } from "./SkdLogo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -99,7 +100,6 @@ function ParishTabs() {
 
 export function ParishProfileHeader({
   parishName = "Saint Katharine Drexel",
-  parishInitials = "SKD",
   location = "Weston, FL",
   searchPlaceholder = "Search store, products, services…",
 }: {
@@ -113,9 +113,7 @@ export function ParishProfileHeader({
       <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-2.5 sm:px-6">
         <MobileNavDrawer />
         <div className="flex shrink-0 items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan text-sm font-extrabold text-white shadow-pm-soft">
-            {parishInitials}
-          </span>
+          <SkdLogo size="md" />
           <div className="hidden flex-col leading-tight sm:flex">
             <span className="text-sm font-extrabold tracking-tight text-pm-navy">
               {parishName}

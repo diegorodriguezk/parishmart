@@ -19,7 +19,14 @@ export default function ShopCategoryPage() {
 
       <Section width="wide" className="!pb-2 !pt-2">
         <div className="relative isolate overflow-hidden rounded-3xl border border-pm-border shadow-pm-card p-6 sm:p-8 min-h-[260px] sm:min-h-[300px]">
-          <Photo kind="church" ratio="auto" rounded="rounded-none" className="absolute inset-0 -z-10 !rounded-none" />
+          <Photo
+            kind="church"
+            src="/brand/skd/church.jpg"
+            alt="Saint Katharine Drexel Catholic Parish, Weston FL"
+            ratio="auto"
+            rounded="rounded-none"
+            className="absolute inset-0 -z-10 !rounded-none"
+          />
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white/95 via-white/80 to-white/40" />
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-xl">

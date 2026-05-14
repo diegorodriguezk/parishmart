@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ParishProfileHeader } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
+import { SkdLogo } from "@/components/SkdLogo";
 import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, BusinessCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -25,7 +26,14 @@ export default function ParishStoreSKDPage() {
 
       <Section width="wide" className="!pb-2 !pt-2">
         <div className="pm-card relative grid gap-0 overflow-hidden lg:grid-cols-[1.4fr_1fr]">
-          <Photo kind="church" ratio="auto" rounded="rounded-none" className="!rounded-none h-[360px]" />
+          <Photo
+            kind="church"
+            src="/brand/skd/church.jpg"
+            alt="Saint Katharine Drexel Catholic Parish, Weston FL"
+            ratio="auto"
+            rounded="rounded-none"
+            className="!rounded-none h-[360px]"
+          />
           <div className="space-y-4 p-7">
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-4xl">
               The parish at the{" "}
@@ -37,7 +45,7 @@ export default function ParishStoreSKDPage() {
               Jesus Christ."
             </p>
             <div className="flex items-start gap-3 rounded-2xl border border-pm-border bg-white p-3">
-              <span className="pm-avatar !h-10 !w-10 rounded-xl">SKD</span>
+              <SkdLogo size="md" />
               <div>
                 <p className="text-sm font-bold text-pm-navy">St. Katharine Drexel Catholic Parish</p>
                 <p className="text-[11px] text-pm-muted">2501 South Post Road, Weston, FL 33327</p>

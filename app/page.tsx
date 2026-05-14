@@ -44,7 +44,13 @@ export default function HomePage() {
           </div>
           <div className="pm-card overflow-hidden p-3">
             <div className="relative">
-              <Photo kind="church" ratio="16/9" rounded="rounded-2xl" />
+              <Photo
+                kind="church"
+                src="/brand/skd/church.jpg"
+                alt="Saint Katharine Drexel Catholic Parish, Weston FL"
+                ratio="16/9"
+                rounded="rounded-2xl"
+              />
               <span className="pm-label absolute left-4 top-4 !bg-white/85">
                 Featured Parish Store
               </span>
@@ -164,6 +170,7 @@ export default function HomePage() {
           {[
             {
               photo: "church" as const,
+              src: "/brand/skd/church.jpg",
               label: "Featured Parish",
               title: "St. Katharine Drexel",
               text: "Products, donations, campaigns and community supporters for SKD parish.",
@@ -174,6 +181,7 @@ export default function HomePage() {
             },
             {
               photo: "retreat" as const,
+              src: undefined,
               label: "Retreat Community",
               title: "Emmaus SKD Weston",
               text: "Separate experiences for Emmaus Men and Emmaus Women retreat communities.",
@@ -184,6 +192,7 @@ export default function HomePage() {
             },
             {
               photo: "stained-glass" as const,
+              src: undefined,
               title: "Schoenstatt, FACE & Casa Manresa",
               text: "Faith-driven communities, retreats and entrepreneurs connected to impact.",
               stats: [],
@@ -196,6 +205,7 @@ export default function HomePage() {
             >
               <Photo
                 kind={s.photo}
+                src={s.src}
                 ratio="16/9"
                 rounded="rounded-none"
                 className="!rounded-t-[24px] !rounded-b-none"
@@ -468,7 +478,9 @@ export default function HomePage() {
           <CommunityCard
             href="/stores"
             photo="church"
+            photoSrc="/brand/skd/church.jpg"
             initials="SKD"
+            logoSrc="/brand/skd/logo.png"
             category="Parish Store"
             title="St. Katharine Drexel"
             description="Our first parish community using ParishMart to connect products, giving and local impact."
