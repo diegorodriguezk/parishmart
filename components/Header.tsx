@@ -54,23 +54,93 @@ function HeaderActions() {
   );
 }
 
+const PRIMARY_NAV = [
+  { href: "/shop", label: "Shop" },
+  { href: "/give", label: "Give" },
+  { href: "/communities", label: "Communities" },
+  { href: "/local-businesses", label: "Supporters" },
+  { href: "/sponsors", label: "Sponsors" },
+];
+
+const UTILITY_NAV = [
+  { href: "https://www.parishmart.com/about-us", label: "About Us", external: true },
+  { href: "/how-it-works", label: "How it Works" },
+  { href: "/partners", label: "Partners" },
+  { href: "/support", label: "Support" },
+];
+
 export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-2.5 sm:px-6">
+      {/* Utility bar */}
+      <div className="hidden border-b border-pm-border/60 bg-white/60 md:block">
+        <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4 px-4 py-1.5 text-[11px] font-medium text-pm-muted sm:px-6">
+          <nav className="flex items-center gap-5">
+            {UTILITY_NAV.map((l) =>
+              l.external ? (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-pm-navy"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <Link key={l.href} href={l.href} className="hover:text-pm-navy">
+                  {l.label}
+                </Link>
+              ),
+            )}
+          </nav>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher compact />
+            <Link
+              href="/sign-in"
+              className="font-semibold text-pm-navy hover:text-pm-blue"
+            >
+              My Account
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Main row */}
+      <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-3 sm:px-6">
         <MobileNavDrawer />
         <div className="shrink-0">
           <Logo />
         </div>
-        <div className="ml-3 hidden flex-1 md:flex">
-          <SearchForm />
+
+        <nav className="ml-6 hidden flex-1 items-center gap-1 lg:flex">
+          {PRIMARY_NAV.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="rounded-full px-4 py-1.5 text-sm font-semibold text-pm-muted hover:bg-pm-soft hover:text-pm-navy"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="ml-auto flex items-center gap-2">
+          <Link
+            href="/search"
+            aria-label="Open search"
+            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
+          >
+            <Search className="h-4 w-4" aria-hidden />
+          </Link>
+          <CartButton compact />
+          <Link
+            href="/onboarding"
+            className="pm-btn pm-btn-primary !px-4 !py-2 text-xs sm:text-sm"
+          >
+            Join Us
+          </Link>
         </div>
-        <div className="ml-auto">
-          <HeaderActions />
-        </div>
-      </div>
-      <div className="border-t border-pm-border/70 px-4 pb-3 pt-2 sm:px-6 md:hidden">
-        <SearchForm />
       </div>
     </header>
   );

@@ -102,6 +102,8 @@ const CAUSE_COPY: Record<CauseKey, CauseCopy> = {
   },
 };
 
+const PARISHSOFT_GIVE_URL = "https://giving.parishsoft.com/app/giving/stk2501240";
+
 export default async function GiveHomePage() {
   const causes = await fetchCauses();
   return (
@@ -169,6 +171,7 @@ export default async function GiveHomePage() {
                 title={c.name}
                 description={copy?.description}
                 location={copy?.location}
+                href={PARISHSOFT_GIVE_URL}
               />
             );
           })}

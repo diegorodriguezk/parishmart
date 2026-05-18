@@ -94,13 +94,41 @@ export function DarkPanel({
         {cta ? (
           <div className="flex flex-wrap gap-3">
             {ctaSecondary && ctaSecondaryHref ? (
-              <Link href={ctaSecondaryHref} className="pm-btn bg-white/10 text-white hover:bg-white/20">
-                {ctaSecondary}
-              </Link>
+              /^https?:\/\//.test(ctaSecondaryHref) ? (
+                <a
+                  href={ctaSecondaryHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pm-btn bg-white/10 text-white hover:bg-white/20"
+                >
+                  {ctaSecondary}
+                </a>
+              ) : (
+                <Link
+                  href={ctaSecondaryHref}
+                  className="pm-btn bg-white/10 text-white hover:bg-white/20"
+                >
+                  {ctaSecondary}
+                </Link>
+              )
             ) : null}
-            <Link href={ctaHref ?? "#"} className="pm-btn bg-white text-pm-navy">
-              {cta}
-            </Link>
+            {ctaHref && /^https?:\/\//.test(ctaHref) ? (
+              <a
+                href={ctaHref}
+                target="_blank"
+                rel="noreferrer"
+                className="pm-btn bg-white text-pm-navy"
+              >
+                {cta}
+              </a>
+            ) : (
+              <Link
+                href={ctaHref ?? "#"}
+                className="pm-btn bg-white text-pm-navy"
+              >
+                {cta}
+              </Link>
+            )}
           </div>
         ) : null}
       </div>

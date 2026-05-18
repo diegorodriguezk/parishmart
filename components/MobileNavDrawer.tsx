@@ -17,7 +17,6 @@ import {
   UserCircle2,
 } from "lucide-react";
 import { LogoMark } from "./Logo";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const PRIMARY = [
   { href: "/", label: "Home", Icon: Home },
@@ -30,8 +29,8 @@ const PRIMARY = [
 
 const SECONDARY = [
   { href: "/onboarding", label: "Join Us", Icon: UserPlus },
-  { href: "/#how", label: "How it works", Icon: PlayCircle },
-  { href: "/about", label: "About us", Icon: Info },
+  { href: "/how-it-works", label: "How it works", Icon: PlayCircle },
+  { href: "https://www.parishmart.com/about-us", label: "About us", Icon: Info, external: true },
   { href: "/sign-in", label: "My Account", Icon: UserCircle2 },
 ];
 
@@ -111,23 +110,34 @@ export function MobileNavDrawer() {
               </ul>
               <div className="my-3 h-px bg-pm-border" />
               <ul className="space-y-1">
-                {SECONDARY.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      onClick={() => setOpen(false)}
-                      className="flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-pm-ink hover:bg-pm-soft"
-                    >
-                      <l.Icon className="h-5 w-5 text-pm-muted" aria-hidden />
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
+                {SECONDARY.map((l) =>
+                  l.external ? (
+                    <li key={l.href}>
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => setOpen(false)}
+                        className="flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-pm-ink hover:bg-pm-soft"
+                      >
+                        <l.Icon className="h-5 w-5 text-pm-muted" aria-hidden />
+                        {l.label}
+                      </a>
+                    </li>
+                  ) : (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        onClick={() => setOpen(false)}
+                        className="flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-pm-ink hover:bg-pm-soft"
+                      >
+                        <l.Icon className="h-5 w-5 text-pm-muted" aria-hidden />
+                        {l.label}
+                      </Link>
+                    </li>
+                  ),
+                )}
               </ul>
-              <div className="mt-5 flex items-center justify-between px-3">
-                <span className="text-xs text-pm-muted">Language</span>
-                <LanguageSwitcher compact />
-              </div>
             </nav>
 
             <div className="flex items-center justify-center border-t border-pm-border bg-pm-soft/30 px-4 py-5">

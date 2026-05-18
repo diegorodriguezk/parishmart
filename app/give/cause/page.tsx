@@ -71,9 +71,14 @@ export default async function CauseDetailPage() {
                 community transformed.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
-                <Link href="/give/checkout" className="pm-btn pm-btn-primary">
+                <a
+                  href="https://giving.parishsoft.com/app/giving/stk2501240"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pm-btn pm-btn-primary"
+                >
                   Support Now
-                </Link>
+                </a>
                 <Link href="#merch" className="pm-btn bg-white/15 text-white hover:bg-white/25">
                   Shop Emmaus Merch
                 </Link>
@@ -175,9 +180,14 @@ export default async function CauseDetailPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3 pt-1">
-              <Link href="/give/checkout" className="pm-btn pm-btn-primary">
+              <a
+                href="https://giving.parishsoft.com/app/giving/stk2501240"
+                target="_blank"
+                rel="noreferrer"
+                className="pm-btn pm-btn-primary"
+              >
                 Support Now
-              </Link>
+              </a>
               <Link href="#how-giving-works" className="pm-btn pm-btn-secondary">
                 Learn how giving works
               </Link>
@@ -280,7 +290,7 @@ export default async function CauseDetailPage() {
           title="Emmaus · Saint Katharine Drexel"
           description="Cause storefront powered by ParishMart."
           cta="Support Now"
-          ctaHref="/give/checkout"
+          ctaHref="https://giving.parishsoft.com/app/giving/stk2501240"
         />
       </Section>
 

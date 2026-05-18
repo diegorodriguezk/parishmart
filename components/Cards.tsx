@@ -60,7 +60,7 @@ export function ProductCard({
             {title}
           </h3>
         </Link>
-        {meta ? <p className="text-xs text-pm-muted">{meta}</p> : null}
+        {meta ? <p className="line-clamp-2 text-xs text-pm-muted">{meta}</p> : null}
         {rating ? <StarRating value={rating} count={reviews} /> : null}
         <div className="mt-auto flex items-center justify-between pt-2">
           {price ? (
@@ -90,6 +90,12 @@ export function ProductCard({
             </Link>
           )}
         </div>
+        <Link
+          href={href}
+          className="pm-btn pm-btn-secondary !w-full !px-3 !py-1.5 text-[11px]"
+        >
+          View Product
+        </Link>
       </div>
     </article>
   );
@@ -122,28 +128,51 @@ export function CauseCard({
   showMetrics?: boolean;
   cta?: string;
 }) {
+  const isExternal = /^https?:\/\//.test(href);
+  const LinkOrAnchor = ({
+    className,
+    children,
+  }: {
+    className?: string;
+    children: ReactNode;
+  }) =>
+    isExternal ? (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className={className}
+      >
+        {children}
+      </a>
+    ) : (
+      <Link href={href} className={className}>
+        {children}
+      </Link>
+    );
+
   return (
     <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
-      <Link href={href} className="relative block">
+      <LinkOrAnchor className="relative block">
         <Photo kind={photo} ratio="4/3" rounded="rounded-2xl" />
         {cause ? (
           <CauseLogo
             cause={cause}
-            size="md"
+            size="lg"
             className="absolute left-3 top-3 ring-2 !ring-white"
           />
         ) : null}
-      </Link>
+      </LinkOrAnchor>
       <div className="flex flex-1 flex-col gap-2 p-3">
         <div className="flex flex-wrap items-center gap-1.5">
           {label ? <span className="pm-label">{label}</span> : null}
           {verified ? <TrustBadge variant="verified" label="Verified parish" /> : null}
         </div>
-        <Link href={href} className="block">
+        <LinkOrAnchor className="block">
           <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
             {title}
           </h3>
-        </Link>
+        </LinkOrAnchor>
         {location ? (
           <p className="text-[11px] font-medium text-pm-blue">{location}</p>
         ) : null}
@@ -161,12 +190,9 @@ export function CauseCard({
           </div>
         ) : null}
         <div className="mt-auto pt-2">
-          <Link
-            href={href}
-            className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs"
-          >
+          <LinkOrAnchor className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs">
             {cta}
-          </Link>
+          </LinkOrAnchor>
         </div>
       </div>
     </article>
@@ -283,7 +309,7 @@ export function BusinessCard({
         />
       </Link>
       {logoSrc ? (
-        <span className="absolute left-4 top-32 grid !h-10 !w-10 place-items-center overflow-hidden rounded-2xl bg-white p-1 ring-4 ring-white shadow-pm-soft">
+        <span className="absolute left-4 top-28 grid !h-16 !w-16 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-4 ring-white shadow-pm-soft">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={logoSrc}
@@ -292,11 +318,11 @@ export function BusinessCard({
           />
         </span>
       ) : (
-        <span className="pm-avatar absolute left-4 top-32 !h-10 !w-10 ring-4 ring-white">
+        <span className="pm-avatar absolute left-4 top-28 !h-16 !w-16 rounded-2xl ring-4 ring-white">
           {initials}
         </span>
       )}
-      <div className="flex flex-1 flex-col gap-3 p-5 pt-7">
+      <div className="flex flex-1 flex-col gap-3 p-5 pt-12">
         <div>
           <Link href={href} className="block">
             <h3 className="text-base font-bold text-pm-navy hover:text-pm-blue">

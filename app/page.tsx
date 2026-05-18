@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Search } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
@@ -9,6 +10,8 @@ import { LocalBizCard, CommunityCard } from "@/components/home/LocalBizCard";
 import { fetchProducts, fetchBusinesses } from "@/lib/api";
 
 export const metadata = { title: "Home | ParishMart" };
+
+const PARISHSOFT_GIVE_URL = "https://giving.parishsoft.com/app/giving/stk2501240";
 
 export default async function HomePage() {
   const [featured, businesses] = await Promise.all([
@@ -42,7 +45,26 @@ export default async function HomePage() {
               Discover products, services, businesses, and causes that support
               communities through commerce and giving.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+
+            <form
+              action="/search"
+              method="get"
+              role="search"
+              className="mt-6 flex items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft focus-within:border-pm-blue"
+            >
+              <Search className="ml-1 h-5 w-5 shrink-0 text-pm-muted" aria-hidden />
+              <input
+                name="q"
+                aria-label="Search ParishMart"
+                placeholder="Search products, causes, businesses, gifts and services…"
+                className="pm-input h-10 w-full min-w-0 px-1 text-sm"
+              />
+              <button type="submit" className="pm-btn pm-btn-primary !px-5 !py-2 text-sm">
+                Search
+              </button>
+            </form>
+
+            <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/shop" className="pm-btn pm-btn-primary">
                 Start Shopping
               </Link>
@@ -185,65 +207,57 @@ export default async function HomePage() {
               src: "/brand/skd/church.jpg",
               label: "Featured Parish",
               title: "St. Katharine Drexel",
+              href: "/stores",
               text: "Products, donations, campaigns and community supporters for SKD parish.",
-              stats: [
-                { l: "Impact", v: "$2,430" },
-                { l: "Causes", v: "5" },
-              ],
             },
             {
               photo: "retreat" as const,
               src: undefined,
               label: "Retreat Community",
               title: "Emmaus SKD Weston",
+              href: "/give/cause",
               text: "Separate experiences for Emmaus Men and Emmaus Women retreat communities.",
-              stats: [
-                { l: "Stores", v: "2" },
-                { l: "Status", v: "Active" },
-              ],
             },
             {
               photo: "stained-glass" as const,
               src: undefined,
+              label: undefined,
               title: "Schoenstatt, FACE & Casa Manresa",
+              href: "/communities",
               text: "Faith-driven communities, retreats and entrepreneurs connected to impact.",
-              stats: [],
             },
           ].map((s, i) => (
-            <Link
+            <article
               key={i}
-              href="/communities"
-              className="pm-card overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft"
+              className="pm-card flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft"
             >
-              <Photo
-                kind={s.photo}
-                src={s.src}
-                ratio="16/9"
-                rounded="rounded-none"
-                className="!rounded-t-[24px] !rounded-b-none"
-              />
-              <div className="space-y-2 p-5">
+              <Link href={s.href} className="block">
+                <Photo
+                  kind={s.photo}
+                  src={s.src}
+                  ratio="16/9"
+                  rounded="rounded-none"
+                  className="!rounded-t-[24px] !rounded-b-none"
+                />
+              </Link>
+              <div className="flex flex-1 flex-col gap-2 p-5">
                 {s.label ? <span className="pm-label">{s.label}</span> : null}
-                <h3 className="text-lg font-extrabold text-pm-navy">
-                  {s.title}
-                </h3>
+                <Link href={s.href}>
+                  <h3 className="text-lg font-extrabold text-pm-navy hover:text-pm-blue">
+                    {s.title}
+                  </h3>
+                </Link>
                 <p className="text-xs text-pm-muted">{s.text}</p>
-                {s.stats.length ? (
-                  <div className="grid grid-cols-2 gap-2 pt-2 text-xs">
-                    {s.stats.map((st) => (
-                      <div key={st.l}>
-                        <p className="text-[10px] font-bold uppercase text-pm-blue">
-                          {st.l}
-                        </p>
-                        <p className="text-base font-extrabold text-pm-navy">
-                          {st.v}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
+                <div className="mt-auto pt-3">
+                  <Link
+                    href={s.href}
+                    className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs"
+                  >
+                    View
+                  </Link>
+                </div>
               </div>
-            </Link>
+            </article>
           ))}
         </div>
       </Section>
@@ -307,6 +321,7 @@ export default async function HomePage() {
             title="St. Vincent de Paul"
             description="Helping families in need in our community."
             location="SKD · Weston, FL"
+            href={PARISHSOFT_GIVE_URL}
           />
           <CauseCard
             photo="community"
@@ -315,6 +330,7 @@ export default async function HomePage() {
             title="Mary's Hope Network"
             description="Supporting mothers, families and the gift of life."
             location="South Florida"
+            href={PARISHSOFT_GIVE_URL}
           />
           <CauseCard
             photo="praying"
@@ -323,6 +339,7 @@ export default async function HomePage() {
             title="Christlike Care for All"
             description="Bringing Christ's compassion to those in need."
             location="Catholic community"
+            href={PARISHSOFT_GIVE_URL}
           />
           <CauseCard
             photo="stained-glass"
@@ -331,6 +348,7 @@ export default async function HomePage() {
             title="Schoenstatt Miami"
             description="Light and path toward the Merciful Father."
             location="Miami, FL"
+            href={PARISHSOFT_GIVE_URL}
           />
         </div>
       </Section>
@@ -535,10 +553,8 @@ export default async function HomePage() {
         <DarkPanel
           title="Ready to make an impact?"
           description="Sells your products, offer your services or become a sponsor."
-          cta="Open Your Store"
-          ctaHref="/onboarding/parish"
-          ctaSecondary="Join Us"
-          ctaSecondaryHref="/onboarding"
+          cta="Join Us"
+          ctaHref="/onboarding"
         />
       </Section>
 

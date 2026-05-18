@@ -29,7 +29,7 @@ export function LocalBizCard(p: LocalBizCardData) {
         />
       </Link>
       {p.logoSrc ? (
-        <span className="absolute left-4 top-28 grid !h-11 !w-11 place-items-center overflow-hidden rounded-2xl bg-white p-1 ring-4 ring-white shadow-pm-soft sm:top-32">
+        <span className="absolute left-4 top-24 grid !h-16 !w-16 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-4 ring-white shadow-pm-soft sm:top-28">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={p.logoSrc}
@@ -38,11 +38,11 @@ export function LocalBizCard(p: LocalBizCardData) {
           />
         </span>
       ) : (
-        <span className="pm-avatar absolute left-4 top-28 !h-11 !w-11 rounded-2xl ring-4 ring-white sm:top-32">
+        <span className="pm-avatar absolute left-4 top-24 !h-16 !w-16 rounded-2xl ring-4 ring-white sm:top-28">
           {p.initials}
         </span>
       )}
-      <div className="flex flex-1 flex-col gap-2.5 p-5 pt-8">
+      <div className="flex flex-1 flex-col gap-2.5 p-5 pt-12">
         <span className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
           {p.category}
         </span>
@@ -107,7 +107,7 @@ export function CommunityCard(p: CommunityCardData) {
         />
       </Link>
       {p.logoSrc ? (
-        <span className="absolute left-4 top-28 grid !h-11 !w-11 place-items-center overflow-hidden rounded-2xl bg-white p-1 ring-4 ring-white shadow-pm-soft sm:top-32">
+        <span className="absolute left-4 top-24 grid !h-16 !w-16 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-4 ring-white shadow-pm-soft sm:top-28">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={p.logoSrc}
@@ -116,11 +116,11 @@ export function CommunityCard(p: CommunityCardData) {
           />
         </span>
       ) : (
-        <span className="pm-avatar absolute left-4 top-28 !h-11 !w-11 rounded-2xl ring-4 ring-white sm:top-32">
+        <span className="pm-avatar absolute left-4 top-24 !h-16 !w-16 rounded-2xl ring-4 ring-white sm:top-28">
           {p.initials}
         </span>
       )}
-      <div className="flex flex-1 flex-col gap-2.5 p-5 pt-8">
+      <div className="flex flex-1 flex-col gap-2.5 p-5 pt-12">
         <span className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
           {p.category}
         </span>
