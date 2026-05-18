@@ -4,11 +4,12 @@ import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, FilterChips, DarkPanel } from "@/components/Sections";
 import { BusinessCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { BUSINESSES } from "@/lib/catalog";
+import { fetchBusinesses } from "@/lib/api";
 
 export const metadata = { title: "Local Biz Supporters · ParishMart" };
 
-export default function LocalBusinessCategoryPage() {
+export default async function LocalBusinessCategoryPage() {
+  const businesses = await fetchBusinesses();
   return (
     <>
       <Header />
@@ -63,7 +64,7 @@ export default function LocalBusinessCategoryPage() {
           right={<a href="#" className="font-bold text-pm-blue">View All</a>}
         />
         <div className="grid gap-4 md:grid-cols-3">
-          {BUSINESSES.map((b, i) => (
+          {businesses.map((b, i) => (
             <BusinessCard
               key={b.id}
               photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}

@@ -7,11 +7,24 @@ import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, BusinessCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { StickyTabs } from "@/components/StickyTabs";
-import { getProduct, BUSINESSES } from "@/lib/catalog";
+import { fetchProducts, fetchBusinesses, fetchParish } from "@/lib/api";
 
 export const metadata = { title: "SKD Parish Storefront" };
 
-export default function ParishStoreSKDPage() {
+export default async function ParishStoreSKDPage() {
+  const [featured, businesses, parish] = await Promise.all([
+    fetchProducts({
+      ids: [
+        "skd-mens-microfleece-jacket",
+        "rosary",
+        "harps-club-tote",
+        "saint-benedict-crucifix",
+      ],
+    }),
+    fetchBusinesses(),
+    fetchParish("skd"),
+  ]);
+  void parish;
   return (
     <>
       <ParishProfileHeader
@@ -180,26 +193,19 @@ export default function ParishStoreSKDPage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          {[
-            "skd-mens-microfleece-jacket",
-            "rosary",
-            "harps-club-tote",
-            "saint-benedict-crucifix",
-          ]
-            .map((id) => getProduct(id)!)
-            .map((p) => (
-              <ProductCard
-                key={p.id}
-                id={p.id}
-                photo={p.photo}
-                src={p.src}
-                label={p.label}
-                title={p.name}
-                meta={p.meta}
-                price={p.price}
-                cause={p.cause}
-              />
-            ))}
+          {featured.map((p) => (
+            <ProductCard
+              key={p.id}
+              id={p.id}
+              photo={p.photo}
+              src={p.src}
+              label={p.label}
+              title={p.name}
+              meta={p.meta}
+              price={p.price}
+              cause={p.cause}
+            />
+          ))}
         </div>
       </Section>
 
@@ -273,7 +279,7 @@ export default function ParishStoreSKDPage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          {BUSINESSES.map((b, i) => (
+          {businesses.map((b, i) => (
             <BusinessCard
               key={b.id}
               photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}

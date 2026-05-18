@@ -4,11 +4,12 @@ import { Footer } from "@/components/Footer";
 import { Section, SectionHeader, FilterChips } from "@/components/Sections";
 import { ProductCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { PRODUCTS } from "@/lib/catalog";
+import { fetchProducts } from "@/lib/api";
 
 export const metadata = { title: "Product Listing · ParishMart" };
 
-export default function ProductListingPage() {
+export default async function ProductListingPage() {
+  const products = await fetchProducts({ limit: 9 });
   return (
     <>
       <SubStoreHeader />
@@ -41,7 +42,7 @@ export default function ProductListingPage() {
       <Section width="wide" className="!pt-2">
         <SectionHeader title="Trending products" description="Curated picks across the SKD ecosystem." />
         <div className="grid gap-4 md:grid-cols-3">
-          {PRODUCTS.slice(0, 9).map((p) => (
+          {products.map((p) => (
             <ProductCard
               key={p.id}
               id={p.id}

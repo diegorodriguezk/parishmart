@@ -6,11 +6,22 @@ import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, CauseCard, StatTile } from "@/components/Cards";
 import { LiveProofTicker, Testimonial } from "@/components/SocialProof";
 import { LocalBizCard, CommunityCard } from "@/components/home/LocalBizCard";
-import { getProduct, BUSINESSES } from "@/lib/catalog";
+import { fetchProducts, fetchBusinesses } from "@/lib/api";
 
 export const metadata = { title: "Home | ParishMart" };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [featured, businesses] = await Promise.all([
+    fetchProducts({
+      ids: [
+        "skd-mens-microfleece-jacket",
+        "rosary",
+        "harps-club-tote",
+        "saint-benedict-crucifix",
+      ],
+    }),
+    fetchBusinesses(),
+  ]);
   return (
     <>
       <Header />
@@ -257,26 +268,19 @@ export default function HomePage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          {[
-            "skd-mens-microfleece-jacket",
-            "rosary",
-            "harps-club-tote",
-            "saint-benedict-crucifix",
-          ]
-            .map((id) => getProduct(id)!)
-            .map((p) => (
-              <ProductCard
-                key={p.id}
-                id={p.id}
-                photo={p.photo}
-                src={p.src}
-                label={p.label}
-                title={p.name}
-                meta={p.meta}
-                price={p.price}
-                cause={p.cause}
-              />
-            ))}
+          {featured.map((p) => (
+            <ProductCard
+              key={p.id}
+              id={p.id}
+              photo={p.photo}
+              src={p.src}
+              label={p.label}
+              title={p.name}
+              meta={p.meta}
+              price={p.price}
+              cause={p.cause}
+            />
+          ))}
         </div>
       </Section>
 
@@ -353,7 +357,7 @@ export default function HomePage() {
           }
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {BUSINESSES.map((b, i) => (
+          {businesses.map((b, i) => (
             <LocalBizCard
               key={b.id}
               href={b.href}

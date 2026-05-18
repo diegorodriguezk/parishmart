@@ -8,28 +8,27 @@ import {
   DarkPanel,
 } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { getProduct } from "@/lib/catalog";
+import { fetchProducts } from "@/lib/api";
 
 export const metadata = { title: "Emmaus · Cause" };
 
-const MERCH = [
+const MERCH_IDS = [
   "skd-mens-microfleece-jacket",
   "skd-womens-microfleece-jacket",
   "harps-club-crewneck",
   "harps-club-cap",
-].map((id) => {
-  const p = getProduct(id)!;
-  return {
+];
+
+export default async function CauseDetailPage() {
+  const products = await fetchProducts({ ids: MERCH_IDS });
+  const MERCH = products.map((p) => ({
     id: p.id,
     name: p.name,
     price: p.price,
     desc: p.meta,
     photo: p.photo,
     src: p.src,
-  };
-});
-
-export default function CauseDetailPage() {
+  }));
   return (
     <>
       <ParishProfileHeader

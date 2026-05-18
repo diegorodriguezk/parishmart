@@ -5,11 +5,30 @@ import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, FilterChips } from "@/components/Sections";
 import { ProductCard, BusinessCard, SponsorOfferCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { getProduct, BUSINESSES } from "@/lib/catalog";
+import { fetchProducts, fetchBusinesses } from "@/lib/api";
 
 export const metadata = { title: "Shop · SKD Parish Store" };
 
-export default function ShopCategoryPage() {
+export default async function ShopCategoryPage() {
+  const [religiousGifts, parishMerch, businesses] = await Promise.all([
+    fetchProducts({
+      ids: [
+        "rosary",
+        "unity-candleholder",
+        "saint-benedict-crucifix",
+        "saint-joseph-biography",
+      ],
+    }),
+    fetchProducts({
+      ids: [
+        "skd-mens-microfleece-jacket",
+        "skd-womens-microfleece-jacket",
+        "harps-club-crewneck",
+        "harps-club-tote",
+      ],
+    }),
+    fetchBusinesses(),
+  ]);
   return (
     <>
       <SubStoreHeader />
@@ -73,26 +92,19 @@ export default function ShopCategoryPage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          {[
-            "rosary",
-            "unity-candleholder",
-            "saint-benedict-crucifix",
-            "saint-joseph-biography",
-          ]
-            .map((id) => getProduct(id)!)
-            .map((p) => (
-              <ProductCard
-                key={p.id}
-                id={p.id}
-                photo={p.photo}
-                src={p.src}
-                label={p.label}
-                title={p.name}
-                meta={p.meta}
-                price={p.price}
-                cause={p.cause}
-              />
-            ))}
+          {religiousGifts.map((p) => (
+            <ProductCard
+              key={p.id}
+              id={p.id}
+              photo={p.photo}
+              src={p.src}
+              label={p.label}
+              title={p.name}
+              meta={p.meta}
+              price={p.price}
+              cause={p.cause}
+            />
+          ))}
         </div>
       </Section>
 
@@ -110,26 +122,19 @@ export default function ShopCategoryPage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          {[
-            "skd-mens-microfleece-jacket",
-            "skd-womens-microfleece-jacket",
-            "harps-club-crewneck",
-            "harps-club-tote",
-          ]
-            .map((id) => getProduct(id)!)
-            .map((p) => (
-              <ProductCard
-                key={p.id}
-                id={p.id}
-                photo={p.photo}
-                src={p.src}
-                label={p.label}
-                title={p.name}
-                meta={p.meta}
-                price={p.price}
-                cause={p.cause}
-              />
-            ))}
+          {parishMerch.map((p) => (
+            <ProductCard
+              key={p.id}
+              id={p.id}
+              photo={p.photo}
+              src={p.src}
+              label={p.label}
+              title={p.name}
+              meta={p.meta}
+              price={p.price}
+              cause={p.cause}
+            />
+          ))}
         </div>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {[
@@ -161,7 +166,7 @@ export default function ShopCategoryPage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-4">
-          {BUSINESSES.map((b, i) => (
+          {businesses.map((b, i) => (
             <BusinessCard
               key={b.id}
               photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}

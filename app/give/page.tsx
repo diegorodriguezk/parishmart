@@ -9,10 +9,101 @@ import {
 } from "@/components/Sections";
 import { CauseCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { fetchCauses } from "@/lib/api";
+import type { PhotoKind } from "@/components/Photo";
+import type { CauseKey } from "@/lib/catalog";
 
 export const metadata = { title: "Give with Love · SKD Parish Store" };
 
-export default function GiveHomePage() {
+type CauseCopy = {
+  photo: PhotoKind;
+  label: string;
+  description: string;
+  location: string;
+};
+
+const CAUSE_COPY: Record<CauseKey, CauseCopy> = {
+  "saint-vincent-de-paul": {
+    photo: "volunteers",
+    label: "Outreach",
+    description:
+      "Helping families in need through food, support and community care.",
+    location: "SKD · Weston, FL",
+  },
+  "marys-hope": {
+    photo: "community",
+    label: "Family Support",
+    description:
+      "A community network supporting mothers, families and the gift of life.",
+    location: "South Florida",
+  },
+  "christ-care-for-all": {
+    photo: "praying",
+    label: "Compassion",
+    description:
+      "Bringing Christ's compassion to those in need through care and accompaniment.",
+    location: "Catholic community",
+  },
+  "schoenstatt-miami": {
+    photo: "stained-glass",
+    label: "Spiritual Formation",
+    description:
+      "Light and path toward the Merciful Father. 15 years of mission in Miami.",
+    location: "Miami, FL",
+  },
+  "miami-presente": {
+    photo: "church",
+    label: "Local Mission",
+    description:
+      "Anchored in the Covenant — a Schoenstatt initiative serving Miami.",
+    location: "Miami, FL",
+  },
+  "mater-18": {
+    photo: "community",
+    label: "Youth",
+    description:
+      "Marian youth movement forming young hearts in faith and mission.",
+    location: "Miami, FL",
+  },
+  forta: {
+    photo: "retreat",
+    label: "Family Ministry",
+    description:
+      "Fortalecimiento Matrimonial — Schoenstatt's ministry for couples and marriages.",
+    location: "Schoenstatt",
+  },
+  face: {
+    photo: "business",
+    label: "Entrepreneurs",
+    description:
+      "Fellows Association of Catholic Entrepreneurs — UNIAPAC USA. Faith-driven business community.",
+    location: "USA",
+  },
+  "missionaries-of-hope": {
+    photo: "bible",
+    label: "Mission",
+    description:
+      "Bringing hope through mission, evangelization and accompaniment.",
+    location: "Catholic mission",
+  },
+  cam: {
+    photo: "congregation",
+    label: "Apostolate",
+    description:
+      "A Catholic apostolic movement serving parishes and the wider Church.",
+    location: "Miami, FL",
+  },
+  goyito: {
+    photo: "house",
+    label: "Memorial",
+    description:
+      "A cause carrying forward Goyito's memory through service and community.",
+    location: "Community-led",
+  },
+};
+
+export default async function GiveHomePage() {
+  const causes = await fetchCauses();
   return (
     <>
       <SubStoreHeader searchPlaceholder="Search causes, ministries, outreach, youth groups..." />
@@ -67,94 +158,20 @@ export default function GiveHomePage() {
           description="Simple, clean and emotional ministry cards with a single CTA."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <CauseCard
-            photo="volunteers"
-            cause="saint-vincent-de-paul"
-            label="Outreach"
-            title="St. Vincent de Paul"
-            description="Helping families in need through food, support and community care."
-            location="SKD · Weston, FL"
-          />
-          <CauseCard
-            photo="community"
-            cause="marys-hope"
-            label="Family Support"
-            title="Mary's Hope Network"
-            description="A community network supporting mothers, families and the gift of life."
-            location="South Florida"
-          />
-          <CauseCard
-            photo="praying"
-            cause="christ-care-for-all"
-            label="Compassion"
-            title="Christlike Care for All"
-            description="Bringing Christ's compassion to those in need through care and accompaniment."
-            location="Catholic community"
-          />
-          <CauseCard
-            photo="stained-glass"
-            cause="schoenstatt-miami"
-            label="Spiritual Formation"
-            title="Schoenstatt Miami"
-            description="Light and path toward the Merciful Father. 15 years of mission in Miami."
-            location="Miami, FL"
-          />
-          <CauseCard
-            photo="church"
-            cause="miami-presente"
-            label="Local Mission"
-            title="Miami Presente"
-            description="Anchored in the Covenant — a Schoenstatt initiative serving Miami."
-            location="Miami, FL"
-          />
-          <CauseCard
-            photo="community"
-            cause="mater-18"
-            label="Youth"
-            title="Mater 18"
-            description="Marian youth movement forming young hearts in faith and mission."
-            location="Miami, FL"
-          />
-          <CauseCard
-            photo="retreat"
-            cause="forta"
-            label="Family Ministry"
-            title="FORTA · Marriage Strengthening"
-            description="Fortalecimiento Matrimonial — Schoenstatt's ministry for couples and marriages."
-            location="Schoenstatt"
-          />
-          <CauseCard
-            photo="business"
-            cause="face"
-            label="Entrepreneurs"
-            title="FACE"
-            description="Fellows Association of Catholic Entrepreneurs — UNIAPAC USA. Faith-driven business community."
-            location="USA"
-          />
-          <CauseCard
-            photo="bible"
-            cause="missionaries-of-hope"
-            label="Mission"
-            title="Missionaries of Hope"
-            description="Bringing hope through mission, evangelization and accompaniment."
-            location="Catholic mission"
-          />
-          <CauseCard
-            photo="congregation"
-            cause="cam"
-            label="Apostolate"
-            title="CAM"
-            description="A Catholic apostolic movement serving parishes and the wider Church."
-            location="Miami, FL"
-          />
-          <CauseCard
-            photo="house"
-            cause="goyito"
-            label="Memorial"
-            title="Goyito Was Here"
-            description="A cause carrying forward Goyito's memory through service and community."
-            location="Community-led"
-          />
+          {causes.map((c) => {
+            const copy = CAUSE_COPY[c.key];
+            return (
+              <CauseCard
+                key={c.key}
+                photo={copy?.photo ?? "community"}
+                cause={c.key}
+                label={copy?.label ?? "Cause"}
+                title={c.name}
+                description={copy?.description}
+                location={copy?.location}
+              />
+            );
+          })}
           <CauseCard
             photo="church"
             label="More causes"

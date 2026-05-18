@@ -237,3 +237,145 @@ export const BUSINESSES: Business[] = [
 export function getBusiness(id: string): Business | undefined {
   return BUSINESSES.find((b) => b.id === id);
 }
+
+export type CauseKey =
+  | "christ-care-for-all"
+  | "face"
+  | "goyito"
+  | "cam"
+  | "forta"
+  | "marys-hope"
+  | "mater-18"
+  | "miami-presente"
+  | "missionaries-of-hope"
+  | "saint-vincent-de-paul"
+  | "schoenstatt-miami";
+
+export type Cause = {
+  key: CauseKey;
+  name: string;
+  logoSrc: string;
+  background: "white" | "dark";
+};
+
+export const CAUSES: Record<CauseKey, Cause> = {
+  "christ-care-for-all": {
+    key: "christ-care-for-all",
+    name: "Christlike Care for All",
+    logoSrc: "/brand/causes/christ-care-for-all.jpg",
+    background: "white",
+  },
+  face: {
+    key: "face",
+    name: "FACE",
+    logoSrc: "/brand/causes/face.jpeg",
+    background: "white",
+  },
+  goyito: {
+    key: "goyito",
+    name: "Goyito Was Here",
+    logoSrc: "/brand/causes/goyito.png",
+    background: "white",
+  },
+  cam: {
+    key: "cam",
+    name: "CAM",
+    logoSrc: "/brand/causes/cam.png",
+    background: "dark",
+  },
+  forta: {
+    key: "forta",
+    name: "FORTA · Fortalecimiento Matrimonial",
+    logoSrc: "/brand/causes/forta.png",
+    background: "white",
+  },
+  "marys-hope": {
+    key: "marys-hope",
+    name: "Mary's Hope Network",
+    logoSrc: "/brand/causes/marys-hope.png",
+    background: "white",
+  },
+  "mater-18": {
+    key: "mater-18",
+    name: "Mater 18",
+    logoSrc: "/brand/causes/mater-18.png",
+    background: "white",
+  },
+  "miami-presente": {
+    key: "miami-presente",
+    name: "Miami Presente",
+    logoSrc: "/brand/causes/miami-presente.png",
+    background: "white",
+  },
+  "missionaries-of-hope": {
+    key: "missionaries-of-hope",
+    name: "Missionaries of Hope",
+    logoSrc: "/brand/causes/missionaries-of-hope.png",
+    background: "dark",
+  },
+  "saint-vincent-de-paul": {
+    key: "saint-vincent-de-paul",
+    name: "St. Vincent de Paul",
+    logoSrc: "/brand/causes/saint-vincent-de-paul.jpg",
+    background: "white",
+  },
+  "schoenstatt-miami": {
+    key: "schoenstatt-miami",
+    name: "Schoenstatt Miami",
+    logoSrc: "/brand/causes/schoenstatt-miami.jpeg",
+    background: "white",
+  },
+};
+
+export function getCause(key: string): Cause | undefined {
+  return CAUSES[key as CauseKey];
+}
+
+export function listCauses(): Cause[] {
+  return Object.values(CAUSES);
+}
+
+export type Parish = {
+  slug: string;
+  name: string;
+  shortName: string;
+  initials: string;
+  location: string;
+  address: string;
+  pastor: string;
+  phone: string;
+  founded: string;
+  families: number;
+  logoSrc: string;
+  photoSrc: string;
+  bannerSrc: string;
+  mission: string;
+};
+
+export const PARISHES: Record<string, Parish> = {
+  skd: {
+    slug: "skd",
+    name: "Saint Katharine Drexel Catholic Parish",
+    shortName: "Saint Katharine Drexel",
+    initials: "SKD",
+    location: "Weston, FL",
+    address: "2501 South Post Road, Weston, FL 33327",
+    pastor: "Fr. Omar Ayubi V.F.",
+    phone: "(954) 389-5003",
+    founded: "2001-07-01",
+    families: 5294,
+    logoSrc: "/brand/skd/logo.png",
+    photoSrc: "/brand/skd/church.jpg",
+    bannerSrc: "/brand/skd/banner.png",
+    mission:
+      "To love God, to serve our neighbor, and to grow together as one family in Christ.",
+  },
+};
+
+export function getParish(slug: string): Parish | undefined {
+  return PARISHES[slug];
+}
+
+export function listParishes(): Parish[] {
+  return Object.values(PARISHES);
+}

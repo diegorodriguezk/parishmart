@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { SubStoreHeader } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
@@ -7,19 +8,32 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { TrustBadge, StarRating } from "@/components/TrustBadge";
 import { ImpactBreakdown } from "@/components/ImpactBreakdown";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
-import { getProduct } from "@/lib/catalog";
+import { fetchProduct, fetchProducts } from "@/lib/api";
 
-const PRODUCT = getProduct("skd-mens-microfleece-jacket")!;
+const PRODUCT_ID = "skd-mens-microfleece-jacket";
 const RELATED_IDS = [
   "skd-womens-microfleece-jacket",
   "harps-club-crewneck",
   "harps-club-cap",
 ];
 
-export const metadata = { title: `${PRODUCT.name} · SKD Parish Store` };
+export async function generateMetadata() {
+  const product = await fetchProduct(PRODUCT_ID);
+  return {
+    title: product ? `${product.name} · SKD Parish Store` : "Product",
+  };
+}
 
-export default function ProductDetailPage() {
-  const numericPrice = Number(PRODUCT.price.replace(/[^0-9.]/g, ""));
+export default async function ProductDetailPage() {
+  const [product, related] = await Promise.all([
+    fetchProduct(PRODUCT_ID),
+    fetchProducts({ ids: RELATED_IDS }),
+  ]);
+
+  if (!product) notFound();
+
+  const numericPrice = Number(product.price.replace(/[^0-9.]/g, ""));
+
   return (
     <>
       <SubStoreHeader />
@@ -30,7 +44,7 @@ export default function ProductDetailPage() {
             { label: "Home", href: "/" },
             { label: "Shop with Purpose", href: "/shop" },
             { label: "Parish Merch", href: "/shop/listing" },
-            { label: PRODUCT.name },
+            { label: product.name },
           ]}
         />
       </Section>
@@ -39,9 +53,9 @@ export default function ProductDetailPage() {
         <div className="grid gap-6 md:gap-8 lg:grid-cols-[1.05fr_.95fr]">
           <div className="space-y-3">
             <Photo
-              kind={PRODUCT.photo}
-              src={PRODUCT.src}
-              alt={PRODUCT.name}
+              kind={product.photo}
+              src={product.src}
+              alt={product.name}
               ratio="1/1"
               rounded="rounded-3xl"
               fit="contain"
@@ -49,22 +63,19 @@ export default function ProductDetailPage() {
               className="bg-white"
             />
             <div className="grid grid-cols-3 gap-2">
-              {RELATED_IDS.map((id) => {
-                const r = getProduct(id)!;
-                return (
-                  <Photo
-                    key={id}
-                    kind={r.photo}
-                    src={r.src}
-                    alt={r.name}
-                    ratio="1/1"
-                    rounded="rounded-xl"
-                    fit="contain"
-                    overlay="none"
-                    className="bg-white"
-                  />
-                );
-              })}
+              {related.map((r) => (
+                <Photo
+                  key={r.id}
+                  kind={r.photo}
+                  src={r.src}
+                  alt={r.name}
+                  ratio="1/1"
+                  rounded="rounded-xl"
+                  fit="contain"
+                  overlay="none"
+                  className="bg-white"
+                />
+              ))}
             </div>
             <div className="pm-card mt-4 p-5">
               <h3 className="text-base font-bold text-pm-navy">
@@ -72,18 +83,18 @@ export default function ProductDetailPage() {
               </h3>
               <p className="mt-1 text-xs text-pm-muted">
                 Everything in this product page is connected to{" "}
-                {PRODUCT.cause ?? "the SKD parish community"}.
+                {product.cause ?? "the SKD parish community"}.
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {[
                   {
                     l: "Product type",
                     t: "Parish merch",
-                    d: PRODUCT.meta,
+                    d: product.meta,
                   },
                   {
                     l: "Cause supported",
-                    t: PRODUCT.cause ?? "SKD Parish",
+                    t: product.cause ?? "SKD Parish",
                     d: "Supports ministries, formation and parish initiatives.",
                   },
                   {
@@ -93,7 +104,7 @@ export default function ProductDetailPage() {
                   },
                   {
                     l: "Seller",
-                    t: PRODUCT.seller,
+                    t: product.seller,
                     d: "Approved seller inside the ParishMart ecosystem.",
                   },
                 ].map((b) => (
@@ -116,19 +127,19 @@ export default function ProductDetailPage() {
             <div className="pm-card p-5 sm:p-6">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="pm-label">
-                  Supports {PRODUCT.cause ?? "SKD Parish"}
+                  Supports {product.cause ?? "SKD Parish"}
                 </span>
                 <TrustBadge variant="approved" label="Approved seller" />
               </div>
               <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-pm-navy md:text-4xl">
-                {PRODUCT.name}
+                {product.name}
               </h1>
               <div className="mt-2">
                 <StarRating value={4.8} count={42} />
               </div>
-              <p className="mt-2 text-sm text-pm-muted">{PRODUCT.meta}</p>
+              <p className="mt-2 text-sm text-pm-muted">{product.meta}</p>
               <p className="mt-4 text-3xl font-extrabold text-pm-navy">
-                {PRODUCT.price}
+                {product.price}
               </p>
 
               <div className="mt-4">
@@ -136,7 +147,7 @@ export default function ProductDetailPage() {
                   amount={numericPrice}
                   causePct={10}
                   platformPct={4}
-                  causeName={PRODUCT.cause ?? "SKD Parish"}
+                  causeName={product.cause ?? "SKD Parish"}
                 />
               </div>
 
@@ -173,12 +184,12 @@ export default function ProductDetailPage() {
               <div className="mt-5 grid gap-2 sm:grid-cols-2">
                 <AddToCartButton
                   item={{
-                    id: PRODUCT.id,
-                    name: PRODUCT.name,
+                    id: product.id,
+                    name: product.name,
                     meta: "Black · M",
                     price: numericPrice,
-                    cause: PRODUCT.cause,
-                    photo: PRODUCT.photo,
+                    cause: product.cause,
+                    photo: product.photo,
                   }}
                   fullWidth
                 />
@@ -196,11 +207,10 @@ export default function ProductDetailPage() {
                 Complete your SKD set
               </h3>
               <div className="mt-3 grid grid-cols-3 gap-3">
-                {RELATED_IDS.map((id) => {
-                  const r = getProduct(id)!;
+                {related.map((r) => {
                   const rPrice = Number(r.price.replace(/[^0-9.]/g, ""));
                   return (
-                    <div key={id} className="space-y-2">
+                    <div key={r.id} className="space-y-2">
                       <Photo
                         kind={r.photo}
                         src={r.src}

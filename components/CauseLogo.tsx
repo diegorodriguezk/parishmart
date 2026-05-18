@@ -1,79 +1,6 @@
-export type CauseKey =
-  | "christ-care-for-all"
-  | "face"
-  | "goyito"
-  | "cam"
-  | "forta"
-  | "marys-hope"
-  | "mater-18"
-  | "miami-presente"
-  | "missionaries-of-hope"
-  | "saint-vincent-de-paul"
-  | "schoenstatt-miami";
+import { CAUSES, type CauseKey } from "@/lib/catalog";
 
-type CauseInfo = {
-  name: string;
-  src: string;
-  background: "white" | "dark";
-};
-
-export const CAUSES: Record<CauseKey, CauseInfo> = {
-  "christ-care-for-all": {
-    name: "Christlike Care for All",
-    src: "/brand/causes/christ-care-for-all.jpg",
-    background: "white",
-  },
-  face: {
-    name: "FACE",
-    src: "/brand/causes/face.jpeg",
-    background: "white",
-  },
-  goyito: {
-    name: "Goyito Was Here",
-    src: "/brand/causes/goyito.png",
-    background: "white",
-  },
-  cam: {
-    name: "CAM",
-    src: "/brand/causes/cam.png",
-    background: "dark",
-  },
-  forta: {
-    name: "FORTA · Fortalecimiento Matrimonial",
-    src: "/brand/causes/forta.png",
-    background: "white",
-  },
-  "marys-hope": {
-    name: "Mary's Hope Network",
-    src: "/brand/causes/marys-hope.png",
-    background: "white",
-  },
-  "mater-18": {
-    name: "Mater 18",
-    src: "/brand/causes/mater-18.png",
-    background: "white",
-  },
-  "miami-presente": {
-    name: "Miami Presente",
-    src: "/brand/causes/miami-presente.png",
-    background: "white",
-  },
-  "missionaries-of-hope": {
-    name: "Missionaries of Hope",
-    src: "/brand/causes/missionaries-of-hope.png",
-    background: "dark",
-  },
-  "saint-vincent-de-paul": {
-    name: "St. Vincent de Paul",
-    src: "/brand/causes/saint-vincent-de-paul.jpg",
-    background: "white",
-  },
-  "schoenstatt-miami": {
-    name: "Schoenstatt Miami",
-    src: "/brand/causes/schoenstatt-miami.jpeg",
-    background: "white",
-  },
-};
+export type { CauseKey };
 
 export function CauseLogo({
   cause,
@@ -104,7 +31,7 @@ export function CauseLogo({
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={info.src}
+        src={info.logoSrc}
         alt={info.name}
         className="h-full w-full object-contain"
         loading="lazy"

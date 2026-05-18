@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { getProduct } from "@/lib/catalog";
+import { fetchProducts } from "@/lib/api";
 
 export const metadata = { title: "SKD Parish Store · Seller" };
 
@@ -14,9 +14,9 @@ const FEATURED_IDS = [
   "harps-club-tote",
   "harps-club-crewneck",
 ];
-const PRODUCTS = FEATURED_IDS.map((id) => getProduct(id)!);
 
-export default function SellerProfilePage() {
+export default async function SellerProfilePage() {
+  const PRODUCTS = await fetchProducts({ ids: FEATURED_IDS });
   return (
     <>
       <Header />
