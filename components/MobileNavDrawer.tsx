@@ -15,22 +15,27 @@ import {
   PlayCircle,
   Info,
   UserCircle2,
+  Handshake,
+  Mail,
 } from "lucide-react";
 import { LogoMark } from "./Logo";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const PRIMARY = [
   { href: "/", label: "Home", Icon: Home },
   { href: "/shop", label: "Shop", Icon: ShoppingBag },
   { href: "/give", label: "Give", Icon: HandHeart },
   { href: "/communities", label: "Communities", Icon: Users },
-  { href: "/local-businesses", label: "Supporters", Icon: Building2 },
+  { href: "/local-businesses", label: "Local Businesses", Icon: Building2 },
   { href: "/sponsors", label: "Sponsors", Icon: Megaphone },
 ];
 
 const SECONDARY = [
   { href: "/onboarding", label: "Join Us", Icon: UserPlus },
-  { href: "/how-it-works", label: "How it works", Icon: PlayCircle },
-  { href: "/about-us", label: "About us", Icon: Info },
+  { href: "/about-us", label: "About Us", Icon: Info },
+  { href: "/how-it-works", label: "How it Works", Icon: PlayCircle },
+  { href: "/partners", label: "Partners", Icon: Handshake },
+  { href: "/contact-us", label: "Contact Us", Icon: Mail },
   { href: "/sign-in", label: "My Account", Icon: UserCircle2 },
 ];
 
@@ -76,12 +81,9 @@ export function MobileNavDrawer() {
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2"
+                className="flex items-center"
               >
-                <LogoMark className="h-9 w-auto" />
-                <span className="text-lg font-extrabold tracking-tight text-pm-navy">
-                  ParishMart
-                </span>
+                <LogoMark className="h-8 w-auto" />
               </Link>
               <button
                 type="button"
@@ -125,15 +127,16 @@ export function MobileNavDrawer() {
               </ul>
             </nav>
 
-            <div className="flex items-center justify-center border-t border-pm-border bg-pm-soft/30 px-4 py-5">
+            <div className="flex items-center justify-between gap-3 border-t border-pm-border bg-pm-soft/30 px-4 py-4">
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
                 aria-label="ParishMart"
-                className="grid h-12 w-12 place-items-center rounded-2xl bg-white shadow-pm-soft ring-1 ring-pm-border"
+                className="flex items-center rounded-2xl bg-white px-3 py-2 shadow-pm-soft ring-1 ring-pm-border"
               >
-                <LogoMark className="h-9 w-auto" />
+                <LogoMark className="h-6 w-auto" />
               </Link>
+              <LanguageSwitcher compact />
             </div>
           </aside>
         </div>

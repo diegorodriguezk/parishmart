@@ -6,20 +6,20 @@ const COLS = [
     title: "Quick Links",
     links: [
       { label: "Marketplace", href: "/shop" },
-      { label: "E-Stores", href: "/communities" },
+      { label: "Communities", href: "/communities" },
+      { label: "Local Businesses", href: "/local-businesses" },
       { label: "Sell with Us", href: "/onboarding/seller" },
       { label: "Partner with us", href: "/onboarding/sponsor" },
-      { label: "About", href: "/" },
     ],
   },
   {
-    title: "Information",
+    title: "Company",
     links: [
-      { label: "FAQs", href: "/" },
-      { label: "Contact Us", href: "/" },
-      { label: "Privacy Policy", href: "/" },
-      { label: "Refund Policy", href: "/" },
-      { label: "Terms of Service", href: "/" },
+      { label: "About Us", href: "/about-us" },
+      { label: "How it Works", href: "/how-it-works" },
+      { label: "Partners", href: "/partners" },
+      { label: "Contact Us", href: "/contact-us" },
+      { label: "Join Us", href: "/onboarding" },
     ],
   },
   {
