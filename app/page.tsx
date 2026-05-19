@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { Search } from "lucide-react";
+import {
+  Search,
+  Building2,
+  HandHeart,
+  ShoppingBag,
+  Briefcase,
+  Megaphone,
+  Sparkles,
+} from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
@@ -130,50 +138,128 @@ export default async function HomePage() {
       <Section width="wide">
         <SectionHeader
           title="Join the ParishMart Ecosystem"
-          description="Three simple ways to participate: open a community store, sell with purpose, or sponsor meaningful local impact."
+          description="Three roles, one mission — pick the path that fits how you want to participate."
         />
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="space-y-4">
           {[
             {
-              tag: "P",
-              title: "For Parishes & Causes",
+              kicker: "Parishes & causes lead the mission",
+              title: "Build your community and make an impact.",
               description:
-                "Open a store, receive support and activate your community around products, campaigns and ministries.",
-              cta: "Open Your Store →",
-              href: "/onboarding/parish",
+                "Open a storefront for your parish, ministry or cause. Launch campaigns, sell products, promote events and engage supporters around your mission.",
+              options: [
+                {
+                  Icon: Building2,
+                  title: "Parish",
+                  description:
+                    "Launch your parish storefront and unite your community around giving, products and ministries.",
+                  cta: "Start Parish",
+                  href: "/onboarding/parish",
+                },
+                {
+                  Icon: HandHeart,
+                  title: "Cause / Ministry",
+                  description:
+                    "Activate your ministry, retreat or cause with campaigns, supporters and meaningful commerce.",
+                  cta: "Start Cause",
+                  href: "/onboarding/parish",
+                },
+              ],
             },
             {
-              tag: "S",
-              title: "For Sellers & Businesses",
+              kicker: "Businesses activate the economy",
+              title: "Grow your business with purpose.",
               description:
-                "Offer products or services while supporting a parish, ministry, retreat or cause your customers care about.",
-              cta: "Become a Seller →",
-              href: "/onboarding/seller",
+                "Offer products or services while supporting the communities your customers care about.",
+              options: [
+                {
+                  Icon: ShoppingBag,
+                  title: "Product Seller",
+                  description:
+                    "Sell products that support parishes, causes and communities.",
+                  cta: "Sell Products",
+                  href: "/onboarding/seller",
+                },
+                {
+                  Icon: Briefcase,
+                  title: "Service Business",
+                  description:
+                    "Offer services and connect with local faith-driven communities.",
+                  cta: "Offer Services",
+                  href: "/onboarding/local-business",
+                },
+              ],
             },
             {
-              tag: "S",
-              title: "For Sponsors",
+              kicker: "Sponsors fuel the movement",
+              title: "Sponsor with purpose.",
               description:
                 "Grow visibility in faith-driven communities while helping fund missions, youth programs and local causes.",
-              cta: "Become a Sponsor →",
-              href: "/onboarding/sponsor",
+              options: [
+                {
+                  Icon: Megaphone,
+                  title: "Brand Sponsor",
+                  description:
+                    "Sponsor parishes, retreats and missions while building your brand within faith-driven audiences.",
+                  cta: "Become a Sponsor",
+                  href: "/onboarding/sponsor",
+                },
+                {
+                  Icon: Sparkles,
+                  title: "Strategic Partner",
+                  description:
+                    "Bring ParishMart to a diocese, network or larger community of faith-driven organizations.",
+                  cta: "Talk to Partnerships",
+                  href: "/partners",
+                },
+              ],
             },
-          ].map((c) => (
-            <div key={c.title} className="pm-card relative overflow-hidden p-6">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan text-sm font-extrabold text-white">
-                {c.tag}
-              </span>
-              <h3 className="mt-4 text-lg font-extrabold text-pm-navy">
-                {c.title}
-              </h3>
-              <p className="mt-2 text-sm text-pm-muted">{c.description}</p>
-              <Link
-                href={c.href}
-                className="mt-4 inline-flex text-sm font-bold text-pm-blue"
-              >
-                {c.cta}
-              </Link>
-              <div className="pointer-events-none absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-gradient-to-br from-pm-cyan/30 to-transparent blur-2xl" />
+          ].map((step, idx) => (
+            <div
+              key={step.title}
+              className="pm-card relative overflow-hidden p-6 sm:p-8"
+            >
+              <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:items-center">
+                <div>
+                  <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-pm-blue">
+                    <span className="grid h-6 w-6 place-items-center rounded-full bg-pm-blue text-[11px] text-white">
+                      {idx + 1}
+                    </span>
+                    {step.kicker}
+                  </span>
+                  <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-pm-navy md:text-[26px]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 max-w-md text-sm text-pm-muted">
+                    {step.description}
+                  </p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {step.options.map((opt) => (
+                    <div
+                      key={opt.title}
+                      className="flex flex-col rounded-2xl border border-pm-border bg-white/80 p-5 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
+                    >
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-pm-soft text-pm-blue">
+                        <opt.Icon className="h-5 w-5" aria-hidden />
+                      </span>
+                      <h4 className="mt-3 text-base font-extrabold text-pm-navy">
+                        {opt.title}
+                      </h4>
+                      <p className="mt-1 text-xs text-pm-muted">
+                        {opt.description}
+                      </p>
+                      <Link
+                        href={opt.href}
+                        className="mt-3 inline-flex text-sm font-bold text-pm-blue"
+                      >
+                        {opt.cta} →
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="pointer-events-none absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-gradient-to-br from-pm-cyan/20 to-transparent blur-2xl" />
             </div>
           ))}
         </div>
