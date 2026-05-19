@@ -267,7 +267,7 @@ export default async function HomePage() {
 
       <Section width="wide">
         <SectionHeader
-          title="Featured Parish Stores"
+          title="Featured Stores"
           description="Explore parish, ministry and cause stores already connected to the ParishMart ecosystem."
           right={
             <>
@@ -275,7 +275,7 @@ export default async function HomePage() {
                 href="/communities"
                 className="font-bold text-pm-blue"
               >
-                View all stores
+                View all
               </Link>
               <Link
                 href="/onboarding/parish"
