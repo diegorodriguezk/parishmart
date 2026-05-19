@@ -21,6 +21,33 @@ export const metadata = { title: "Home | ParishMart" };
 
 const PARISHSOFT_GIVE_URL = "https://giving.parishsoft.com/app/giving/stk2501240";
 
+const FEATURED_STORES = [
+  {
+    photo: "church" as const,
+    src: "/brand/skd/church.jpg" as string | undefined,
+    label: "Featured Parish",
+    title: "St. Katharine Drexel",
+    text: "Products, donations, campaigns and community supporters for SKD parish.",
+    href: "/stores",
+  },
+  {
+    photo: "retreat" as const,
+    src: undefined as string | undefined,
+    label: "Retreat Community",
+    title: "Emmaus SKD Weston",
+    text: "Separate experiences for Emmaus Men and Emmaus Women retreat communities.",
+    href: "/give/cause",
+  },
+  {
+    photo: "stained-glass" as const,
+    src: undefined as string | undefined,
+    label: undefined as string | undefined,
+    title: "Schoenstatt, FACE & Casa Manresa",
+    text: "Faith-driven communities, retreats and entrepreneurs connected to impact.",
+    href: "/communities",
+  },
+];
+
 export default async function HomePage() {
   const [featured, businesses] = await Promise.all([
     fetchProducts({
@@ -259,91 +286,65 @@ export default async function HomePage() {
                   ))}
                 </div>
               </div>
+
+              {idx === 0 ? (
+                <div className="relative z-[1] mt-7 border-t border-pm-border/60 pt-6">
+                  <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+                    <div>
+                      <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-pm-muted">
+                        <span
+                          className="h-2 w-2 rounded-full bg-emerald-500"
+                          aria-hidden
+                        />
+                        Already on ParishMart
+                      </span>
+                      <h4 className="mt-1 text-lg font-extrabold text-pm-navy">
+                        Featured stores
+                      </h4>
+                      <p className="text-xs text-pm-muted">
+                        Parishes, ministries and causes already live in the
+                        marketplace.
+                      </p>
+                    </div>
+                    <Link
+                      href="/communities"
+                      className="text-sm font-bold text-pm-blue hover:underline"
+                    >
+                      View all →
+                    </Link>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    {FEATURED_STORES.map((s) => (
+                      <Link
+                        key={s.title}
+                        href={s.href}
+                        className="group flex flex-col overflow-hidden rounded-2xl border border-pm-border bg-white transition hover:-translate-y-0.5 hover:shadow-pm-soft"
+                      >
+                        <Photo
+                          kind={s.photo}
+                          src={s.src}
+                          ratio="16/9"
+                          rounded="rounded-none"
+                        />
+                        <div className="flex flex-1 flex-col gap-1 p-4">
+                          {s.label ? (
+                            <span className="pm-label">{s.label}</span>
+                          ) : null}
+                          <h5 className="text-sm font-extrabold text-pm-navy group-hover:text-pm-blue">
+                            {s.title}
+                          </h5>
+                          <p className="line-clamp-2 text-[11px] text-pm-muted">
+                            {s.text}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
               <div className="pointer-events-none absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-gradient-to-br from-pm-cyan/20 to-transparent blur-2xl" />
             </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section width="wide">
-        <SectionHeader
-          title="Featured Stores"
-          description="Explore parish, ministry and cause stores already connected to the ParishMart ecosystem."
-          right={
-            <>
-              <Link
-                href="/communities"
-                className="font-bold text-pm-blue"
-              >
-                View all
-              </Link>
-              <Link
-                href="/onboarding/parish"
-                className="text-pm-muted"
-              >
-                Open your parish store
-              </Link>
-            </>
-          }
-        />
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            {
-              photo: "church" as const,
-              src: "/brand/skd/church.jpg",
-              label: "Featured Parish",
-              title: "St. Katharine Drexel",
-              href: "/stores",
-              text: "Products, donations, campaigns and community supporters for SKD parish.",
-            },
-            {
-              photo: "retreat" as const,
-              src: undefined,
-              label: "Retreat Community",
-              title: "Emmaus SKD Weston",
-              href: "/give/cause",
-              text: "Separate experiences for Emmaus Men and Emmaus Women retreat communities.",
-            },
-            {
-              photo: "stained-glass" as const,
-              src: undefined,
-              label: undefined,
-              title: "Schoenstatt, FACE & Casa Manresa",
-              href: "/communities",
-              text: "Faith-driven communities, retreats and entrepreneurs connected to impact.",
-            },
-          ].map((s, i) => (
-            <article
-              key={i}
-              className="pm-card flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft"
-            >
-              <Link href={s.href} className="block">
-                <Photo
-                  kind={s.photo}
-                  src={s.src}
-                  ratio="16/9"
-                  rounded="rounded-none"
-                  className="!rounded-t-[24px] !rounded-b-none"
-                />
-              </Link>
-              <div className="flex flex-1 flex-col gap-2 p-5">
-                {s.label ? <span className="pm-label">{s.label}</span> : null}
-                <Link href={s.href}>
-                  <h3 className="text-lg font-extrabold text-pm-navy hover:text-pm-blue">
-                    {s.title}
-                  </h3>
-                </Link>
-                <p className="text-xs text-pm-muted">{s.text}</p>
-                <div className="mt-auto pt-3">
-                  <Link
-                    href={s.href}
-                    className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs"
-                  >
-                    View
-                  </Link>
-                </div>
-              </div>
-            </article>
           ))}
         </div>
       </Section>
