@@ -127,15 +127,7 @@ export function MobileNavDrawer() {
               </ul>
             </nav>
 
-            <div className="flex items-center justify-between gap-3 border-t border-pm-border bg-pm-soft/30 px-4 py-4">
-              <Link
-                href="/"
-                onClick={() => setOpen(false)}
-                aria-label="ParishMart"
-                className="flex items-center rounded-2xl bg-white px-3 py-2 shadow-pm-soft ring-1 ring-pm-border"
-              >
-                <LogoMark className="h-6 w-auto" />
-              </Link>
+            <div className="flex items-center justify-end border-t border-pm-border bg-pm-soft/30 px-4 py-4">
               <LanguageSwitcher compact />
             </div>
           </aside>
