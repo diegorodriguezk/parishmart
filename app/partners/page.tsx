@@ -26,7 +26,7 @@ export default function PartnersPage() {
           title="Become a ParishMart partner"
           description="Bring ParishMart to your parish, diocese or community network."
           cta="Contact us"
-          ctaHref="/support"
+          ctaHref="/contact-us"
         />
       </Section>
       <Footer />

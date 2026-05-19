@@ -66,7 +66,7 @@ const UTILITY_NAV = [
   { href: "/about-us", label: "About Us" },
   { href: "/how-it-works", label: "How it Works" },
   { href: "/partners", label: "Partners" },
-  { href: "/support", label: "Support" },
+  { href: "/contact-us", label: "Contact Us" },
 ];
 
 export function Header() {
@@ -96,7 +96,9 @@ export function Header() {
 
       {/* Main row */}
       <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-3 sm:px-6">
-        <MobileNavDrawer />
+        <div className="lg:hidden">
+          <MobileNavDrawer />
+        </div>
         <div className="shrink-0">
           <Logo />
         </div>
@@ -106,7 +108,7 @@ export function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="rounded-full px-4 py-1.5 text-sm font-semibold text-pm-muted hover:bg-pm-soft hover:text-pm-navy"
+              className="rounded-full px-3 py-1.5 text-sm font-semibold text-pm-muted hover:bg-pm-soft hover:text-pm-navy"
             >
               {l.label}
             </Link>

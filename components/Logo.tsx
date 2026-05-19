@@ -18,9 +18,9 @@ export function LogoMark({
   return (
     <Image
       src={src}
-      alt="ParishMart"
-      width={2545}
-      height={3872}
+      alt="ParishMart · Shop with Purpose. Give with Love."
+      width={4885}
+      height={917}
       priority={priority}
       className={className}
     />
@@ -31,28 +31,19 @@ export function Logo({
   href = "/",
   subtitle,
   variant = "color",
-  withText = true,
 }: {
   href?: string;
   subtitle?: string;
   variant?: "color" | "white";
   withText?: boolean;
 }) {
-  const textColor = variant === "white" ? "text-white" : "text-pm-navy";
   const subColor = variant === "white" ? "text-white/70" : "text-pm-muted";
   return (
-    <Link href={href} className="flex items-center gap-2.5" aria-label="ParishMart home">
-      <LogoMark variant={variant} className="h-10 w-auto" priority />
-      {withText ? (
-        <span className="flex flex-col leading-tight">
-          <span className={`text-lg font-extrabold tracking-tight ${textColor}`}>
-            ParishMart
-          </span>
-          {subtitle ? (
-            <span className={`text-[11px] font-medium ${subColor}`}>
-              {subtitle}
-            </span>
-          ) : null}
+    <Link href={href} className="flex items-center gap-3" aria-label="ParishMart home">
+      <LogoMark variant={variant} className="h-9 w-auto sm:h-10" priority />
+      {subtitle ? (
+        <span className={`hidden text-[11px] font-medium leading-tight sm:block ${subColor}`}>
+          {subtitle}
         </span>
       ) : null}
     </Link>

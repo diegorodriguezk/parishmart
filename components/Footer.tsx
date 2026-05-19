@@ -88,18 +88,10 @@ export function Footer() {
         <div className="space-y-4">
           <Link
             href="/"
-            className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-pm-soft"
+            className="inline-flex items-center rounded-2xl bg-white px-4 py-3 shadow-pm-soft"
             aria-label="ParishMart home"
           >
-            <LogoMark className="h-10 w-auto" />
-            <span className="flex flex-col leading-tight">
-              <span className="text-lg font-extrabold tracking-tight text-pm-navy">
-                ParishMart
-              </span>
-              <span className="text-[9px] font-bold tracking-wider text-pm-blue">
-                SHOP WITH PURPOSE · GIVE WITH LOVE
-              </span>
-            </span>
+            <LogoMark className="h-10 w-auto sm:h-12" />
           </Link>
           <p className="max-w-xs text-sm text-white/70">
             Unifying faith, commerce and compassion to build stronger
