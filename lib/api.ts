@@ -1,15 +1,30 @@
 import { headers } from "next/headers";
-import type {
-  Business,
-  Cause,
-  Parish,
-  Product,
-  ProductCategory,
+import {
+  BUSINESSES,
+  CAUSES,
+  PARISHES,
+  PRODUCTS,
+  getBusiness,
+  getCause,
+  getParish,
+  getProduct,
+  listCauses,
+  listParishes,
+  type Business,
+  type Cause,
+  type Parish,
+  type Product,
+  type ProductCategory,
 } from "./catalog";
 
-async function apiBase(): Promise<string> {
+function externalBase(): string | null {
   const override = process.env.NEXT_PUBLIC_API_BASE;
-  if (override) return override.replace(/\/$/, "");
+  return override ? override.replace(/\/$/, "") : null;
+}
+
+async function apiBase(): Promise<string> {
+  const ext = externalBase();
+  if (ext) return ext;
   try {
     const h = await headers();
     const host = h.get("host");
@@ -43,6 +58,27 @@ async function apiFetch<T>(
   return (await res.json()) as T;
 }
 
+function localProducts(opts?: {
+  ids?: string[];
+  category?: ProductCategory;
+  seller?: string;
+  cause?: string;
+  limit?: number;
+}): Product[] {
+  let items = PRODUCTS;
+  if (opts?.ids?.length) {
+    const byId = new Map(items.map((p) => [p.id, p]));
+    items = opts.ids
+      .map((id) => byId.get(id))
+      .filter((p): p is Product => Boolean(p));
+  }
+  if (opts?.category) items = items.filter((p) => p.category === opts.category);
+  if (opts?.seller) items = items.filter((p) => p.seller === opts.seller);
+  if (opts?.cause) items = items.filter((p) => p.cause === opts.cause);
+  if (opts?.limit !== undefined) items = items.slice(0, opts.limit);
+  return items;
+}
+
 export async function fetchProducts(opts?: {
   ids?: string[];
   category?: ProductCategory;
@@ -50,6 +86,7 @@ export async function fetchProducts(opts?: {
   cause?: string;
   limit?: number;
 }): Promise<Product[]> {
+  if (!externalBase()) return localProducts(opts);
   const qs = new URLSearchParams();
   if (opts?.ids?.length) qs.set("ids", opts.ids.join(","));
   if (opts?.category) qs.set("category", opts.category);
@@ -62,6 +99,7 @@ export async function fetchProducts(opts?: {
 }
 
 export async function fetchProduct(id: string): Promise<Product | null> {
+  if (!externalBase()) return getProduct(id) ?? null;
   const data = await apiFetch<{ product: Product } | null>(
     `/api/products/${encodeURIComponent(id)}`,
   );
@@ -69,11 +107,13 @@ export async function fetchProduct(id: string): Promise<Product | null> {
 }
 
 export async function fetchBusinesses(): Promise<Business[]> {
+  if (!externalBase()) return BUSINESSES;
   const data = await apiFetch<{ businesses: Business[] }>("/api/businesses");
   return data?.businesses ?? [];
 }
 
 export async function fetchBusiness(id: string): Promise<Business | null> {
+  if (!externalBase()) return getBusiness(id) ?? null;
   const data = await apiFetch<{ business: Business } | null>(
     `/api/businesses/${encodeURIComponent(id)}`,
   );
@@ -81,11 +121,13 @@ export async function fetchBusiness(id: string): Promise<Business | null> {
 }
 
 export async function fetchCauses(): Promise<Cause[]> {
+  if (!externalBase()) return listCauses();
   const data = await apiFetch<{ causes: Cause[] }>("/api/causes");
   return data?.causes ?? [];
 }
 
 export async function fetchCause(key: string): Promise<Cause | null> {
+  if (!externalBase()) return getCause(key) ?? null;
   const data = await apiFetch<{ cause: Cause } | null>(
     `/api/causes/${encodeURIComponent(key)}`,
   );
@@ -93,6 +135,7 @@ export async function fetchCause(key: string): Promise<Cause | null> {
 }
 
 export async function fetchParish(slug: string): Promise<Parish | null> {
+  if (!externalBase()) return getParish(slug) ?? null;
   const data = await apiFetch<{ parish: Parish } | null>(
     `/api/parishes/${encodeURIComponent(slug)}`,
   );
@@ -100,6 +143,12 @@ export async function fetchParish(slug: string): Promise<Parish | null> {
 }
 
 export async function fetchParishes(): Promise<Parish[]> {
+  if (!externalBase()) return listParishes();
   const data = await apiFetch<{ parishes: Parish[] }>("/api/parishes");
   return data?.parishes ?? [];
 }
+
+// Silence unused-import warnings — keeps CAUSES/PARISHES exports loadable
+// for callers that may reach for the raw map in the future.
+void CAUSES;
+void PARISHES;
