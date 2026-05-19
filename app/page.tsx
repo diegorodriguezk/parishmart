@@ -98,8 +98,8 @@ export default async function HomePage() {
                 through products, services and giving.
               </p>
               <div className="grid grid-cols-3 gap-2 pt-2">
-                <StatTile value="$2,430" hint="Impact this month" />
-                <StatTile value="48" hint="Recent orders" />
+                <StatTile value="$2,430" hint="Impact to date" />
+                <StatTile value="48" hint="Local businesses" />
                 <StatTile value="5" hint="Active causes" />
               </div>
               <div className="flex flex-wrap gap-2 pt-1">
