@@ -63,7 +63,7 @@ const PRIMARY_NAV = [
 ];
 
 const UTILITY_NAV = [
-  { href: "https://www.parishmart.com/about-us", label: "About Us", external: true },
+  { href: "/about-us", label: "About Us" },
   { href: "/how-it-works", label: "How it Works" },
   { href: "/partners", label: "Partners" },
   { href: "/support", label: "Support" },
@@ -76,23 +76,11 @@ export function Header() {
       <div className="hidden border-b border-pm-border/60 bg-white/60 md:block">
         <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4 px-4 py-1.5 text-[11px] font-medium text-pm-muted sm:px-6">
           <nav className="flex items-center gap-5">
-            {UTILITY_NAV.map((l) =>
-              l.external ? (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-pm-navy"
-                >
-                  {l.label}
-                </a>
-              ) : (
-                <Link key={l.href} href={l.href} className="hover:text-pm-navy">
-                  {l.label}
-                </Link>
-              ),
-            )}
+            {UTILITY_NAV.map((l) => (
+              <Link key={l.href} href={l.href} className="hover:text-pm-navy">
+                {l.label}
+              </Link>
+            ))}
           </nav>
           <div className="flex items-center gap-4">
             <LanguageSwitcher compact />

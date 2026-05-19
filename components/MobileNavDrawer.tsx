@@ -30,7 +30,7 @@ const PRIMARY = [
 const SECONDARY = [
   { href: "/onboarding", label: "Join Us", Icon: UserPlus },
   { href: "/how-it-works", label: "How it works", Icon: PlayCircle },
-  { href: "https://www.parishmart.com/about-us", label: "About us", Icon: Info, external: true },
+  { href: "/about-us", label: "About us", Icon: Info },
   { href: "/sign-in", label: "My Account", Icon: UserCircle2 },
 ];
 
@@ -110,33 +110,18 @@ export function MobileNavDrawer() {
               </ul>
               <div className="my-3 h-px bg-pm-border" />
               <ul className="space-y-1">
-                {SECONDARY.map((l) =>
-                  l.external ? (
-                    <li key={l.href}>
-                      <a
-                        href={l.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={() => setOpen(false)}
-                        className="flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-pm-ink hover:bg-pm-soft"
-                      >
-                        <l.Icon className="h-5 w-5 text-pm-muted" aria-hidden />
-                        {l.label}
-                      </a>
-                    </li>
-                  ) : (
-                    <li key={l.href}>
-                      <Link
-                        href={l.href}
-                        onClick={() => setOpen(false)}
-                        className="flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-pm-ink hover:bg-pm-soft"
-                      >
-                        <l.Icon className="h-5 w-5 text-pm-muted" aria-hidden />
-                        {l.label}
-                      </Link>
-                    </li>
-                  ),
-                )}
+                {SECONDARY.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-pm-ink hover:bg-pm-soft"
+                    >
+                      <l.Icon className="h-5 w-5 text-pm-muted" aria-hidden />
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
 
