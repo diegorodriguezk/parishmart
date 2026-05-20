@@ -14,6 +14,7 @@ import { SkdLogo } from "./SkdLogo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { PrimaryNav } from "./PrimaryNav";
 
 function SearchForm({
   placeholder = "Search products, causes, businesses, gifts and services…",
@@ -63,14 +64,6 @@ function HeaderActions() {
   );
 }
 
-const PRIMARY_NAV = [
-  { href: "/shop", label: "Shop" },
-  { href: "/give", label: "Give" },
-  { href: "/communities", label: "Communities" },
-  { href: "/local-businesses", label: "Local Businesses" },
-  { href: "/sponsors", label: "Sponsors" },
-];
-
 export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/90 backdrop-blur-xl">
@@ -80,17 +73,7 @@ export function Header() {
           <Logo />
         </div>
 
-        <nav className="ml-6 hidden flex-1 items-center gap-1 lg:flex">
-          {PRIMARY_NAV.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="rounded-full px-3 py-1.5 text-sm font-semibold text-pm-muted hover:bg-pm-soft hover:text-pm-navy"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
+        <PrimaryNav className="ml-6 hidden flex-1 justify-center lg:flex" />
 
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           <Link
