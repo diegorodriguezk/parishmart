@@ -14,7 +14,7 @@ import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, CauseCard, StatTile } from "@/components/Cards";
 import { LiveProofTicker, Testimonial } from "@/components/SocialProof";
-import { LocalBizCard, CommunityCard } from "@/components/home/LocalBizCard";
+import { LocalBizCard } from "@/components/home/LocalBizCard";
 import { fetchProducts, fetchBusinesses } from "@/lib/api";
 
 export const metadata = { title: "Home | ParishMart" };
@@ -352,70 +352,6 @@ export default async function HomePage() {
                     ))}
                   </div>
 
-                  <div className="mt-8 border-t border-pm-border/60 pt-6">
-                    <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
-                      <div>
-                        <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-pm-muted">
-                          <span
-                            className="h-2 w-2 rounded-full bg-emerald-500"
-                            aria-hidden
-                          />
-                          Active campaigns
-                        </span>
-                        <h4 className="mt-1 text-lg font-extrabold text-pm-navy">
-                          Give with Love
-                        </h4>
-                        <p className="text-xs text-pm-muted">
-                          Support campaigns from parishes, ministries, retreats
-                          and community causes.
-                        </p>
-                      </div>
-                      <Link
-                        href="/give"
-                        className="text-sm font-bold text-pm-blue hover:underline"
-                      >
-                        View all →
-                      </Link>
-                    </div>
-                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                      <CauseCard
-                        photo="volunteers"
-                        cause="saint-vincent-de-paul"
-                        label="Helping Hands"
-                        title="St. Vincent de Paul"
-                        description="Helping families in need in our community."
-                        location="SKD · Weston, FL"
-                        href={PARISHSOFT_GIVE_URL}
-                      />
-                      <CauseCard
-                        photo="community"
-                        cause="marys-hope"
-                        label="Family Support"
-                        title="Mary's Hope Network"
-                        description="Supporting mothers, families and the gift of life."
-                        location="South Florida"
-                        href={PARISHSOFT_GIVE_URL}
-                      />
-                      <CauseCard
-                        photo="praying"
-                        cause="christ-care-for-all"
-                        label="Compassion"
-                        title="Christlike Care for All"
-                        description="Bringing Christ's compassion to those in need."
-                        location="Catholic community"
-                        href={PARISHSOFT_GIVE_URL}
-                      />
-                      <CauseCard
-                        photo="stained-glass"
-                        cause="schoenstatt-miami"
-                        label="Mission"
-                        title="Schoenstatt Miami"
-                        description="Light and path toward the Merciful Father."
-                        location="Miami, FL"
-                        href={PARISHSOFT_GIVE_URL}
-                      />
-                    </div>
-                  </div>
                 </div>
               ) : null}
 
@@ -477,87 +413,45 @@ export default async function HomePage() {
                           className="h-2 w-2 rounded-full bg-emerald-500"
                           aria-hidden
                         />
-                        Shopping with purpose
+                        Activating the local economy
                       </span>
                       <h4 className="mt-1 text-lg font-extrabold text-pm-navy">
-                        Featured products
+                        Local businesses & sponsors
                       </h4>
                       <p className="text-xs text-pm-muted">
-                        Products from sellers and businesses already on the
-                        marketplace.
+                        Trusted local businesses already supporting parish
+                        communities.
                       </p>
                     </div>
                     <Link
-                      href="/shop"
+                      href="/local-businesses"
                       className="text-sm font-bold text-pm-blue hover:underline"
                     >
                       View all →
                     </Link>
                   </div>
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    {featured.map((p) => (
-                      <ProductCard
-                        key={p.id}
-                        id={p.id}
-                        photo={p.photo}
-                        src={p.src}
-                        label={p.label}
-                        title={p.name}
-                        meta={p.meta}
-                        price={p.price}
-                        cause={p.cause}
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    {businesses.map((b, i) => (
+                      <LocalBizCard
+                        key={b.id}
+                        href={b.href}
+                        photo={
+                          i === 0
+                            ? "community"
+                            : i === 1
+                              ? "business"
+                              : "merch"
+                        }
+                        initials={b.initials}
+                        logoSrc={b.logoSrc}
+                        category={b.category}
+                        title={b.name}
+                        description={b.description}
+                        tags={[]}
+                        subtext={b.location}
+                        cta="View more"
                       />
                     ))}
-                  </div>
-
-                  <div className="mt-8 border-t border-pm-border/60 pt-6">
-                    <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
-                      <div>
-                        <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-pm-muted">
-                          <span
-                            className="h-2 w-2 rounded-full bg-emerald-500"
-                            aria-hidden
-                          />
-                          Activating the local economy
-                        </span>
-                        <h4 className="mt-1 text-lg font-extrabold text-pm-navy">
-                          Local businesses & sponsors
-                        </h4>
-                        <p className="text-xs text-pm-muted">
-                          Trusted local businesses already supporting parish
-                          communities.
-                        </p>
-                      </div>
-                      <Link
-                        href="/local-businesses"
-                        className="text-sm font-bold text-pm-blue hover:underline"
-                      >
-                        View all →
-                      </Link>
-                    </div>
-                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                      {businesses.map((b, i) => (
-                        <LocalBizCard
-                          key={b.id}
-                          href={b.href}
-                          photo={
-                            i === 0
-                              ? "community"
-                              : i === 1
-                                ? "business"
-                                : "merch"
-                          }
-                          initials={b.initials}
-                          logoSrc={b.logoSrc}
-                          category={b.category}
-                          title={b.name}
-                          description={b.description}
-                          tags={[]}
-                          subtext={b.location}
-                          cta="View more"
-                        />
-                      ))}
-                    </div>
                   </div>
                 </div>
               ) : null}
@@ -627,64 +521,77 @@ export default async function HomePage() {
 
       <Section width="wide">
         <SectionHeader
-          title="Communities Already Participating"
-          description="Proof points from the current ParishMart ecosystem."
+          title="Shop with Purpose"
+          description="Products from sellers and businesses already on the marketplace."
           right={
-            <Link href="/communities" className="font-bold text-pm-blue">
-              View all communities →
+            <Link href="/shop" className="font-bold text-pm-blue">
+              View all →
             </Link>
           }
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <CommunityCard
-            href="/stores"
-            photo="church"
-            photoSrc="/brand/skd/church.jpg"
-            initials="SKD"
-            logoSrc="/brand/skd/logo.png"
-            category="Parish Store"
-            title="St. Katharine Drexel"
-            description="Our first parish community using ParishMart to connect products, giving and local impact."
-            location="Weston, FL"
-            tags={[]}
-            subtext="Active pilot"
-            cta="View more"
+          {featured.map((p) => (
+            <ProductCard
+              key={p.id}
+              id={p.id}
+              photo={p.photo}
+              src={p.src}
+              label={p.label}
+              title={p.name}
+              meta={p.meta}
+              price={p.price}
+              cause={p.cause}
+            />
+          ))}
+        </div>
+      </Section>
+
+      <Section width="wide">
+        <SectionHeader
+          title="Give with Love"
+          description="Support campaigns from parishes, ministries, retreats and community causes."
+          right={
+            <Link href="/give" className="font-bold text-pm-blue">
+              View all →
+            </Link>
+          }
+        />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <CauseCard
+            photo="volunteers"
+            cause="saint-vincent-de-paul"
+            label="Helping Hands"
+            title="St. Vincent de Paul"
+            description="Helping families in need in our community."
+            location="SKD · Weston, FL"
+            href={PARISHSOFT_GIVE_URL}
           />
-          <CommunityCard
-            href="/communities"
-            photo="retreat"
-            initials="EM"
-            category="Ministry"
-            title="Emmaus Community"
-            description="Retreat community creating opportunities for event products, ministry visibility and fundraising."
-            location="Weston, FL"
-            tags={[]}
-            subtext="Community partner"
-            cta="View more"
-          />
-          <CommunityCard
-            href="/communities"
-            photo="stained-glass"
-            initials="SCH"
-            category="Cause / Mission"
-            title="Schoenstatt Mission"
-            description="A faith-driven mission community connecting supporters with meaningful campaigns and events."
+          <CauseCard
+            photo="community"
+            cause="marys-hope"
+            label="Family Support"
+            title="Mary's Hope Network"
+            description="Supporting mothers, families and the gift of life."
             location="South Florida"
-            tags={[]}
-            subtext="Cause supporter"
-            cta="View more"
+            href={PARISHSOFT_GIVE_URL}
           />
-          <CommunityCard
-            href="/onboarding/sponsor"
-            photo="business"
-            initials="SP"
-            category="Sponsor"
-            title="Founding Sponsor"
-            description="Early sponsors can support parish events, ministries and causes while gaining trusted community visibility."
-            location="Florida"
-            tags={[]}
-            subtext="Early access"
-            cta="Become sponsor"
+          <CauseCard
+            photo="praying"
+            cause="christ-care-for-all"
+            label="Compassion"
+            title="Christlike Care for All"
+            description="Bringing Christ's compassion to those in need."
+            location="Catholic community"
+            href={PARISHSOFT_GIVE_URL}
+          />
+          <CauseCard
+            photo="stained-glass"
+            cause="schoenstatt-miami"
+            label="Mission"
+            title="Schoenstatt Miami"
+            description="Light and path toward the Merciful Father."
+            location="Miami, FL"
+            href={PARISHSOFT_GIVE_URL}
           />
         </div>
       </Section>
