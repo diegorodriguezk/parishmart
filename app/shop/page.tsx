@@ -11,6 +11,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section } from "@/components/Sections";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 
 export const metadata = { title: "Shop · ParishMart" };
 
@@ -421,12 +422,17 @@ export default function ShopPage() {
                       <span className="text-sm font-extrabold text-pm-navy">
                         {p.price}
                       </span>
-                      <button
-                        type="button"
-                        className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs"
-                      >
-                        Add to cart
-                      </button>
+                      <AddToCartButton
+                        item={{
+                          id: p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+                          name: p.title,
+                          meta: `By ${p.seller}`,
+                          price: Number(p.price.replace(/[^0-9.]/g, "")) || 0,
+                          photo: p.src,
+                        }}
+                        size="sm"
+                        label="Add to cart"
+                      />
                     </div>
                   </div>
                 </article>
