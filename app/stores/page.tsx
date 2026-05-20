@@ -28,10 +28,11 @@ export default async function ParishStoreSKDPage() {
   return (
     <>
       <ParishProfileHeader
-        parishName="SKD Parish Store"
-        parishInitials="SKD"
+        parishName="Saint Katharine Drexel"
+        storeLabel="Parish Store"
         location="Weston, Florida"
-        searchPlaceholder="Search store, products, services..."
+        searchPlaceholder="Search products, ministries, causes, local businesses..."
+        activeTab="shop"
       />
 
       <Section width="wide" className="!py-4">

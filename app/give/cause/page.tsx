@@ -32,10 +32,11 @@ export default async function CauseDetailPage() {
   return (
     <>
       <ParishProfileHeader
-        parishName="SKD Parish Store"
-        parishInitials="SKD"
+        parishName="Saint Katharine Drexel"
+        storeLabel="Parish Store"
         location="Weston, Florida"
         searchPlaceholder="Search Emmaus merch, giving, supporters..."
+        activeTab="give"
       />
 
       <Section width="wide" className="!py-4">

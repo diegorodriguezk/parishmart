@@ -1,5 +1,14 @@
 import Link from "next/link";
-import { Search, User } from "lucide-react";
+import {
+  Search,
+  User,
+  ShoppingBag,
+  Heart,
+  Users,
+  Store,
+  Award,
+  Info,
+} from "lucide-react";
 import { Logo, SubStoreBadge } from "./Logo";
 import { SkdLogo } from "./SkdLogo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
@@ -112,37 +121,55 @@ export function Header() {
   );
 }
 
-function ParishTabs() {
+type TabKey = "shop" | "give" | "ministries" | "local-biz" | "sponsors" | "about";
+
+const PARISH_TABS: { key: TabKey; href: string; label: string; Icon: typeof ShoppingBag }[] = [
+  { key: "shop", href: "/shop", label: "Shop", Icon: ShoppingBag },
+  { key: "give", href: "/give", label: "Give", Icon: Heart },
+  { key: "ministries", href: "/communities", label: "Ministries", Icon: Users },
+  { key: "local-biz", href: "/local-businesses", label: "Local Biz", Icon: Store },
+  { key: "sponsors", href: "/sponsors", label: "Sponsors", Icon: Award },
+  { key: "about", href: "/about-us", label: "About", Icon: Info },
+];
+
+function ParishTabs({ active = "shop" }: { active?: TabKey }) {
   return (
-    <nav className="mx-auto flex max-w-[1320px] items-center gap-6 overflow-x-auto px-4 pb-2 text-sm font-medium text-pm-muted sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      <Link href="/stores" className="whitespace-nowrap text-pm-navy">
-        Shop
-      </Link>
-      <Link href="/give" className="whitespace-nowrap hover:text-pm-navy">
-        Give
-      </Link>
-      <Link
-        href="/local-businesses"
-        className="whitespace-nowrap hover:text-pm-navy"
-      >
-        Supporters
-      </Link>
-      <Link href="/sponsors" className="whitespace-nowrap hover:text-pm-navy">
-        Sponsors
-      </Link>
+    <nav className="mx-auto flex max-w-[1320px] items-center justify-center gap-2 overflow-x-auto px-4 pb-3 pt-1 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {PARISH_TABS.map(({ key, href, label, Icon }) => {
+        const isActive = key === active;
+        return (
+          <Link
+            key={key}
+            href={href}
+            className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-1.5 text-sm font-bold transition ${
+              isActive
+                ? "border-pm-navy bg-pm-navy text-white"
+                : "border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
+            }`}
+            aria-current={isActive ? "page" : undefined}
+          >
+            <Icon className="h-4 w-4" aria-hidden />
+            {label}
+          </Link>
+        );
+      })}
     </nav>
   );
 }
 
 export function ParishProfileHeader({
   parishName = "Saint Katharine Drexel",
-  location = "Weston, FL",
-  searchPlaceholder = "Search store, products, services…",
+  storeLabel = "Parish Store",
+  location = "Weston, Florida",
+  searchPlaceholder = "Search products, ministries, causes, local businesses…",
+  activeTab = "shop",
 }: {
   parishName?: string;
   parishInitials?: string;
+  storeLabel?: string;
   location?: string;
   searchPlaceholder?: string;
+  activeTab?: TabKey;
 }) {
   return (
     <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/95 backdrop-blur-xl">
@@ -150,11 +177,14 @@ export function ParishProfileHeader({
         <MobileNavDrawer />
         <div className="flex shrink-0 items-center gap-3">
           <SkdLogo size="md" />
-          <div className="hidden flex-col leading-tight sm:flex">
-            <span className="text-sm font-extrabold tracking-tight text-pm-navy">
+          <div className="hidden flex-col leading-[1.1] sm:flex">
+            <span className="text-base font-extrabold tracking-tight text-pm-navy">
               {parishName}
             </span>
-            <span className="text-[11px] text-pm-muted">{location}</span>
+            <span className="text-base font-extrabold tracking-tight text-pm-navy">
+              {storeLabel}
+            </span>
+            <span className="mt-0.5 text-[11px] text-pm-muted">{location}</span>
           </div>
         </div>
         <div className="ml-3 hidden flex-1 md:flex">
@@ -167,7 +197,7 @@ export function ParishProfileHeader({
       <div className="px-4 pb-1 sm:px-6 md:hidden">
         <SearchForm placeholder={searchPlaceholder} />
       </div>
-      <ParishTabs />
+      <ParishTabs active={activeTab} />
     </header>
   );
 }
