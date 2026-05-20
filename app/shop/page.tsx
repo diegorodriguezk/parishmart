@@ -33,29 +33,6 @@ const STEPS = [
   },
 ];
 
-const COMMUNITIES = [
-  {
-    initials: "EM",
-    title: "Emmaus Ministry",
-    sub: "Linked to SKD · Cause",
-  },
-  {
-    initials: "OLG",
-    title: "Our Lady of Guadalupe",
-    sub: "Chula Vista, CA",
-  },
-  {
-    initials: "SV",
-    title: "St. Vincent de Paul",
-    sub: "National Cause",
-  },
-  {
-    initials: "HF",
-    title: "Holy Family Community",
-    sub: "Orlando, FL",
-  },
-];
-
 const INTENTIONS: {
   title: string;
   body: string;
@@ -341,68 +318,6 @@ export default function ShopPage() {
               </div>
             </div>
           ))}
-        </div>
-      </Section>
-
-      {/* SHOP BY COMMUNITY */}
-      <Section width="wide">
-        <div className="mb-5 flex items-end justify-between gap-3">
-          <div>
-            <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy md:text-3xl">
-              Shop by community
-            </h2>
-            <p className="mt-1 max-w-2xl text-sm text-pm-muted">
-              This area gives ParishMart emotional context before showing
-              products. It makes the platform feel community-first.
-            </p>
-          </div>
-          <Link
-            href="/communities"
-            className="shrink-0 text-sm font-bold text-pm-blue hover:underline"
-          >
-            View all communities →
-          </Link>
-        </div>
-        <div className="grid gap-3 lg:grid-cols-[1fr_1fr]">
-          <Link
-            href="/stores"
-            className="group relative isolate flex min-h-[260px] flex-col justify-end overflow-hidden rounded-3xl border border-pm-border p-5 text-white shadow-pm-card sm:p-6"
-          >
-            <Photo
-              kind="church"
-              src="/brand/skd/church.jpg"
-              ratio="auto"
-              rounded="rounded-none"
-              className="absolute inset-0 -z-10 !rounded-none"
-            />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
-            <h3 className="text-2xl font-extrabold leading-tight">
-              Saint Katharine Drexel
-            </h3>
-            <p className="mt-1 max-w-sm text-xs text-white/85">
-              Weston, FL · Parish Store · Religious gifts, merch, donations and
-              Local Biz supporters.
-            </p>
-          </Link>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {COMMUNITIES.map((c) => (
-              <Link
-                key={c.initials}
-                href="/communities"
-                className="pm-card group flex items-center gap-3 p-4 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
-              >
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-pm-blue to-pm-cyan text-xs font-extrabold text-white">
-                  {c.initials}
-                </span>
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-extrabold text-pm-navy group-hover:text-pm-blue">
-                    {c.title}
-                  </p>
-                  <p className="truncate text-xs text-pm-muted">{c.sub}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
         </div>
       </Section>
 
