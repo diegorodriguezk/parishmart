@@ -283,22 +283,6 @@ export default function ShopPage() {
                 Search
               </button>
             </form>
-            <div className="flex flex-wrap gap-2 text-[11px]">
-              {[
-                ["Near", "Weston, FL"],
-                ["My Parish", "SKD"],
-                ["Popular", "Local Biz"],
-                ["Cause", "Emmaus"],
-              ].map(([k, v]) => (
-                <span
-                  key={k}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-pm-border bg-white px-3 py-1"
-                >
-                  <span className="font-bold text-pm-navy">{k}:</span>
-                  <span className="text-pm-muted">{v}</span>
-                </span>
-              ))}
-            </div>
           </div>
 
           {/* Right card with photo */}
