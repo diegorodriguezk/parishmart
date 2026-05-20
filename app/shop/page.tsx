@@ -331,12 +331,13 @@ export default function ShopPage() {
                 ratio="auto"
                 rounded="rounded-none"
                 className="absolute inset-0 -z-10 !rounded-none"
+                overlay="none"
               />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/35 to-black/10" />
-              <h3 className="text-lg font-extrabold leading-tight">
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/65 to-black/30" />
+              <h3 className="text-lg font-extrabold leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]">
                 {i.title}
               </h3>
-              <p className="text-[11px] text-white/85">{i.body}</p>
+              <p className="text-[11px] text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">{i.body}</p>
             </Link>
           ))}
         </div>
