@@ -80,7 +80,7 @@ export default async function ParishStoreSKDPage() {
               ))}
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/shop" className="pm-btn pm-btn-primary">Shop with Purpose</Link>
+              <Link href="/stores/shop" className="pm-btn pm-btn-primary">Shop with Purpose</Link>
               <Link href="/give" className="pm-btn pm-btn-secondary">Give with Love</Link>
             </div>
           </div>
