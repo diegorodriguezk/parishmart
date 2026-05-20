@@ -11,14 +11,10 @@ export default function StoresGivePage() {
         parishName="Saint Katharine Drexel"
         storeLabel="Parish Store"
         location="Weston, Florida"
-        searchPlaceholder="Search ministries, causes and ways to give at SKD…"
+        searchPlaceholder="Search SKD ministries, causes and ways to give…"
         activeTab="give"
       />
       <GiveContent
-        breadcrumbs={[
-          { label: "SKD Store", href: "/stores" },
-          { label: "Give with Love" },
-        ]}
         heroKicker="SKD Parish Store · Give with Love"
         heroTitle={
           <>
@@ -27,9 +23,11 @@ export default function StoresGivePage() {
             <span className="pm-gradient-text">love.</span>
           </>
         }
-        heroDescription="Choose a ministry, mission or outreach program at Saint Katharine Drexel and support it directly. 100% of your gift goes where you direct it."
+        heroDescription="Choose a ministry, mission or outreach at Saint Katharine Drexel and support it directly. 100% of your gift goes where you direct it."
+        searchPlaceholder="Search SKD ministries, causes, missions and outreach"
         causeHref="/give/cause"
-        darkPanelCtaHref="/stores/shop"
+        ministriesHref="/stores"
+        parish="skd"
       />
       <Footer />
     </>
