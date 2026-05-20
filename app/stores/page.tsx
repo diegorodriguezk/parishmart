@@ -46,7 +46,8 @@ export default async function ParishStoreSKDPage() {
             alt="Saint Katharine Drexel Catholic Parish, Weston FL"
             ratio="auto"
             rounded="rounded-b-3xl"
-            className="h-[360px]"
+            className="h-full w-full object-cover"
+            objectPosition="center"
           />
           <div className="space-y-4 p-7">
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-4xl">

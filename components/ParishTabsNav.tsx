@@ -30,7 +30,7 @@ export function ParishTabsNav({ active: initialActive = "shop" }: { active?: Tab
           if (tab) setActive(tab.key);
         }
       },
-      { rootMargin: "-120px 0px -55% 0px", threshold: [0, 0.3, 0.6, 1] },
+      { rootMargin: "-140px 0px -50% 0px", threshold: [0, 0.3, 0.6, 1] },
     );
 
     sections.forEach((s) => observer.observe(s));
@@ -42,7 +42,9 @@ export function ParishTabsNav({ active: initialActive = "shop" }: { active?: Tab
     if (!target) return;
     e.preventDefault();
     setActive(key);
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 120;
+    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+    window.scrollTo({ top, behavior: "smooth" });
   }
 
   return (

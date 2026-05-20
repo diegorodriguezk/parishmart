@@ -78,6 +78,7 @@ export function Photo({
   alt,
   overlay = "subtle",
   fit = "cover",
+  objectPosition = "center",
 }: {
   kind: PhotoKind | LegacyKind;
   ratio?: string;
@@ -88,6 +89,7 @@ export function Photo({
   alt?: string;
   overlay?: "none" | "subtle" | "strong";
   fit?: "cover" | "contain";
+  objectPosition?: string;
 }) {
   const resolved: PhotoKind =
     (LEGACY as Record<string, PhotoKind>)[kind] ?? (kind as PhotoKind);
@@ -110,6 +112,7 @@ export function Photo({
           src={finalSrc}
           alt={alt ?? resolved}
           className={`h-full w-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+          style={objectPosition !== "center" ? { objectPosition } : undefined}
           loading="lazy"
         />
         {overlay !== "none" ? (
