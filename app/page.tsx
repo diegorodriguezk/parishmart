@@ -11,7 +11,7 @@ import {
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
-import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
+import { Section, SectionHeader } from "@/components/Sections";
 import { ProductCard, CauseCard, StatTile } from "@/components/Cards";
 import { LiveProofTicker, Testimonial } from "@/components/SocialProof";
 import { LocalBizCard } from "@/components/home/LocalBizCard";
@@ -618,15 +618,6 @@ export default async function HomePage() {
             role="Pastor · St. Katharine Drexel"
           />
         </div>
-      </Section>
-
-      <Section width="wide">
-        <DarkPanel
-          title="Ready to make an impact?"
-          description="Sells your products, offer your services or become a sponsor."
-          cta="Join Us"
-          ctaHref="/onboarding"
-        />
       </Section>
 
       <Footer />
