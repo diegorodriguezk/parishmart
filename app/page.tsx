@@ -343,44 +343,52 @@ export default async function HomePage() {
                 </div>
               ) : null}
 
+              {idx === 1 ? (
+                <div className="relative z-[1] mt-7 border-t border-pm-border/60 pt-6">
+                  <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+                    <div>
+                      <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-pm-muted">
+                        <span
+                          className="h-2 w-2 rounded-full bg-emerald-500"
+                          aria-hidden
+                        />
+                        Shopping with purpose
+                      </span>
+                      <h4 className="mt-1 text-lg font-extrabold text-pm-navy">
+                        Featured products
+                      </h4>
+                      <p className="text-xs text-pm-muted">
+                        Products from sellers and businesses already on the
+                        marketplace.
+                      </p>
+                    </div>
+                    <Link
+                      href="/shop"
+                      className="text-sm font-bold text-pm-blue hover:underline"
+                    >
+                      View all →
+                    </Link>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    {featured.map((p) => (
+                      <ProductCard
+                        key={p.id}
+                        id={p.id}
+                        photo={p.photo}
+                        src={p.src}
+                        label={p.label}
+                        title={p.name}
+                        meta={p.meta}
+                        price={p.price}
+                        cause={p.cause}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
               <div className="pointer-events-none absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-gradient-to-br from-pm-cyan/20 to-transparent blur-2xl" />
             </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section width="wide">
-        <SectionHeader
-          title="Shop with Purpose"
-          description="Buy products and services while supporting a parish, ministry, cause or mission."
-          right={
-            <>
-              <span className="pm-chip" data-active="true">
-                Products
-              </span>
-              <span className="pm-chip">Services</span>
-              <Link
-                href="/onboarding/seller"
-                className="font-bold text-pm-blue"
-              >
-                Sell products or services →
-              </Link>
-            </>
-          }
-        />
-        <div className="grid gap-4 md:grid-cols-4">
-          {featured.map((p) => (
-            <ProductCard
-              key={p.id}
-              id={p.id}
-              photo={p.photo}
-              src={p.src}
-              label={p.label}
-              title={p.name}
-              meta={p.meta}
-              price={p.price}
-              cause={p.cause}
-            />
           ))}
         </div>
       </Section>
