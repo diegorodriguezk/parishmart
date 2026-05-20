@@ -148,7 +148,7 @@ export default async function ParishStoreSKDPage() {
         </div>
       </Section>
 
-      <Section id="shop" width="wide">
+      <Section width="wide">
         <SectionHeader
           title="Choose how to support SKD"
           description="Three simple paths: buy something meaningful, give directly to a ministry, or discover community supporters."
@@ -171,7 +171,7 @@ export default async function ParishStoreSKDPage() {
         </div>
       </Section>
 
-      <Section width="wide">
+      <Section id="shop" width="wide">
         <SectionHeader
           title="Shop with Purpose"
           description="Featured products and services connected to SKD, ministries and community impact."
