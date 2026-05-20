@@ -281,19 +281,6 @@ export default function ShopPage() {
               <p className="max-w-md text-sm text-white/85">
                 Make community support visible before checkout.
               </p>
-              <div className="mt-2 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                  <p className="text-sm font-bold">
-                    Buy from community supporters
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                  <p className="text-sm font-bold">Faith & Gifts</p>
-                  <p className="text-xs text-white/85">
-                    Curated products with purpose.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
