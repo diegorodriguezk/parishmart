@@ -1,20 +1,10 @@
 import Link from "next/link";
-import {
-  Search,
-  User,
-  ShoppingBag,
-  Heart,
-  Users,
-  Store,
-  Award,
-  Info,
-} from "lucide-react";
+import { Search, User } from "lucide-react";
 import { Logo, SubStoreBadge } from "./Logo";
 import { SkdLogo } from "./SkdLogo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { PrimaryNav } from "./PrimaryNav";
 
 function SearchForm({
   placeholder = "Search products, causes, businesses, gifts and services…",
@@ -64,6 +54,14 @@ function HeaderActions() {
   );
 }
 
+const PRIMARY_NAV = [
+  { href: "/shop", label: "Shop" },
+  { href: "/give", label: "Give" },
+  { href: "/communities", label: "Communities" },
+  { href: "/local-businesses", label: "Local Businesses" },
+  { href: "/sponsors", label: "Sponsors" },
+];
+
 export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/90 backdrop-blur-xl">
@@ -73,7 +71,17 @@ export function Header() {
           <Logo />
         </div>
 
-        <PrimaryNav className="ml-6 hidden flex-1 justify-center lg:flex" />
+        <nav className="ml-6 hidden flex-1 items-center gap-1 lg:flex">
+          {PRIMARY_NAV.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="rounded-full px-3 py-1.5 text-sm font-semibold text-pm-muted hover:bg-pm-soft hover:text-pm-navy"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
 
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           <Link
@@ -106,32 +114,31 @@ export function Header() {
 
 type TabKey = "shop" | "give" | "ministries" | "local-biz" | "sponsors" | "about";
 
-const PARISH_TABS: { key: TabKey; href: string; label: string; Icon: typeof ShoppingBag }[] = [
-  { key: "shop", href: "/shop", label: "Shop", Icon: ShoppingBag },
-  { key: "give", href: "/give", label: "Give", Icon: Heart },
-  { key: "ministries", href: "/communities", label: "Ministries", Icon: Users },
-  { key: "local-biz", href: "/local-businesses", label: "Local Biz", Icon: Store },
-  { key: "sponsors", href: "/sponsors", label: "Sponsors", Icon: Award },
-  { key: "about", href: "/about-us", label: "About", Icon: Info },
+const PARISH_TABS: { key: TabKey; href: string; label: string }[] = [
+  { key: "shop", href: "/shop", label: "Shop" },
+  { key: "give", href: "/give", label: "Give" },
+  { key: "ministries", href: "/communities", label: "Communities" },
+  { key: "local-biz", href: "/local-businesses", label: "Local Businesses" },
+  { key: "sponsors", href: "/sponsors", label: "Sponsors" },
+  { key: "about", href: "/about-us", label: "About" },
 ];
 
 function ParishTabs({ active = "shop" }: { active?: TabKey }) {
   return (
-    <nav className="mx-auto flex max-w-[1320px] items-center justify-center gap-2 overflow-x-auto px-4 pb-3 pt-1 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      {PARISH_TABS.map(({ key, href, label, Icon }) => {
+    <nav className="mx-auto flex max-w-[1320px] items-center justify-center gap-6 overflow-x-auto px-4 pb-3 pt-1 sm:gap-10 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {PARISH_TABS.map(({ key, href, label }) => {
         const isActive = key === active;
         return (
           <Link
             key={key}
             href={href}
-            className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-1.5 text-sm font-bold transition ${
-              isActive
-                ? "border-pm-navy bg-pm-navy text-white"
-                : "border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
-            }`}
             aria-current={isActive ? "page" : undefined}
+            className={`shrink-0 whitespace-nowrap text-base font-bold transition ${
+              isActive
+                ? "text-pm-blue"
+                : "text-pm-navy hover:text-pm-blue"
+            }`}
           >
-            <Icon className="h-4 w-4" aria-hidden />
             {label}
           </Link>
         );
