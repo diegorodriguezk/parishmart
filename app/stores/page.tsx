@@ -150,19 +150,20 @@ export default async function ParishStoreSKDPage() {
       <Section id="shop" width="wide">
         <SectionHeader
           title="Choose how to support SKD"
-          description="The store starts with two simple paths: buy something meaningful or give directly to a ministry."
+          description="Three simple paths: buy something meaningful, give directly to a ministry, or discover community supporters."
         />
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-3">
           {[
-            { p: "rosary", h: "Products & services that support SKD.", d: "Faith merchandise, retreat products, religious gifts and local services connected to parish impact.", cta: "Shop with Purpose", href: "/shop" },
-            { p: "praying", h: "Support ministries, missions and causes.", d: "Give directly to Youth Ministry, Emmaus, St Vincent de Paul or other parish ministries.", cta: "Give with Love", href: "/give" },
+            { p: "rosary" as const, kicker: "Shop", h: "Religious Gifts", d: "Faith-centered products that support the parish.", href: "/shop" },
+            { p: "praying" as const, kicker: "Give", h: "Parish Causes", d: "Support ministries, missions and urgent needs.", href: "/give" },
+            { p: "business" as const, kicker: "Local Biz", h: "Community Supporters", d: "Discover businesses connected to SKD.", href: "/local-businesses" },
           ].map((c) => (
-            <Link key={c.h} href={c.href} className="pm-card relative overflow-hidden p-0 transition hover:-translate-y-0.5">
-              <Photo kind={c.p as "rosary" | "praying"} ratio="16/9" rounded="rounded-none" className="!rounded-t-[24px] !rounded-b-none" />
-              <div className="space-y-3 p-6">
-                <h3 className="text-xl font-extrabold text-pm-navy">{c.h}</h3>
+            <Link key={c.h} href={c.href} className="pm-card group relative overflow-hidden p-0 transition hover:-translate-y-0.5">
+              <Photo kind={c.p} ratio="16/9" rounded="rounded-none" className="!rounded-t-[24px] !rounded-b-none" />
+              <div className="space-y-2 p-6">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">{c.kicker}</p>
+                <h3 className="text-xl font-extrabold text-pm-navy group-hover:text-pm-blue">{c.h}</h3>
                 <p className="text-sm text-pm-muted">{c.d}</p>
-                <span className="pm-btn pm-btn-primary !px-4 !py-2 text-sm">{c.cta}</span>
               </div>
             </Link>
           ))}
