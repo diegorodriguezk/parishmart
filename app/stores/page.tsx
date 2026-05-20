@@ -81,7 +81,7 @@ export default async function ParishStoreSKDPage() {
             </div>
             <div className="flex flex-wrap gap-3">
               <Link href="/stores/shop" className="pm-btn pm-btn-primary">Shop with Purpose</Link>
-              <Link href="/give" className="pm-btn pm-btn-secondary">Give with Love</Link>
+              <Link href="/stores/give" className="pm-btn pm-btn-secondary">Give with Love</Link>
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default async function ParishStoreSKDPage() {
         <div className="grid gap-4 md:grid-cols-3">
           {[
             { p: "rosary" as const, kicker: "Shop", h: "Religious Gifts", d: "Faith-centered products that support the parish.", href: "/shop" },
-            { p: "praying" as const, kicker: "Give", h: "Parish Causes", d: "Support ministries, missions and urgent needs.", href: "/give" },
+            { p: "praying" as const, kicker: "Give", h: "Parish Causes", d: "Support ministries, missions and urgent needs.", href: "/stores/give" },
             { p: "business" as const, kicker: "Local Biz", h: "Community Supporters", d: "Discover businesses connected to SKD.", href: "/local-businesses" },
           ].map((c) => (
             <Link key={c.h} href={c.href} className="pm-card group relative overflow-hidden p-0 transition hover:-translate-y-0.5">
@@ -205,7 +205,7 @@ export default async function ParishStoreSKDPage() {
           description="Active giving campaigns inside the SKD parish ecosystem."
           right={
             <>
-              <Link href="/give" className="font-bold text-pm-blue">View all causes</Link>
+              <Link href="/stores/give" className="font-bold text-pm-blue">View all causes</Link>
               <Link href="/onboarding/parish" className="text-pm-muted">Launch campaign</Link>
             </>
           }
@@ -233,7 +233,7 @@ export default async function ParishStoreSKDPage() {
         <SectionHeader
           title="Ministries & Causes"
           description="Each ministry can have its own page, giving campaigns, sponsors and impact."
-          right={<Link href="/give" className="font-bold text-pm-blue">View ministry list · Open a ministry page</Link>}
+          right={<Link href="/stores/give" className="font-bold text-pm-blue">View ministry list · Open a ministry page</Link>}
         />
         <div className="grid gap-4 md:grid-cols-2">
           {[

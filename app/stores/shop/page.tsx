@@ -25,6 +25,7 @@ export default function StoresShopPage() {
         }
         heroDescription="Find religious gifts, parish merch, sponsors and Local Biz supporters connected to Saint Katharine Drexel. Every purchase contributes to ministries and community causes."
         searchPlaceholder="Search SKD products, ministries, causes, local businesses..."
+        parish="skd"
       />
       <Footer />
     </>

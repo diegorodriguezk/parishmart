@@ -156,6 +156,7 @@ export function ShopContent({
   searchPlaceholder = "Search product, business, parish, cause, city or ZIP",
   listingHref = "/shop/listing",
   productHref = "/shop/product",
+  parish,
 }: {
   heroKicker?: string;
   heroTitle?: React.ReactNode;
@@ -163,6 +164,7 @@ export function ShopContent({
   searchPlaceholder?: string;
   listingHref?: string;
   productHref?: string;
+  parish?: string;
 }) {
   return (
     <>
@@ -369,6 +371,7 @@ export function ShopContent({
                           meta: `By ${p.seller}`,
                           price: Number(p.price.replace(/[^0-9.]/g, "")) || 0,
                           photo: p.src,
+                          parish,
                         }}
                         size="sm"
                         label="Add to cart"

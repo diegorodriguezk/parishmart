@@ -16,12 +16,14 @@ export type CartItem = {
   price: number;
   qty: number;
   cause?: string;
+  parish?: string;
   photo?: string;
 };
 
 export type DonationItem = {
   cause: string;
   amount: number;
+  parish?: string;
 };
 
 type CartState = {
