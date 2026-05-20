@@ -33,13 +33,6 @@ const STEPS = [
   },
 ];
 
-const FILTERS = [
-  { label: "Parish / Community", value: "All Parishes & Causes" },
-  { label: "City", value: "All Cities" },
-  { label: "Seller Type", value: "Local Biz + ParishMart" },
-  { label: "Category", value: "All Categories" },
-];
-
 const COMMUNITIES = [
   {
     initials: "EM",
@@ -364,36 +357,6 @@ export default function ShopPage() {
               </div>
             </div>
           ))}
-        </div>
-      </Section>
-
-      {/* FILTER BAR */}
-      <Section width="wide" className="!py-3">
-        <div className="pm-card flex flex-wrap items-center gap-3 p-4">
-          {FILTERS.map((f) => (
-            <button
-              key={f.label}
-              type="button"
-              className="flex flex-1 min-w-[180px] items-center justify-between gap-3 rounded-2xl border border-pm-border bg-white px-3 py-2 text-left transition hover:border-pm-blue"
-            >
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
-                  {f.label}
-                </p>
-                <p className="text-sm font-medium text-pm-navy">{f.value}</p>
-              </div>
-              <ChevronDown
-                className="h-4 w-4 shrink-0 text-pm-muted"
-                aria-hidden
-              />
-            </button>
-          ))}
-          <button
-            type="button"
-            className="text-sm font-bold text-pm-blue hover:underline"
-          >
-            Clear all
-          </button>
         </div>
       </Section>
 
