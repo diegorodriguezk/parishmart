@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Menu,
   X,
@@ -41,6 +41,8 @@ const SECONDARY = [
 
 export function MobileNavDrawer() {
   const [open, setOpen] = useState(false);
+  const asideRef = useRef<HTMLElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -49,6 +51,23 @@ export function MobileNavDrawer() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (asideRef.current?.contains(target)) return;
+      if (buttonRef.current?.contains(target)) return;
+      setOpen(false);
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("touchstart", onPointerDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("touchstart", onPointerDown);
+    };
+  }, [open]);
 
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
@@ -61,6 +80,7 @@ export function MobileNavDrawer() {
   return (
     <>
       <button
+        ref={buttonRef}
         type="button"
         onClick={() => setOpen(true)}
         className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
@@ -85,6 +105,7 @@ export function MobileNavDrawer() {
             className="absolute inset-0 cursor-pointer bg-black/40 backdrop-blur-sm"
           />
           <aside
+            ref={asideRef}
             onClick={(e) => e.stopPropagation()}
             className="absolute left-0 top-0 flex h-dvh w-[86%] max-w-[340px] flex-col bg-white shadow-2xl">
             <header className="flex items-center justify-between border-b border-pm-border px-5 py-4">
