@@ -70,13 +70,23 @@ export function MobileNavDrawer() {
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-[60]" role="dialog" aria-label="Menu">
-          <button
-            aria-label="Close overlay"
+        <div
+          className="fixed inset-0 z-[60]"
+          role="dialog"
+          aria-label="Menu"
+          aria-modal="true"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setOpen(false);
+          }}
+        >
+          <div
+            aria-hidden
             onClick={() => setOpen(false)}
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            className="absolute inset-0 cursor-pointer bg-black/40 backdrop-blur-sm"
           />
-          <aside className="absolute left-0 top-0 flex h-dvh w-[86%] max-w-[340px] flex-col bg-white shadow-2xl">
+          <aside
+            onClick={(e) => e.stopPropagation()}
+            className="absolute left-0 top-0 flex h-dvh w-[86%] max-w-[340px] flex-col bg-white shadow-2xl">
             <header className="flex items-center justify-between border-b border-pm-border px-5 py-4">
               <Link
                 href="/"
