@@ -129,6 +129,7 @@ const FEATURED: {
   supportsName: string;
   supportsSub: string;
   price: string;
+  src: string;
 }[] = [
   {
     badge: { label: "Religious Gift" },
@@ -139,6 +140,7 @@ const FEATURED: {
     supportsName: "Saint Katharine Drexel Parish",
     supportsSub: "Weston, FL",
     price: "$24.99",
+    src: "/brand/products/rosary.jpg",
   },
   {
     badge: { label: "Parish Merch", tone: "merch" },
@@ -149,6 +151,7 @@ const FEATURED: {
     supportsName: "Emmaus Ministry",
     supportsSub: "Linked to SKD · Weston",
     price: "$49.99",
+    src: "/brand/products/crew-harps.png",
   },
   {
     badge: { label: "Local Biz", tone: "biz" },
@@ -159,6 +162,7 @@ const FEATURED: {
     supportsName: "Our Lady of Grace",
     supportsSub: "Miami, FL",
     price: "$19.99",
+    src: "/brand/products/unity-candleholder.jpg",
   },
   {
     badge: { label: "Book", tone: "book" },
@@ -169,6 +173,7 @@ const FEATURED: {
     supportsName: "St. Vincent de Paul",
     supportsSub: "National Cause",
     price: "$22.00",
+    src: "/brand/products/saint-joseph-biography.jpg",
   },
   {
     badge: { label: "Art & Decor", tone: "art" },
@@ -179,6 +184,7 @@ const FEATURED: {
     supportsName: "St. Michael the Archangel",
     supportsSub: "Tampa, FL",
     price: "$29.99",
+    src: "/brand/products/virgin-mary-medal.png",
   },
   {
     badge: { label: "Local Seller", tone: "seller" },
@@ -189,6 +195,7 @@ const FEATURED: {
     supportsName: "Holy Family Community",
     supportsSub: "Orlando, FL",
     price: "$59.00",
+    src: "/brand/products/tote-harps.png",
   },
 ];
 
@@ -552,13 +559,23 @@ export default function ShopPage() {
                   className="pm-card group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft"
                 >
                   <div className="relative aspect-[4/3] bg-pm-soft">
-                    <div className="absolute left-3 top-3">
+                    <Photo
+                      kind="merch"
+                      src={p.src}
+                      ratio="auto"
+                      rounded="rounded-none"
+                      className="absolute inset-0 !rounded-none border-0 bg-white"
+                      overlay="none"
+                      fit="contain"
+                      alt={p.title}
+                    />
+                    <div className="absolute left-3 top-3 z-10">
                       <ProductBadgePill {...p.badge} />
                     </div>
                     <button
                       type="button"
                       aria-label="Save"
-                      className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full border border-pm-border bg-white text-pm-muted hover:text-pm-blue"
+                      className="absolute right-3 top-3 z-10 grid h-8 w-8 place-items-center rounded-full border border-pm-border bg-white text-pm-muted hover:text-pm-blue"
                     >
                       <Heart className="h-4 w-4" aria-hidden />
                     </button>
