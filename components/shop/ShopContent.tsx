@@ -29,39 +29,6 @@ const STEPS = [
   },
 ];
 
-const INTENTIONS: {
-  title: string;
-  body: string;
-  photo:
-    | "rosary"
-    | "merch"
-    | "community"
-    | "bible"
-    | "praying"
-    | "business";
-}[] = [
-  {
-    title: "Religious Gifts",
-    body: "Faith-centered products and gifts.",
-    photo: "praying",
-  },
-  {
-    title: "Parish Merch",
-    body: "Custom apparel and community items.",
-    photo: "merch",
-  },
-  {
-    title: "Local Biz",
-    body: "Products from community supporters.",
-    photo: "community",
-  },
-  {
-    title: "Books & Devotionals",
-    body: "Formation, family and faith resources.",
-    photo: "bible",
-  },
-];
-
 const SIDEBAR = [
   "All Products",
   "Supports My Parish",
@@ -288,41 +255,6 @@ export function ShopContent({
         </div>
       </Section>
 
-      {/* EXPLORE BY INTENTION */}
-      <Section width="wide">
-        <div className="mb-5">
-          <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy md:text-3xl">
-            Explore by intention
-          </h2>
-          <p className="mt-1 text-sm text-pm-muted">
-            A simple way to guide users by purpose before they enter the full
-            catalog.
-          </p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {INTENTIONS.map((i) => (
-            <Link
-              key={i.title}
-              href={listingHref}
-              className="group relative isolate flex min-h-[140px] flex-col justify-end overflow-hidden rounded-2xl border border-pm-border p-4 text-white shadow-pm-card"
-            >
-              <Photo
-                kind={i.photo}
-                ratio="auto"
-                rounded="rounded-none"
-                className="absolute inset-0 -z-10 !rounded-none"
-                overlay="none"
-              />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/65 to-black/30" />
-              <h3 className="text-lg font-extrabold leading-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]">
-                {i.title}
-              </h3>
-              <p className="text-[11px] text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">{i.body}</p>
-            </Link>
-          ))}
-        </div>
-      </Section>
-
       {/* FEATURED PRODUCTS — sidebar + grid */}
       <Section width="wide">
         <div className="grid gap-6 lg:grid-cols-[220px_1fr]">
@@ -464,7 +396,7 @@ export function ShopContent({
               className="absolute inset-0 -z-10 !rounded-none"
             />
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
-            <h3 className="text-2xl font-extrabold leading-tight">
+            <h3 className="text-2xl font-extrabold leading-tight text-white">
               Discover Local Biz Supporters
             </h3>
             <p className="mt-1 max-w-sm text-xs text-white/85">
