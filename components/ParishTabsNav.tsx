@@ -1,23 +1,42 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type TabKey = "shop" | "give" | "ministries" | "local-biz" | "sponsors" | "about";
 
-const TABS: { key: TabKey; id: string; label: string }[] = [
-  { key: "about",      id: "about",      label: "About" },
-  { key: "shop",       id: "shop",       label: "Shop" },
-  { key: "give",       id: "give",       label: "Give" },
-  { key: "ministries", id: "ministries", label: "Ministries" },
-  { key: "local-biz",  id: "local-biz",  label: "Local Biz" },
-  { key: "sponsors",   id: "sponsors",   label: "Sponsors" },
+type Tab = {
+  key: TabKey;
+  href: string;
+  label: string;
+  /** Anchor id present on /stores landing. If set, clicking from /stores scrolls. */
+  anchor?: string;
+};
+
+const TABS: Tab[] = [
+  { key: "about",      href: "/stores#about",      label: "About",            anchor: "about" },
+  { key: "shop",       href: "/stores/shop",       label: "Shop" },
+  { key: "give",       href: "/stores/give",       label: "Give" },
+  { key: "ministries", href: "/stores#ministries", label: "Communities",      anchor: "ministries" },
+  { key: "local-biz",  href: "/stores#local-biz",  label: "Local Businesses", anchor: "local-biz" },
+  { key: "sponsors",   href: "/stores#sponsors",   label: "Sponsors",         anchor: "sponsors" },
 ];
 
 export function ParishTabsNav({ active: initialActive = "shop" }: { active?: TabKey }) {
+  const pathname = usePathname() ?? "";
+  const onLanding = pathname === "/stores";
   const [active, setActive] = useState<TabKey>(initialActive);
 
+  // Scroll-spy only on /stores landing where anchor sections actually exist.
   useEffect(() => {
-    const sections = TABS.map((t) => document.getElementById(t.id)).filter(Boolean) as HTMLElement[];
+    if (!onLanding) {
+      setActive(initialActive);
+      return;
+    }
+    const sections = TABS
+      .map((t) => (t.anchor ? document.getElementById(t.anchor) : null))
+      .filter(Boolean) as HTMLElement[];
     if (!sections.length) return;
 
     const observer = new IntersectionObserver(
@@ -26,41 +45,45 @@ export function ParishTabsNav({ active: initialActive = "shop" }: { active?: Tab
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (visible) {
-          const tab = TABS.find((t) => t.id === visible.target.id);
+          const tab = TABS.find((t) => t.anchor === visible.target.id);
           if (tab) setActive(tab.key);
         }
       },
       { rootMargin: "-140px 0px -50% 0px", threshold: [0, 0.3, 0.6, 1] },
     );
-
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, []);
+  }, [onLanding, initialActive]);
 
-  function handleClick(e: React.MouseEvent<HTMLAnchorElement>, id: string, key: TabKey) {
-    const target = document.getElementById(id);
+  function handleClick(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    tab: Tab,
+  ) {
+    if (!onLanding || !tab.anchor) return;
+    const target = document.getElementById(tab.anchor);
     if (!target) return;
     e.preventDefault();
-    setActive(key);
+    setActive(tab.key);
     const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 120;
     const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
     window.scrollTo({ top, behavior: "smooth" });
+    history.replaceState(null, "", `#${tab.anchor}`);
   }
 
   return (
     <nav className="mx-auto flex max-w-[1320px] items-center justify-center gap-6 overflow-x-auto px-4 pb-3 pt-1 sm:gap-10 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      {TABS.map(({ key, id, label }) => (
-        <a
-          key={key}
-          href={`#${id}`}
-          aria-current={active === key ? "page" : undefined}
-          onClick={(e) => handleClick(e, id, key)}
+      {TABS.map((tab) => (
+        <Link
+          key={tab.key}
+          href={tab.href}
+          aria-current={active === tab.key ? "page" : undefined}
+          onClick={(e) => handleClick(e, tab)}
           className={`shrink-0 whitespace-nowrap text-base font-bold transition ${
-            active === key ? "text-pm-blue" : "text-pm-navy hover:text-pm-blue"
+            active === tab.key ? "text-pm-blue" : "text-pm-navy hover:text-pm-blue"
           }`}
         >
-          {label}
-        </a>
+          {tab.label}
+        </Link>
       ))}
     </nav>
   );
