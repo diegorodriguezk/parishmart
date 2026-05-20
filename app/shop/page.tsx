@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   Search,
   Heart,
-  MapPin,
   ChevronDown,
   ShieldCheck,
   Sparkles,
@@ -94,10 +93,6 @@ const FEATURED: {
   badge: ProductBadge;
   title: string;
   seller: string;
-  initials: string;
-  supportsLabel: string;
-  supportsName: string;
-  supportsSub: string;
   price: string;
   src: string;
 }[] = [
@@ -105,10 +100,6 @@ const FEATURED: {
     badge: { label: "Religious Gift" },
     title: "Olive Wood Rosary",
     seller: "Bethlehem Crafts",
-    initials: "SKD",
-    supportsLabel: "Supports",
-    supportsName: "Saint Katharine Drexel Parish",
-    supportsSub: "Weston, FL",
     price: "$24.99",
     src: "/brand/products/rosary.jpg",
   },
@@ -116,10 +107,6 @@ const FEATURED: {
     badge: { label: "Parish Merch", tone: "merch" },
     title: "Faith Over Fear Hoodie",
     seller: "Walk by Faith Co.",
-    initials: "EM",
-    supportsLabel: "Supports",
-    supportsName: "Emmaus Ministry",
-    supportsSub: "Linked to SKD · Weston",
     price: "$49.99",
     src: "/brand/products/crew-harps.png",
   },
@@ -127,10 +114,6 @@ const FEATURED: {
     badge: { label: "Local Biz", tone: "biz" },
     title: "Be Still Candle",
     seller: "Grace & Light Co.",
-    initials: "OG",
-    supportsLabel: "Local Biz supports",
-    supportsName: "Our Lady of Grace",
-    supportsSub: "Miami, FL",
     price: "$19.99",
     src: "/brand/products/unity-candleholder.jpg",
   },
@@ -138,10 +121,6 @@ const FEATURED: {
     badge: { label: "Book", tone: "book" },
     title: "Daily Reflection Book",
     seller: "Christian Brands",
-    initials: "SV",
-    supportsLabel: "Supports",
-    supportsName: "St. Vincent de Paul",
-    supportsSub: "National Cause",
     price: "$22.00",
     src: "/brand/products/saint-joseph-biography.jpg",
   },
@@ -149,10 +128,6 @@ const FEATURED: {
     badge: { label: "Art & Decor", tone: "art" },
     title: "Guadalupe Print",
     seller: "Sacred Heart Studios",
-    initials: "SM",
-    supportsLabel: "Supports",
-    supportsName: "St. Michael the Archangel",
-    supportsSub: "Tampa, FL",
     price: "$29.99",
     src: "/brand/products/virgin-mary-medal.png",
   },
@@ -160,10 +135,6 @@ const FEATURED: {
     badge: { label: "Local Seller", tone: "seller" },
     title: "Local Artisan Basket",
     seller: "Casa Bella Gifts",
-    initials: "HF",
-    supportsLabel: "Local Biz supports",
-    supportsName: "Holy Family Community",
-    supportsSub: "Orlando, FL",
     price: "$59.00",
     src: "/brand/products/tote-harps.png",
   },
@@ -438,23 +409,6 @@ export default function ShopPage() {
                       <p className="text-[11px] text-pm-muted">
                         By {p.seller}
                       </p>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-xl border border-pm-border bg-pm-soft/50 p-2">
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-pm-blue to-pm-cyan text-[10px] font-extrabold text-white">
-                        {p.initials}
-                      </span>
-                      <div className="min-w-0">
-                        <p className="text-[9px] font-bold uppercase tracking-wider text-pm-blue">
-                          {p.supportsLabel}
-                        </p>
-                        <p className="truncate text-xs font-bold text-pm-navy">
-                          {p.supportsName}
-                        </p>
-                        <p className="inline-flex items-center gap-1 text-[10px] text-pm-muted">
-                          <MapPin className="h-2.5 w-2.5" aria-hidden />
-                          {p.supportsSub}
-                        </p>
-                      </div>
                     </div>
                     <div className="mt-auto flex items-center justify-between pt-1">
                       <span className="text-sm font-extrabold text-pm-navy">
