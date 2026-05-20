@@ -28,7 +28,7 @@ export function LocalBizCard(p: LocalBizCardData) {
         />
         {p.logoSrc ? (
           <span
-            className="absolute left-3 top-3 grid shrink-0 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-2 !ring-white shadow-pm-soft h-20 w-20"
+            className="absolute bottom-0 right-3 z-10 translate-y-1/4 grid shrink-0 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-2 !ring-white shadow-pm-soft h-20 w-20"
             title={p.title}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -40,7 +40,7 @@ export function LocalBizCard(p: LocalBizCardData) {
             />
           </span>
         ) : (
-          <span className="pm-avatar absolute left-3 top-3 !h-20 !w-20 rounded-2xl ring-2 !ring-white shadow-pm-soft">
+          <span className="pm-avatar absolute bottom-0 right-3 z-10 translate-y-1/4 !h-16 !w-16 rounded-2xl ring-2 !ring-white shadow-pm-soft">
             {p.initials}
           </span>
         )}
@@ -63,9 +63,9 @@ export function LocalBizCard(p: LocalBizCardData) {
         <div className="mt-auto pt-2">
           <Link
             href={p.href}
-            className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs"
+            className="text-sm font-bold text-pm-blue hover:text-pm-navy"
           >
-            {p.cta ?? "View more"}
+            {p.cta ?? "View more"} →
           </Link>
         </div>
       </div>

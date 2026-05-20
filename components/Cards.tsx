@@ -159,7 +159,7 @@ export function CauseCard({
           <CauseLogo
             cause={cause}
             size="lg"
-            className="absolute left-3 top-3 ring-2 !ring-white"
+            className="absolute bottom-0 right-3 z-10 translate-y-1/4 ring-2 !ring-white"
           />
         ) : null}
       </LinkOrAnchor>
@@ -190,8 +190,8 @@ export function CauseCard({
           </div>
         ) : null}
         <div className="mt-auto pt-2">
-          <LinkOrAnchor className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs">
-            {cta}
+          <LinkOrAnchor className="text-sm font-bold text-pm-blue hover:text-pm-navy">
+            {cta} →
           </LinkOrAnchor>
         </div>
       </div>
