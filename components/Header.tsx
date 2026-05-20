@@ -36,7 +36,7 @@ function SearchForm({
       />
       <button
         type="submit"
-        className="pm-btn pm-btn-primary !px-3 !py-1.5 text-xs sm:!px-4 sm:text-sm"
+        className="pm-btn pm-btn-dark !px-3 !py-1.5 text-xs sm:!px-4 sm:text-sm"
       >
         Search
       </button>
