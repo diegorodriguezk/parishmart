@@ -115,12 +115,12 @@ export function Header() {
 type TabKey = "shop" | "give" | "ministries" | "local-biz" | "sponsors" | "about";
 
 const PARISH_TABS: { key: TabKey; href: string; label: string }[] = [
+  { key: "about", href: "/about-us", label: "About" },
   { key: "shop", href: "/shop", label: "Shop" },
   { key: "give", href: "/give", label: "Give" },
   { key: "ministries", href: "/communities", label: "Communities" },
   { key: "local-biz", href: "/local-businesses", label: "Local Businesses" },
   { key: "sponsors", href: "/sponsors", label: "Sponsors" },
-  { key: "about", href: "/about-us", label: "About" },
 ];
 
 function ParishTabs({ active = "shop" }: { active?: TabKey }) {
