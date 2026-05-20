@@ -416,7 +416,7 @@ export default async function HomePage() {
                         Activating the local economy
                       </span>
                       <h4 className="mt-1 text-lg font-extrabold text-pm-navy">
-                        Local businesses & sponsors
+                        Local Businesses
                       </h4>
                       <p className="text-xs text-pm-muted">
                         Trusted local businesses already supporting parish
