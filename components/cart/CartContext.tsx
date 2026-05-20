@@ -57,13 +57,6 @@ const CartContext = createContext<(CartState & CartActions) | null>(null);
 
 const STORAGE_KEY = "parishmart-cart-v1";
 
-const SEED: { items: CartItem[]; donations: DonationItem[] } = {
-  items: [
-    { id: "emmaus-tee", name: "Emmaus Retreat T-Shirt", meta: "Navy · Medium", price: 22, qty: 2, cause: "Emmaus Retreat Fund", photo: "apparel" },
-    { id: "emmaus-mug", name: "Emmaus Mug", meta: "Suggested add-on", price: 14, qty: 1, cause: "Emmaus Retreat Fund", photo: "merch" },
-  ],
-  donations: [{ cause: "Emmaus Retreat Fund", amount: 20 }],
-};
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
@@ -78,16 +71,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
-        setItems(parsed.items ?? SEED.items);
-        setDonations(parsed.donations ?? SEED.donations);
+        setItems(parsed.items ?? []);
+        setDonations(parsed.donations ?? []);
         setSupportPct(parsed.supportPct ?? 18);
-      } else {
-        setItems(SEED.items);
-        setDonations(SEED.donations);
       }
     } catch {
-      setItems(SEED.items);
-      setDonations(SEED.donations);
+      // start with empty cart on error
     }
     setHydrated(true);
   }, []);
