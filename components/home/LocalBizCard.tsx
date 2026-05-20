@@ -18,61 +18,55 @@ export type LocalBizCardData = {
 
 export function LocalBizCard(p: LocalBizCardData) {
   return (
-    <article className="pm-card relative flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft">
-      <Link href={p.href} className="block">
+    <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+      <Link href={p.href} className="relative block">
         <Photo
           kind={p.photo}
           src={p.photoSrc}
           ratio="4/3"
-          rounded="rounded-none"
-          className="!rounded-t-[24px] !rounded-b-none"
+          rounded="rounded-2xl"
         />
+        {p.logoSrc ? (
+          <span
+            className="absolute left-3 top-3 grid shrink-0 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-2 !ring-white shadow-pm-soft h-20 w-20"
+            title={p.title}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={p.logoSrc}
+              alt={p.title}
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
+          </span>
+        ) : (
+          <span className="pm-avatar absolute left-3 top-3 !h-20 !w-20 rounded-2xl ring-2 !ring-white shadow-pm-soft">
+            {p.initials}
+          </span>
+        )}
       </Link>
-      {p.logoSrc ? (
-        <span className="absolute left-4 top-24 grid !h-16 !w-16 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-4 ring-white shadow-pm-soft sm:top-28">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={p.logoSrc}
-            alt={p.title}
-            className="h-full w-full object-contain"
-          />
-        </span>
-      ) : (
-        <span className="pm-avatar absolute left-4 top-24 !h-16 !w-16 rounded-2xl ring-4 ring-white sm:top-28">
-          {p.initials}
-        </span>
-      )}
-      <div className="flex flex-1 flex-col gap-2.5 p-5 pt-12">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
-          {p.category}
-        </span>
+      <div className="flex flex-1 flex-col gap-2 p-3">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="pm-label">{p.category}</span>
+        </div>
         <Link href={p.href} className="block">
-          <h3 className="text-lg font-extrabold text-pm-navy hover:text-pm-blue">
+          <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
             {p.title}
           </h3>
         </Link>
-        <p className="text-xs text-pm-muted">{p.description}</p>
-        {p.tags.length ? (
-          <div className="flex flex-wrap gap-1.5">
-            {p.tags.map((t) => (
-              <span key={t} className="pm-label !text-[10px]">
-                {t}
-              </span>
-            ))}
-          </div>
+        {p.subtext ? (
+          <p className="text-[11px] font-medium text-pm-blue">{p.subtext}</p>
         ) : null}
-        <div className="mt-auto flex items-end justify-between gap-3 pt-2">
+        {p.description ? (
+          <p className="text-xs text-pm-muted">{p.description}</p>
+        ) : null}
+        <div className="mt-auto pt-2">
           <Link
             href={p.href}
-            className="text-sm font-bold text-pm-blue hover:text-pm-navy"
+            className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs"
           >
-            {p.cta ?? "View more"} →
+            {p.cta ?? "View more"}
           </Link>
-          {p.subtext ? (
-            <p className="max-w-[120px] text-right text-[10px] leading-tight text-pm-muted">
-              {p.subtext}
-            </p>
-          ) : null}
         </div>
       </div>
     </article>
