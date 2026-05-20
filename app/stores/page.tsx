@@ -6,7 +6,6 @@ import { SkdLogo } from "@/components/SkdLogo";
 import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
 import { ProductCard, BusinessCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { StickyTabs } from "@/components/StickyTabs";
 import { fetchProducts, fetchBusinesses, fetchParish } from "@/lib/api";
 
 export const metadata = { title: "SKD Parish Storefront" };
@@ -87,18 +86,6 @@ export default async function ParishStoreSKDPage() {
         </div>
       </Section>
 
-      <StickyTabs
-        items={[
-          { id: "about", label: "About" },
-          { id: "shop", label: "Shop" },
-          { id: "give", label: "Give" },
-          { id: "ministries", label: "Ministries" },
-          { id: "local-biz", label: "Local Biz" },
-          { id: "sponsors", label: "Sponsors" },
-          { id: "impact", label: "Impact" },
-        ]}
-        topOffset={64}
-      />
 
       <Section id="about" width="wide">
         <div className="grid gap-4 md:grid-cols-[1.2fr_1fr_1fr]">
