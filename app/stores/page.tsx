@@ -69,9 +69,9 @@ export default async function ParishStoreSKDPage() {
             </div>
             <div className="grid grid-cols-3 gap-2">
               {[
-                { l: "Parish impact", v: "$2.4K" },
-                { l: "Active causes", v: "5" },
-                { l: "Supporters", v: "8" },
+                { l: "Impact to date", v: "$2.4K" },
+                { l: "Local businesses", v: "5" },
+                { l: "Active causes", v: "8" },
               ].map((s) => (
                 <div key={s.l} className="rounded-2xl border border-pm-border bg-white p-3">
                   <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">{s.l}</p>
