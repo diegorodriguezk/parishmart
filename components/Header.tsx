@@ -83,11 +83,11 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           <Link
             href="/search"
             aria-label="Open search"
-            className="grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue"
+            className="hidden h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue sm:grid"
           >
             <Search className="h-4 w-4" aria-hidden />
           </Link>
@@ -102,7 +102,7 @@ export function Header() {
           </Link>
           <Link
             href="/onboarding"
-            className="pm-btn pm-btn-primary !px-4 !py-2 text-xs sm:text-sm"
+            className="pm-btn pm-btn-primary !px-3 !py-2 text-xs sm:!px-4 sm:text-sm"
           >
             Join Us
           </Link>

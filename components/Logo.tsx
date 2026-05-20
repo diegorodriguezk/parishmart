@@ -40,7 +40,7 @@ export function Logo({
   const subColor = variant === "white" ? "text-white/70" : "text-pm-muted";
   return (
     <Link href={href} className="flex items-center gap-3" aria-label="ParishMart home">
-      <LogoMark variant={variant} className="h-9 w-auto sm:h-10" priority />
+      <LogoMark variant={variant} className="h-7 w-auto sm:h-9 lg:h-10" priority />
       {subtitle ? (
         <span className={`hidden text-[11px] font-medium leading-tight sm:block ${subColor}`}>
           {subtitle}
