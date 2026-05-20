@@ -390,7 +390,12 @@ export default function ShopPage() {
                       fit="contain"
                       alt={p.title}
                     />
-                    <div className="absolute left-3 top-3 z-10">
+                    <Link
+                      href="/shop/product"
+                      aria-label={p.title}
+                      className="absolute inset-0 z-0"
+                    />
+                    <div className="pointer-events-none absolute left-3 top-3 z-10">
                       <ProductBadgePill {...p.badge} />
                     </div>
                     <button
@@ -403,9 +408,11 @@ export default function ShopPage() {
                   </div>
                   <div className="flex flex-1 flex-col gap-2 p-4">
                     <div>
-                      <h3 className="text-sm font-extrabold leading-tight text-pm-navy group-hover:text-pm-blue">
-                        {p.title}
-                      </h3>
+                      <Link href="/shop/product" className="block">
+                        <h3 className="text-sm font-extrabold leading-tight text-pm-navy group-hover:text-pm-blue">
+                          {p.title}
+                        </h3>
+                      </Link>
                       <p className="text-[11px] text-pm-muted">
                         By {p.seller}
                       </p>
@@ -414,12 +421,12 @@ export default function ShopPage() {
                       <span className="text-sm font-extrabold text-pm-navy">
                         {p.price}
                       </span>
-                      <Link
-                        href="/shop/product"
+                      <button
+                        type="button"
                         className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs"
                       >
-                        View
-                      </Link>
+                        Add to cart
+                      </button>
                     </div>
                   </div>
                 </article>
