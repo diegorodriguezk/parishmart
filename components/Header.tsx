@@ -176,7 +176,7 @@ export function ParishProfileHeader({
       <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-2.5 sm:px-6">
         <MobileNavDrawer />
         <div className="flex shrink-0 items-center gap-3">
-          <SkdLogo size="md" />
+          <SkdLogo size="lg" />
           <div className="hidden flex-col leading-[1.1] sm:flex">
             <span className="text-base font-extrabold tracking-tight text-pm-navy">
               {parishName}
