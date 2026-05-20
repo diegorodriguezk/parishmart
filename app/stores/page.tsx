@@ -3,7 +3,7 @@ import { ParishProfileHeader } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { SkdLogo } from "@/components/SkdLogo";
-import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
+import { Section, SectionHeader } from "@/components/Sections";
 import { ProductCard, BusinessCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { fetchProducts, fetchBusinesses, fetchParish } from "@/lib/api";
@@ -314,45 +314,6 @@ export default async function ParishStoreSKDPage() {
                 <p className="text-[10px] font-bold uppercase tracking-wider opacity-80">Parishioner offer</p>
                 <p className="text-sm font-extrabold">{s.offer}</p>
               </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section id="impact" width="wide">
-        <DarkPanel
-          title="Impact is the center of the parish store."
-          description="Every product, donation, sponsor and local business action should connect back to measurable parish impact."
-        >
-          <div className="mt-6 grid gap-3 md:grid-cols-2">
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-4">
-              <p className="text-xs uppercase tracking-wider text-white/70">Total parish impact</p>
-              <p className="mt-2 text-3xl font-extrabold">$2,430</p>
-            </div>
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-4">
-              <p className="text-xs uppercase tracking-wider text-white/70">Visibility per month</p>
-              <p className="mt-2 text-3xl font-extrabold">$1,870</p>
-            </div>
-          </div>
-          <Link href="/dashboard/parish" className="pm-btn mt-5 inline-flex bg-white text-pm-navy">
-            View Impact Report
-          </Link>
-        </DarkPanel>
-      </Section>
-
-      <Section width="wide">
-        <div className="grid gap-3 md:grid-cols-3">
-          {[
-            { t: "Shop with Purpose", d: "Buy products and services for the parish community.", c: "/shop", v: "primary" as const },
-            { t: "Give with Love", d: "Support ministries, causes and parish needs.", c: "/give", v: "secondary" as const },
-            { t: "Sell with Purpose", d: "Offer products or services to the parish community.", c: "/onboarding/seller", v: "secondary" as const },
-          ].map((s) => (
-            <div key={s.t} className="pm-card p-5">
-              <h3 className="text-base font-bold text-pm-navy">{s.t}</h3>
-              <p className="mt-1 text-xs text-pm-muted">{s.d}</p>
-              <Link href={s.c} className={`pm-btn ${s.v === "primary" ? "pm-btn-primary" : "pm-btn-secondary"} mt-3 inline-flex`}>
-                Open
-              </Link>
             </div>
           ))}
         </div>
