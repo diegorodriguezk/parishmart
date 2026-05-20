@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, FilterChips } from "@/components/Sections";
@@ -7,7 +7,7 @@ import { ProductCard, BusinessCard, SponsorOfferCard } from "@/components/Cards"
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { fetchProducts, fetchBusinesses } from "@/lib/api";
 
-export const metadata = { title: "Shop · SKD Parish Store" };
+export const metadata = { title: "Shop · ParishMart" };
 
 export default async function ShopCategoryPage() {
   const [religiousGifts, parishMerch, businesses] = await Promise.all([
@@ -31,7 +31,7 @@ export default async function ShopCategoryPage() {
   ]);
   return (
     <>
-      <SubStoreHeader />
+      <Header />
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Shop with Purpose" }]} />

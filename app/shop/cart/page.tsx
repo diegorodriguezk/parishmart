@@ -1,15 +1,15 @@
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Section } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CartView } from "./CartView";
 
-export const metadata = { title: "Cart + Impact · SKD Parish Store" };
+export const metadata = { title: "Cart + Impact · ParishMart" };
 
 export default function CartCheckoutPage() {
   return (
     <>
-      <SubStoreHeader />
+      <Header />
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Shop", href: "/shop" }, { label: "Cart" }]} />

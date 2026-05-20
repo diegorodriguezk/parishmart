@@ -1,4 +1,4 @@
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import {
@@ -13,7 +13,7 @@ import { fetchCauses } from "@/lib/api";
 import type { PhotoKind } from "@/components/Photo";
 import type { CauseKey } from "@/lib/catalog";
 
-export const metadata = { title: "Give with Love · SKD Parish Store" };
+export const metadata = { title: "Give with Love · ParishMart" };
 
 type CauseCopy = {
   photo: PhotoKind;
@@ -108,7 +108,7 @@ export default async function GiveHomePage() {
   const causes = await fetchCauses();
   return (
     <>
-      <SubStoreHeader searchPlaceholder="Search causes, ministries, outreach, youth groups..." />
+      <Header />
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { MinimalFooter } from "@/components/MinimalFooter";
 import { TrustBadge } from "@/components/TrustBadge";
 import { ImpactBreakdown } from "@/components/ImpactBreakdown";
@@ -10,7 +10,7 @@ export const metadata = { title: "Donation Checkout · ParishMart" };
 export default function DonationCheckoutPage() {
   return (
     <>
-      <SubStoreHeader />
+      <Header />
 
       <Section width="wide" className="!pb-3">
         <span className="pm-kicker">Donation Checkout</span>

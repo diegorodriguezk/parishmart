@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section } from "@/components/Sections";
@@ -20,7 +20,7 @@ const RELATED_IDS = [
 export async function generateMetadata() {
   const product = await fetchProduct(PRODUCT_ID);
   return {
-    title: product ? `${product.name} · SKD Parish Store` : "Product",
+    title: product ? `${product.name} · ParishMart` : "Product",
   };
 }
 
@@ -36,7 +36,7 @@ export default async function ProductDetailPage() {
 
   return (
     <>
-      <SubStoreHeader />
+      <Header />
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs

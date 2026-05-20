@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Section, SectionHeader, FilterChips } from "@/components/Sections";
 import { ProductCard } from "@/components/Cards";
@@ -12,7 +12,7 @@ export default async function ProductListingPage() {
   const products = await fetchProducts({ limit: 9 });
   return (
     <>
-      <SubStoreHeader />
+      <Header />
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Shop with Purpose", href: "/shop" }, { label: "Religious Gifts" }]} />

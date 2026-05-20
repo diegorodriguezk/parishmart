@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SubStoreHeader } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader, DarkPanel } from "@/components/Sections";
@@ -9,7 +9,7 @@ export const metadata = { title: "Share the Impact · ParishMart" };
 export default function ShareImpactPage() {
   return (
     <>
-      <SubStoreHeader searchPlaceholder="Search causes, merch, communities..." />
+      <Header />
 
       <Section width="wide" className="!pb-2">
         <div className="pm-card grid gap-0 overflow-hidden lg:grid-cols-[1.4fr_1fr]">
