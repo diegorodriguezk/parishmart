@@ -5,6 +5,7 @@ import { SkdLogo } from "./SkdLogo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ParishTabsNav } from "./ParishTabsNav";
 
 function SearchForm({
   placeholder = "Search products, causes, businesses, gifts and services…",
@@ -187,7 +188,7 @@ export function ParishProfileHeader({
       <div className="px-4 pb-1 sm:px-6 md:hidden">
         <SearchForm placeholder={searchPlaceholder} />
       </div>
-      <ParishTabs active={activeTab} />
+      <ParishTabsNav active={activeTab} />
     </header>
   );
 }
@@ -218,7 +219,7 @@ export function SubStoreHeader({
       <div className="px-4 pb-1 sm:px-6 md:hidden">
         <SearchForm placeholder={searchPlaceholder} />
       </div>
-      <ParishTabs />
+      <ParishTabsNav />
     </header>
   );
 }
