@@ -176,7 +176,7 @@ export default async function ParishStoreSKDPage() {
           description="Featured products and services connected to SKD, ministries and community impact."
           right={
             <>
-              <Link href="/shop" className="font-bold text-pm-blue">View all products</Link>
+              <Link href="/stores/shop" className="font-bold text-pm-blue">View all products</Link>
               <Link href="/onboarding/seller" className="text-pm-muted">Become a seller</Link>
             </>
           }
