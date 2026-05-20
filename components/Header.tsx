@@ -166,18 +166,22 @@ export function ParishProfileHeader({
     <header className="sticky top-0 z-30 border-b border-pm-border/70 bg-white/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-[1320px] items-center gap-3 px-4 py-2.5 sm:px-6">
         <MobileNavDrawer />
-        <div className="flex shrink-0 items-center gap-3">
+        <Link
+          href="/stores"
+          aria-label={`${parishName} home`}
+          className="group flex shrink-0 items-center gap-3"
+        >
           <SkdLogo size="lg" />
           <div className="hidden flex-col leading-[1.1] sm:flex">
-            <span className="text-base font-extrabold tracking-tight text-pm-navy">
+            <span className="text-base font-extrabold tracking-tight text-pm-navy group-hover:text-pm-blue">
               {parishName}
             </span>
-            <span className="text-base font-extrabold tracking-tight text-pm-navy">
+            <span className="text-base font-extrabold tracking-tight text-pm-navy group-hover:text-pm-blue">
               {storeLabel}
             </span>
             <span className="mt-0.5 text-[11px] text-pm-muted">{location}</span>
           </div>
-        </div>
+        </Link>
         <div className="ml-3 hidden flex-1 md:flex">
           <SearchForm placeholder={searchPlaceholder} />
         </div>
