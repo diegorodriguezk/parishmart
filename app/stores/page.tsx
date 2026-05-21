@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { SkdLogo } from "@/components/SkdLogo";
 import { Section, SectionHeader } from "@/components/Sections";
-import { ProductCard, BusinessCard } from "@/components/Cards";
+import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { fetchProducts, fetchBusinesses, fetchParish } from "@/lib/api";
 
@@ -184,16 +184,15 @@ export default async function ParishStoreSKDPage() {
         />
         <div className="grid gap-4 md:grid-cols-4">
           {featured.map((p) => (
-            <ProductCard
+            <FeaturedCommunityCard
               key={p.id}
-              id={p.id}
+              href="/stores/shop"
               photo={p.photo}
-              src={p.src}
-              label={p.label}
+              photoSrc={p.src}
+              category={p.label ?? "Featured product"}
               title={p.name}
-              meta={p.meta}
-              price={p.price}
-              cause={p.cause}
+              description={p.meta}
+              location={p.price}
             />
           ))}
         </div>
@@ -212,19 +211,19 @@ export default async function ParishStoreSKDPage() {
         />
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { l: "Youth Ministry", t: "Support Youth Ministry", d: "Help fund formation, retreats and leadership activities." },
-            { l: "Emmaus", t: "Emmaus Retreat Fund", d: "Support scholarships, formation and retreat logistics." },
-            { l: "Helping Hands", t: "St Vincent de Paul", d: "Support families in need with parish-collected initiatives." },
+            { l: "Youth Ministry", t: "Support Youth Ministry", d: "Help fund formation, retreats and leadership activities.", p: "retreat" as const },
+            { l: "Emmaus", t: "Emmaus Retreat Fund", d: "Support scholarships, formation and retreat logistics.", p: "community" as const },
+            { l: "Helping Hands", t: "St Vincent de Paul", d: "Support families in need with parish-collected initiatives.", p: "volunteers" as const },
           ].map((c) => (
-            <div key={c.t} className="pm-card flex flex-col gap-3 overflow-hidden p-3">
-              <Photo kind={c.l === "Youth Ministry" ? "retreat" : c.l === "Emmaus" ? "community" : "volunteers"} ratio="16/9" rounded="rounded-2xl" />
-              <div className="space-y-2 px-2">
-                <span className="pm-label">{c.l}</span>
-                <h3 className="text-base font-bold text-pm-navy">{c.t}</h3>
-                <p className="text-xs text-pm-muted">{c.d}</p>
-                <Link href="/give/cause" className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs">Support Now</Link>
-              </div>
-            </div>
+            <FeaturedCommunityCard
+              key={c.t}
+              href="/give/cause"
+              photo={c.p}
+              category={c.l}
+              title={c.t}
+              description={c.d}
+              location="SKD · Weston, FL"
+            />
           ))}
         </div>
       </Section>
@@ -235,24 +234,20 @@ export default async function ParishStoreSKDPage() {
           description="Each ministry can have its own page, giving campaigns, sponsors and impact."
           right={<Link href="/stores/give" className="font-bold text-pm-blue">View ministry list · Open a ministry page</Link>}
         />
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {[
-            { p: "stained-glass", l: "Ministry", t: "Emmaus SKD Weston", d: "Separate paths for Men and Women retreats with products, campaigns and community support." },
-            { p: "praying", l: "Cause", t: "Youth Ministry", d: "Formation, events, youth merchandise and sponsors connected to youth formation." },
+            { p: "stained-glass" as const, l: "Ministry", t: "Emmaus SKD Weston", d: "Separate paths for Men and Women retreats with products, campaigns and community support." },
+            { p: "praying" as const, l: "Cause", t: "Youth Ministry", d: "Formation, events, youth merchandise and sponsors connected to youth formation." },
           ].map((m) => (
-            <div key={m.t} className="pm-card flex items-center gap-4 p-4">
-              <div className="h-32 w-32 shrink-0">
-                <Photo kind={m.p as "stained-glass" | "praying"} ratio="1/1" rounded="rounded-2xl" />
-              </div>
-              <div className="space-y-2">
-                <span className="pm-label">{m.l}</span>
-                <h3 className="text-base font-bold text-pm-navy">{m.t}</h3>
-                <p className="text-xs text-pm-muted">{m.d}</p>
-                <Link href="/give/cause" className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs">
-                  Visit {m.l}
-                </Link>
-              </div>
-            </div>
+            <FeaturedCommunityCard
+              key={m.t}
+              href="/give/cause"
+              photo={m.p}
+              category={m.l}
+              title={m.t}
+              description={m.d}
+              location="SKD · Weston, FL"
+            />
           ))}
         </div>
       </Section>
@@ -270,27 +265,24 @@ export default async function ParishStoreSKDPage() {
         />
         <div className="grid gap-4 md:grid-cols-4">
           {businesses.map((b, i) => (
-            <BusinessCard
+            <FeaturedCommunityCard
               key={b.id}
+              href="/local-businesses/profile"
               photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}
-              initials={b.initials}
-              logoSrc={b.logoSrc}
+              photoSrc={b.logoSrc}
+              category="Local Business"
               title={b.name}
               description={b.description}
-              offer="10% benefit"
-              offerDescription="For SKD parishioners"
-              impactText={`Supports SKD and ${b.category.toLowerCase()} programs.`}
+              location={b.location}
             />
           ))}
-          <BusinessCard
+          <FeaturedCommunityCard
+            href="/sponsors/profile"
             photo="business"
-            initials="SP"
+            category="Featured Sponsor"
             title="Featured Sponsor"
             description="Featured local sponsor supporting parish causes."
-            offer="$25 OFF"
-            offerDescription="Limited time offer"
-            impactText="Community sponsor visibility."
-            href="/sponsors/profile"
+            location="$25 OFF · Limited time"
           />
         </div>
       </Section>
@@ -303,19 +295,19 @@ export default async function ParishStoreSKDPage() {
         />
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { ini: "MS", n: "Maria's Studios", d: "Family, retreat and parish event photography for the SKD community.", offer: "10% parishioner benefit" },
-            { ini: "CM", n: "Casa Manresa", d: "Retreat programs and services connected to spiritual formation.", offer: "15% retreat support benefit" },
-            { ini: "FS", n: "Featured Local Sponsor", d: "Mission-aligned business supporting parish causes.", offer: "Up to 8% community offer" },
+            { p: "business" as const, n: "Maria's Studios", d: "Family, retreat and parish event photography for the SKD community.", offer: "10% parishioner benefit" },
+            { p: "praying" as const, n: "Casa Manresa", d: "Retreat programs and services connected to spiritual formation.", offer: "15% retreat support benefit" },
+            { p: "community" as const, n: "Featured Local Sponsor", d: "Mission-aligned business supporting parish causes.", offer: "Up to 8% community offer" },
           ].map((s) => (
-            <div key={s.ini} className="pm-card flex flex-col gap-3 p-5">
-              <span className="pm-avatar">{s.ini}</span>
-              <h3 className="text-base font-bold text-pm-navy">{s.n}</h3>
-              <p className="text-xs text-pm-muted">{s.d}</p>
-              <div className="rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan p-3 text-white">
-                <p className="text-[10px] font-bold uppercase tracking-wider opacity-80">Parishioner offer</p>
-                <p className="text-sm font-extrabold">{s.offer}</p>
-              </div>
-            </div>
+            <FeaturedCommunityCard
+              key={s.n}
+              href="/sponsors/profile"
+              photo={s.p}
+              category="Sponsor"
+              title={s.n}
+              description={s.d}
+              location={s.offer}
+            />
           ))}
         </div>
       </Section>
