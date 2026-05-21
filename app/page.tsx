@@ -12,7 +12,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader } from "@/components/Sections";
-import { ProductCard, CauseCard, StatTile } from "@/components/Cards";
+import { ProductCard, CauseCard } from "@/components/Cards";
 import { LiveProofTicker, Testimonial } from "@/components/SocialProof";
 import { LocalBizCard } from "@/components/home/LocalBizCard";
 import { fetchProducts, fetchBusinesses } from "@/lib/api";
@@ -147,9 +147,23 @@ export default async function HomePage() {
                 through products, services and giving.
               </p>
               <div className="grid grid-cols-3 gap-2 pt-2">
-                <StatTile value="$2,430" hint="Impact to date" />
-                <StatTile value="48" hint="Local businesses" />
-                <StatTile value="5" hint="Active causes" />
+                {[
+                  { l: "Impact to date", v: "$2.4K" },
+                  { l: "Local businesses", v: "5" },
+                  { l: "Active causes", v: "8" },
+                ].map((s) => (
+                  <div
+                    key={s.l}
+                    className="rounded-2xl border border-pm-border bg-white p-3"
+                  >
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
+                      {s.l}
+                    </p>
+                    <p className="text-base font-extrabold text-pm-navy">
+                      {s.v}
+                    </p>
+                  </div>
+                ))}
               </div>
               <div className="flex flex-wrap gap-2 pt-1">
                 <Link
