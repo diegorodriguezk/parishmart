@@ -39,17 +39,6 @@ export default function CommunitiesPage() {
               giving and local support that connect them back to clear, real
               impact.
             </p>
-            <div className="mt-2 flex flex-wrap gap-3">
-              <Link href="/stores" className="pm-btn pm-btn-primary">
-                Browse Parish Stores
-              </Link>
-              <Link
-                href="/onboarding/parish"
-                className="pm-btn pm-btn-secondary"
-              >
-                Open Your Store
-              </Link>
-            </div>
           </div>
 
           <div className="relative isolate min-h-[280px] lg:min-h-[360px]">
