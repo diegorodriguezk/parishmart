@@ -176,13 +176,17 @@ export default async function LocalBusinessCategoryPage() {
                 key={b.id}
                 className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
               >
-                {/* Photo with logo overlay — LocalBizCard style */}
+                {/* Photo with offer pill top-left + business logo bottom-right */}
                 <Link href={b.href} className="relative block">
                   <Photo
                     kind={PHOTOS[i % PHOTOS.length]}
                     ratio="4/3"
                     rounded="rounded-2xl"
                   />
+                  {/* Offer pill — top-left of image */}
+                  <span className="absolute left-3 top-3 z-10 rounded-full bg-pm-navy px-3 py-1 text-xs font-bold text-white">
+                    {meta.benefit}
+                  </span>
                   {b.logoSrc ? (
                     <span
                       className="absolute bottom-0 right-3 z-10 translate-y-1/4 grid shrink-0 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-2 !ring-white shadow-pm-soft h-20 w-20"
@@ -200,13 +204,7 @@ export default async function LocalBusinessCategoryPage() {
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-8">
-                  {/* Category label + offer on same row */}
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="pm-label w-fit">{b.category}</span>
-                    <span className="rounded-full bg-pm-navy px-3 py-1 text-xs font-bold text-white">
-                      {meta.benefit}
-                    </span>
-                  </div>
+                  <span className="pm-label w-fit">{b.category}</span>
                   <Link href={b.href} className="block">
                     <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
                       {b.name}
@@ -215,19 +213,10 @@ export default async function LocalBusinessCategoryPage() {
                   <p className="text-[11px] font-medium text-pm-blue">{b.location}</p>
                   <p className="text-xs text-pm-muted">{b.description}</p>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {[...meta.tags, meta.rating].map((tag) => (
-                      <span key={tag} className="rounded-full border border-pm-border px-2.5 py-0.5 text-[10px] text-pm-muted">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Supports row — logo outside pill */}
+                  {/* Supports row — logo outside pill, pill full width */}
                   <div className="flex items-center gap-2">
-                    <SkdLogo size="sm" />
-                    <div className="w-fit rounded-2xl border border-pm-border bg-pm-soft/60 px-3 py-2 space-y-0.5">
+                    <SkdLogo size="md" />
+                    <div className="flex-1 rounded-2xl border border-pm-border bg-pm-soft/60 px-3 py-2 space-y-0.5">
                       <p className="text-[11px] font-bold text-pm-navy">{meta.supportedParish}</p>
                       <p className="text-[10px] text-pm-muted">Parish community</p>
                     </div>
