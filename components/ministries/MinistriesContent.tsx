@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Search,
-  Heart,
   ChevronDown,
   ShieldCheck,
   Sparkles,
@@ -11,6 +10,7 @@ import { Photo, type PhotoKind } from "@/components/Photo";
 import { Section } from "@/components/Sections";
 import { SponsorBanner } from "@/components/sponsors/SponsorBanner";
 import { SponsorRecruitSection } from "@/components/sponsors/SponsorRecruitSection";
+import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
 
 const STEPS = [
   {
@@ -49,61 +49,57 @@ const MINISTRY_TABS = [
   "Most Popular",
 ];
 
-type MinistryBadge = {
-  label: string;
-};
-
 const FEATURED: {
-  badge: MinistryBadge;
+  category: string;
   title: string;
-  parish: string;
+  location: string;
   description: string;
   photo: PhotoKind;
 }[] = [
   {
-    badge: { label: "Retreat" },
+    category: "Ministry",
     title: "Emmaus Community",
-    parish: "SKD · Weston, FL",
+    location: "SKD · Weston, FL",
     description:
       "Retreat community with event merch, ministry visibility and fundraising.",
     photo: "retreat",
   },
   {
-    badge: { label: "Ministry" },
+    category: "Ministry",
     title: "Youth Ministry",
-    parish: "SKD · Weston, FL",
+    location: "SKD · Weston, FL",
     description:
       "Formation, retreats and outreach for SKD's young community leaders.",
     photo: "praying",
   },
   {
-    badge: { label: "Outreach" },
+    category: "Outreach",
     title: "St Vincent de Paul",
-    parish: "South Florida",
+    location: "South Florida",
     description:
       "Helping families in need through parish-coordinated initiatives.",
     photo: "volunteers",
   },
   {
-    badge: { label: "Mission" },
+    category: "Mission",
     title: "Schoenstatt Mission",
-    parish: "South Florida",
+    location: "South Florida",
     description:
       "Faith-driven mission community connecting supporters with campaigns and events.",
     photo: "stained-glass",
   },
   {
-    badge: { label: "Formation" },
+    category: "Formation",
     title: "Adult Faith Formation",
-    parish: "SKD · Weston, FL",
+    location: "SKD · Weston, FL",
     description:
       "Bible studies, OCIA and lifelong learning groups for parishioners.",
     photo: "bible",
   },
   {
-    badge: { label: "Liturgy" },
+    category: "Liturgy",
     title: "Music Ministry",
-    parish: "SKD · Weston, FL",
+    location: "SKD · Weston, FL",
     description:
       "Choirs, instrumentalists and cantors serving every weekend Mass.",
     photo: "chalice",
@@ -127,14 +123,6 @@ const TRUST = [
     body: "Each ministry is endorsed by the parish it serves.",
   },
 ];
-
-function MinistryBadgePill({ label }: MinistryBadge) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-pm-navy px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-      {label}
-    </span>
-  );
-}
 
 export function MinistriesContent({
   heroKicker = "Ministries · Explore your parish",
@@ -308,59 +296,15 @@ export function MinistriesContent({
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {FEATURED.map((m) => (
-                <article
+                <FeaturedCommunityCard
                   key={m.title}
-                  className="pm-card group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft"
-                >
-                  <div className="relative aspect-[4/3] bg-pm-soft">
-                    <Photo
-                      kind={m.photo}
-                      ratio="auto"
-                      rounded="rounded-none"
-                      className="absolute inset-0 !rounded-none border-0"
-                      overlay="none"
-                      alt={m.title}
-                    />
-                    <Link
-                      href={ministryHref}
-                      aria-label={m.title}
-                      className="absolute inset-0 z-0"
-                    />
-                    <div className="pointer-events-none absolute left-3 top-3 z-10">
-                      <MinistryBadgePill {...m.badge} />
-                    </div>
-                    <button
-                      type="button"
-                      aria-label="Save"
-                      className="absolute right-3 top-3 z-10 grid h-8 w-8 place-items-center rounded-full border border-pm-border bg-white text-pm-muted hover:text-pm-blue"
-                    >
-                      <Heart className="h-4 w-4" aria-hidden />
-                    </button>
-                  </div>
-                  <div className="flex flex-1 flex-col gap-2 p-4">
-                    <div>
-                      <Link href={ministryHref} className="block">
-                        <h3 className="text-sm font-extrabold leading-tight text-pm-navy group-hover:text-pm-blue">
-                          {m.title}
-                        </h3>
-                      </Link>
-                      <p className="text-[11px] font-medium text-pm-blue">
-                        {m.parish}
-                      </p>
-                      <p className="mt-1 line-clamp-2 text-[11px] text-pm-muted">
-                        {m.description}
-                      </p>
-                    </div>
-                    <div className="mt-auto pt-1">
-                      <Link
-                        href={ministryHref}
-                        className="text-sm font-bold text-pm-blue hover:text-pm-navy"
-                      >
-                        View ministry →
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+                  href={ministryHref}
+                  photo={m.photo}
+                  category={m.category}
+                  title={m.title}
+                  location={m.location}
+                  description={m.description}
+                />
               ))}
             </div>
           </div>
