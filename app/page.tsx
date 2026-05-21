@@ -38,6 +38,7 @@ const FEATURED_STORES = [
     src: "/brand/skd/church.jpg" as string | undefined,
     label: "Featured Parish",
     title: "St. Katharine Drexel",
+    location: "Weston, FL",
     text: "Products, donations, campaigns and community supporters for SKD parish.",
     href: "/stores",
   },
@@ -46,6 +47,7 @@ const FEATURED_STORES = [
     src: undefined as string | undefined,
     label: "Retreat Community",
     title: "Emmaus SKD Weston",
+    location: "SKD · Weston, FL",
     text: "Separate experiences for Emmaus Men and Emmaus Women retreat communities.",
     href: "/give/cause",
   },
@@ -54,6 +56,7 @@ const FEATURED_STORES = [
     src: undefined as string | undefined,
     label: "Causes & Communities",
     title: "Schoenstatt, FACE & Casa Manresa",
+    location: "South Florida",
     text: "Faith-driven communities, retreats and entrepreneurs connected to impact.",
     href: "/communities",
   },
@@ -347,6 +350,7 @@ export default async function HomePage() {
                               {s.title}
                             </h5>
                           </Link>
+                          <p className="text-[11px] font-medium text-pm-blue">{s.location}</p>
                           <p className="line-clamp-2 text-xs text-pm-muted">
                             {s.text}
                           </p>
