@@ -54,7 +54,8 @@ export default function CommunitiesPage() {
 
           <div className="relative isolate min-h-[280px] lg:min-h-[360px]">
             <Photo
-              kind="community"
+              kind="church"
+              src="/brand/skd/church.jpg"
               ratio="auto"
               rounded="rounded-none"
               className="absolute inset-0 -z-10 !rounded-none"
