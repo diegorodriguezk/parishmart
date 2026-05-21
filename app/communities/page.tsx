@@ -63,7 +63,7 @@ export default function CommunitiesPage() {
 
       <Section width="wide" className="!pt-2">
         <SectionHeader
-          title="Parish Stores"
+          title="Parish Stores and Causes"
           description="Active parish-led storefronts inside the ParishMart ecosystem."
           right={
             <Link href="/onboarding/parish" className="font-bold text-pm-blue">
@@ -88,7 +88,6 @@ export default function CommunitiesPage() {
             title="Sample Parish — Coming Soon"
             description="A new parish onboarding to ParishMart soon. Reserve your store today."
             location="South Florida"
-            cta="Learn more"
           />
           <FeaturedCommunityCard
             href="/stores"
@@ -97,7 +96,6 @@ export default function CommunitiesPage() {
             title="Network Parish"
             description="Network parish exploring giving campaigns, merch and local partnerships."
             location="Florida"
-            cta="Learn more"
           />
           <FeaturedCommunityCard
             href="/onboarding/parish"
@@ -105,7 +103,6 @@ export default function CommunitiesPage() {
             category="Join the ecosystem"
             title="Open Your Parish Store"
             description="Activate a parish presence on ParishMart with giving campaigns, merch, sponsors and impact dashboards."
-            cta="Start activation"
           />
         </CardsCarousel>
       </Section>
@@ -127,7 +124,6 @@ export default function CommunitiesPage() {
             category="Ministry"
             title="Emmaus Community"
             description="Retreat community with event merch, ministry visibility and fundraising."
-            cta="View ministry"
           />
           <FeaturedCommunityCard
             href="/give/cause"
@@ -135,7 +131,6 @@ export default function CommunitiesPage() {
             category="Ministry"
             title="Youth Ministry"
             description="Formation, retreats and outreach for SKD's young community leaders."
-            cta="Support cause"
           />
           <FeaturedCommunityCard
             href="/give/cause"
@@ -143,7 +138,6 @@ export default function CommunitiesPage() {
             category="Cause"
             title="St Vincent de Paul"
             description="Helping families in need through parish-coordinated initiatives."
-            cta="Donate now"
           />
           <FeaturedCommunityCard
             href="/give/cause"
@@ -151,7 +145,6 @@ export default function CommunitiesPage() {
             category="Mission"
             title="Schoenstatt Mission"
             description="Faith-driven mission community connecting supporters with campaigns and events."
-            cta="View cause"
           />
         </CardsCarousel>
       </Section>
