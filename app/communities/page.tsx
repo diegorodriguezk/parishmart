@@ -5,7 +5,6 @@ import { Photo } from "@/components/Photo";
 import {
   Section,
   SectionHeader,
-  FilterChips,
   DarkPanel,
 } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -59,13 +58,6 @@ export default function CommunitiesPage() {
             </div>
           </div>
         </div>
-      </Section>
-
-      <Section width="wide" className="!py-4">
-        <FilterChips
-          items={["Parish Stores", "Ministries", "Causes"]}
-          active="Parish Stores"
-        />
       </Section>
 
       <Section width="wide" className="!pt-2">
