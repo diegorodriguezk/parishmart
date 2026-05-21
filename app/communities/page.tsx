@@ -133,8 +133,8 @@ export default function CommunitiesPage() {
 
       <Section width="wide">
         <SectionHeader
-          title="Ministries & Retreat Communities"
-          description="Ministries and retreat communities supported by parishes inside ParishMart."
+          title="Ministries"
+          description="Ministries supported by parishes inside ParishMart."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <CommunityCard
@@ -158,28 +158,6 @@ export default function CommunitiesPage() {
             tags={["Formation", "Outreach"]}
             subtext="Active campaign"
             cta="Support cause"
-          />
-          <CommunityCard
-            href="/give/cause"
-            photo="volunteers"
-            initials="SV"
-            category="Cause"
-            title="St Vincent de Paul"
-            description="Helping families in need through parish-coordinated initiatives."
-            tags={["Helping hands", "Local impact"]}
-            subtext="Recurring drive"
-            cta="Donate now"
-          />
-          <CommunityCard
-            href="/give/cause"
-            photo="stained-glass"
-            initials="SCH"
-            category="Mission"
-            title="Schoenstatt Mission"
-            description="Faith-driven mission community connecting supporters with campaigns and events."
-            tags={["Mission", "Campaigns"]}
-            subtext="Mission fund"
-            cta="View cause"
           />
         </div>
       </Section>
