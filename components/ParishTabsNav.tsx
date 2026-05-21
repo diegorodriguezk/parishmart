@@ -18,7 +18,7 @@ const TABS: Tab[] = [
   { key: "about",      href: "/stores#about",      label: "About",            anchor: "about" },
   { key: "shop",       href: "/stores/shop",       label: "Shop" },
   { key: "give",       href: "/stores/give",       label: "Give" },
-  { key: "ministries", href: "/stores#ministries", label: "Communities",      anchor: "ministries" },
+  { key: "ministries", href: "/stores/ministries", label: "Ministries" },
   { key: "local-biz",  href: "/stores#local-biz",  label: "Local Businesses", anchor: "local-biz" },
   { key: "sponsors",   href: "/stores#sponsors",   label: "Sponsors",         anchor: "sponsors" },
 ];
