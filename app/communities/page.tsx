@@ -10,6 +10,7 @@ import {
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
 import { CardsCarousel } from "@/components/CardsCarousel";
+import { SponsorBanner } from "@/components/sponsors/SponsorBanner";
 
 export const metadata = {
   title: "Communities · Parishes & Causes · ParishMart",
@@ -61,6 +62,8 @@ export default function CommunitiesPage() {
           </div>
         </div>
       </Section>
+
+      <SponsorBanner />
 
       <Section width="wide" className="!pt-2">
         <SectionHeader
