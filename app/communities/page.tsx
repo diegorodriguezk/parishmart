@@ -41,27 +41,22 @@ export default function CommunitiesPage() {
             </p>
           </div>
 
-          <div className="relative isolate min-h-[220px] lg:min-h-[280px]">
-            <Photo
-              kind="church"
-              src="/brand/skd/church.jpg"
-              ratio="auto"
-              rounded="rounded-none"
-              className="absolute inset-0 -z-10 !rounded-none"
-              overlay="none"
-            />
+          <div className="p-4 sm:p-6 lg:py-6 lg:pl-0 lg:pr-6">
             <Link
               href="/stores"
-              className="absolute bottom-4 left-4 right-4 rounded-2xl border border-pm-border bg-white/95 p-3 shadow-pm-card backdrop-blur transition hover:-translate-y-0.5 hover:shadow-pm-soft sm:bottom-6 sm:left-6 sm:right-6 sm:p-4"
+              className="relative isolate block min-h-[220px] overflow-hidden rounded-3xl border border-pm-border shadow-pm-card transition hover:-translate-y-0.5 hover:shadow-pm-soft lg:min-h-[280px]"
             >
-              <span className="pm-label w-fit">Featured Community</span>
-              <h3 className="mt-1.5 text-base font-bold text-pm-navy sm:text-lg">
-                St. Katharine Drexel
-              </h3>
-              <p className="mt-1 line-clamp-2 text-xs text-pm-muted">
-                Our pilot parish community connecting products, donations,
-                campaigns and community supporters.
-              </p>
+              <Photo
+                kind="church"
+                src="/brand/skd/church.jpg"
+                ratio="auto"
+                rounded="rounded-none"
+                className="absolute inset-0 -z-10 !rounded-none border-0"
+                overlay="none"
+              />
+              <span className="pm-label absolute left-4 top-4 sm:left-5 sm:top-5">
+                Featured Parish Store
+              </span>
             </Link>
           </div>
         </div>
