@@ -103,6 +103,7 @@ export default function CommunitiesPage() {
             category="Join the ecosystem"
             title="Open Your Parish Store"
             description="Activate a parish presence on ParishMart with giving campaigns, merch, sponsors and impact dashboards."
+            location="Anywhere · Online activation"
           />
         </CardsCarousel>
       </Section>
@@ -124,6 +125,7 @@ export default function CommunitiesPage() {
             category="Ministry"
             title="Emmaus Community"
             description="Retreat community with event merch, ministry visibility and fundraising."
+            location="SKD · Weston, FL"
           />
           <FeaturedCommunityCard
             href="/give/cause"
@@ -131,6 +133,7 @@ export default function CommunitiesPage() {
             category="Ministry"
             title="Youth Ministry"
             description="Formation, retreats and outreach for SKD's young community leaders."
+            location="SKD · Weston, FL"
           />
           <FeaturedCommunityCard
             href="/give/cause"
@@ -138,6 +141,7 @@ export default function CommunitiesPage() {
             category="Cause"
             title="St Vincent de Paul"
             description="Helping families in need through parish-coordinated initiatives."
+            location="South Florida"
           />
           <FeaturedCommunityCard
             href="/give/cause"
@@ -145,6 +149,7 @@ export default function CommunitiesPage() {
             category="Mission"
             title="Schoenstatt Mission"
             description="Faith-driven mission community connecting supporters with campaigns and events."
+            location="South Florida"
           />
         </CardsCarousel>
       </Section>

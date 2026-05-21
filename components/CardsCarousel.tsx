@@ -48,19 +48,19 @@ export function CardsCarousel({ children }: { children: ReactNode }) {
       </button>
       <div
         ref={scrollerRef}
-        className="-mx-1 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-1 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="-mx-1 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-smooth px-1 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {Array.isArray(children)
           ? children.map((child, i) => (
               <div
                 key={i}
-                className="w-[78%] shrink-0 snap-start sm:w-[48%] lg:w-[24%]"
+                className="flex w-[78%] shrink-0 snap-start sm:w-[48%] lg:w-[24%] [&>*]:w-full"
               >
                 {child}
               </div>
             ))
           : (
-            <div className="w-[78%] shrink-0 snap-start sm:w-[48%] lg:w-[24%]">
+            <div className="flex w-[78%] shrink-0 snap-start sm:w-[48%] lg:w-[24%] [&>*]:w-full">
               {children}
             </div>
           )}
