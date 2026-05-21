@@ -10,6 +10,8 @@ import {
 import { Photo } from "@/components/Photo";
 import { Section } from "@/components/Sections";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { SponsorBanner } from "@/components/sponsors/SponsorBanner";
+import { SponsorRecruitSection } from "@/components/sponsors/SponsorRecruitSection";
 
 const STEPS = [
   {
@@ -101,25 +103,6 @@ const FEATURED: {
     seller: "Casa Bella Gifts",
     price: "$59.00",
     src: "/brand/products/tote-harps.png",
-  },
-];
-
-const DISCOVER_BIZ = [
-  {
-    title: "Shop from local sellers",
-    body: "Products can support a parish, cause or community through each transaction.",
-  },
-  {
-    title: "Find trusted service businesses",
-    body: "Use ParishMart as a community directory with purpose.",
-  },
-  {
-    title: "Filter by parish or city",
-    body: "Make Local Biz discovery relevant and emotionally connected.",
-  },
-  {
-    title: "Show impact clearly",
-    body: "Every card should answer: who sells it and who benefits.",
   },
 ];
 
@@ -257,6 +240,9 @@ export function ShopContent({
         </div>
       </Section>
 
+      {/* SPONSOR BANNER */}
+      <SponsorBanner />
+
       {/* FEATURED PRODUCTS — sidebar + grid */}
       <Section width="wide">
         <div className="grid gap-6 lg:grid-cols-[220px_1fr]">
@@ -385,40 +371,8 @@ export function ShopContent({
         </div>
       </Section>
 
-      {/* DISCOVER LOCAL BIZ SUPPORTERS */}
-      <Section width="wide">
-        <div className="grid gap-3 lg:grid-cols-[1fr_1fr]">
-          <Link
-            href="/local-businesses"
-            className="group relative isolate flex min-h-[260px] flex-col justify-end overflow-hidden rounded-3xl border border-pm-border p-5 text-white shadow-pm-card sm:p-6"
-          >
-            <Photo
-              kind="business"
-              ratio="auto"
-              rounded="rounded-none"
-              className="absolute inset-0 -z-10 !rounded-none"
-            />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
-            <h3 className="text-2xl font-extrabold leading-tight text-white">
-              Discover Local Biz Supporters
-            </h3>
-            <p className="mt-1 max-w-sm text-xs text-white/85">
-              ParishMart should help parishioners find, trust and buy from
-              businesses connected to their community.
-            </p>
-          </Link>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {DISCOVER_BIZ.map((d) => (
-              <div key={d.title} className="pm-card p-4">
-                <h4 className="text-sm font-extrabold text-pm-navy">
-                  {d.title}
-                </h4>
-                <p className="mt-1 text-xs text-pm-muted">{d.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
+      {/* SPONSOR RECRUITMENT — apply to become a ParishMart sponsor */}
+      <SponsorRecruitSection />
 
       {/* TRUST STRIP */}
       <Section width="wide" className="!pb-12">

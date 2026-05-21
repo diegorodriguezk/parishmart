@@ -10,6 +10,8 @@ import {
 import { Photo, type PhotoKind } from "@/components/Photo";
 import { Section } from "@/components/Sections";
 import { CauseLogo } from "@/components/CauseLogo";
+import { SponsorBanner } from "@/components/sponsors/SponsorBanner";
+import { SponsorRecruitSection } from "@/components/sponsors/SponsorRecruitSection";
 import { fetchCauses } from "@/lib/api";
 import type { CauseKey } from "@/lib/catalog";
 
@@ -136,25 +138,6 @@ const CAUSE_COPY: Record<CauseKey, CauseCopy> = {
     location: "Community-led",
   },
 };
-
-const DISCOVER_MINISTRIES = [
-  {
-    title: "Support active campaigns",
-    body: "Each campaign tells you the ministry, the goal and the people behind it.",
-  },
-  {
-    title: "Find parish ministries",
-    body: "Use ParishMart as a directory of ministries with their own pages.",
-  },
-  {
-    title: "Filter by parish or city",
-    body: "Make giving discovery relevant and connected to your community.",
-  },
-  {
-    title: "Show impact clearly",
-    body: "Every card should answer: which ministry, and who benefits.",
-  },
-];
 
 const TRUST = [
   {
@@ -285,6 +268,9 @@ export async function GiveContent({
           ))}
         </div>
       </Section>
+
+      {/* SPONSOR BANNER */}
+      <SponsorBanner />
 
       {/* FEATURED CAUSES — sidebar + grid */}
       <Section width="wide">
@@ -483,40 +469,8 @@ export async function GiveContent({
         </div>
       </Section>
 
-      {/* DISCOVER MINISTRIES */}
-      <Section width="wide">
-        <div className="grid gap-3 lg:grid-cols-[1fr_1fr]">
-          <Link
-            href={ministriesHref}
-            className="group relative isolate flex min-h-[260px] flex-col justify-end overflow-hidden rounded-3xl border border-pm-border p-5 text-white shadow-pm-card sm:p-6"
-          >
-            <Photo
-              kind="praying"
-              ratio="auto"
-              rounded="rounded-none"
-              className="absolute inset-0 -z-10 !rounded-none"
-            />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
-            <h3 className="text-2xl font-extrabold leading-tight text-white">
-              Discover Parish Ministries
-            </h3>
-            <p className="mt-1 max-w-sm text-xs text-white/85">
-              ParishMart should help parishioners find, trust and support the
-              ministries connected to their community.
-            </p>
-          </Link>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {DISCOVER_MINISTRIES.map((d) => (
-              <div key={d.title} className="pm-card p-4">
-                <h4 className="text-sm font-extrabold text-pm-navy">
-                  {d.title}
-                </h4>
-                <p className="mt-1 text-xs text-pm-muted">{d.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
+      {/* SPONSOR RECRUITMENT — apply to become a ParishMart sponsor */}
+      <SponsorRecruitSection />
 
       {/* TRUST STRIP */}
       <Section width="wide" className="!pb-12">
