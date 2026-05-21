@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
 import { CardsCarousel } from "@/components/CardsCarousel";
 import { SponsorBanner } from "@/components/sponsors/SponsorBanner";
+import { SponsorRecruitSection } from "@/components/sponsors/SponsorRecruitSection";
 
 export const metadata = {
   title: "Communities · Parishes & Causes · ParishMart",
@@ -168,6 +169,8 @@ export default function CommunitiesPage() {
           ctaSecondaryHref="/onboarding"
         />
       </Section>
+
+      <SponsorRecruitSection />
 
       <Footer />
     </>
