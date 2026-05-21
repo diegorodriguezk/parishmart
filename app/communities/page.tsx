@@ -63,15 +63,8 @@ export default function CommunitiesPage() {
 
       <Section width="wide" className="!py-4">
         <FilterChips
-          items={[
-            "All",
-            "Parish Stores",
-            "Ministries",
-            "Causes",
-            "Missions",
-            "Retreat Communities",
-          ]}
-          active="All"
+          items={["Parish Stores", "Ministries", "Causes"]}
+          active="Parish Stores"
         />
       </Section>
 
