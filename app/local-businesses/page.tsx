@@ -10,7 +10,7 @@ import { fetchBusinesses } from "@/lib/api";
 
 export const metadata = { title: "Local Biz Supporters · ParishMart" };
 
-const TABS = ["Featured", "Services", "Product Sellers", "Parishioner Offers", "Sponsors"];
+const TABS = ["Featured", "Services", "Product Sellers", "Parishioner Offers"];
 
 const BIZ_META: Record<string, {
   tags: string[];
@@ -21,7 +21,7 @@ const BIZ_META: Record<string, {
   secondaryCta: string;
 }> = {
   "aquatic-adventures-fl": {
-    tags: ["Weston / Fort Lauderdale", "Services"],
+    tags: ["Services"],
     rating: "4.8 rating",
     benefit: "10% benefit",
     supportedParish: "Supports SKD",
@@ -29,7 +29,7 @@ const BIZ_META: Record<string, {
     secondaryCta: "Book",
   },
   "armando-fit": {
-    tags: ["Weston, FL", "Services"],
+    tags: ["Services"],
     rating: "4.9 rating",
     benefit: "Intro offer",
     supportedParish: "Supports SKD",
@@ -37,7 +37,7 @@ const BIZ_META: Record<string, {
     secondaryCta: "Book",
   },
   "meraki": {
-    tags: ["Doral, FL", "Product Seller"],
+    tags: ["Product Seller"],
     rating: "4.7 rating",
     benefit: "Impact sale",
     supportedParish: "Supports Emmaus",
@@ -58,12 +58,14 @@ export default async function LocalBusinessCategoryPage() {
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Local Biz Supporters" }]} />
       </Section>
 
-      {/* HERO — two columns: left content card, right single photo */}
+      {/* HERO — two separate cards */}
       <Section width="wide" className="!pb-2 !pt-0">
-        <div className="grid min-h-[300px] overflow-hidden rounded-3xl border border-pm-border shadow-pm-card lg:grid-cols-[1fr_1fr]">
-          {/* Left */}
-          <div className="flex flex-col justify-center gap-5 bg-white p-8 sm:p-10">
-            <span className="pm-kicker">Local Biz Supporters</span>
+        <div className="grid gap-4 lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
+          {/* Left card */}
+          <div className="pm-card flex flex-col justify-center gap-5 p-6 sm:p-8 min-h-[340px]">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-pm-soft px-3 py-1 text-[11px] font-bold text-pm-blue">
+              Local Biz Supporters
+            </span>
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-4xl">
               Discover businesses that{" "}
               <span className="pm-gradient-text">support your community.</span>
@@ -72,42 +74,34 @@ export default async function LocalBusinessCategoryPage() {
               Find trusted services, products and offers from local businesses
               connected to parishes, causes and communities.
             </p>
-            <form
-              action="/search"
-              method="get"
-              role="search"
-              className="flex items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft"
-            >
-              <Search className="h-4 w-4 shrink-0 text-pm-muted" aria-hidden />
-              <input
-                name="q"
-                className="pm-input h-9 w-full px-1 text-sm"
-                placeholder="Search business, service, parish, city or ZIP…"
-                aria-label="Search local businesses"
-              />
-              <button type="submit" className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs sm:text-sm">
-                Search
-              </button>
-            </form>
+            <div className="flex flex-wrap gap-3">
+              <Link href="#featured" className="pm-btn pm-btn-primary">
+                Explore Businesses
+              </Link>
+              <Link href="/onboarding/local-business" className="pm-btn pm-btn-secondary">
+                Become a Biz Supporter
+              </Link>
+            </div>
           </div>
 
-          {/* Right — single photo with overlay */}
-          <div className="relative min-h-[240px]">
+          {/* Right card — photo with overlay */}
+          <div className="relative isolate overflow-hidden rounded-3xl border border-pm-border shadow-pm-card">
             <Photo
               kind="business"
               ratio="auto"
               rounded="rounded-none"
-              className="absolute inset-0 !rounded-none h-full"
-              overlay="strong"
+              className="absolute inset-0 -z-10 !rounded-none"
+              overlay="none"
             />
-            <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-white/70">
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/35 via-black/15 to-black/55" />
+            <div className="flex h-full flex-col justify-end gap-3 p-6 text-white sm:p-8">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white/85 backdrop-blur">
                 Community Commerce
               </span>
-              <h2 className="mt-1 text-lg font-extrabold leading-snug">
+              <h2 className="text-2xl font-extrabold leading-tight md:text-3xl">
                 Local businesses with a purpose.
               </h2>
-              <p className="mt-1 text-xs text-white/80">
+              <p className="max-w-md text-sm text-white/85">
                 Each business shows who it supports and how parishioners benefit.
               </p>
             </div>
@@ -170,7 +164,7 @@ export default async function LocalBusinessCategoryPage() {
         <div className="grid gap-4 md:grid-cols-3">
           {businesses.map((b, i) => {
             const meta = BIZ_META[b.id] ?? {
-              tags: [b.location, b.category],
+              tags: [b.category],
               rating: "4.8 rating",
               benefit: "Supporter",
               supportedParish: "Supports SKD",
@@ -180,31 +174,39 @@ export default async function LocalBusinessCategoryPage() {
             return (
               <article
                 key={b.id}
-                className="pm-card group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft"
+                className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
               >
-                {/* Photo with small initials badge */}
-                <div className="relative">
+                {/* Photo with logo overlay — LocalBizCard style */}
+                <Link href={b.href} className="relative block">
                   <Photo
                     kind={PHOTOS[i % PHOTOS.length]}
                     ratio="4/3"
-                    rounded="rounded-none"
-                    className="!rounded-t-[24px] !rounded-b-none"
+                    rounded="rounded-2xl"
                   />
-                  <span className="absolute bottom-3 left-3 grid h-10 w-10 place-items-center rounded-xl bg-white text-xs font-extrabold text-pm-navy shadow-pm-soft ring-2 ring-white">
-                    {b.initials}
-                  </span>
-                </div>
+                  {b.logoSrc ? (
+                    <span
+                      className="absolute bottom-0 right-3 z-10 translate-y-1/4 grid shrink-0 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-2 !ring-white shadow-pm-soft h-20 w-20"
+                      title={b.name}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={b.logoSrc} alt={b.name} className="h-full w-full object-contain" loading="lazy" />
+                    </span>
+                  ) : (
+                    <span className="pm-avatar absolute bottom-0 right-3 z-10 translate-y-1/4 !h-16 !w-16 rounded-2xl ring-2 !ring-white shadow-pm-soft">
+                      {b.initials}
+                    </span>
+                  )}
+                </Link>
 
                 {/* Content */}
-                <div className="flex flex-1 flex-col gap-2 p-4">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
-                    {b.category}
-                  </p>
+                <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-8">
+                  <span className="pm-label w-fit">{b.category}</span>
                   <Link href={b.href} className="block">
-                    <h3 className="text-base font-extrabold text-pm-navy group-hover:text-pm-blue">
+                    <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
                       {b.name}
                     </h3>
                   </Link>
+                  <p className="text-[11px] font-medium text-pm-blue">{b.location}</p>
                   <p className="text-xs text-pm-muted">{b.description}</p>
 
                   {/* Tags */}
@@ -217,24 +219,23 @@ export default async function LocalBusinessCategoryPage() {
                   </div>
 
                   {/* Supports row */}
-                  <div className="mt-1 flex items-center gap-2 rounded-2xl border border-pm-border bg-pm-soft/60 px-3 py-2">
-                    <SkdLogo size="sm" />
-                    <div className="flex flex-1 flex-col leading-tight">
-                      <span className="text-[10px] font-bold text-pm-navy">{meta.supportedParish}</span>
-                      <span className="text-[10px] text-pm-muted">Parish community</span>
+                  <div className="rounded-2xl border border-pm-border bg-pm-soft/60 px-3 py-2.5 space-y-1">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <SkdLogo size="sm" />
+                      <span className="text-[11px] font-bold text-pm-navy truncate">{meta.supportedParish}</span>
                     </div>
-                    <span className="rounded-full bg-pm-blue px-2.5 py-0.5 text-[10px] font-bold text-white">
-                      {meta.benefit}
-                    </span>
+                    <span className="block pl-9 text-[10px] text-pm-muted">Parish community</span>
                   </div>
 
-                  {/* CTAs */}
-                  <div className="mt-auto flex gap-2 pt-1">
-                    <Link href={b.href} className="pm-btn pm-btn-primary !flex-1 !px-3 !py-1.5 text-xs">
-                      {meta.primaryCta}
-                    </Link>
-                    <Link href={b.href} className="pm-btn pm-btn-secondary !px-4 !py-1.5 text-xs">
-                      {meta.secondaryCta}
+                  {/* Offer badge */}
+                  <span className="inline-flex w-fit items-center rounded-full bg-gradient-to-r from-pm-blue to-pm-cyan px-3 py-1 text-[11px] font-bold text-white">
+                    {meta.benefit}
+                  </span>
+
+                  {/* Arrow link */}
+                  <div className="mt-auto pt-1">
+                    <Link href={b.href} className="text-sm font-bold text-pm-blue hover:text-pm-navy">
+                      View more →
                     </Link>
                   </div>
                 </div>
@@ -252,7 +253,7 @@ export default async function LocalBusinessCategoryPage() {
               Join ParishMart as a Local Biz Supporter and connect your products or services to parishes, causes and trusted local discovery.
             </p>
           </div>
-          <Link href="/onboarding/local-business" className="pm-btn bg-white text-pm-navy shrink-0">
+          <Link href="/onboarding/local-business" className="pm-btn bg-white !text-pm-navy shrink-0">
             Become a Local Biz
           </Link>
         </div>
