@@ -27,7 +27,11 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
         )}
       </button>
       {open ? (
-        <div className="absolute right-0 top-full mt-2 w-32 overflow-hidden rounded-2xl border border-pm-border bg-white shadow-pm-card">
+        <div
+          className={`absolute right-0 z-50 w-36 overflow-hidden rounded-2xl border border-pm-border bg-white shadow-pm-card ${
+            compact ? "bottom-full mb-2" : "top-full mt-2"
+          }`}
+        >
           {(["EN", "ES"] as const).map((code) => (
             <button
               key={code}
