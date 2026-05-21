@@ -52,7 +52,7 @@ const FEATURED_STORES = [
   {
     photo: "stained-glass" as const,
     src: undefined as string | undefined,
-    label: undefined as string | undefined,
+    label: "Causes & Communities",
     title: "Schoenstatt, FACE & Casa Manresa",
     text: "Faith-driven communities, retreats and entrepreneurs connected to impact.",
     href: "/communities",
@@ -326,29 +326,40 @@ export default async function HomePage() {
                   </div>
                   <div className="grid gap-3 sm:grid-cols-3">
                     {FEATURED_STORES.map((s) => (
-                      <Link
+                      <article
                         key={s.title}
-                        href={s.href}
-                        className="group flex flex-col overflow-hidden rounded-2xl border border-pm-border bg-white transition hover:-translate-y-0.5 hover:shadow-pm-soft"
+                        className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
                       >
-                        <Photo
-                          kind={s.photo}
-                          src={s.src}
-                          ratio="16/9"
-                          rounded="rounded-none"
-                        />
-                        <div className="flex flex-1 flex-col gap-1 p-4">
+                        <Link href={s.href} className="block">
+                          <Photo
+                            kind={s.photo}
+                            src={s.src}
+                            ratio="4/3"
+                            rounded="rounded-2xl"
+                          />
+                        </Link>
+                        <div className="flex flex-1 flex-col gap-2 p-3">
                           {s.label ? (
-                            <span className="pm-label">{s.label}</span>
+                            <span className="pm-label w-fit">{s.label}</span>
                           ) : null}
-                          <h5 className="text-sm font-extrabold text-pm-navy group-hover:text-pm-blue">
-                            {s.title}
-                          </h5>
-                          <p className="line-clamp-2 text-[11px] text-pm-muted">
+                          <Link href={s.href} className="block">
+                            <h5 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
+                              {s.title}
+                            </h5>
+                          </Link>
+                          <p className="line-clamp-2 text-xs text-pm-muted">
                             {s.text}
                           </p>
+                          <div className="mt-auto pt-2">
+                            <Link
+                              href={s.href}
+                              className="text-sm font-bold text-pm-blue hover:text-pm-navy"
+                            >
+                              View more →
+                            </Link>
+                          </div>
                         </div>
-                      </Link>
+                      </article>
                     ))}
                   </div>
 
