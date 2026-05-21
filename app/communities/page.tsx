@@ -27,7 +27,7 @@ export default function CommunitiesPage() {
       </Section>
 
       <Section width="wide" className="!pt-2 !pb-3">
-        <div className="pm-card relative grid gap-0 overflow-hidden lg:grid-cols-[1.1fr_1fr]">
+        <div className="pm-card relative grid gap-0 overflow-hidden lg:grid-cols-[1.5fr_1fr]">
           <div className="flex flex-col justify-center gap-4 p-6 sm:p-10">
             <span className="pm-kicker w-fit">Communities</span>
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-5xl">
@@ -41,7 +41,7 @@ export default function CommunitiesPage() {
             </p>
           </div>
 
-          <div className="relative isolate min-h-[280px] lg:min-h-[360px]">
+          <div className="relative isolate min-h-[220px] lg:min-h-[280px]">
             <Photo
               kind="church"
               src="/brand/skd/church.jpg"
