@@ -124,22 +124,15 @@ export default function CommunitiesPage() {
       </Section>
 
       <Section width="wide">
-        <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy md:text-3xl">
-              Ministries
-            </h2>
-            <p className="mt-1 max-w-2xl text-sm text-pm-muted">
-              Ministries supported by parishes inside ParishMart.
-            </p>
-            <Link
-              href="/communities"
-              className="mt-3 inline-flex w-fit items-center gap-1 text-sm font-bold text-pm-blue hover:underline"
-            >
+        <SectionHeader
+          title="Ministries"
+          description="Ministries supported by parishes inside ParishMart."
+          right={
+            <Link href="/communities" className="font-bold text-pm-blue">
               View all →
             </Link>
-          </div>
-        </div>
+          }
+        />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <CommunityCard
             href="/give/cause"
