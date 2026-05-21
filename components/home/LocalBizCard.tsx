@@ -45,7 +45,7 @@ export function LocalBizCard(p: LocalBizCardData) {
           </span>
         )}
       </Link>
-      <div className="flex flex-1 flex-col gap-2 p-3">
+      <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-8">
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="pm-label">{p.category}</span>
         </div>

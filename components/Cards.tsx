@@ -105,7 +105,6 @@ export function CauseCard({
   href = "/give/cause",
   photo,
   cause,
-  label,
   title,
   description,
   location,
@@ -163,11 +162,12 @@ export function CauseCard({
           />
         ) : null}
       </LinkOrAnchor>
-      <div className="flex flex-1 flex-col gap-2 p-3">
-        <div className="flex flex-wrap items-center gap-1.5">
-          {label ? <span className="pm-label">{label}</span> : null}
-          {verified ? <TrustBadge variant="verified" label="Verified parish" /> : null}
-        </div>
+      <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-8">
+        {verified ? (
+          <div className="flex flex-wrap items-center gap-1.5">
+            <TrustBadge variant="verified" label="Verified parish" />
+          </div>
+        ) : null}
         <LinkOrAnchor className="block">
           <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
             {title}
@@ -190,8 +190,8 @@ export function CauseCard({
           </div>
         ) : null}
         <div className="mt-auto pt-2">
-          <LinkOrAnchor className="text-sm font-bold text-pm-blue hover:text-pm-navy">
-            {cta} →
+          <LinkOrAnchor className="pm-btn pm-btn-secondary !px-4 !py-1.5 text-xs">
+            {cta}
           </LinkOrAnchor>
         </div>
       </div>
