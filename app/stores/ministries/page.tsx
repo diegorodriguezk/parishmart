@@ -1,6 +1,6 @@
 import { ParishProfileHeader } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ShopContent } from "@/components/shop/ShopContent";
+import { MinistriesContent } from "@/components/ministries/MinistriesContent";
 
 export const metadata = { title: "Ministries · Saint Katharine Drexel" };
 
@@ -14,7 +14,7 @@ export default function StoresMinistriesPage() {
         searchPlaceholder="Search ministries, retreats, missions and outreach…"
         activeTab="ministries"
       />
-      <ShopContent
+      <MinistriesContent
         heroKicker="SKD Parish Store · Explore Ministries"
         heroTitle={
           <>
