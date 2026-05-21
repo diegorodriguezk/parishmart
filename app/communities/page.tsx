@@ -27,26 +27,19 @@ export default function CommunitiesPage() {
       </Section>
 
       <Section width="wide" className="!pt-2 !pb-3">
-        <div className="relative isolate overflow-hidden rounded-3xl border border-pm-border shadow-pm-card p-6 sm:p-10 min-h-[260px]">
-          <Photo
-            kind="church"
-            ratio="auto"
-            rounded="rounded-none"
-            className="absolute inset-0 -z-10 !rounded-none"
-          />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
-          <div className="max-w-2xl">
-            <span className="pm-kicker">Parishes &amp; Causes</span>
-            <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-pm-navy md:text-5xl">
-              Discover every <span className="pm-gradient-text">community</span>{" "}
-              on ParishMart
+        <div className="pm-card relative grid gap-0 overflow-hidden lg:grid-cols-[1.1fr_1fr]">
+          <div className="flex flex-col justify-center gap-4 p-6 sm:p-10">
+            <span className="pm-kicker w-fit">Communities</span>
+            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-5xl">
+              Communities connected through{" "}
+              <span className="pm-gradient-text">purpose.</span>
             </h1>
-            <p className="mt-4 max-w-xl text-sm text-pm-muted">
-              Parish stores, ministries, missions and causes — all in one place.
-              Choose where to shop with purpose, give with love and amplify
+            <p className="max-w-md text-sm text-pm-muted">
+              Discover parishes, causes and communities — and the everyday
+              giving and local support that connect them back to clear, real
               impact.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-2 flex flex-wrap gap-3">
               <Link href="/stores" className="pm-btn pm-btn-primary">
                 Browse Parish Stores
               </Link>
@@ -57,6 +50,29 @@ export default function CommunitiesPage() {
                 Open Your Store
               </Link>
             </div>
+          </div>
+
+          <div className="relative isolate min-h-[280px] lg:min-h-[360px]">
+            <Photo
+              kind="community"
+              ratio="auto"
+              rounded="rounded-none"
+              className="absolute inset-0 -z-10 !rounded-none"
+              overlay="none"
+            />
+            <Link
+              href="/stores"
+              className="absolute bottom-4 left-4 right-4 rounded-2xl border border-pm-border bg-white/95 p-3 shadow-pm-card backdrop-blur transition hover:-translate-y-0.5 hover:shadow-pm-soft sm:bottom-6 sm:left-6 sm:right-6 sm:p-4"
+            >
+              <span className="pm-label w-fit">Featured Community</span>
+              <h3 className="mt-1.5 text-base font-bold text-pm-navy sm:text-lg">
+                St. Katharine Drexel
+              </h3>
+              <p className="mt-1 line-clamp-2 text-xs text-pm-muted">
+                Our pilot parish community connecting products, donations,
+                campaigns and community supporters.
+              </p>
+            </Link>
           </div>
         </div>
       </Section>
