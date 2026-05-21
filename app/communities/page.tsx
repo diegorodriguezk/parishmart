@@ -9,6 +9,7 @@ import {
 } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
+import { CardsCarousel } from "@/components/CardsCarousel";
 
 export const metadata = {
   title: "Communities · Parishes & Causes · ParishMart",
@@ -70,7 +71,7 @@ export default function CommunitiesPage() {
             </Link>
           }
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <CardsCarousel>
           <FeaturedCommunityCard
             href="/stores"
             photo="church"
@@ -106,7 +107,7 @@ export default function CommunitiesPage() {
             description="Activate a parish presence on ParishMart with giving campaigns, merch, sponsors and impact dashboards."
             cta="Start activation"
           />
-        </div>
+        </CardsCarousel>
       </Section>
 
       <Section width="wide">
@@ -119,7 +120,7 @@ export default function CommunitiesPage() {
             </Link>
           }
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <CardsCarousel>
           <FeaturedCommunityCard
             href="/give/cause"
             photo="retreat"
@@ -152,7 +153,7 @@ export default function CommunitiesPage() {
             description="Faith-driven mission community connecting supporters with campaigns and events."
             cta="View cause"
           />
-        </div>
+        </CardsCarousel>
       </Section>
 
       <Section width="wide">
