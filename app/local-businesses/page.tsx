@@ -200,7 +200,13 @@ export default async function LocalBusinessCategoryPage() {
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-8">
-                  <span className="pm-label w-fit">{b.category}</span>
+                  {/* Category label + offer on same row */}
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="pm-label w-fit">{b.category}</span>
+                    <span className="rounded-full bg-pm-soft border border-pm-border px-3 py-1 text-xs font-bold text-pm-blue">
+                      {meta.benefit}
+                    </span>
+                  </div>
                   <Link href={b.href} className="block">
                     <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
                       {b.name}
@@ -219,18 +225,13 @@ export default async function LocalBusinessCategoryPage() {
                   </div>
 
                   {/* Supports row */}
-                  <div className="rounded-2xl border border-pm-border bg-pm-soft/60 px-3 py-2.5 space-y-1">
-                    <div className="flex items-center gap-2 min-w-0">
+                  <div className="rounded-2xl border border-pm-border bg-pm-soft/60 px-3 py-2.5 space-y-0.5">
+                    <div className="flex items-center gap-2">
                       <SkdLogo size="sm" />
-                      <span className="text-[11px] font-bold text-pm-navy truncate">{meta.supportedParish}</span>
+                      <span className="text-[11px] font-bold text-pm-navy">{meta.supportedParish}</span>
                     </div>
-                    <span className="block pl-9 text-[10px] text-pm-muted">Parish community</span>
+                    <p className="pl-11 text-[10px] text-pm-muted">Parish community</p>
                   </div>
-
-                  {/* Offer badge */}
-                  <span className="inline-flex w-fit items-center rounded-full bg-gradient-to-r from-pm-blue to-pm-cyan px-3 py-1 text-[11px] font-bold text-white">
-                    {meta.benefit}
-                  </span>
 
                   {/* Arrow link */}
                   <div className="mt-auto pt-1">
