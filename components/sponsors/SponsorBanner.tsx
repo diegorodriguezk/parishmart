@@ -17,7 +17,7 @@ export function SponsorBanner() {
             <p className="text-[11px] font-bold uppercase tracking-wider text-white/85">
               Sponsor a parish community
             </p>
-            <h3 className="text-base font-extrabold leading-tight sm:text-lg">
+            <h3 className="text-base font-extrabold leading-tight text-white sm:text-lg">
               Sponsor your business here — apply to join ParishMart.
             </h3>
           </div>
