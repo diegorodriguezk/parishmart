@@ -8,7 +8,7 @@ import {
   DarkPanel,
 } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { CommunityCard } from "@/components/home/LocalBizCard";
+import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
 
 export const metadata = {
   title: "Communities · Parishes & Causes · ParishMart",
@@ -71,53 +71,39 @@ export default function CommunitiesPage() {
           }
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <CommunityCard
+          <FeaturedCommunityCard
             href="/stores"
             photo="church"
             photoSrc="/brand/skd/church.jpg"
-            initials="SKD"
-            logoSrc="/brand/skd/logo.png"
             category="Parish Store"
             title="St. Katharine Drexel"
             description="Our pilot parish community connecting products, giving and local impact."
             location="Weston, FL"
-            tags={["Pilot parish", "Weston, FL"]}
-            subtext="Active pilot"
-            cta="View community"
           />
-          <CommunityCard
+          <FeaturedCommunityCard
             href="/stores"
             photo="stained-glass"
-            initials="ST"
             category="Parish Store"
             title="Sample Parish — Coming Soon"
             description="A new parish onboarding to ParishMart soon. Reserve your store today."
             location="South Florida"
-            tags={["Onboarding", "Reserved"]}
-            subtext="Joining 2026"
             cta="Learn more"
           />
-          <CommunityCard
+          <FeaturedCommunityCard
             href="/stores"
             photo="altar"
-            initials="NP"
             category="Parish Store"
             title="Network Parish"
             description="Network parish exploring giving campaigns, merch and local partnerships."
             location="Florida"
-            tags={["In review", "Florida"]}
-            subtext="Pre-launch"
             cta="Learn more"
           />
-          <CommunityCard
+          <FeaturedCommunityCard
             href="/onboarding/parish"
             photo="cross"
-            initials="+"
             category="Join the ecosystem"
             title="Open Your Parish Store"
             description="Activate a parish presence on ParishMart with giving campaigns, merch, sponsors and impact dashboards."
-            tags={["Free to start", "Approval required"]}
-            subtext="Simple onboarding"
             cta="Start activation"
           />
         </div>
@@ -134,48 +120,36 @@ export default function CommunitiesPage() {
           }
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <CommunityCard
+          <FeaturedCommunityCard
             href="/give/cause"
             photo="retreat"
-            initials="EM"
             category="Ministry"
             title="Emmaus Community"
             description="Retreat community with event merch, ministry visibility and fundraising."
-            tags={["Retreats", "Event merch"]}
-            subtext="Community partner"
             cta="View ministry"
           />
-          <CommunityCard
+          <FeaturedCommunityCard
             href="/give/cause"
             photo="praying"
-            initials="YM"
             category="Ministry"
             title="Youth Ministry"
             description="Formation, retreats and outreach for SKD's young community leaders."
-            tags={["Formation", "Outreach"]}
-            subtext="Active campaign"
             cta="Support cause"
           />
-          <CommunityCard
+          <FeaturedCommunityCard
             href="/give/cause"
             photo="volunteers"
-            initials="SV"
             category="Cause"
             title="St Vincent de Paul"
             description="Helping families in need through parish-coordinated initiatives."
-            tags={["Helping hands", "Local impact"]}
-            subtext="Recurring drive"
             cta="Donate now"
           />
-          <CommunityCard
+          <FeaturedCommunityCard
             href="/give/cause"
             photo="stained-glass"
-            initials="SCH"
             category="Mission"
             title="Schoenstatt Mission"
             description="Faith-driven mission community connecting supporters with campaigns and events."
-            tags={["Mission", "Campaigns"]}
-            subtext="Mission fund"
             cta="View cause"
           />
         </div>

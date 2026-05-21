@@ -88,6 +88,52 @@ export type CommunityCardData = {
   cta?: string;
 };
 
+export type FeaturedCommunityCardData = {
+  href: string;
+  photo: PhotoKind;
+  photoSrc?: string;
+  category: string;
+  title: string;
+  description: string;
+  location?: string;
+  cta?: string;
+};
+
+export function FeaturedCommunityCard(p: FeaturedCommunityCardData) {
+  return (
+    <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+      <Link href={p.href} className="block">
+        <Photo
+          kind={p.photo}
+          src={p.photoSrc}
+          ratio="4/3"
+          rounded="rounded-2xl"
+        />
+      </Link>
+      <div className="flex flex-1 flex-col gap-2 p-3">
+        <span className="pm-label w-fit">{p.category}</span>
+        <Link href={p.href} className="block">
+          <h5 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
+            {p.title}
+          </h5>
+        </Link>
+        {p.location ? (
+          <p className="text-[11px] font-medium text-pm-blue">{p.location}</p>
+        ) : null}
+        <p className="line-clamp-2 text-xs text-pm-muted">{p.description}</p>
+        <div className="mt-auto pt-2">
+          <Link
+            href={p.href}
+            className="text-sm font-bold text-pm-blue hover:text-pm-navy"
+          >
+            {p.cta ?? "View more"} →
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export function CommunityCard(p: CommunityCardData) {
   return (
     <article className="pm-card relative flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft">
