@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Search,
-  Heart,
   ChevronDown,
   ShieldCheck,
   Sparkles,
@@ -358,23 +357,13 @@ export async function GiveContent({
                         className="absolute inset-0 z-0"
                         {...linkProps}
                       />
-                      <div className="pointer-events-none absolute left-3 top-3 z-10 flex items-center gap-2">
-                        <CauseLogo cause={c.key} size="md" />
-                        {copy?.label ? (
-                          <span className="inline-flex items-center rounded-full bg-pm-navy px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-                            {copy.label}
-                          </span>
-                        ) : null}
-                      </div>
-                      <button
-                        type="button"
-                        aria-label="Save"
-                        className="absolute right-3 top-3 z-10 grid h-8 w-8 place-items-center rounded-full border border-pm-border bg-white text-pm-muted hover:text-pm-blue"
-                      >
-                        <Heart className="h-4 w-4" aria-hidden />
-                      </button>
+                      <CauseLogo
+                        cause={c.key}
+                        size="lg"
+                        className="absolute bottom-0 right-3 z-10 translate-y-1/4 ring-2 !ring-white"
+                      />
                     </div>
-                    <div className="flex flex-1 flex-col gap-2 p-4">
+                    <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-8">
                       <div>
                         <Link href={causeHref} className="block" {...linkProps}>
                           <h3 className="text-sm font-extrabold leading-tight text-pm-navy group-hover:text-pm-blue">
@@ -392,13 +381,10 @@ export async function GiveContent({
                           {copy.description}
                         </p>
                       ) : null}
-                      <div className="mt-auto flex items-center justify-between pt-1">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
-                          {parish === "skd" ? "Supports SKD" : "Active"}
-                        </span>
+                      <div className="mt-auto pt-2">
                         <Link
                           href={causeHref}
-                          className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs"
+                          className="pm-btn pm-btn-secondary !px-4 !py-1.5 text-xs"
                           {...linkProps}
                         >
                           Support Now
