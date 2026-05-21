@@ -445,12 +445,6 @@ export async function GiveContent({
                 </div>
               </article>
             </div>
-
-            <p className="mt-6 text-xs text-pm-muted">
-              <strong className="text-pm-navy">Important:</strong> donation
-              cards do not display financial goals, amounts or impact metrics in
-              this MVP. The only action is <strong>Support Now</strong>.
-            </p>
           </div>
         </div>
       </Section>
