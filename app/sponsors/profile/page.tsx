@@ -39,8 +39,8 @@ export default function SponsorProfilePage() {
             />
           </div>
 
-          {/* RIGHT — Offer details */}
-          <div className="flex flex-col gap-5">
+          {/* RIGHT — Offer details wrapped in pm-card */}
+          <div className="pm-card flex flex-col gap-5 p-6">
             {/* Company identity */}
             <div className="flex items-center gap-3">
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan text-base font-extrabold text-white shadow-pm-soft">
@@ -60,17 +60,12 @@ export default function SponsorProfilePage() {
               </div>
             </div>
 
-            {/* Offer pill + headline */}
-            <div>
-              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-pm-blue to-pm-cyan px-4 py-1.5 text-sm font-bold text-white">
-                $100 health credit
-              </span>
-              <p className="mt-3 text-sm text-pm-muted">
-                Exclusive wellness benefit available to all SKD parishioners.
-                Use toward health screenings, consultations or community
-                wellness events hosted by Cleveland Hospital.
-              </p>
-            </div>
+            {/* Description */}
+            <p className="text-sm text-pm-muted">
+              Exclusive wellness benefit available to all SKD parishioners.
+              Use toward health screenings, consultations or community
+              wellness events hosted by Cleveland Hospital.
+            </p>
 
             {/* Meta info */}
             <div className="flex flex-wrap gap-3 text-[11px] text-pm-muted">
@@ -86,6 +81,14 @@ export default function SponsorProfilePage() {
               </span>
             </div>
 
+            {/* Offer — full-width prominent block before CTAs */}
+            <div className="w-full rounded-2xl px-6 py-4" style={{ backgroundColor: "#006699" }}>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-white/75">
+                Featured Sponsor Benefit
+              </p>
+              <p className="mt-1 text-2xl font-extrabold text-white">$100 health credit</p>
+            </div>
+
             {/* CTAs */}
             <div className="flex flex-wrap gap-3">
               <a
@@ -99,17 +102,6 @@ export default function SponsorProfilePage() {
               <Link href="/share-impact" className="pm-btn pm-btn-secondary">
                 Share offer
               </Link>
-            </div>
-
-            {/* Supports row */}
-            <div className="flex items-center gap-2 rounded-2xl border border-pm-border bg-pm-soft/60 px-3 py-2.5">
-              <div className="flex flex-1 flex-col">
-                <span className="text-[11px] font-bold text-pm-navy">Supports SKD</span>
-                <span className="text-[10px] text-pm-muted">Saint Katharine Drexel · Weston, FL</span>
-              </div>
-              <span className="rounded-full bg-pm-blue px-2.5 py-0.5 text-[10px] font-bold text-white">
-                Premium sponsor
-              </span>
             </div>
           </div>
         </div>

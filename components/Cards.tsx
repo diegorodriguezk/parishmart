@@ -203,56 +203,54 @@ export function SponsorOfferCard({
   href = "/sponsors/profile",
   photo,
   initials,
+  logoSrc,
   title,
   offer,
-  daysLeft,
   isNew,
 }: {
   href?: string;
   photo: PhotoKind;
   initials: string;
+  logoSrc?: string;
   title: string;
   offer: string;
   daysLeft?: string;
   isNew?: boolean;
 }) {
   return (
-    <article className="pm-card group relative flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft">
-      <Link href={href} className="block">
+    <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+      <Link href={href} className="relative block">
         <Photo
           kind={photo}
           ratio="4/3"
-          rounded="rounded-none"
-          className="!rounded-t-[24px] !rounded-b-none"
+          rounded="rounded-2xl"
         />
+        {isNew ? (
+          <span className="absolute left-3 top-3 rounded-full bg-pm-blue px-2.5 py-1 text-[10px] font-bold text-white">
+            New
+          </span>
+        ) : null}
+        {logoSrc ? (
+          <span className="absolute left-3 top-3 z-10 grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-2 !ring-white shadow-pm-soft">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logoSrc} alt={title} className="h-full w-full object-contain" loading="lazy" />
+          </span>
+        ) : (
+          <span className="pm-avatar absolute left-3 top-3 z-10 !h-16 !w-16 rounded-2xl ring-2 !ring-white shadow-pm-soft text-sm">
+            {initials}
+          </span>
+        )}
       </Link>
-      <span className="pm-avatar absolute left-3 top-3 !h-8 !w-8 rounded-md text-[10px]">
-        {initials}
-      </span>
-      {isNew ? (
-        <span className="absolute right-3 top-3 rounded-full bg-pm-blue px-2 py-1 text-[10px] font-bold text-white">
-          New
-        </span>
-      ) : null}
-      <div className="flex flex-col gap-1 p-3">
+      <div className="flex flex-1 flex-col gap-1.5 p-3">
         <Link href={href} className="block">
           <h3 className="text-sm font-bold text-pm-navy group-hover:text-pm-blue">
             {title}
           </h3>
         </Link>
         <p className="text-base font-extrabold text-pm-blue">{offer}</p>
-        <div className="flex items-center justify-between">
-          {daysLeft ? (
-            <p className="text-xs text-pm-muted">{daysLeft}</p>
-          ) : (
-            <span />
-          )}
-          <Link
-            href={href}
-            className="grid h-7 w-7 place-items-center rounded-full border border-pm-border text-pm-blue hover:bg-pm-soft"
-            aria-label="Redeem offer"
-          >
-            +
+        <div className="mt-auto pt-1">
+          <Link href={href} className="text-sm font-bold text-pm-blue hover:text-pm-navy">
+            View offer →
           </Link>
         </div>
       </div>

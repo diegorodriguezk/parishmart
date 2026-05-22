@@ -76,7 +76,6 @@ export default function SponsorsCategoryPage() {
         <SectionHeader
           title="All Sponsor Offers"
           description="Compact cards with logo, coupon and quick redeem action."
-          right={<a href="#" className="font-bold text-pm-blue">View All</a>}
         />
         <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
           <SponsorOfferCard photo="retreat" initials="MS" title="Maria's Studios" offer="10% cash back" daysLeft="40d left" />
