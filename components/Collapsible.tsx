@@ -3,6 +3,36 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
+export function CollapsibleSection({
+  title,
+  children,
+  defaultOpen = false,
+}: {
+  title: string;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="border-b border-pm-border last:border-0">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between py-4 text-left"
+      >
+        <span className="text-sm font-bold text-pm-navy">{title}</span>
+        <ChevronDown
+          className={`h-4 w-4 shrink-0 text-pm-muted transition-transform ${open ? "rotate-180" : ""}`}
+          aria-hidden
+        />
+      </button>
+      {open && (
+        <div className="pb-4 text-sm text-pm-muted">{children}</div>
+      )}
+    </div>
+  );
+}
+
 export function CollapsibleDescription({
   text,
   previewLines = 2,
