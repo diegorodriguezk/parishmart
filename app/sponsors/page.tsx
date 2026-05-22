@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Search } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
@@ -18,31 +19,45 @@ export default function SponsorsCategoryPage() {
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Sponsor Offers" }]} />
       </Section>
 
-      <Section width="wide" className="!pb-2 !pt-2">
-        <div className="relative isolate overflow-hidden rounded-3xl border border-pm-border shadow-pm-card p-6 sm:p-8 min-h-[260px] sm:min-h-[300px]">
-          <Photo kind="business" ratio="auto" rounded="rounded-none" className="absolute inset-0 -z-10 !rounded-none" />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white/95 via-white/80 to-white/40" />
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <p className="text-xs font-bold text-pm-blue">Sponsor Offers · Parishioner Benefits</p>
-              <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-pm-navy md:text-5xl">
-                Sponsor <span className="pm-gradient-text">Offers</span>
-              </h1>
-              <p className="mt-3 max-w-md text-sm text-pm-muted">
-                Exclusive benefits from mission-aligned businesses that support
-                SKD, Emmaus and parish initiatives. A familiar rewards-style
-                experience for parishioners.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <a className="pm-btn pm-btn-primary" href="#offers">Explore Offers</a>
-                <Link className="pm-btn pm-btn-secondary" href="/onboarding/sponsor">Become a Sponsor</Link>
-              </div>
+      <Section width="wide" className="!pb-2 !pt-0">
+        <div className="grid gap-4 lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
+          {/* Left card */}
+          <div className="pm-card flex flex-col justify-center gap-5 p-6 sm:p-8 min-h-[340px]">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-pm-soft px-3 py-1 text-[11px] font-bold text-pm-blue">
+              Sponsor Offers · Parishioner Benefits
+            </span>
+            <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-4xl">
+              Sponsor <span className="pm-gradient-text">Offers</span>
+            </h1>
+            <p className="max-w-md text-sm text-pm-muted">
+              Exclusive benefits from mission-aligned businesses that support
+              SKD, Emmaus and parish initiatives. A familiar rewards-style
+              experience for parishioners.
+            </p>
+            <form action="/search" method="get" role="search" className="flex items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft">
+              <Search className="h-4 w-4 shrink-0 text-pm-muted" aria-hidden />
+              <input name="q" className="pm-input h-9 w-full px-1 text-sm" placeholder="Search sponsors, offers, categories…" aria-label="Search sponsors" />
+              <button type="submit" className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs sm:text-sm">Search</button>
+            </form>
+            <div className="flex flex-wrap gap-3">
+              <a className="pm-btn pm-btn-primary" href="#offers">Explore Offers</a>
+              <Link className="pm-btn pm-btn-secondary" href="/onboarding/sponsor">Become a Sponsor</Link>
             </div>
-            <div className="pm-card !shadow-none p-4">
-              <p className="text-xs font-bold text-pm-blue">Chase Offers style</p>
-              <p className="mt-1 max-w-xs text-xs text-pm-muted">
-                Logo, image, coupon, deadline and quick action — simple for
-                parishioners to scan and redeem.
+          </div>
+
+          {/* Right card — photo with overlay */}
+          <div className="relative isolate overflow-hidden rounded-3xl border border-pm-border shadow-pm-card">
+            <Photo kind="business" ratio="auto" rounded="rounded-none" className="absolute inset-0 -z-10 !rounded-none" overlay="none" />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/35 via-black/15 to-black/55" />
+            <div className="flex h-full flex-col justify-end gap-3 p-6 text-white sm:p-8">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white/85 backdrop-blur">
+                Parishioner Benefits
+              </span>
+              <h2 className="text-2xl font-extrabold leading-tight md:text-3xl">
+                Logo, image, coupon, deadline and quick action.
+              </h2>
+              <p className="max-w-md text-sm text-white/85">
+                Simple for parishioners to scan and redeem.
               </p>
             </div>
           </div>
