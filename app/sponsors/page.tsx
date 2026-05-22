@@ -78,18 +78,18 @@ export default function SponsorsCategoryPage() {
           description="Compact cards with logo, coupon and quick redeem action."
         />
         <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-          <SponsorOfferCard photo="retreat" initials="MS" title="Maria's Studios" offer="10% cash back" daysLeft="40d left" />
-          <SponsorOfferCard photo="house" initials="BK" title="Community Bank" offer="$50 cash back" daysLeft="32d left" />
-          <SponsorOfferCard photo="food" initials="BG" title="Baires Grill Weston" offer="5% cash back" daysLeft="18d left" />
-          <SponsorOfferCard photo="merch" initials="PM" title="Pretzelmaker" offer="10% cash back" daysLeft="24d left" isNew />
-          <SponsorOfferCard photo="business" initials="TV" title="Family Streaming" offer="30% cash back" daysLeft="60d left" isNew />
-          <SponsorOfferCard photo="business" initials="TR" title="Travel Partner" offer="8% cash back" daysLeft="24d left" isNew />
-          <SponsorOfferCard photo="apparel" initials="AD" title="Sports Apparel" offer="$20 cash back" daysLeft="24d left" />
-          <SponsorOfferCard photo="business" initials="CF" title="Cumberland Farms" offer="10% cash back" daysLeft="10d left" />
-          <SponsorOfferCard photo="business" initials="CH" title="Cleveland Hospital" offer="$100 credit" daysLeft="30d left" isNew />
-          <SponsorOfferCard photo="house" initials="SS" title="Simplisafe" offer="$100 cash back" daysLeft="24d left" isNew />
-          <SponsorOfferCard photo="house" initials="RE" title="Realty Supporter" offer="Free consult" daysLeft="60d left" />
-          <SponsorOfferCard photo="business" initials="LF" title="Legal & Finance" offer="20% off" daysLeft="45d left" />
+          <SponsorOfferCard compact photo="retreat" initials="MS" title="Maria's Studios" offer="10% cash back" daysLeft="40d left" />
+          <SponsorOfferCard compact photo="house" initials="BK" title="Community Bank" offer="$50 cash back" daysLeft="32d left" />
+          <SponsorOfferCard compact photo="food" initials="BG" title="Baires Grill Weston" offer="5% cash back" daysLeft="18d left" />
+          <SponsorOfferCard compact photo="merch" initials="PM" title="Pretzelmaker" offer="10% cash back" daysLeft="24d left" isNew />
+          <SponsorOfferCard compact photo="business" initials="TV" title="Family Streaming" offer="30% cash back" daysLeft="60d left" isNew />
+          <SponsorOfferCard compact photo="business" initials="TR" title="Travel Partner" offer="8% cash back" daysLeft="24d left" isNew />
+          <SponsorOfferCard compact photo="apparel" initials="AD" title="Sports Apparel" offer="$20 cash back" daysLeft="24d left" />
+          <SponsorOfferCard compact photo="business" initials="CF" title="Cumberland Farms" offer="10% cash back" daysLeft="10d left" />
+          <SponsorOfferCard compact photo="business" initials="CH" title="Cleveland Hospital" offer="$100 credit" daysLeft="30d left" isNew />
+          <SponsorOfferCard compact photo="house" initials="SS" title="Simplisafe" offer="$100 cash back" daysLeft="24d left" isNew />
+          <SponsorOfferCard compact photo="house" initials="RE" title="Realty Supporter" offer="Free consult" daysLeft="60d left" />
+          <SponsorOfferCard compact photo="business" initials="LF" title="Legal & Finance" offer="20% off" daysLeft="45d left" />
         </div>
       </Section>
 

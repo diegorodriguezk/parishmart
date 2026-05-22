@@ -207,6 +207,7 @@ export function SponsorOfferCard({
   title,
   offer,
   isNew,
+  compact = false,
 }: {
   href?: string;
   photo: PhotoKind;
@@ -216,6 +217,7 @@ export function SponsorOfferCard({
   offer: string;
   daysLeft?: string;
   isNew?: boolean;
+  compact?: boolean;
 }) {
   return (
     <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
@@ -225,21 +227,21 @@ export function SponsorOfferCard({
           ratio="4/3"
           rounded="rounded-2xl"
         />
-        {isNew ? (
-          <span className="absolute left-3 top-3 rounded-full bg-pm-blue px-2.5 py-1 text-[10px] font-bold text-white">
-            New
-          </span>
-        ) : null}
         {logoSrc ? (
-          <span className="absolute left-3 top-3 z-10 grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 ring-2 !ring-white shadow-pm-soft">
+          <span className={`absolute left-3 top-3 z-10 grid shrink-0 place-items-center overflow-hidden rounded-full bg-white p-1.5 ring-2 !ring-white shadow-pm-soft ${compact ? "h-11 w-11" : "h-16 w-16"}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={logoSrc} alt={title} className="h-full w-full object-contain" loading="lazy" />
           </span>
         ) : (
-          <span className="pm-avatar absolute left-3 top-3 z-10 !h-16 !w-16 rounded-2xl ring-2 !ring-white shadow-pm-soft text-sm">
+          <span className={`pm-avatar absolute left-3 top-3 z-10 !rounded-full ring-2 !ring-white shadow-pm-soft ${compact ? "!h-11 !w-11 text-[10px]" : "!h-16 !w-16 text-sm"}`}>
             {initials}
           </span>
         )}
+        {isNew ? (
+          <span className="absolute right-3 top-3 z-10 rounded-full bg-pm-blue px-2.5 py-1 text-[10px] font-bold text-white">
+            New
+          </span>
+        ) : null}
       </Link>
       <div className="flex flex-1 flex-col gap-1.5 p-3">
         <Link href={href} className="block">
