@@ -378,16 +378,6 @@ export default async function CauseDetailPage() {
               subtext={b.location}
             />
           ))}
-          <LocalBizCard
-            href="/onboarding/local-business"
-            photo="house"
-            initials="LB"
-            category="Local Business"
-            title="Your business here"
-            description="Placeholder · Your business or service can support Emmaus with offers and community visibility."
-            tags={[]}
-            subtext="Coming soon"
-          />
         </CardsCarousel>
       </Section>
 
