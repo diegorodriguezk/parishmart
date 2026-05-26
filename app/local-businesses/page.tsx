@@ -235,6 +235,43 @@ export default async function LocalBusinessCategoryPage() {
         </div>
       </Section>
 
+      {/* PROFILE TYPE EXAMPLES */}
+      <Section width="wide">
+        <SectionHeader
+          title="Two types of local businesses"
+          description="Service providers and product sellers — each with their own tailored profile."
+        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {/* Services example */}
+          <Link href="/local-businesses/services/profile" className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+            <Photo kind="business" ratio="4/3" rounded="rounded-2xl" overlay="subtle" />
+            <div className="flex flex-1 flex-col gap-2 p-3">
+              <span className="pm-label w-fit">Service Business</span>
+              <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">Maria&rsquo;s Studios</h3>
+              <p className="text-[11px] font-medium text-pm-blue">Weston, FL · Photography</p>
+              <p className="text-xs text-pm-muted">Photography services for parish events, retreats and SKD family celebrations.</p>
+              <div className="mt-auto pt-2">
+                <span className="text-sm font-bold text-pm-blue">View service profile →</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Products example */}
+          <Link href="/local-businesses/products/profile" className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+            <Photo kind="merch" ratio="4/3" rounded="rounded-2xl" overlay="subtle" />
+            <div className="flex flex-1 flex-col gap-2 p-3">
+              <span className="pm-label w-fit">Product Seller</span>
+              <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">Harps Club</h3>
+              <p className="text-[11px] font-medium text-pm-blue">South Florida · Custom Merch</p>
+              <p className="text-xs text-pm-muted">Custom apparel, parish merch and ministry products helping communities raise funds.</p>
+              <div className="mt-auto pt-2">
+                <span className="text-sm font-bold text-pm-blue">View product profile →</span>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </Section>
+
       <Section width="wide">
         <div className="pm-dark-panel !p-6 sm:!p-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
