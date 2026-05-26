@@ -5,6 +5,7 @@ import { Photo } from "@/components/Photo";
 import { SkdLogo } from "@/components/SkdLogo";
 import { Section, SectionHeader } from "@/components/Sections";
 import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
+import { ProductCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { fetchProducts, fetchBusinesses, fetchParish } from "@/lib/api";
 
@@ -184,15 +185,17 @@ export default async function ParishStoreSKDPage() {
         />
         <div className="grid gap-4 md:grid-cols-4">
           {featured.map((p) => (
-            <FeaturedCommunityCard
+            <ProductCard
               key={p.id}
+              id={p.id}
               href="/stores/shop"
               photo={p.photo}
-              photoSrc={p.src}
-              category={p.label ?? "Featured product"}
+              src={p.src}
+              label={p.label}
               title={p.name}
-              description={p.meta}
-              location={p.price}
+              meta={p.meta}
+              price={p.price}
+              cause={p.cause}
             />
           ))}
         </div>
