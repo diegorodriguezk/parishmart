@@ -117,14 +117,14 @@ export function DarkPanel({
                 href={ctaHref}
                 target="_blank"
                 rel="noreferrer"
-                className="pm-btn bg-white text-pm-navy"
+                className="pm-btn bg-white !text-pm-blue"
               >
                 {cta}
               </a>
             ) : (
               <Link
                 href={ctaHref ?? "#"}
-                className="pm-btn bg-white text-pm-navy"
+                className="pm-btn bg-white !text-pm-blue"
               >
                 {cta}
               </Link>
