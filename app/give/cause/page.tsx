@@ -355,7 +355,7 @@ export default async function CauseDetailPage() {
                     {m.price}
                   </p>
                   <span className="pm-btn pm-btn-secondary !px-3 !py-1 text-[11px]">
-                    View
+                    Add
                   </span>
                 </div>
               </div>
