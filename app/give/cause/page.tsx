@@ -9,7 +9,8 @@ import {
   DarkPanel,
 } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { fetchProducts } from "@/lib/api";
+import { LocalBizCard } from "@/components/home/LocalBizCard";
+import { fetchProducts, fetchBusinesses } from "@/lib/api";
 
 export const metadata = { title: "Emmaus · Cause" };
 
@@ -20,8 +21,13 @@ const MERCH_IDS = [
   "harps-club-cap",
 ];
 
+const SUPPORTER_PHOTOS = ["community", "business", "merch"] as const;
+
 export default async function CauseDetailPage() {
-  const products = await fetchProducts({ ids: MERCH_IDS });
+  const [products, businesses] = await Promise.all([
+    fetchProducts({ ids: MERCH_IDS }),
+    fetchBusinesses(),
+  ]);
   const MERCH = products.map((p) => ({
     id: p.id,
     name: p.name,
@@ -30,6 +36,7 @@ export default async function CauseDetailPage() {
     photo: p.photo,
     src: p.src,
   }));
+  const SUPPORTERS = businesses.slice(0, 3);
   return (
     <>
       <ParishProfileHeader
@@ -356,39 +363,19 @@ export default async function CauseDetailPage() {
           description="Optional but powerful: local businesses and sponsors can appear here as supporters of Emmaus."
         />
         <div className="grid gap-4 md:grid-cols-3">
-          {[
-            {
-              ini: "LB",
-              t: "Local Business Supporters",
-              d: "Businesses connected to SKD can support Emmaus with offers, services or community visibility.",
-              cta: "Explore Supporters",
-              href: "/local-businesses",
-            },
-            {
-              ini: "SP",
-              t: "Sponsors",
-              d: "Purpose-aligned sponsors can help ministry campaigns while receiving elegant placement.",
-              cta: "View Sponsors",
-              href: "/sponsors",
-            },
-            {
-              ini: "SKD",
-              t: "Related SKD Causes",
-              d: "Connect Emmaus with other parish ministries, outreach programs and SKD community initiatives.",
-              cta: "View Causes",
-              href: "/give",
-            },
-          ].map((c) => (
-            <div key={c.ini} className="pm-card flex flex-col gap-3 p-5">
-              <span className="pm-avatar !h-10 !w-10 rounded-xl text-xs">
-                {c.ini}
-              </span>
-              <h3 className="text-base font-bold text-pm-navy">{c.t}</h3>
-              <p className="text-xs text-pm-muted">{c.d}</p>
-              <Link href={c.href} className="pm-btn pm-btn-secondary mt-auto">
-                {c.cta}
-              </Link>
-            </div>
+          {SUPPORTERS.map((b, i) => (
+            <LocalBizCard
+              key={b.id}
+              href={b.href}
+              photo={SUPPORTER_PHOTOS[i % SUPPORTER_PHOTOS.length]}
+              initials={b.initials}
+              logoSrc={b.logoSrc}
+              category={b.category}
+              title={b.name}
+              description={b.description}
+              tags={[]}
+              subtext={b.location}
+            />
           ))}
         </div>
       </Section>
