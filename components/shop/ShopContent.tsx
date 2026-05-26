@@ -346,7 +346,7 @@ export function ShopContent({
                           parish,
                         }}
                         size="sm"
-                        label="Add to cart"
+                        label="Add"
                       />
                     </div>
                   </div>

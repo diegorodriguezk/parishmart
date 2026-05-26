@@ -5,7 +5,7 @@ import { useCart, CartItem } from "./CartContext";
 export function AddToCartButton({
   item,
   size = "md",
-  label = "Add to Cart",
+  label = "Add",
   fullWidth = false,
 }: {
   item: Omit<CartItem, "qty"> & { qty?: number };
