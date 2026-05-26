@@ -11,6 +11,7 @@ import { Section } from "@/components/Sections";
 import { CauseLogo } from "@/components/CauseLogo";
 import { SponsorBanner } from "@/components/sponsors/SponsorBanner";
 import { SponsorRecruitSection } from "@/components/sponsors/SponsorRecruitSection";
+import { LoadMoreGrid } from "@/components/shop/LoadMoreGrid";
 import { fetchCauses } from "@/lib/api";
 import type { CauseKey } from "@/lib/catalog";
 
@@ -330,7 +331,10 @@ export async function GiveContent({
               ))}
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <LoadMoreGrid
+              initialCount={6}
+              gridClassName="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            >
               {causes.map((c) => {
                 const copy = CAUSE_COPY[c.key];
                 const photoKind = copy?.photo ?? "community";
@@ -444,7 +448,7 @@ export async function GiveContent({
                   </div>
                 </div>
               </article>
-            </div>
+            </LoadMoreGrid>
           </div>
         </div>
       </Section>
