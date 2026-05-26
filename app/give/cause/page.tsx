@@ -378,17 +378,6 @@ export default async function CauseDetailPage() {
               subtext={b.location}
             />
           ))}
-          <LocalBizCard
-            href="/local-businesses/profile"
-            photo="merch"
-            initials="MK"
-            logoSrc="/brand/businesses/meraki.jpg"
-            category="Lifestyle & Goods"
-            title="Meraki"
-            description="Handcrafted goods and lifestyle products from a local supporter."
-            tags={[]}
-            subtext="Doral, FL"
-          />
         </CardsCarousel>
       </Section>
 
