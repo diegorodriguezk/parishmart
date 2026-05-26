@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Clock, Lock, Minus, Plus } from "lucide-react";
+import { Clock, Minus, Plus } from "lucide-react";
 import { ParishProfileHeader } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
@@ -313,13 +313,6 @@ export default async function CauseDetailPage() {
               >
                 Reserve My Spot
               </button>
-              <p className="inline-flex items-center justify-center gap-1 text-center text-[10px] text-pm-muted">
-                <Lock className="h-3 w-3" aria-hidden />
-                Secure checkout
-              </p>
-              <p className="text-center text-[11px] text-pm-muted">
-                Registration closes in 12 days
-              </p>
             </div>
           </div>
         </div>
