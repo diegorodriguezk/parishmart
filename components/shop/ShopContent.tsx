@@ -9,6 +9,7 @@ import {
 import { Photo } from "@/components/Photo";
 import { Section } from "@/components/Sections";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { LoadMoreGrid } from "@/components/shop/LoadMoreGrid";
 import { SponsorBanner } from "@/components/sponsors/SponsorBanner";
 import { SponsorRecruitSection } from "@/components/sponsors/SponsorRecruitSection";
 
@@ -90,6 +91,18 @@ const FEATURED: {
     seller: "Casa Bella Gifts",
     price: "$59.00",
     src: "/brand/products/tote-harps.png",
+  },
+  {
+    title: "Holy Family Figure",
+    seller: "Sacred Gifts Co.",
+    price: "$38.00",
+    src: "/brand/products/holy-family-figure.jpg",
+  },
+  {
+    title: "Communion Candle",
+    seller: "Parish Supplies",
+    price: "$12.00",
+    src: "/brand/products/communion-candle-boy.png",
   },
 ];
 
@@ -282,7 +295,10 @@ export function ShopContent({
               ))}
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <LoadMoreGrid
+              initialCount={4}
+              gridClassName="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            >
               {FEATURED.map((p) => (
                 <article
                   key={p.title}
@@ -336,7 +352,7 @@ export function ShopContent({
                   </div>
                 </article>
               ))}
-            </div>
+            </LoadMoreGrid>
           </div>
         </div>
       </Section>

@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProductCard } from "@/components/Cards";
+import { LoadMoreGrid } from "@/components/shop/LoadMoreGrid";
 import { fetchProducts } from "@/lib/api";
 
 export const metadata = { title: "Harps Club · Product Seller" };
@@ -16,6 +18,10 @@ export default async function ProductSellerProfilePage() {
       "harps-club-crewneck",
       "skd-mens-microfleece-jacket",
       "rosary",
+      "harps-club-cap",
+      "unity-candleholder",
+      "saint-benedict-crucifix",
+      "saint-joseph-biography",
     ],
   });
 
@@ -137,12 +143,19 @@ export default async function ProductSellerProfilePage() {
           title="Featured products."
           description="Clean product cards with strong images, simple descriptions and clear CTAs."
           right={
-            <Link href="/shop" className="font-bold text-pm-blue">
-              View all →
-            </Link>
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 text-xs font-medium text-pm-navy hover:border-pm-blue"
+            >
+              Sort: Community relevance
+              <ChevronDown className="h-3.5 w-3.5" aria-hidden />
+            </button>
           }
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <LoadMoreGrid
+          initialCount={4}
+          gridClassName="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {products.map((p) => (
             <ProductCard
               key={p.id}
@@ -156,7 +169,7 @@ export default async function ProductSellerProfilePage() {
               cause={p.cause}
             />
           ))}
-        </div>
+        </LoadMoreGrid>
       </Section>
 
       {/* CTA BANNER */}
