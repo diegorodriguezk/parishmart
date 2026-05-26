@@ -3,7 +3,14 @@
 import { useEffect, useRef, useState, ReactNode } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export function CardsCarousel({ children }: { children: ReactNode }) {
+export function CardsCarousel({
+  children,
+  lgCols = 4,
+}: {
+  children: ReactNode;
+  lgCols?: 3 | 4;
+}) {
+  const lgWidthCls = lgCols === 3 ? "lg:w-[32%]" : "lg:w-[24%]";
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -54,13 +61,13 @@ export function CardsCarousel({ children }: { children: ReactNode }) {
           ? children.map((child, i) => (
               <div
                 key={i}
-                className="flex w-[78%] shrink-0 snap-start sm:w-[48%] lg:w-[24%] [&>*]:w-full"
+                className={`flex w-[78%] shrink-0 snap-start sm:w-[48%] ${lgWidthCls} [&>*]:w-full`}
               >
                 {child}
               </div>
             ))
           : (
-            <div className="flex w-[78%] shrink-0 snap-start sm:w-[48%] lg:w-[24%] [&>*]:w-full">
+            <div className={`flex w-[78%] shrink-0 snap-start sm:w-[48%] ${lgWidthCls} [&>*]:w-full`}>
               {children}
             </div>
           )}

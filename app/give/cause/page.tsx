@@ -363,7 +363,7 @@ export default async function CauseDetailPage() {
           title="Community Supporters"
           description="Optional but powerful: local businesses and sponsors can appear here as supporters of Emmaus."
         />
-        <CardsCarousel>
+        <CardsCarousel lgCols={3}>
           {SUPPORTERS.map((b, i) => (
             <LocalBizCard
               key={b.id}
