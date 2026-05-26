@@ -10,14 +10,14 @@ export function ProductCard({
   id,
   photo,
   src,
-  label,
+  label: _label,
   title,
   meta,
   price,
   rating,
   reviews,
   cause,
-  verified = false,
+  verified: _verified = false,
   cta = "Add",
 }: {
   href?: string;
@@ -37,34 +37,33 @@ export function ProductCard({
   const numericPrice = price ? Number(price.replace(/[^0-9.]/g, "")) : undefined;
   const productId = id ?? title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   return (
-    <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
-      <Link href={href} className="block">
+    <article className="pm-card group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+      <div className="relative aspect-[4/3] bg-pm-soft">
         <Photo
           kind={photo}
           src={src}
           alt={title}
-          ratio="4/3"
-          rounded="rounded-2xl"
-          overlay={src ? "none" : "subtle"}
+          ratio="auto"
+          rounded="rounded-none"
+          overlay="none"
           fit={src ? "contain" : "cover"}
-          className={src ? "bg-white" : ""}
+          className={`absolute inset-0 !rounded-none border-0${src ? " bg-white" : ""}`}
         />
-      </Link>
-      <div className="flex flex-1 flex-col gap-2 p-3">
-        <div className="flex flex-wrap items-center gap-1.5">
-          {label ? <span className="pm-label">{label}</span> : null}
-          {verified ? <TrustBadge variant="approved" label="Approved" /> : null}
+        <Link href={href} aria-label={title} className="absolute inset-0 z-0" />
+      </div>
+      <div className="flex flex-1 flex-col gap-2 p-4">
+        <div>
+          <Link href={href} className="block">
+            <h3 className="text-sm font-extrabold leading-tight text-pm-navy group-hover:text-pm-blue">
+              {title}
+            </h3>
+          </Link>
+          {meta ? <p className="mt-0.5 text-[11px] text-pm-muted">{meta}</p> : null}
         </div>
-        <Link href={href} className="block">
-          <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
-            {title}
-          </h3>
-        </Link>
-        {meta ? <p className="line-clamp-2 text-xs text-pm-muted">{meta}</p> : null}
         {rating ? <StarRating value={rating} count={reviews} /> : null}
-        <div className="mt-auto flex items-center justify-between pt-2">
+        <div className="mt-auto flex items-center justify-between pt-1">
           {price ? (
-            <span className="text-sm font-bold text-pm-navy">{price}</span>
+            <span className="text-sm font-extrabold text-pm-navy">{price}</span>
           ) : (
             <span />
           )}
@@ -90,12 +89,6 @@ export function ProductCard({
             </Link>
           )}
         </div>
-        <Link
-          href={href}
-          className="pm-btn pm-btn-secondary !w-full !px-3 !py-1.5 text-[11px]"
-        >
-          View Product
-        </Link>
       </div>
     </article>
   );

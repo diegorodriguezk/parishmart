@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Search,
-  Heart,
   ChevronDown,
   ShieldCheck,
   Sparkles,
@@ -50,55 +49,43 @@ const PRODUCT_TABS = [
   "Best Sellers",
 ];
 
-type ProductBadge = {
-  label: string;
-  tone?: "default" | "merch" | "biz" | "book" | "art" | "seller";
-};
-
 const FEATURED: {
-  badge: ProductBadge;
   title: string;
   seller: string;
   price: string;
   src: string;
 }[] = [
   {
-    badge: { label: "Religious Gift" },
     title: "Olive Wood Rosary",
     seller: "Bethlehem Crafts",
     price: "$24.99",
     src: "/brand/products/rosary.jpg",
   },
   {
-    badge: { label: "Parish Merch", tone: "merch" },
     title: "Faith Over Fear Hoodie",
     seller: "Walk by Faith Co.",
     price: "$49.99",
     src: "/brand/products/crew-harps.png",
   },
   {
-    badge: { label: "Local Biz", tone: "biz" },
     title: "Be Still Candle",
     seller: "Grace & Light Co.",
     price: "$19.99",
     src: "/brand/products/unity-candleholder.jpg",
   },
   {
-    badge: { label: "Book", tone: "book" },
     title: "Daily Reflection Book",
     seller: "Christian Brands",
     price: "$22.00",
     src: "/brand/products/saint-joseph-biography.jpg",
   },
   {
-    badge: { label: "Art & Decor", tone: "art" },
     title: "Guadalupe Print",
     seller: "Sacred Heart Studios",
     price: "$29.99",
     src: "/brand/products/virgin-mary-medal.png",
   },
   {
-    badge: { label: "Local Seller", tone: "seller" },
     title: "Local Artisan Basket",
     seller: "Casa Bella Gifts",
     price: "$59.00",
@@ -124,13 +111,6 @@ const TRUST = [
   },
 ];
 
-function ProductBadgePill({ label }: ProductBadge) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-pm-navy px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-      {label}
-    </span>
-  );
-}
 
 export function ShopContent({
   heroKicker = "Global Shop · Community Marketplace",
@@ -324,16 +304,6 @@ export function ShopContent({
                       aria-label={p.title}
                       className="absolute inset-0 z-0"
                     />
-                    <div className="pointer-events-none absolute left-3 top-3 z-10">
-                      <ProductBadgePill {...p.badge} />
-                    </div>
-                    <button
-                      type="button"
-                      aria-label="Save"
-                      className="absolute right-3 top-3 z-10 grid h-8 w-8 place-items-center rounded-full border border-pm-border bg-white text-pm-muted hover:text-pm-blue"
-                    >
-                      <Heart className="h-4 w-4" aria-hidden />
-                    </button>
                   </div>
                   <div className="flex flex-1 flex-col gap-2 p-4">
                     <div>
