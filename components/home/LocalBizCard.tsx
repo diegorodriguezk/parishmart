@@ -101,27 +101,35 @@ export type FeaturedCommunityCardData = {
 
 export function FeaturedCommunityCard(p: FeaturedCommunityCardData) {
   return (
-    <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
-      <Link href={p.href} className="block">
+    <article className="pm-card group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+      <div className="relative aspect-[4/3] bg-pm-soft">
         <Photo
           kind={p.photo}
           src={p.photoSrc}
-          ratio="4/3"
-          rounded="rounded-2xl"
+          ratio="auto"
+          rounded="rounded-none"
+          overlay="none"
+          fit={p.photoSrc ? "contain" : "cover"}
+          className={`absolute inset-0 !rounded-none border-0${p.photoSrc ? " bg-white" : ""}`}
+          alt={p.title}
         />
-      </Link>
-      <div className="flex flex-1 flex-col gap-2 p-3">
-        <span className="pm-label w-fit">{p.category}</span>
-        <Link href={p.href} className="block">
-          <h5 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
-            {p.title}
-          </h5>
-        </Link>
-        {p.location ? (
-          <p className="text-[11px] font-medium text-pm-blue">{p.location}</p>
+        <Link href={p.href} aria-label={p.title} className="absolute inset-0 z-0" />
+      </div>
+      <div className="flex flex-1 flex-col gap-2 p-4">
+        <div>
+          <Link href={p.href} className="block">
+            <h5 className="text-sm font-extrabold leading-tight text-pm-navy group-hover:text-pm-blue">
+              {p.title}
+            </h5>
+          </Link>
+          {p.location ? (
+            <p className="mt-0.5 text-[11px] text-pm-muted">{p.location}</p>
+          ) : null}
+        </div>
+        {p.description ? (
+          <p className="line-clamp-2 text-xs text-pm-muted">{p.description}</p>
         ) : null}
-        <p className="line-clamp-2 text-xs text-pm-muted">{p.description}</p>
-        <div className="mt-auto pt-2">
+        <div className="mt-auto pt-1">
           <Link
             href={p.href}
             className="text-sm font-bold text-pm-blue hover:text-pm-navy"
