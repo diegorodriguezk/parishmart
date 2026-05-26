@@ -103,7 +103,7 @@ export default async function CauseDetailPage() {
 
       <Section width="wide" className="!pt-3">
         <div className="flex flex-wrap gap-2">
-          {["Overview", "Giving", "Merch", "Local Supporters", "Sponsors"].map(
+          {["Overview", "Giving", "Merch", "Local Supporters"].map(
             (t, i) => (
               <span
                 key={t}
