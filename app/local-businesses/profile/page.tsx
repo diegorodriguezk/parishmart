@@ -189,10 +189,30 @@ export default function LocalBusinessProfilePage() {
             {/* CTA */}
             <div className="mt-auto pt-2">
               <a href="https://example.com" target="_blank" rel="noreferrer" className="pm-btn pm-btn-primary">
-                Visit us
+                Contact us
               </a>
             </div>
           </div>
+        </div>
+      </Section>
+
+      <Section width="wide">
+        <div className="pm-dark-panel !p-6 sm:!p-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-xl font-extrabold">
+              Are you a business that supports community?
+            </h2>
+            <p className="mt-1 text-sm text-white/80">
+              Join ParishMart as a Local Biz Supporter and connect your products
+              or services to parishes, causes and trusted local discovery.
+            </p>
+          </div>
+          <Link
+            href="/onboarding/local-business"
+            className="pm-btn bg-white !text-pm-navy shrink-0"
+          >
+            Become a Local Biz
+          </Link>
         </div>
       </Section>
 
