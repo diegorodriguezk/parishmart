@@ -5,8 +5,6 @@ import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { TrustBadge, StarRating } from "@/components/TrustBadge";
-import { ImpactBreakdown } from "@/components/ImpactBreakdown";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { fetchProduct, fetchProducts } from "@/lib/api";
 
@@ -125,43 +123,32 @@ export default async function ProductDetailPage() {
 
           <div className="space-y-4">
             <div className="pm-card p-5 sm:p-6">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="pm-label">
-                  Supports {product.cause ?? "SKD Parish"}
-                </span>
-                <TrustBadge variant="approved" label="Approved seller" />
-              </div>
+              <span className="pm-label">
+                Supports {product.cause ?? "SKD Parish"}
+              </span>
               <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-pm-navy md:text-4xl">
                 {product.name}
               </h1>
-              <div className="mt-2">
-                <StarRating value={4.8} count={42} />
-              </div>
               <p className="mt-2 text-sm text-pm-muted">{product.meta}</p>
               <p className="mt-4 text-3xl font-extrabold text-pm-navy">
                 {product.price}
               </p>
 
-              <div className="mt-4">
-                <ImpactBreakdown
-                  amount={numericPrice}
-                  causePct={10}
-                  platformPct={4}
-                  causeName={product.cause ?? "SKD Parish"}
-                />
-              </div>
-
               <div className="mt-5 space-y-2">
                 <p className="text-xs font-bold text-pm-navy">Color</p>
                 <div className="flex flex-wrap gap-2">
-                  {["Black", "Navy", "Heather Gray"].map((c, i) => (
-                    <span
-                      key={c}
-                      className="pm-chip"
-                      data-active={i === 0 ? "true" : undefined}
-                    >
-                      {c}
-                    </span>
+                  {[
+                    { name: "Black", bg: "bg-black" },
+                    { name: "Navy", bg: "bg-[#1a2d5a]" },
+                    { name: "Heather Gray", bg: "bg-[#9ca3af]" },
+                  ].map((c, i) => (
+                    <button
+                      key={c.name}
+                      type="button"
+                      title={c.name}
+                      aria-label={c.name}
+                      className={`h-7 w-7 rounded-full border-2 transition ${c.bg} ${i === 0 ? "border-pm-blue ring-2 ring-pm-blue/30" : "border-white ring-1 ring-pm-border hover:ring-pm-blue"}`}
+                    />
                   ))}
                 </div>
               </div>
@@ -181,7 +168,7 @@ export default async function ProductDetailPage() {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-2 sm:grid-cols-2">
+              <div className="mt-5">
                 <AddToCartButton
                   item={{
                     id: product.id,
@@ -193,12 +180,6 @@ export default async function ProductDetailPage() {
                   }}
                   fullWidth
                 />
-                <Link
-                  href="/shop/cart"
-                  className="pm-btn pm-btn-secondary w-full"
-                >
-                  Buy Now
-                </Link>
               </div>
             </div>
 
