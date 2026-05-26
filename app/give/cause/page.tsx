@@ -140,10 +140,6 @@ export default async function CauseDetailPage() {
               merchandise and guide supporters to the official SKD giving
               experience.
             </p>
-            <blockquote className="rounded-2xl border border-pm-border bg-pm-soft/60 p-4 text-sm font-medium text-pm-navy">
-              &ldquo;These are not just shirts or donations. They are a visible
-              sign of faith, unity and belonging.&rdquo;
-            </blockquote>
           </div>
           <Photo
             kind="retreat"
@@ -174,13 +170,6 @@ export default async function CauseDetailPage() {
               Instead, we guide supporters to the official SKD giving page so
               the donation remains inside the church&rsquo;s existing system.
             </p>
-            <div className="rounded-2xl border border-pm-border bg-pm-soft/60 p-3 text-xs text-pm-ink">
-              <p className="font-bold text-pm-navy">Recommended wording:</p>
-              <p className="mt-1 text-pm-muted">
-                &ldquo;You are being redirected to Saint Katharine Drexel&rsquo;s
-                official giving page to support Emmaus.&rdquo;
-              </p>
-            </div>
             <div className="flex flex-wrap gap-3 pt-1">
               <a
                 href="https://giving.parishsoft.com/app/giving/stk2501240"
@@ -190,9 +179,6 @@ export default async function CauseDetailPage() {
               >
                 Support Now
               </a>
-              <Link href="#how-giving-works" className="pm-btn pm-btn-secondary">
-                Learn how giving works
-              </Link>
             </div>
           </div>
         </div>
