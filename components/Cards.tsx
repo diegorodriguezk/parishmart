@@ -144,9 +144,21 @@ export function CauseCard({
     );
 
   return (
-    <article className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
-      <LinkOrAnchor className="relative block">
-        <Photo kind={photo} ratio="4/3" rounded="rounded-2xl" />
+    <article className="pm-card group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+      <div className="relative aspect-[4/3] bg-pm-soft">
+        <Photo
+          kind={photo}
+          ratio="auto"
+          rounded="rounded-none"
+          className="absolute inset-0 !rounded-none border-0"
+          overlay="none"
+          alt={title}
+        />
+        {isExternal ? (
+          <a href={href} target="_blank" rel="noreferrer" aria-label={title} className="absolute inset-0 z-0" />
+        ) : (
+          <Link href={href} aria-label={title} className="absolute inset-0 z-0" />
+        )}
         {cause ? (
           <CauseLogo
             cause={cause}
@@ -154,23 +166,25 @@ export function CauseCard({
             className="absolute bottom-0 right-3 z-10 translate-y-1/4 ring-2 !ring-white"
           />
         ) : null}
-      </LinkOrAnchor>
+      </div>
       <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-8">
         {verified ? (
           <div className="flex flex-wrap items-center gap-1.5">
             <TrustBadge variant="verified" label="Verified parish" />
           </div>
         ) : null}
-        <LinkOrAnchor className="block">
-          <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
-            {title}
-          </h3>
-        </LinkOrAnchor>
-        {location ? (
-          <p className="text-[11px] font-medium text-pm-blue">{location}</p>
-        ) : null}
+        <div>
+          <LinkOrAnchor className="block">
+            <h3 className="text-sm font-extrabold leading-tight text-pm-navy group-hover:text-pm-blue">
+              {title}
+            </h3>
+          </LinkOrAnchor>
+          {location ? (
+            <p className="text-[11px] text-pm-muted">{location}</p>
+          ) : null}
+        </div>
         {description ? (
-          <p className="text-xs text-pm-muted">{description}</p>
+          <p className="line-clamp-2 text-xs text-pm-muted">{description}</p>
         ) : null}
         {showMetrics ? (
           <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-xs text-pm-muted">

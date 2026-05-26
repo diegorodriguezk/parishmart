@@ -5,7 +5,7 @@ import { Photo } from "@/components/Photo";
 import { SkdLogo } from "@/components/SkdLogo";
 import { Section, SectionHeader } from "@/components/Sections";
 import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
-import { ProductCard } from "@/components/Cards";
+import { ProductCard, CauseCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { fetchProducts, fetchBusinesses, fetchParish } from "@/lib/api";
 
@@ -213,21 +213,30 @@ export default async function ParishStoreSKDPage() {
           }
         />
         <div className="grid gap-4 md:grid-cols-3">
-          {[
-            { l: "Youth Ministry", t: "Support Youth Ministry", d: "Help fund formation, retreats and leadership activities.", p: "retreat" as const },
-            { l: "Emmaus", t: "Emmaus Retreat Fund", d: "Support scholarships, formation and retreat logistics.", p: "community" as const },
-            { l: "Helping Hands", t: "St Vincent de Paul", d: "Support families in need with parish-collected initiatives.", p: "volunteers" as const },
-          ].map((c) => (
-            <FeaturedCommunityCard
-              key={c.t}
-              href="/give/cause"
-              photo={c.p}
-              category={c.l}
-              title={c.t}
-              description={c.d}
-              location="SKD · Weston, FL"
-            />
-          ))}
+          <CauseCard
+            href="/give/cause"
+            photo="retreat"
+            cause="mater-18"
+            title="Support Youth Ministry"
+            description="Help fund formation, retreats and leadership activities."
+            location="SKD · Weston, FL"
+          />
+          <CauseCard
+            href="/give/cause"
+            photo="community"
+            cause="schoenstatt-miami"
+            title="Emmaus Retreat Fund"
+            description="Support scholarships, formation and retreat logistics."
+            location="SKD · Weston, FL"
+          />
+          <CauseCard
+            href="/give/cause"
+            photo="volunteers"
+            cause="saint-vincent-de-paul"
+            title="St Vincent de Paul"
+            description="Support families in need with parish-collected initiatives."
+            location="SKD · Weston, FL"
+          />
         </div>
       </Section>
 
