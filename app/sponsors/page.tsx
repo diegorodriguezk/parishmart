@@ -7,6 +7,7 @@ import { Section, SectionHeader, FilterChips, DarkPanel } from "@/components/Sec
 import { SponsorOfferCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SponsorBannerCarousel } from "@/components/SponsorBannerCarousel";
+import { LoadMoreGrid } from "@/components/shop/LoadMoreGrid";
 
 export const metadata = { title: "Sponsor Offers · ParishMart" };
 
@@ -77,7 +78,7 @@ export default function SponsorsCategoryPage() {
           title="All Sponsor Offers"
           description="Compact cards with logo, coupon and quick redeem action."
         />
-        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+        <LoadMoreGrid initialCount={5} step={5} gridClassName="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
           <SponsorOfferCard compact photo="retreat" initials="MS" title="Maria's Studios" offer="10% cash back" daysLeft="40d left" />
           <SponsorOfferCard compact photo="house" initials="BK" title="Community Bank" offer="$50 cash back" daysLeft="32d left" />
           <SponsorOfferCard compact photo="food" initials="BG" title="Baires Grill Weston" offer="5% cash back" daysLeft="18d left" />
@@ -90,7 +91,7 @@ export default function SponsorsCategoryPage() {
           <SponsorOfferCard compact photo="house" initials="SS" title="Simplisafe" offer="$100 cash back" daysLeft="24d left" isNew />
           <SponsorOfferCard compact photo="house" initials="RE" title="Realty Supporter" offer="Free consult" daysLeft="60d left" />
           <SponsorOfferCard compact photo="business" initials="LF" title="Legal & Finance" offer="20% off" daysLeft="45d left" />
-        </div>
+        </LoadMoreGrid>
       </Section>
 
       <Section width="wide">
