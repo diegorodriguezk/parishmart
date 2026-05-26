@@ -213,14 +213,14 @@ export default async function CauseDetailPage() {
             <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-pm-blue backdrop-blur sm:left-5 sm:top-5">
               Event of the Month
             </span>
-            <div className="absolute bottom-4 left-4 flex flex-col items-center rounded-2xl bg-white px-4 py-3 text-center shadow-pm-card sm:bottom-5 sm:left-5">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
+            <div className="absolute bottom-4 left-4 flex flex-col items-center rounded-2xl bg-white px-6 py-4 text-center shadow-pm-card sm:bottom-5 sm:left-5">
+              <span className="text-xs font-bold uppercase tracking-wider text-pm-blue">
                 Jun
               </span>
-              <span className="text-2xl font-extrabold leading-none text-pm-navy">
+              <span className="text-5xl font-extrabold leading-none text-pm-navy">
                 14
               </span>
-              <span className="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-pm-muted">
+              <span className="mt-1 text-xs font-bold uppercase tracking-wider text-pm-muted">
                 Sat
               </span>
             </div>
