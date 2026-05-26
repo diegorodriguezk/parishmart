@@ -10,6 +10,7 @@ import {
 } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LocalBizCard } from "@/components/home/LocalBizCard";
+import { CardsCarousel } from "@/components/CardsCarousel";
 import { fetchProducts, fetchBusinesses } from "@/lib/api";
 
 export const metadata = { title: "Emmaus · Cause" };
@@ -362,7 +363,7 @@ export default async function CauseDetailPage() {
           title="Community Supporters"
           description="Optional but powerful: local businesses and sponsors can appear here as supporters of Emmaus."
         />
-        <div className="grid gap-4 md:grid-cols-3">
+        <CardsCarousel>
           {SUPPORTERS.map((b, i) => (
             <LocalBizCard
               key={b.id}
@@ -377,7 +378,7 @@ export default async function CauseDetailPage() {
               subtext={b.location}
             />
           ))}
-        </div>
+        </CardsCarousel>
       </Section>
 
       <Section width="wide">
