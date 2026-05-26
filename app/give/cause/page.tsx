@@ -122,8 +122,8 @@ export default async function CauseDetailPage() {
           title="About Emmaus"
           description="This section tells the story of the cause in a warm and simple way, without overwhelming the user."
         />
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_.95fr] lg:items-start">
-          <div className="space-y-4 text-sm text-pm-ink">
+        <div className="pm-card overflow-hidden p-0 lg:grid lg:grid-cols-[1.05fr_.95fr] lg:items-stretch">
+          <div className="space-y-4 p-6 text-sm text-pm-ink sm:p-7">
             <p>
               The Emmaus Retreat is an invitation to step away from the noise of
               everyday life and encounter Jesus in a personal and transformative
@@ -145,12 +145,12 @@ export default async function CauseDetailPage() {
               sign of faith, unity and belonging.&rdquo;
             </blockquote>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <Photo kind="community" ratio="4/3" rounded="rounded-2xl" />
-            <Photo kind="retreat" ratio="4/3" rounded="rounded-2xl" />
-            <Photo kind="congregation" ratio="4/3" rounded="rounded-2xl" />
-            <Photo kind="volunteers" ratio="4/3" rounded="rounded-2xl" />
-          </div>
+          <Photo
+            kind="retreat"
+            ratio="auto"
+            rounded="rounded-none"
+            className="!rounded-none h-full min-h-[280px] lg:!rounded-r-[24px]"
+          />
         </div>
       </Section>
 
