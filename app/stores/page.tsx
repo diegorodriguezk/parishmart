@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { SkdLogo } from "@/components/SkdLogo";
 import { Section, SectionHeader } from "@/components/Sections";
-import { FeaturedCommunityCard } from "@/components/home/LocalBizCard";
+import { FeaturedCommunityCard, LocalBizCard } from "@/components/home/LocalBizCard";
 import { ProductCard, CauseCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { fetchProducts, fetchBusinesses, fetchParish } from "@/lib/api";
@@ -277,24 +277,28 @@ export default async function ParishStoreSKDPage() {
         />
         <div className="grid gap-4 md:grid-cols-4">
           {businesses.map((b, i) => (
-            <FeaturedCommunityCard
+            <LocalBizCard
               key={b.id}
-              href="/local-businesses/profile"
+              href={b.href}
               photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}
-              photoSrc={b.logoSrc}
-              category="Local Business"
+              initials={b.initials}
+              logoSrc={b.logoSrc}
+              category={b.category}
               title={b.name}
               description={b.description}
-              location={b.location}
+              subtext={b.location}
+              tags={[]}
             />
           ))}
-          <FeaturedCommunityCard
+          <LocalBizCard
             href="/sponsors/profile"
             photo="business"
+            initials="SP"
             category="Featured Sponsor"
             title="Featured Sponsor"
             description="Featured local sponsor supporting parish causes."
-            location="$25 OFF · Limited time"
+            subtext="$25 OFF · Limited time"
+            tags={[]}
           />
         </div>
       </Section>
