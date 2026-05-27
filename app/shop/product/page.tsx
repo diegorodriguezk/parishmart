@@ -6,6 +6,7 @@ import { Photo } from "@/components/Photo";
 import { Section } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { ProductImageGallery } from "@/components/shop/ProductImageGallery";
 import { fetchProduct, fetchProducts } from "@/lib/api";
 
 const PRODUCT_ID = "skd-mens-microfleece-jacket";
@@ -50,31 +51,10 @@ export default async function ProductDetailPage() {
       <Section width="wide" className="!pt-2">
         <div className="grid gap-6 md:gap-8 lg:grid-cols-[1.05fr_.95fr]">
           <div className="space-y-3">
-            <Photo
-              kind={product.photo}
-              src={product.src}
-              alt={product.name}
-              ratio="1/1"
-              rounded="rounded-3xl"
-              fit="contain"
-              overlay="none"
-              className="bg-white"
+            <ProductImageGallery
+              main={{ id: product.id, src: product.src, alt: product.name, photo: product.photo }}
+              thumbs={related.map((r) => ({ id: r.id, src: r.src, alt: r.name, photo: r.photo }))}
             />
-            <div className="grid grid-cols-3 gap-2">
-              {related.map((r) => (
-                <Photo
-                  key={r.id}
-                  kind={r.photo}
-                  src={r.src}
-                  alt={r.name}
-                  ratio="1/1"
-                  rounded="rounded-xl"
-                  fit="contain"
-                  overlay="none"
-                  className="bg-white"
-                />
-              ))}
-            </div>
             <div className="pm-card mt-4 p-5">
               <h3 className="text-base font-bold text-pm-navy">
                 Product &amp; cause details
