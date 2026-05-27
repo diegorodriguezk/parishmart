@@ -7,79 +7,79 @@ import {
   PreviewLabel,
 } from "@/components/onboarding/SellerPreviewCard";
 
-export const metadata = { title: "Become a Product Seller · ParishMart" };
+export const metadata = { title: "Become a Local Biz Supporter · ParishMart" };
 
 const VALUE_CARDS = [
   {
-    title: "Storefront + catalog",
-    body: "Launch a branded seller store with products, campaigns and offers.",
+    title: "Trusted public profile",
+    body: "A professional ParishMart page that helps families discover your services.",
   },
   {
-    title: "Generate sales",
-    body: "Get discovered by parishioners across parish stores and community pages.",
+    title: "Generate leads",
+    body: "Receive requests, calls and bookings from parishioners and community members.",
   },
   {
     title: "Support a community",
-    body: "Every sale or membership can support a parish, ministry or cause.",
+    body: "Connect your business to a parish, ministry or cause and show it on your page.",
   },
   {
-    title: "AI concierge setup",
-    body: "Concierge-assisted activation across 5 simple steps.",
+    title: "Step-by-step setup",
+    body: "5 simple steps with live preview. Skip anything optional.",
   },
 ];
 
 const TRUST_CARDS = [
   {
-    kicker: "Catalog Flexibility",
-    title: "Built for any seller",
-    body: "Made-to-order campaigns, ready-to-ship products, customizable items or digital add-ons.",
+    kicker: "Service Categories",
+    title: "Built for service businesses",
+    body: "Wellness, real estate, insurance, legal, home services, and professional services.",
   },
   {
-    kicker: "Founding Seller",
+    kicker: "Founding Supporter",
     title: "Early supporter visibility",
-    body: "Founding sellers get preferred placement during the initial launch phase.",
+    body: "Founding businesses get preferred placement during the initial launch phase.",
   },
   {
     kicker: "Concierge Model",
     title: "Done-with-you setup",
-    body: "ParishMart helps finish, polish, approve and activate your storefront.",
+    body: "ParishMart helps finish, polish, approve and activate your business page.",
   },
 ];
 
 const STEPS = [
   {
     n: 1,
-    title: "Seller Profile",
-    body: "Set up store name, type, category and product model.",
+    title: "Business Profile",
+    body: "Name, service category, contact info, location and short description.",
     badge: "Required",
   },
   {
     n: 2,
-    title: "Brand Story & Community Support",
-    body: "Tell your story and choose the parish, ministry or cause you support.",
-    badge: "AI Draft",
+    title: "Owner Story & Community",
+    body: "Humanize the page with the owner story and the parish or cause you support.",
+    badge: "Recommended",
   },
   {
     n: 3,
-    title: "Product Catalog Setup",
-    body: "Manual products, CSV import, Shopify or API sync.",
-    badge: "Catalog",
+    title: "Services, Offer & CTA",
+    body: "Add services you provide, a community offer and the main call to action.",
+    badge: "Required",
   },
   {
     n: 4,
-    title: "Storefront Media & Preview",
-    body: "Upload logo, cover, owner photo and gallery. Review the storefront preview.",
-    badge: "Preview",
+    title: "Media, Trust & Preview",
+    body: "Upload logo, cover, owner photo, gallery, certifications and reviews.",
+    badge: "Important",
   },
   {
     n: 5,
-    title: "Select Seller Membership",
-    body: "Pick a plan: Starter, Community or Featured. Approve terms and submit.",
-    badge: "Ready",
+    title: "Select Membership Plan",
+    body: "Starter, Community or Featured. Payment activates the page after approval.",
+    badge: "Final",
   },
 ];
 
-export default function SellerOnboardingIntro() {
+export default function LocalBizOnboardingIntro() {
   return (
     <main className="min-h-dvh bg-gradient-to-br from-white via-pm-soft to-white">
       <div className="mx-auto grid max-w-[1320px] gap-0 px-4 py-8 sm:px-6 lg:grid-cols-[1.02fr_.98fr] lg:py-12">
@@ -98,17 +98,17 @@ export default function SellerOnboardingIntro() {
           <article className="rounded-[28px] border border-pm-border bg-white/85 p-6 shadow-pm-card backdrop-blur sm:p-8">
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-pm-soft px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-pm-blue">
               <span className="h-2 w-2 rounded-full bg-pm-cyan shadow-[0_0_0_5px_rgba(69,177,225,.18)]" />
-              Product Seller Onboarding · AI Concierge
+              Local Biz Services Onboarding · Step-by-step
             </span>
             <h1 className="mt-4 max-w-[640px] text-4xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-5xl">
-              Launch your{" "}
-              <span className="pm-gradient-text">seller store</span> while
-              supporting your community.
+              Create your{" "}
+              <span className="pm-gradient-text">service business page</span>{" "}
+              in 5 simple steps.
             </h1>
             <p className="mt-4 max-w-[600px] text-sm text-pm-muted md:text-base">
-              Create a branded ParishMart seller storefront, connect your
-              catalog, choose how your products support a parish or cause, and
-              activate with concierge support in 5 simple steps.
+              Build a trusted public profile, tell your story, show your
+              services, support a parish or cause, and select your ParishMart
+              membership plan.
             </p>
 
             <div className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
@@ -130,12 +130,12 @@ export default function SellerOnboardingIntro() {
                 href="/onboarding/seller/step-1"
                 className="pm-btn pm-btn-primary inline-flex items-center gap-1.5"
               >
-                Launch My Seller Store
+                Launch My Business Page
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
               <p className="max-w-sm text-xs text-pm-muted">
-                No long forms. Skip non-essential items and finish with
-                concierge support.
+                Skip non-essential items and finish with ParishMart concierge
+                support.
               </p>
             </div>
           </article>
@@ -164,12 +164,12 @@ export default function SellerOnboardingIntro() {
                   Simple 5-step activation
                 </h2>
                 <p className="mt-1 max-w-[470px] text-sm text-pm-muted">
-                  AI builds the storefront while the seller answers a few
-                  simple questions. Skip anything optional.
+                  The business answers simple questions while the page builds
+                  itself. Skip anything optional.
                 </p>
               </div>
               <span className="inline-flex shrink-0 items-center rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700">
-                Founding Seller
+                Founding Supporter
               </span>
             </div>
 
@@ -202,94 +202,65 @@ export default function SellerOnboardingIntro() {
           <div className="w-full max-w-[540px]">
             <div className="mb-3 flex items-center justify-between px-1">
               <span className="text-[11px] font-extrabold uppercase tracking-[.16em] text-pm-blue">
-                Enhanced Final Preview
+                Live Preview
               </span>
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-pm-muted">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_5px_rgba(16,185,129,.15)]" />
-                Ready to convert
+                Updating live
               </span>
             </div>
             <div className="overflow-hidden rounded-[28px] border border-pm-border bg-white shadow-pm-card">
               <SellerPreviewHero
-                kind="merch"
-                title="HarpsClub Merch"
-                subtitle="Custom apparel and campaign-based products for parishes, ministries and community causes."
+                kind="business"
+                initials="FD"
+                title="Weston Family Dental"
+                subtitle="Family dental care for Weston families · Supporting Saint Katharine Drexel Parish."
               />
               <SellerPreviewBody>
-                <div className="flex items-center justify-between gap-3 rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
-                  <div>
-                    <PreviewLabel>Supporting</PreviewLabel>
-                    <p className="mt-1 text-base font-extrabold text-pm-navy">
-                      Saint Katharine Drexel Parish
-                    </p>
-                    <p className="text-xs text-pm-muted">
-                      A portion of every sale supports the parish community.
-                    </p>
-                  </div>
-                  <span className="rounded-xl bg-pm-navy px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                    Purpose Partner
-                  </span>
+                <div className="flex flex-wrap gap-2">
+                  {["Verified", "Family Owned", "Supports SKD"].map((b) => (
+                    <span
+                      key={b}
+                      className="rounded-full bg-pm-soft px-2.5 py-1 text-[11px] font-extrabold text-pm-blue"
+                    >
+                      {b}
+                    </span>
+                  ))}
                 </div>
 
-                <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-4">
-                  <PreviewLabel>Featured Offer</PreviewLabel>
-                  <p className="mt-1 text-xl font-extrabold text-pm-navy">
-                    Parish T-Shirt Campaign
-                  </p>
-                  <p className="mt-1 text-xs text-pm-muted">
-                    Bulk campaign pricing from $18. Made-to-order and shipped
-                    directly to parishioners.
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <span className="rounded-xl bg-pm-navy px-3 py-1.5 text-[11px] font-extrabold text-white">
-                      Shop Products
-                    </span>
-                    <span className="rounded-xl border border-pm-border bg-white px-3 py-1.5 text-[11px] font-extrabold text-pm-blue">
-                      Start Campaign
-                    </span>
-                  </div>
+                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-sm font-extrabold text-amber-700">
+                  10% off first consultation
                 </div>
 
-                <div className="rounded-2xl border border-pm-border bg-white p-4">
-                  <p className="text-sm font-extrabold text-pm-navy">
-                    Included with Membership
-                  </p>
-                  <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-pm-muted">
+                <div>
+                  <PreviewLabel>Services</PreviewLabel>
+                  <div className="mt-2 grid gap-2 text-xs font-extrabold text-pm-navy">
                     {[
-                      "Seller storefront",
-                      "Catalog & inventory",
-                      "Parish visibility",
-                      "Featured offers",
-                      "Lead generation",
-                      "Concierge support",
-                    ].map((f) => (
+                      "Family Dentistry",
+                      "Emergency Dental Care",
+                      "Cosmetic Dentistry",
+                    ].map((s) => (
                       <span
-                        key={f}
-                        className="inline-flex items-center gap-1.5 font-bold"
+                        key={s}
+                        className="rounded-2xl border border-pm-border bg-pm-soft/60 p-2.5"
                       >
-                        <span className="grid h-4 w-4 place-items-center rounded-full bg-pm-soft text-[10px] font-extrabold text-pm-blue">
-                          ✓
-                        </span>
-                        {f}
+                        {s}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between gap-3 rounded-2xl bg-gradient-to-br from-pm-navy to-pm-blue p-4 text-white">
-                  <div>
-                    <p className="text-base font-extrabold leading-tight">
-                      Activate as Founding Seller
-                    </p>
-                    <p className="mt-1 text-xs text-white/85">
-                      Submit for review and go live within 24–48 hours.
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-extrabold leading-none">$99</p>
-                    <p className="text-[10px] text-white/75">per month</p>
-                  </div>
+                <div className="rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
+                  <PreviewLabel>Community Support</PreviewLabel>
+                  <p className="mt-2 text-xs text-pm-muted">
+                    This business supports Saint Katharine Drexel through its
+                    ParishMart membership.
+                  </p>
                 </div>
+
+                <span className="block rounded-full bg-pm-navy py-3 text-center text-sm font-extrabold text-white">
+                  Request Information
+                </span>
               </SellerPreviewBody>
             </div>
           </div>

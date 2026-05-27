@@ -7,117 +7,101 @@ import {
 } from "@/components/onboarding/SellerPreviewCard";
 
 export const metadata = {
-  title: "Step 5 · Select Seller Membership · ParishMart",
+  title: "Step 5 · Select Membership Plan · ParishMart",
 };
 
 const PLANS = [
   {
-    name: "Starter Seller",
+    name: "Starter Supporter",
     price: "$49",
-    body: "Best for small sellers or MVP launch.",
+    body: "Best for businesses that want a basic presence in the community directory.",
     features: [
-      "Seller profile",
-      "Up to 25 products",
-      "Manual product upload",
-      "Basic category visibility",
+      "Public business profile",
+      "Parish/cause supporter badge",
+      "Contact CTA",
+      "Basic category listing",
     ],
     cta: "Select Starter",
   },
   {
-    name: "Community Seller",
+    name: "Community Supporter",
     price: "$99",
-    body: "Best for active sellers supporting parishes or causes.",
+    body: "Best for active local businesses that want better visibility and an offer/coupon.",
     features: [
-      "Up to 250 products",
-      "Storefront story and gallery",
-      "Community support badge",
-      "CSV import",
-      "Higher visibility",
+      "Everything in Starter",
+      "Featured offer/coupon",
+      "Owner story section",
+      "Gallery and testimonials",
+      "Higher category visibility",
     ],
     cta: "Select Community",
     featured: true,
   },
   {
-    name: "Featured Seller",
+    name: "Featured Supporter",
     price: "$150",
-    body: "Premium placement and integrations.",
+    body: "Best for businesses that want premium placement and stronger visibility.",
     features: [
-      "Up to 1,000 products",
-      "Featured placements",
-      "API / Shopify sync request",
-      "Parish store placement",
+      "Everything in Community",
+      "Featured placement",
+      "Parish store footer placement",
+      "Priority support",
       "Monthly performance summary",
     ],
     cta: "Select Featured",
   },
 ];
 
-export default function SellerStep5() {
+export default function LocalBizStep5() {
   return (
     <SellerStepShell
       step={5}
       eyebrow="Step 5 of 5 · Review & Activate"
       title={
         <>
-          Your store is ready to join the{" "}
-          <span className="pm-gradient-text">ParishMart</span> ecosystem.
+          Choose your{" "}
+          <span className="pm-gradient-text">membership plan</span> and
+          activate.
         </>
       }
-      description="Choose your seller membership, approve the terms and submit your storefront for review."
+      description="The monthly plan controls visibility, placement and support level. Payment activates the Local Biz Service page after approval."
       preview={
         <>
           <SellerPreviewHero
-            kind="merch"
-            initials="HC"
-            title="HarpsClub Merch"
-            subtitle="Custom apparel and campaign products supporting Saint Katharine Drexel Parish."
+            kind="business"
+            initials="FD"
+            title="Weston Family Dental"
+            subtitle="Trusted family dental care · Supporting Saint Katharine Drexel Parish."
           />
           <SellerPreviewBody>
-            <div className="flex items-center justify-between gap-3 rounded-2xl border border-pm-cyan/30 bg-gradient-to-br from-pm-soft to-white p-4">
-              <div>
-                <PreviewLabel>Supporting</PreviewLabel>
-                <p className="mt-1 text-base font-extrabold text-pm-navy">
-                  Saint Katharine Drexel Parish
-                </p>
-                <p className="text-xs text-pm-muted">
-                  A portion of every sale supports the parish community.
-                </p>
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-sm font-extrabold text-amber-700">
+              10% off first consultation
+            </div>
+            <div>
+              <PreviewLabel>Services</PreviewLabel>
+              <div className="mt-2 grid gap-2 text-xs font-extrabold text-pm-navy">
+                {["Family Dentistry", "Emergency Dental Care", "Cosmetic Dentistry"].map(
+                  (s) => (
+                    <span
+                      key={s}
+                      className="rounded-2xl border border-pm-border bg-pm-soft/60 p-2.5"
+                    >
+                      {s}
+                    </span>
+                  ),
+                )}
               </div>
-              <span className="rounded-xl bg-pm-navy px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                Purpose Partner
-              </span>
             </div>
             <div className="rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
-              <PreviewLabel>Featured Offer</PreviewLabel>
-              <p className="mt-1 text-xl font-extrabold text-pm-navy">
-                Parish T-Shirt Campaign
+              <PreviewLabel>Community Support</PreviewLabel>
+              <p className="mt-2 text-xs text-pm-muted">
+                This business supports Saint Katharine Drexel through its
+                ParishMart membership.
               </p>
-              <p className="mt-1 text-xs text-pm-muted">
-                Bulk pricing from $18 · Made-to-order · Ships directly.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <span className="rounded-xl bg-pm-navy px-3 py-1.5 text-[11px] font-extrabold text-white">
-                  Shop Products
-                </span>
-                <span className="rounded-xl border border-pm-border bg-white px-3 py-1.5 text-[11px] font-extrabold text-pm-blue">
-                  Start Campaign
-                </span>
-              </div>
             </div>
-            <div className="flex items-center justify-between gap-3 rounded-2xl bg-gradient-to-br from-pm-navy to-pm-blue p-4 text-white">
-              <div>
-                <p className="text-base font-extrabold leading-tight">
-                  Your store is ready to go live.
-                </p>
-                <p className="mt-1 text-xs text-white/85">
-                  ParishMart concierge will review and activate within 24–48
-                  hours.
-                </p>
-              </div>
-              <span className="rounded-xl bg-white px-3 py-2 text-[11px] font-extrabold text-pm-navy">
-                Launching Soon
-              </span>
-            </div>
+            <span className="block rounded-full bg-pm-navy py-3 text-center text-sm font-extrabold text-white">
+              Request Information
+            </span>
           </SellerPreviewBody>
         </>
       }
@@ -132,37 +116,16 @@ export default function SellerStep5() {
               Activation Ready
             </p>
             <p className="mt-1 text-2xl font-extrabold leading-tight tracking-tight text-pm-navy">
-              Welcome aboard.
+              Almost there.
             </p>
             <p className="mt-1 text-sm text-pm-muted">
-              Your seller storefront, story, products and parish connection are
-              ready for activation and review.
+              Your business profile, owner story, services and community
+              support are ready. Select a plan to submit for activation.
             </p>
           </div>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-pm-border bg-white p-4">
-            <PreviewLabel>Seller</PreviewLabel>
-            <p className="mt-1 text-lg font-extrabold leading-tight text-pm-navy">
-              HarpsClub Merch
-            </p>
-            <p className="mt-1 text-xs text-pm-muted">
-              1P Partner Seller connected to Saint Katharine Drexel Parish.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-pm-border bg-white p-4">
-            <PreviewLabel>Primary Offer</PreviewLabel>
-            <p className="mt-1 text-lg font-extrabold leading-tight text-pm-navy">
-              Parish T-Shirt Campaign
-            </p>
-            <p className="mt-1 text-xs text-pm-muted">
-              AI-generated CTA optimized for parish engagement.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-5 grid gap-3 lg:grid-cols-3">
+        <div className="grid gap-3 lg:grid-cols-3">
           {PLANS.map((p) => (
             <div
               key={p.name}
@@ -215,11 +178,11 @@ export default function SellerStep5() {
           <p className="text-xs text-pm-muted">
             I agree to the{" "}
             <span className="font-extrabold text-pm-navy">
-              ParishMart Seller Terms
+              ParishMart Local Biz Terms
             </span>
-            , understand my storefront will be reviewed before publication, and
-            authorize ParishMart to display my products inside the selected
-            parish or community ecosystem.
+            , understand my business will be reviewed before publication, and
+            authorize ParishMart to display my page inside the selected parish
+            or community ecosystem.
           </p>
         </label>
 
@@ -231,7 +194,7 @@ export default function SellerStep5() {
             href="/onboarding/success"
             className="pm-btn pm-btn-primary"
           >
-            Activate My Seller Store
+            Continue to Payment &amp; Submit for Approval
           </Link>
         </div>
       </div>

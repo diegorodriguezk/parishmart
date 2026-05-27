@@ -7,7 +7,7 @@ import {
 } from "@/components/onboarding/SellerPreviewCard";
 
 export const metadata = {
-  title: "Step 2 · Brand Story & Community Support · ParishMart",
+  title: "Step 2 · Owner Story & Community · ParishMart",
 };
 
 const SUPPORTED_OPTIONS = [
@@ -15,58 +15,48 @@ const SUPPORTED_OPTIONS = [
   "SKD Emmaus Ministry",
   "St. Vincent de Paul Weston",
   "Youth Ministry",
-  "Buyer selects cause at checkout",
 ];
 
-const SUPPORT_MODELS = [
-  "Part of every purchase supports the community",
-  "Membership supports community visibility",
-  "Specific campaign supports one cause",
-  "Seller chooses a monthly supported cause",
-];
-
-export default function SellerStep2() {
+export default function LocalBizStep2() {
   return (
     <SellerStepShell
       step={2}
-      eyebrow="Step 2 of 5 · Brand Story & Community Support"
+      eyebrow="Step 2 of 5 · Owner Story & Community"
       title={
         <>
-          Tell your story. Let AI make it{" "}
-          <span className="pm-gradient-text">beautiful</span>.
+          Humanize the page with the{" "}
+          <span className="pm-gradient-text">owner&rsquo;s story</span>.
         </>
       }
-      description="Share a few details about your business and choose the parish, cause or ministry your products will support."
+      description="Tell us who runs the business and which parish, cause or ministry you want to support."
       preview={
         <>
           <SellerPreviewHero
-            kind="merch"
-            initials="HC"
-            title="HarpsClub Merch"
-            subtitle="Helping communities raise funds through purpose-driven products."
+            kind="business"
+            initials="FD"
+            title="Weston Family Dental"
+            subtitle="Local family dental practice supporting Saint Katharine Drexel Parish."
           />
           <SellerPreviewBody>
             <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-4">
-              <PreviewLabel>About the seller</PreviewLabel>
+              <PreviewLabel>About the Owner</PreviewLabel>
               <p className="mt-2 text-sm text-pm-muted">
-                HarpsClub Merch is a custom apparel and merchandise studio
-                building branded products for parishes, ministries and faith
-                communities — all designed to help raise funds and strengthen
-                identity.
+                Dr. Maria Lopez is a local dentist and community supporter who
+                believes strong families and strong local businesses help
+                strengthen parish life.
               </p>
             </div>
             <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-4">
               <PreviewLabel>Why we support the community</PreviewLabel>
               <p className="mt-2 text-sm text-pm-muted">
-                Through ParishMart, HarpsClub Merch supports Saint Katharine
-                Drexel Parish ministries, retreats and outreach programs through
-                product sales and campaigns.
+                We want to serve families in our area and contribute to the
+                parish community through our Local Biz Supporter membership.
               </p>
             </div>
             <blockquote className="border-l-4 border-pm-cyan pl-4">
               <p className="text-sm font-extrabold tracking-tight text-pm-navy">
-                &ldquo;A seller with purpose — branded merch that helps faith
-                communities grow.&rdquo;
+                &ldquo;A trusted local dental practice proud to support Saint
+                Katharine Drexel Parish.&rdquo;
               </p>
               <p className="mt-2 text-xs text-pm-muted">
                 Suggested tagline by ParishMart AI
@@ -86,8 +76,8 @@ export default function SellerStep2() {
               ParishMart Concierge
             </p>
             <p className="mt-1 text-sm text-pm-muted">
-              Short answers are enough — I&rsquo;ll turn them into polished
-              storefront copy, an entrepreneur note and your purpose message.
+              A short owner story turns a directory listing into a trusted
+              local supporter. I&rsquo;ll polish the copy automatically.
             </p>
           </div>
         </div>
@@ -95,7 +85,16 @@ export default function SellerStep2() {
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">
-              Community / Parish Supported
+              Owner Name
+            </span>
+            <input
+              defaultValue="Dr. Maria Lopez"
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
+            />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">
+              Parish / Cause Supported
             </span>
             <select
               defaultValue={SUPPORTED_OPTIONS[0]}
@@ -106,56 +105,26 @@ export default function SellerStep2() {
               ))}
             </select>
           </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">
-              Support Model
-            </span>
-            <select
-              defaultValue={SUPPORT_MODELS[0]}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            >
-              {SUPPORT_MODELS.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-          </label>
           <label className="block sm:col-span-2">
             <span className="block text-xs font-extrabold text-pm-navy">
-              About the Seller
+              About the Owner
             </span>
             <textarea
               rows={3}
-              defaultValue="HarpsClub was built from years of experience in corporate apparel, uniforms, decoration and e-commerce. Through ParishMart, the seller helps faith-based and community organizations offer branded merchandise in a simple, scalable and purpose-driven way."
+              defaultValue="Dr. Maria Lopez is a local dentist and community supporter who believes that strong families and strong local businesses help strengthen parish life."
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
           <label className="block sm:col-span-2">
             <span className="block text-xs font-extrabold text-pm-navy">
-              Community Support Message
+              Why do you want to support this community?
             </span>
             <textarea
               rows={3}
-              defaultValue="Products can be connected to parish ministries such as Emmaus, Youth Ministry or St. Vincent de Paul to help generate recurring support through product sales."
+              defaultValue="We want to serve families in our area and contribute to the parish community through our Local Biz Supporter membership."
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
-        </div>
-
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-pm-cyan/30 bg-gradient-to-br from-pm-soft to-white p-4">
-          <div>
-            <p className="text-sm font-extrabold text-pm-navy">
-              AI will draft your seller story
-            </p>
-            <p className="text-xs text-pm-muted">
-              About the Seller, tagline and purpose message.
-            </p>
-          </div>
-          <button
-            type="button"
-            className="rounded-2xl bg-pm-navy px-4 py-3 text-xs font-extrabold text-white"
-          >
-            Generate Story
-          </button>
         </div>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
@@ -166,7 +135,7 @@ export default function SellerStep2() {
             href="/onboarding/seller/step-3"
             className="pm-btn pm-btn-primary"
           >
-            Continue to Catalog
+            Continue
           </Link>
         </div>
       </div>

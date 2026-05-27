@@ -6,76 +6,55 @@ import {
   PreviewLabel,
 } from "@/components/onboarding/SellerPreviewCard";
 
-export const metadata = { title: "Step 1 · Seller Profile · ParishMart" };
+export const metadata = { title: "Step 1 · Business Profile · ParishMart" };
 
 const FIELDS = [
-  { label: "Seller / Store Name", value: "HarpsClub Merch", type: "input" },
+  { label: "Business Name", value: "Weston Family Dental", type: "input" },
   {
-    label: "Seller Type",
-    value: "ParishMart 1P Partner",
+    label: "Service Category",
+    value: "Health & Wellness",
     type: "select",
     options: [
-      "ParishMart 1P Partner",
-      "3P Product Seller",
-      "Local Business Seller",
-      "Cause / Ministry Seller",
+      "Health & Wellness",
+      "Real Estate",
+      "Insurance",
+      "Legal Services",
+      "Home Services",
+      "Professional Services",
     ],
   },
-  {
-    label: "Main Product Category",
-    value: "Merch & Apparel",
-    type: "select",
-    options: [
-      "Merch & Apparel",
-      "Religious Products",
-      "Wellness",
-      "Art & Craft",
-      "Printing Solutions",
-      "Circular Economy",
-    ],
-  },
-  {
-    label: "Product Model",
-    value: "Made to Order / Campaigns",
-    type: "select",
-    options: [
-      "Made to Order / Campaigns",
-      "Ready to Ship",
-      "Customizable",
-      "Bulk Lots",
-      "Digital / Service Add-on",
-    ],
-  },
-  { label: "Website", value: "harpsclub.com", type: "input" },
-  { label: "Contact Email", value: "hello@harpsclub.com", type: "input" },
+  { label: "Phone", value: "(954) 555-0148", type: "input" },
+  { label: "Email", value: "hello@westonfamilydental.com", type: "input" },
+  { label: "Website", value: "westonfamilydental.com", type: "input" },
+  { label: "City / State", value: "Weston, FL", type: "input" },
 ];
 
-export default function SellerStep1() {
+export default function LocalBizStep1() {
   return (
     <SellerStepShell
       step={1}
-      eyebrow="Step 1 of 5 · Seller Profile"
+      eyebrow="Step 1 of 5 · Business Profile"
       title={
         <>
-          Let&rsquo;s launch your{" "}
-          <span className="pm-gradient-text">seller store</span>.
+          Let&rsquo;s create your{" "}
+          <span className="pm-gradient-text">service business page</span>.
         </>
       }
-      description="Define who the seller is, what type of products you offer, and how your storefront should appear inside ParishMart."
+      description="Basic information to identify the business, location, service area and main category."
       preview={
         <>
           <SellerPreviewHero
-            kind="merch"
-            initials="HC"
-            title="HarpsClub Merch"
-            subtitle="Custom apparel and campaign products for community organizations."
+            kind="business"
+            initials="FD"
+            title="Weston Family Dental"
+            subtitle="Family dental practice serving Weston, FL."
           />
           <SellerPreviewBody>
             <div className="flex items-center justify-between gap-3">
               <div>
-                <PreviewLabel>Draft Store</PreviewLabel>
+                <PreviewLabel>Draft Profile</PreviewLabel>
                 <p className="mt-1 text-base font-extrabold text-pm-navy">
-                  Storefront profile
+                  Business profile
                 </p>
               </div>
               <span className="rounded-full bg-pm-soft px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-pm-blue">
@@ -83,38 +62,37 @@ export default function SellerStep1() {
               </span>
             </div>
             <p className="text-sm text-pm-muted">
-              Once you finish the simple seller profile, AI will generate your
-              brand story, suggested support models, featured products and
-              calls to action.
+              Once you finish the simple business profile, the page will start
+              showing as a Local Biz Supporter in the community directory.
             </p>
             <div className="grid grid-cols-2 gap-2.5">
               <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-3">
                 <p className="text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
-                  CTA
+                  Category
                 </p>
                 <p className="mt-1 text-sm font-extrabold text-pm-navy">
-                  Shop Products
+                  Health &amp; Wellness
                 </p>
               </div>
               <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-3">
                 <p className="text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
-                  Catalog
+                  Location
                 </p>
                 <p className="mt-1 text-sm font-extrabold text-pm-navy">
-                  Manual + CSV import
+                  Weston, FL
                 </p>
               </div>
             </div>
             <div className="flex items-center justify-between gap-3 rounded-2xl border border-pm-border bg-pm-soft/40 p-3">
               <p className="text-xs text-pm-muted">
                 <span className="font-extrabold text-pm-navy">
-                  Seller with Purpose
+                  Service area:
                 </span>
-                <br />A simple way to grow while supporting parishes and
-                ministries.
+                <br />
+                Weston, Southwest Ranches, Davie, Pembroke Pines.
               </p>
               <span className="rounded-xl bg-pm-navy px-2.5 py-2 text-[11px] font-extrabold text-white">
-                Preview
+                Step 2
               </span>
             </div>
           </SellerPreviewBody>
@@ -131,8 +109,8 @@ export default function SellerStep1() {
               ParishMart Concierge
             </p>
             <p className="mt-1 text-sm text-pm-muted">
-              Start with a few simple answers. I&rsquo;ll personalize the next
-              steps and draft your seller storefront automatically.
+              Start with a few simple answers. The next steps adapt to your
+              service category automatically.
             </p>
           </div>
         </div>
@@ -162,12 +140,21 @@ export default function SellerStep1() {
           ))}
           <label className="block sm:col-span-2">
             <span className="block text-xs font-extrabold text-pm-navy">
-              Short Store Description
+              Short Business Description
             </span>
             <textarea
               rows={3}
-              defaultValue="Custom apparel, parish merch, ministry products and campaign-based merchandise designed to help communities raise funds and build identity."
+              defaultValue="Family dental practice serving Weston with preventive, cosmetic and emergency dental care for children, adults and seniors."
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
+            />
+          </label>
+          <label className="block sm:col-span-2">
+            <span className="block text-xs font-extrabold text-pm-navy">
+              Service Area
+            </span>
+            <input
+              defaultValue="Weston, Southwest Ranches, Davie, Pembroke Pines"
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
         </div>
