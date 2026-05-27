@@ -9,3 +9,4 @@ tsconfig.tsbuildinfo
 .claude
 .playwright
 .playwright-cli
+playwright.config.ts
