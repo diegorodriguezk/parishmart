@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Share2 } from "lucide-react";
 import { useCart, type CartItem } from "@/components/cart/CartContext";
 
 export function ProductAddRow({
@@ -41,9 +42,19 @@ export function ProductAddRow({
       <button
         type="button"
         onClick={() => cart.addItem({ ...item, qty })}
-        className="pm-btn pm-btn-primary flex-1"
+        className="pm-btn pm-btn-primary"
       >
         Add{qty > 1 ? ` (${qty})` : ""}
+      </button>
+
+      {/* Share button */}
+      <button
+        type="button"
+        onClick={() => navigator.share?.({ title: item.name, url: window.location.href })}
+        className="pm-btn pm-btn-secondary inline-flex items-center gap-1.5"
+      >
+        <Share2 className="h-4 w-4" aria-hidden />
+        Share
       </button>
     </div>
   );
