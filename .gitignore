@@ -10,3 +10,4 @@ tsconfig.tsbuildinfo
 .playwright
 .playwright-cli
 playwright.config.ts
+test-results
