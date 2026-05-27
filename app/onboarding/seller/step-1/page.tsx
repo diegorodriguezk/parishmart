@@ -26,7 +26,7 @@ const FIELDS = [
   { label: "Phone", value: "(954) 555-0148", type: "input" },
   { label: "Email", value: "hello@westonfamilydental.com", type: "input" },
   {
-    label: "Contact Us (Website / Social Media)",
+    label: "Website or Social Media",
     value: "westonfamilydental.com",
     type: "input",
   },
