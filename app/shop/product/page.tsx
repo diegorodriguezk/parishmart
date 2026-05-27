@@ -5,9 +5,10 @@ import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { ProductImageGallery } from "@/components/shop/ProductImageGallery";
 import { ProductColorPicker, ProductSizePicker } from "@/components/shop/ProductOptions";
+import { ProductAddRow } from "@/components/shop/ProductAddRow";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { fetchProduct, fetchProducts } from "@/lib/api";
 
 const PRODUCT_ID = "skd-mens-microfleece-jacket";
@@ -102,7 +103,7 @@ export default async function ProductDetailPage() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 lg:sticky lg:top-24 lg:self-start">
             <div className="pm-card p-5 sm:p-6">
               <span className="pm-label">
                 Supports {product.cause ?? "SKD Parish"}
@@ -126,7 +127,7 @@ export default async function ProductDetailPage() {
               </div>
 
               <div className="mt-5">
-                <AddToCartButton
+                <ProductAddRow
                   item={{
                     id: product.id,
                     name: product.name,
@@ -135,7 +136,6 @@ export default async function ProductDetailPage() {
                     cause: product.cause,
                     photo: product.photo,
                   }}
-                  fullWidth
                 />
               </div>
             </div>
