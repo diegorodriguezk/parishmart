@@ -36,6 +36,7 @@ const FIELDS = [
     type: "select",
     options: ["Phone", "Email", "Website", "Social Media"],
   },
+  { label: "Address", value: "2501 South Post Road", type: "input" },
   { label: "City", value: "Weston", type: "input" },
   {
     label: "State",
@@ -53,6 +54,7 @@ const FIELDS = [
       "Other",
     ],
   },
+  { label: "Zip Code", value: "33327", type: "input" },
 ];
 
 export default function LocalBizStep1() {
