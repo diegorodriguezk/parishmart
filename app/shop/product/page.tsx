@@ -7,6 +7,7 @@ import { Section } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { ProductImageGallery } from "@/components/shop/ProductImageGallery";
+import { ProductColorPicker, ProductSizePicker } from "@/components/shop/ProductOptions";
 import { fetchProduct, fetchProducts } from "@/lib/api";
 
 const PRODUCT_ID = "skd-mens-microfleece-jacket";
@@ -116,36 +117,12 @@ export default async function ProductDetailPage() {
 
               <div className="mt-5 space-y-2">
                 <p className="text-xs font-bold text-pm-navy">Color</p>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { name: "Black", bg: "bg-black" },
-                    { name: "Navy", bg: "bg-[#1a2d5a]" },
-                    { name: "Heather Gray", bg: "bg-[#9ca3af]" },
-                  ].map((c, i) => (
-                    <button
-                      key={c.name}
-                      type="button"
-                      title={c.name}
-                      aria-label={c.name}
-                      className={`h-7 w-7 rounded-full border-2 transition ${c.bg} ${i === 0 ? "border-pm-blue ring-2 ring-pm-blue/30" : "border-white ring-1 ring-pm-border hover:ring-pm-blue"}`}
-                    />
-                  ))}
-                </div>
+                <ProductColorPicker />
               </div>
 
               <div className="mt-4 space-y-2">
                 <p className="text-xs font-bold text-pm-navy">Size</p>
-                <div className="flex flex-wrap gap-2">
-                  {["S", "M", "L", "XL", "2XL"].map((s, i) => (
-                    <span
-                      key={s}
-                      className="pm-chip min-w-[44px] !justify-center"
-                      data-active={i === 1 ? "true" : undefined}
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
+                <ProductSizePicker />
               </div>
 
               <div className="mt-5">
