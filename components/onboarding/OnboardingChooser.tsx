@@ -48,7 +48,7 @@ const STEP1: Step1Option[] = [
     title: "Cause or Ministry",
     description:
       "Launch giving campaigns and impact pages for ministries, retreats and missions inside the ecosystem.",
-    href: "/onboarding/parish",
+    href: "/onboarding/cause",
   },
   {
     id: "seller-biz",

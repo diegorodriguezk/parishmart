@@ -1,15 +1,5 @@
-import { OnboardingHeader } from "@/components/Header";
-import { MinimalFooter } from "@/components/MinimalFooter";
-import { LocalBusinessOnboardingForm } from "@/components/onboarding/LocalBusinessOnboardingForm";
+import { redirect } from "next/navigation";
 
-export const metadata = { title: "Local Business Onboarding · ParishMart" };
-
-export default function LocalBusinessOnboardingPage() {
-  return (
-    <>
-      <OnboardingHeader subtitle="Biz Supporter Activation" />
-      <LocalBusinessOnboardingForm />
-      <MinimalFooter />
-    </>
-  );
+export default function LocalBusinessOnboarding() {
+  redirect("/onboarding/local-business/step-1");
 }

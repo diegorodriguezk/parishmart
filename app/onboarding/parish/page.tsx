@@ -1,15 +1,5 @@
-import { OnboardingHeader } from "@/components/Header";
-import { MinimalFooter } from "@/components/MinimalFooter";
-import { ParishOnboardingForm } from "@/components/onboarding/ParishOnboardingForm";
+import { redirect } from "next/navigation";
 
-export const metadata = { title: "Parish / Cause Activation · ParishMart" };
-
-export default function ParishOnboardingPage() {
-  return (
-    <>
-      <OnboardingHeader subtitle="Parish / Cause Activation" />
-      <ParishOnboardingForm />
-      <MinimalFooter />
-    </>
-  );
+export default function ParishOnboarding() {
+  redirect("/onboarding/parish/step-1");
 }

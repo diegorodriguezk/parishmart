@@ -1,10 +1,22 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
 import { Logo } from "@/components/Logo";
+import { Check } from "lucide-react";
+
+const DEFAULT_STEP_TITLES = ["Profile", "Story", "Services", "Media", "Launch"];
+
+const BADGE_STYLE: Record<string, string> = {
+  Required:    "bg-pm-blue/10 text-pm-blue",
+  Recommended: "bg-amber-50 text-amber-700",
+  Important:   "bg-emerald-50 text-emerald-700",
+  Final:       "bg-pm-navy/10 text-pm-navy",
+};
 
 export function SellerStepShell({
   step,
   totalSteps = 5,
+  allStepTitles,
+  badge,
   eyebrow,
   title,
   description,
@@ -13,17 +25,24 @@ export function SellerStepShell({
 }: {
   step: number;
   totalSteps?: number;
+  allStepTitles?: string[];
+  badge?: "Required" | "Recommended" | "Important" | "Final";
   eyebrow: string;
   title: ReactNode;
   description: string;
   children: ReactNode;
   preview: ReactNode;
 }) {
+  const titles = allStepTitles ?? DEFAULT_STEP_TITLES.slice(0, totalSteps);
+
   return (
     <main className="min-h-dvh bg-gradient-to-br from-white via-pm-soft to-white">
       <div className="mx-auto grid min-h-dvh max-w-[1320px] gap-0 px-4 sm:px-6 lg:grid-cols-[1.02fr_.98fr]">
-        {/* LEFT */}
+
+        {/* ── LEFT ── */}
         <section className="flex flex-col py-8 lg:pr-8">
+
+          {/* Top bar */}
           <div className="mb-10 flex items-center justify-between gap-3">
             <Logo />
             <Link
@@ -34,30 +53,78 @@ export function SellerStepShell({
             </Link>
           </div>
 
-          {/* Progress steps */}
-          <div className="mb-7 flex w-full max-w-[460px] gap-2">
-            {Array.from({ length: totalSteps }).map((_, i) => (
+          {/* Step label + optional badge */}
+          <div className="mb-4 flex flex-wrap items-center gap-2.5">
+            <span className="inline-flex items-center gap-2 rounded-full bg-pm-soft px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-pm-blue">
+              <span className="h-2 w-2 rounded-full bg-pm-cyan shadow-[0_0_0_5px_rgba(69,177,225,.18)]" />
+              {eyebrow}
+            </span>
+            {badge && (
               <span
-                key={i}
-                className={`h-1.5 flex-1 rounded-full ${
-                  i < step
-                    ? "bg-gradient-to-r from-pm-blue to-pm-cyan"
-                    : "bg-pm-border"
-                }`}
-              />
-            ))}
+                className={`rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${BADGE_STYLE[badge]}`}
+              >
+                {badge}
+              </span>
+            )}
           </div>
 
-          {/* Eyebrow */}
-          <span className="inline-flex w-fit items-center gap-2 rounded-full bg-pm-soft px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-pm-blue">
-            <span className="grid h-2 w-2 place-items-center rounded-full bg-pm-cyan shadow-[0_0_0_5px_rgba(69,177,225,.18)]" />
-            {eyebrow}
-          </span>
+          {/* Numbered step progress */}
+          <div className="mb-8 flex max-w-[440px] items-start">
+            {Array.from({ length: totalSteps }).map((_, i) => {
+              const n = i + 1;
+              const isDone   = n < step;
+              const isActive = n === step;
+              return (
+                <Fragment key={i}>
+                  {/* Circle + label */}
+                  <div className="flex shrink-0 flex-col items-center gap-1.5">
+                    <span
+                      className={[
+                        "grid h-7 w-7 place-items-center rounded-full text-[11px] font-extrabold transition-all",
+                        isActive
+                          ? "bg-gradient-to-br from-pm-blue to-pm-cyan text-white shadow-[0_0_0_4px_rgba(69,177,225,.18)]"
+                          : isDone
+                          ? "bg-pm-blue/15 text-pm-blue"
+                          : "border border-pm-border bg-white text-pm-muted",
+                      ].join(" ")}
+                    >
+                      {isDone ? (
+                        <Check className="h-3 w-3" strokeWidth={2.5} />
+                      ) : (
+                        n
+                      )}
+                    </span>
+                    <span
+                      className={[
+                        "hidden text-[9px] font-bold uppercase tracking-wider lg:block",
+                        isActive
+                          ? "text-pm-blue"
+                          : isDone
+                          ? "text-pm-blue/60"
+                          : "text-pm-muted",
+                      ].join(" ")}
+                    >
+                      {titles[i] ?? `Step ${n}`}
+                    </span>
+                  </div>
+                  {/* Connecting line */}
+                  {i < totalSteps - 1 && (
+                    <span
+                      className={[
+                        "mx-2 mt-3.5 h-px flex-1",
+                        n < step ? "bg-pm-blue/30" : "bg-pm-border",
+                      ].join(" ")}
+                    />
+                  )}
+                </Fragment>
+              );
+            })}
+          </div>
 
-          <h1 className="mt-4 max-w-[680px] text-4xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-5xl">
+          {/* Headline */}
+          <h1 className="max-w-[680px] text-4xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-5xl">
             {title}
           </h1>
-
           <p className="mt-4 max-w-[610px] text-base text-pm-muted md:text-lg">
             {description}
           </p>
@@ -65,12 +132,12 @@ export function SellerStepShell({
           <div className="mt-7 flex-1">{children}</div>
         </section>
 
-        {/* RIGHT — preview */}
-        <aside className="flex items-start justify-center py-8 lg:items-center lg:py-12">
-          <div className="w-full max-w-[540px]">
+        {/* ── RIGHT — sticky preview ── */}
+        <aside className="flex items-start justify-center py-8 lg:sticky lg:top-8 lg:max-h-[calc(100vh-2rem)] lg:self-start lg:overflow-y-auto lg:py-12">
+          <div className="w-full max-w-[520px]">
             <div className="mb-3 flex items-center justify-between px-1">
               <span className="text-[11px] font-extrabold uppercase tracking-[.16em] text-pm-blue">
-                AI Generated Preview
+                Live Preview
               </span>
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-pm-muted">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_5px_rgba(16,185,129,.15)]" />
@@ -82,6 +149,7 @@ export function SellerStepShell({
             </div>
           </div>
         </aside>
+
       </div>
     </main>
   );
