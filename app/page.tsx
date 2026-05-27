@@ -373,7 +373,7 @@ export default async function HomePage() {
                               href={s.href}
                               className="text-sm font-bold text-pm-blue hover:text-pm-navy"
                             >
-                              View more →
+                              View store →
                             </Link>
                           </div>
                         </div>
