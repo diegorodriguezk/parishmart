@@ -65,4 +65,25 @@ test.describe("/shop/product", () => {
     const rightCol = page.locator(".space-y-4.lg\\:sticky");
     await expect(rightCol).toBeVisible();
   });
+
+  test("product description section is visible", async ({ page }) => {
+    await expect(page.getByText("About this product")).toBeVisible();
+    // Description body text exists
+    const descBlock = page.locator(".pl-4 > p");
+    await expect(descBlock).toBeVisible();
+    const text = await descBlock.textContent();
+    expect(text?.length).toBeGreaterThan(20);
+  });
+
+  test("feature chips are rendered", async ({ page }) => {
+    const chips = page.locator("span.rounded-full.border.border-pm-border.bg-white.text-pm-navy");
+    await expect(chips.first()).toBeVisible();
+    const count = await chips.count();
+    expect(count).toBeGreaterThan(0);
+  });
+
+  test("Impact rule and Seller cards are not shown", async ({ page }) => {
+    await expect(page.getByText("Impact rule")).not.toBeVisible();
+    await expect(page.getByText("Seller")).not.toBeVisible();
+  });
 });

@@ -77,16 +77,6 @@ export default async function ProductDetailPage() {
                     t: product.cause ?? "SKD Parish",
                     d: "Supports ministries, formation and parish initiatives.",
                   },
-                  {
-                    l: "Impact rule",
-                    t: "10% supports SKD",
-                    d: "A portion of every purchase contributes to the parish mission.",
-                  },
-                  {
-                    l: "Seller",
-                    t: product.seller,
-                    d: "Approved seller inside the ParishMart ecosystem.",
-                  },
                 ].map((b) => (
                   <div
                     key={b.l}
@@ -100,6 +90,32 @@ export default async function ProductDetailPage() {
                   </div>
                 ))}
               </div>
+
+              {(product.description ?? product.meta) && (
+                <div className="mt-5 border-t border-pm-border pt-5">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
+                    About this product
+                  </p>
+                  <div className="relative mt-3 pl-4">
+                    <span className="absolute left-0 top-0 h-full w-0.5 rounded-full bg-pm-blue/30" />
+                    <p className="text-sm leading-relaxed text-pm-ink">
+                      {product.description ?? product.meta}
+                    </p>
+                  </div>
+                  {product.features && product.features.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {product.features.map((f) => (
+                        <span
+                          key={f}
+                          className="inline-flex items-center rounded-full border border-pm-border bg-white px-3 py-1 text-[11px] font-medium text-pm-navy"
+                        >
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 

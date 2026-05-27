@@ -13,6 +13,8 @@ export type Product = {
   src: string;
   price: string;
   meta: string;
+  description?: string;
+  features?: string[];
   category: ProductCategory;
   label?: string;
   seller: string;
@@ -27,6 +29,9 @@ export const PRODUCTS: Product[] = [
     src: "/brand/products/jacket-men.png",
     price: "$35.99",
     meta: "Parish merch · Men's microfleece, embroidered SKD seal.",
+    description:
+      "Stay warm and wear your faith proudly with the official SKD microfleece jacket. Crafted from a soft, mid-weight fleece, it features an embroidered Saint Katharine Drexel seal on the chest — a subtle mark of community and belonging. A portion of every purchase goes directly toward SKD parish ministries and formation initiatives.",
+    features: ["Embroidered SKD seal", "Mid-weight microfleece", "Men's regular fit", "Full-zip closure", "Machine washable"],
     category: "parish-merch",
     label: "Supports SKD",
     seller: "SKD Parish Store",
