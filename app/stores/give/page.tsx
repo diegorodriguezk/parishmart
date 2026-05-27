@@ -25,7 +25,7 @@ export default function StoresGivePage() {
         }
         heroDescription="Choose a ministry, mission or outreach at Saint Katharine Drexel and support it directly. 100% of your gift goes where you direct it."
         searchPlaceholder="Search SKD ministries, causes, missions and outreach"
-        causeHref="/give/cause"
+        causeHref="/stores/give/giving"
         ministriesHref="/stores"
         parish="skd"
       />
