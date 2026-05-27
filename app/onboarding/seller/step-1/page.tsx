@@ -38,22 +38,7 @@ const FIELDS = [
   },
   { label: "Address", value: "2501 South Post Road", type: "input" },
   { label: "City", value: "Weston", type: "input" },
-  {
-    label: "State",
-    value: "FL",
-    type: "select",
-    options: [
-      "FL",
-      "AL",
-      "CA",
-      "GA",
-      "NC",
-      "NY",
-      "PA",
-      "TX",
-      "Other",
-    ],
-  },
+  { label: "State", value: "FL", type: "input" },
   { label: "Zip Code", value: "33327", type: "input" },
 ];
 
