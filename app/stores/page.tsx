@@ -307,7 +307,16 @@ export default async function ParishStoreSKDPage() {
         <SectionHeader
           title="Sponsors & Parishioner Benefits"
           description="Sponsors support SKD while parishioners receive meaningful benefits, discounts and trusted local services."
-          right={<Link href="/sponsors" className="font-bold text-pm-blue">Become a Sponsor</Link>}
+          right={
+            <>
+              <Link href="/sponsors" className="font-bold text-pm-blue">
+                View all Sponsors
+              </Link>
+              <Link href="/onboarding/sponsor" className="text-pm-muted">
+                Become a Sponsor
+              </Link>
+            </>
+          }
         />
         <div className="grid gap-4 md:grid-cols-3">
           {[
