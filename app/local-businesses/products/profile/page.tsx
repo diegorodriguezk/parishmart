@@ -52,56 +52,79 @@ export default async function ProductSellerProfilePage() {
           {/* Lighter gradient — photo visible on right, readable on left */}
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-pm-navy/95 via-pm-navy/75 to-transparent" />
 
-          <div className="flex flex-col gap-6 p-8 sm:p-10 lg:flex-row lg:items-start lg:justify-between">
-            {/* LEFT — content flows naturally, no forced gap before CTAs */}
-            <div className="flex max-w-lg flex-1 flex-col gap-4 text-white">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
-                Merch &amp; Apparel
-              </span>
-              <div>
-                <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-                  Harps <span className="pm-gradient-text">Club</span>
-                </h1>
-                <p className="mt-1.5 text-sm font-semibold text-white/70">
-                  Supporting Saint Katharine Drexel
+          <div className="flex flex-col gap-6 p-8 sm:p-10 lg:flex-row lg:items-stretch lg:justify-between">
+            {/* LEFT — name scales dynamically; CTAs pinned to bottom */}
+            <div className="flex flex-1 flex-col justify-between gap-6 text-white">
+              <div className="flex flex-col gap-3">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
+                  Merch &amp; Apparel
+                </span>
+                <div>
+                  <h1
+                    className="font-extrabold leading-none tracking-tight"
+                    style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
+                  >
+                    Harps <span className="pm-gradient-text">Club</span>
+                  </h1>
+                  <p className="mt-2 text-sm font-semibold text-white/70">
+                    Supporting Saint Katharine Drexel
+                  </p>
+                  <p className="max-w-xs text-sm leading-relaxed text-white/80">
+                  Custom apparel, parish merch, ministry products and
+                  campaign-based merchandise designed to help communities raise
+                  funds and build identity.
                 </p>
+                </div>
               </div>
-              <p className="text-sm leading-relaxed text-white/80">
-                Custom apparel, parish merch, ministry products and
-                campaign-based merchandise designed to help communities raise
-                funds and build identity.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link href="#products" className="pm-btn pm-btn-primary">
-                  Shop Products
-                </Link>
-                <Link href="/stores" className="pm-btn bg-white/15 text-white hover:bg-white/25">
-                  See Community Support
-                </Link>
+              {/* Description + CTAs pinned to bottom — paragraph width matches button row */}
+              <div className="flex flex-col gap-3">
+                
+                <div className="flex flex-wrap gap-3">
+                  <Link href="#products" className="pm-btn pm-btn-primary">
+                    Shop Products
+                  </Link>
+                  <Link href="/stores" className="pm-btn bg-white/15 text-white hover:bg-white/25">
+                    See Community Support
+                  </Link>
+                </div>
               </div>
             </div>
 
-            {/* RIGHT — founder card: photo+name horizontal, bio below */}
-            <div className="pm-card w-full shrink-0 p-5 lg:w-80">
-              <p className="mb-3 text-[10px] font-bold uppercase tracking-wider text-pm-blue">
-                Founder
-              </p>
-              {/* Photo + name side by side */}
-              <div className="flex items-center gap-3">
-                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-gradient-to-br from-pm-blue to-pm-cyan text-lg font-extrabold text-white shadow-pm-soft">
-                  HC
-                </span>
-                <div>
-                  <p className="text-base font-extrabold text-pm-navy">Sarah Martinez</p>
-                  <p className="text-[11px] text-pm-muted">Wellness Advocate</p>
-                  <p className="text-[11px] text-pm-muted">Founder of Harps Club</p>
+            {/* RIGHT — founder card: square photo top-left, name top-right, bio below */}
+            <div className="pm-card w-full shrink-0 p-5 lg:w-[540px]">
+              {/* Top row: photo left + founder info right */}
+              <div className="flex items-start gap-4">
+                {/* Square photo with rounded edges */}
+                <div className="h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan shadow-pm-soft flex items-center justify-center text-xl font-extrabold text-white">
+                  SM
+                </div>
+                {/* Founder label + name */}
+                <div className="pt-1">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
+                    Founder
+                  </p>
+                  <p className="mt-1 text-base font-extrabold text-pm-navy">
+                    Sarah Martinez
+                  </p>
+                  <p className="text-[11px] text-pm-muted">
+                    Wellness Advocate
+                  </p>
+                  <p className="text-[11px] text-pm-muted">
+                    Founder of Harps Club
+                  </p>
                 </div>
               </div>
-              {/* Bio below */}
-              <p className="mt-3 text-sm text-pm-muted">
-                As a mom, wellness advocate and parish volunteer, I created Harps
-                Club to make meaningful merchandise accessible for families and
-                faith communities.
+              {/* Bio — full width below */}
+              <p className="mt-4 text-sm leading-relaxed text-pm-muted">
+                As a mom, wellness advocate and parish volunteer, I created
+                Harps Club to make meaningful merchandise accessible for
+                families and faith communities.  As a mom, wellness advocate and parish volunteer, I created
+                Harps Club to make meaningful merchandise accessible for
+                families and faith communities. As a mom, wellness advocate and parish volunteer, I created
+                Harps Club to make meaningful merchandise accessible for
+                families and faith communities. As a mom, wellness advocate and parish volunteer, I created
+                Harps Club to make meaningful merchandise accessible for
+                families and faith communities.
               </p>
             </div>
           </div>

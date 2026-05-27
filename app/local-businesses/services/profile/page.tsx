@@ -123,13 +123,15 @@ export default function LocalBusinessProfilePage() {
             </p>
           </div>
 
-          {/* Right — large founder photo */}
-          <Photo
-            kind="people"
-            ratio="auto"
-            rounded="rounded-none"
-            className="!rounded-none min-h-[340px] !rounded-r-[24px]"
-          />
+          {/* Right — founder photo, locked 1:1 so any upload crops predictably */}
+          <div className="relative aspect-[4/3] lg:aspect-square lg:self-start overflow-hidden rounded-b-[24px] lg:rounded-b-none lg:rounded-r-[24px]">
+            <Photo
+              kind="people"
+              ratio="auto"
+              rounded="rounded-none"
+              className="absolute inset-0 !rounded-none !border-0 h-full"
+            />
+          </div>
         </div>
       </Section>
 
