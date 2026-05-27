@@ -30,7 +30,29 @@ const FIELDS = [
     value: "westonfamilydental.com",
     type: "input",
   },
-  { label: "City / State", value: "Weston, FL", type: "input" },
+  {
+    label: "Best way to contact you",
+    value: "Phone",
+    type: "select",
+    options: ["Phone", "Email", "Website", "Social Media"],
+  },
+  { label: "City", value: "Weston", type: "input" },
+  {
+    label: "State",
+    value: "FL",
+    type: "select",
+    options: [
+      "FL",
+      "AL",
+      "CA",
+      "GA",
+      "NC",
+      "NY",
+      "PA",
+      "TX",
+      "Other",
+    ],
+  },
 ];
 
 export default function LocalBizStep1() {
