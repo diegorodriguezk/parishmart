@@ -8,10 +8,13 @@ import { SponsorOfferCard } from "@/components/Cards";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SponsorBannerCarousel } from "@/components/SponsorBannerCarousel";
 import { LoadMoreGrid } from "@/components/shop/LoadMoreGrid";
+import { fetchSponsors } from "@/lib/api";
+import type { Sponsor } from "@/lib/catalog";
 
 export const metadata = { title: "Sponsor Offers · ParishMart" };
 
-export default function SponsorsCategoryPage() {
+export default async function SponsorsCategoryPage() {
+  const sponsors = await fetchSponsors();
   return (
     <>
       <Header />
@@ -79,18 +82,18 @@ export default function SponsorsCategoryPage() {
           description="Compact cards with logo, coupon and quick redeem action."
         />
         <LoadMoreGrid initialCount={5} step={5} gridClassName="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-          <SponsorOfferCard compact photo="retreat" initials="MS" title="Maria's Studios" offer="10% cash back" daysLeft="40d left" />
-          <SponsorOfferCard compact photo="house" initials="BK" title="Community Bank" offer="$50 cash back" daysLeft="32d left" />
-          <SponsorOfferCard compact photo="food" initials="BG" title="Baires Grill Weston" offer="5% cash back" daysLeft="18d left" />
-          <SponsorOfferCard compact photo="merch" initials="PM" title="Pretzelmaker" offer="10% cash back" daysLeft="24d left" isNew />
-          <SponsorOfferCard compact photo="business" initials="TV" title="Family Streaming" offer="30% cash back" daysLeft="60d left" isNew />
-          <SponsorOfferCard compact photo="business" initials="TR" title="Travel Partner" offer="8% cash back" daysLeft="24d left" isNew />
-          <SponsorOfferCard compact photo="apparel" initials="AD" title="Sports Apparel" offer="$20 cash back" daysLeft="24d left" />
-          <SponsorOfferCard compact photo="business" initials="CF" title="Cumberland Farms" offer="10% cash back" daysLeft="10d left" />
-          <SponsorOfferCard compact photo="business" initials="CH" title="Cleveland Hospital" offer="$100 credit" daysLeft="30d left" isNew />
-          <SponsorOfferCard compact photo="house" initials="SS" title="Simplisafe" offer="$100 cash back" daysLeft="24d left" isNew />
-          <SponsorOfferCard compact photo="house" initials="RE" title="Realty Supporter" offer="Free consult" daysLeft="60d left" />
-          <SponsorOfferCard compact photo="business" initials="LF" title="Legal & Finance" offer="20% off" daysLeft="45d left" />
+          {sponsors.map((s) => (
+            <Link key={s.id} href={`/sponsors/${s.id}`}>
+              <SponsorOfferCard
+                compact
+                photo="business"
+                initials={s.name.slice(0, 2).toUpperCase()}
+                title={s.name}
+                offer={s.offer ?? ""}
+                daysLeft={s.offerDaysLeft ?? ""}
+              />
+            </Link>
+          ))}
         </LoadMoreGrid>
       </Section>
 

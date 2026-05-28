@@ -243,7 +243,7 @@ export default async function LocalBusinessCategoryPage() {
         />
         <div className="grid gap-4 sm:grid-cols-2">
           {/* Services example */}
-          <Link href="/local-businesses/services/profile" className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+          <Link href="/local-businesses/maria-studios" className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
             <Photo kind="business" ratio="4/3" rounded="rounded-2xl" overlay="subtle" />
             <div className="flex flex-1 flex-col gap-2 p-3">
               <span className="pm-label w-fit">Service Business</span>
@@ -257,7 +257,7 @@ export default async function LocalBusinessCategoryPage() {
           </Link>
 
           {/* Products example */}
-          <Link href="/local-businesses/products/profile" className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
+          <Link href="/local-businesses/harps-club" className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft">
             <Photo kind="merch" ratio="4/3" rounded="rounded-2xl" overlay="subtle" />
             <div className="flex flex-1 flex-col gap-2 p-3">
               <span className="pm-label w-fit">Product Seller</span>

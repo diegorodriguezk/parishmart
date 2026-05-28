@@ -8,7 +8,7 @@ export default function GiveHomePage() {
   return (
     <>
       <Header />
-      <GiveContent causeHref="/stores/give/giving" />
+      <GiveContent causeHref="/parishes/skd/causes/emmaus" />
       <Footer />
     </>
   );
