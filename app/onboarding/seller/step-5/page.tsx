@@ -1,16 +1,68 @@
 "use client";
 
 import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
+import { Heart, Sparkles, Star, Check } from "lucide-react";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { SellerLivePreview } from "@/components/onboarding/SellerLivePreview";
 import { useSellerProfile } from "@/components/onboarding/SellerProfileContext";
 
-const PLANS = [
+type Highlight = { Icon: LucideIcon; title: string; body: string };
+type Plan = {
+  id: string;
+  badge?: { label: string; tone: "blue" | "amber" | "navy" };
+  name: string;
+  description: string;
+  price: string;
+  oldPrice?: string;
+  priceSuffix?: string;
+  priceCaption?: string;
+  priceNote?: string;
+  features: string[];
+  highlights?: Highlight[];
+  cta: string;
+};
+
+const BADGE_TONE: Record<NonNullable<Plan["badge"]>["tone"], string> = {
+  blue: "bg-pm-soft text-pm-blue",
+  amber: "bg-amber-50 text-amber-700",
+  navy: "bg-pm-navy/10 text-pm-navy",
+};
+
+const PLANS: Plan[] = [
+  {
+    id: "founding",
+    badge: { label: "Early Adopter", tone: "blue" },
+    name: "Founding Supporter",
+    description:
+      "For selected businesses invited to help launch the first ParishMart community experience.",
+    price: "$0",
+    priceSuffix: "/ pilot",
+    priceCaption: "Complimentary during launch phase",
+    features: [
+      "Business profile",
+      "Logo and short description",
+      "Community visibility",
+      "Founding Supporter badge",
+      "Basic CTA button",
+      "Early access to future features",
+    ],
+    highlights: [
+      {
+        Icon: Star,
+        title: "Best for launch",
+        body: "Designed to build early visibility, validate the experience, and create social proof.",
+      },
+    ],
+    cta: "Request Invitation",
+  },
   {
     id: "starter",
     name: "Starter Supporter",
+    description:
+      "Best for businesses that want a basic presence in the community directory.",
     price: "$49",
-    body: "Best for businesses that want a basic presence in the community directory.",
+    priceSuffix: "/ month",
     features: [
       "Public business profile",
       "Parish/cause supporter badge",
@@ -21,24 +73,45 @@ const PLANS = [
   },
   {
     id: "community",
-    name: "Community Supporter",
-    price: "$99",
-    body: "Best for active local businesses that want better visibility and an offer/coupon.",
+    badge: { label: "Products", tone: "amber" },
+    name: "Community Seller",
+    description:
+      "For businesses that want to sell products through ParishMart with checkout and order flow.",
+    price: "$49.99",
+    oldPrice: "$149/mo",
+    priceSuffix: "/ month",
+    priceCaption: "Founding Launch Pricing",
+    priceNote: "Plus Commerce with Purpose transaction fee.",
     features: [
-      "Everything in Starter",
-      "Featured offer/coupon",
-      "Owner story section",
-      "Gallery and testimonials",
-      "Higher category visibility",
+      "Seller storefront",
+      "Product listings",
+      "Integrated checkout",
+      "Order notifications",
+      "Product category placement",
+      "Business storytelling page",
+      "Community impact contribution built in",
     ],
-    cta: "Select Community",
-    featured: true,
+    highlights: [
+      {
+        Icon: Heart,
+        title: "Community Impact",
+        body: "50% of your monthly membership directly supports the parish or cause you select.",
+      },
+      {
+        Icon: Sparkles,
+        title: "Commerce with Purpose",
+        body: "Transactions also help support payment processing, the selected parish or cause, and the ParishMart platform.",
+      },
+    ],
+    cta: "Start Selling",
   },
   {
     id: "featured",
     name: "Featured Supporter",
+    description:
+      "Best for businesses that want premium placement and stronger visibility.",
     price: "$150",
-    body: "Best for businesses that want premium placement and stronger visibility.",
+    priceSuffix: "/ month",
     features: [
       "Everything in Community",
       "Featured placement",
@@ -49,6 +122,127 @@ const PLANS = [
     cta: "Select Featured",
   },
 ];
+
+function PlanCard({
+  plan,
+  isSelected,
+  onSelect,
+}: {
+  plan: Plan;
+  isSelected: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className={`relative flex flex-col gap-4 rounded-3xl border p-6 text-left transition ${
+        isSelected
+          ? "border-pm-blue bg-gradient-to-br from-white to-pm-soft shadow-pm-card"
+          : "border-pm-border bg-white hover:-translate-y-0.5 hover:border-pm-blue/40 hover:shadow-pm-soft"
+      }`}
+    >
+      {/* Badge / Selected pill */}
+      <div className="flex items-center justify-between gap-3">
+        {plan.badge ? (
+          <span
+            className={`inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${BADGE_TONE[plan.badge.tone]}`}
+          >
+            {plan.badge.label}
+          </span>
+        ) : (
+          <span />
+        )}
+        {isSelected ? (
+          <span className="rounded-full bg-pm-blue px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
+            Selected
+          </span>
+        ) : null}
+      </div>
+
+      {/* Title + description */}
+      <div>
+        <p className="text-2xl font-extrabold tracking-tight text-pm-navy">
+          {plan.name}
+        </p>
+        <p className="mt-1 text-xs text-pm-muted">{plan.description}</p>
+      </div>
+
+      {/* Price block */}
+      <div className="border-t border-pm-border pt-4">
+        {plan.oldPrice ? (
+          <p className="text-xs font-medium text-pm-muted line-through">
+            {plan.oldPrice}
+          </p>
+        ) : null}
+        <p className="text-4xl font-extrabold leading-none tracking-tight text-pm-navy">
+          {plan.price}
+          {plan.priceSuffix ? (
+            <span className="ml-1.5 text-xs font-bold text-pm-muted">
+              {plan.priceSuffix}
+            </span>
+          ) : null}
+        </p>
+        {plan.priceCaption ? (
+          <p className="mt-2 text-xs font-extrabold text-pm-blue">
+            {plan.priceCaption}
+          </p>
+        ) : null}
+        {plan.priceNote ? (
+          <p className="mt-1 text-[11px] text-pm-muted">{plan.priceNote}</p>
+        ) : null}
+      </div>
+
+      {/* Features */}
+      <div>
+        <p className="text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
+          Includes
+        </p>
+        <ul className="mt-2 grid gap-1.5 text-xs text-pm-ink">
+          {plan.features.map((f) => (
+            <li key={f} className="inline-flex items-start gap-1.5">
+              <Check
+                className="mt-0.5 h-3.5 w-3.5 shrink-0 text-pm-blue"
+                strokeWidth={2.5}
+                aria-hidden
+              />
+              {f}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Highlights */}
+      {plan.highlights && plan.highlights.length > 0 ? (
+        <div className="grid gap-2">
+          {plan.highlights.map((h) => (
+            <div
+              key={h.title}
+              className="flex items-start gap-3 rounded-2xl border border-pm-border bg-pm-soft/50 p-3"
+            >
+              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-pm-blue ring-1 ring-pm-border">
+                <h.Icon className="h-3.5 w-3.5" aria-hidden />
+              </span>
+              <div>
+                <p className="text-xs font-extrabold text-pm-navy">
+                  {h.title}
+                </p>
+                <p className="mt-0.5 text-[11px] leading-relaxed text-pm-muted">
+                  {h.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      {/* CTA */}
+      <span className="mt-auto rounded-full bg-pm-navy py-3 text-center text-xs font-extrabold text-white">
+        {isSelected ? "Selected" : plan.cta}
+      </span>
+    </button>
+  );
+}
 
 export default function LocalBizStep5() {
   const { profile, update } = useSellerProfile();
@@ -86,59 +280,15 @@ export default function LocalBizStep5() {
           </div>
         </div>
 
-        <div className="grid gap-3 lg:grid-cols-3">
-          {PLANS.map((p) => {
-            const isSelected = profile.selectedPlan === p.id;
-            return (
-              <button
-                key={p.id}
-                type="button"
-                onClick={() => update({ selectedPlan: p.id })}
-                className={`relative flex flex-col gap-3 rounded-3xl border p-5 text-left transition ${
-                  isSelected
-                    ? "border-pm-blue bg-gradient-to-br from-white to-pm-soft shadow-pm-card"
-                    : p.featured
-                    ? "border-pm-cyan bg-gradient-to-br from-white to-pm-soft shadow-pm-card"
-                    : "border-pm-border bg-white hover:-translate-y-0.5 hover:border-pm-blue/40 hover:shadow-pm-soft"
-                }`}
-              >
-                {p.featured && !isSelected ? (
-                  <span className="absolute right-4 top-4 rounded-full bg-pm-navy px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                    Recommended
-                  </span>
-                ) : null}
-                {isSelected ? (
-                  <span className="absolute right-4 top-4 rounded-full bg-pm-blue px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                    Selected
-                  </span>
-                ) : null}
-                <p className="pr-24 text-lg font-extrabold tracking-tight text-pm-navy">
-                  {p.name}
-                </p>
-                <p className="text-3xl font-extrabold leading-none text-pm-navy">
-                  {p.price}
-                  <span className="ml-1 text-xs font-bold text-pm-muted">
-                    / month
-                  </span>
-                </p>
-                <p className="text-xs text-pm-muted">{p.body}</p>
-                <ul className="grid gap-1.5 text-xs text-pm-muted">
-                  {p.features.map((f) => (
-                    <li key={f}>✓ {f}</li>
-                  ))}
-                </ul>
-                <span
-                  className={`mt-auto rounded-full px-4 py-3 text-center text-xs font-extrabold ${
-                    isSelected || p.featured
-                      ? "bg-pm-navy text-white"
-                      : "border border-pm-border bg-white text-pm-navy"
-                  }`}
-                >
-                  {isSelected ? "Selected" : p.cta}
-                </span>
-              </button>
-            );
-          })}
+        <div className="grid gap-4 lg:grid-cols-2">
+          {PLANS.map((p) => (
+            <PlanCard
+              key={p.id}
+              plan={p}
+              isSelected={profile.selectedPlan === p.id}
+              onSelect={() => update({ selectedPlan: p.id })}
+            />
+          ))}
         </div>
 
         <label className="mt-5 flex items-start gap-3 rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
