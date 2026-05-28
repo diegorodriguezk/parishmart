@@ -5,13 +5,6 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { SellerLivePreview } from "@/components/onboarding/SellerLivePreview";
 import { useSellerProfile } from "@/components/onboarding/SellerProfileContext";
 
-const MAIN_CTAS = [
-  "Request Information",
-  "Call Business",
-  "Book Appointment",
-  "Visit Website",
-];
-
 export default function LocalBizStep3() {
   const { profile, update, updateService, addService } = useSellerProfile();
 
@@ -45,21 +38,7 @@ export default function LocalBizStep3() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">
-              Main CTA
-            </span>
-            <select
-              value={profile.mainCta}
-              onChange={(e) => update({ mainCta: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            >
-              {MAIN_CTAS.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </select>
-          </label>
-          <label className="block">
+          <label className="block sm:col-span-2">
             <div className="flex items-baseline justify-between">
               <span className="block text-xs font-extrabold text-pm-navy">
                 Community Offer / Discount
@@ -72,27 +51,6 @@ export default function LocalBizStep3() {
               value={profile.communityOffer}
               onChange={(e) => update({ communityOffer: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">
-              Offer Expiration
-            </span>
-            <input
-              value={profile.offerExpiration}
-              onChange={(e) => update({ offerExpiration: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">
-              Booking Link
-            </span>
-            <input
-              value={profile.bookingLink}
-              onChange={(e) => update({ bookingLink: e.target.value })}
-              placeholder="Optional booking URL"
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue placeholder:text-pm-muted/70"
             />
           </label>
           <label className="block sm:col-span-2">
