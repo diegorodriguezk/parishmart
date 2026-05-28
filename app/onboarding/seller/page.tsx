@@ -4,25 +4,6 @@ import { Logo } from "@/components/Logo";
 
 export const metadata = { title: "Become a Local Biz Supporter · ParishMart" };
 
-const VALUE_CARDS = [
-  {
-    title: "Trusted public profile",
-    body: "A professional ParishMart page that helps families discover your services.",
-  },
-  {
-    title: "Generate leads",
-    body: "Receive requests, calls and bookings from parishioners and community members.",
-  },
-  {
-    title: "Support a community",
-    body: "Connect your business to a parish, ministry or cause and show it on your page.",
-  },
-  {
-    title: "Step-by-step setup",
-    body: "5 simple steps with live preview. Skip anything optional.",
-  },
-];
-
 const TRUST_CARDS = [
   {
     kicker: "Service Categories",
@@ -38,39 +19,6 @@ const TRUST_CARDS = [
     kicker: "Concierge Model",
     title: "Done-with-you setup",
     body: "ParishMart helps finish, polish, approve and activate your business page.",
-  },
-];
-
-const STEPS = [
-  {
-    n: 1,
-    title: "Business Profile",
-    body: "Name, service category, contact info, location and short description.",
-    badge: "Required",
-  },
-  {
-    n: 2,
-    title: "Owner Story & Community",
-    body: "Humanize the page with the owner story and the parish or cause you support.",
-    badge: "Recommended",
-  },
-  {
-    n: 3,
-    title: "Services, Offer & CTA",
-    body: "Add services you provide, a community offer and the main call to action.",
-    badge: "Required",
-  },
-  {
-    n: 4,
-    title: "Media, Trust & Preview",
-    body: "Upload logo, cover, owner photo, gallery, certifications and reviews.",
-    badge: "Important",
-  },
-  {
-    n: 5,
-    title: "Select Membership Plan",
-    body: "Starter, Community or Featured. Payment activates the page after approval.",
-    badge: "Final",
   },
 ];
 
@@ -161,19 +109,6 @@ export default function LocalBizOnboardingIntro() {
           </div>
         </section>
 
-        {/* Value cards */}
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {VALUE_CARDS.map((v) => (
-            <div
-              key={v.title}
-              className="rounded-2xl border border-pm-border bg-white p-4 shadow-pm-soft"
-            >
-              <p className="text-sm font-extrabold text-pm-navy">{v.title}</p>
-              <p className="mt-1 text-xs text-pm-muted">{v.body}</p>
-            </div>
-          ))}
-        </div>
-
         {/* Trust strip */}
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           {TRUST_CARDS.map((t) => (
@@ -192,45 +127,6 @@ export default function LocalBizOnboardingIntro() {
           ))}
         </div>
 
-        {/* Flow card */}
-        <article className="mt-6 rounded-[28px] border border-pm-border bg-white/85 p-6 shadow-pm-soft backdrop-blur sm:p-7">
-          <div className="mb-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end">
-            <div>
-              <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy">
-                Simple 5-step activation
-              </h2>
-              <p className="mt-1 max-w-[470px] text-sm text-pm-muted">
-                The business answers simple questions while the page builds
-                itself. Skip anything optional.
-              </p>
-            </div>
-            <span className="inline-flex shrink-0 items-center rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700">
-              Founding Supporter
-            </span>
-          </div>
-
-          <ol className="grid gap-2.5">
-            {STEPS.map((s) => (
-              <li
-                key={s.n}
-                className="grid grid-cols-[40px_1fr_auto] items-center gap-3 rounded-2xl border border-pm-border bg-pm-soft/50 p-3.5"
-              >
-                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-pm-soft text-sm font-extrabold text-pm-blue">
-                  {s.n}
-                </span>
-                <div>
-                  <p className="text-sm font-extrabold leading-tight text-pm-navy">
-                    {s.title}
-                  </p>
-                  <p className="text-xs text-pm-muted">{s.body}</p>
-                </div>
-                <span className="rounded-full bg-pm-soft px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-pm-blue">
-                  {s.badge}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </article>
       </div>
     </main>
   );
