@@ -1,13 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
-import { Heart, Sparkles, Star, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { SellerLivePreview } from "@/components/onboarding/SellerLivePreview";
 import { useSellerProfile } from "@/components/onboarding/SellerProfileContext";
 
-type Highlight = { Icon: LucideIcon; title: string; body: string };
 type Plan = {
   id: string;
   badge?: { label: string; tone: "blue" | "amber" | "navy" };
@@ -19,7 +17,6 @@ type Plan = {
   priceCaption?: string;
   priceNote?: string;
   features: string[];
-  highlights?: Highlight[];
   cta: string;
 };
 
@@ -37,6 +34,7 @@ const PLANS: Plan[] = [
     description:
       "For selected businesses invited to help launch the first ParishMart community experience.",
     price: "$0",
+    oldPrice: "$149/mo",
     priceSuffix: "/ pilot",
     priceCaption: "Complimentary during launch phase",
     features: [
@@ -46,13 +44,6 @@ const PLANS: Plan[] = [
       "Founding Supporter badge",
       "Basic CTA button",
       "Early access to future features",
-    ],
-    highlights: [
-      {
-        Icon: Star,
-        title: "Best for launch",
-        body: "Designed to build early visibility, validate the experience, and create social proof.",
-      },
     ],
     cta: "Request Invitation",
   },
@@ -76,35 +67,7 @@ const PLANS: Plan[] = [
       "Business storytelling page",
       "Community impact contribution built in",
     ],
-    highlights: [
-      {
-        Icon: Heart,
-        title: "Community Impact",
-        body: "50% of your monthly membership directly supports the parish or cause you select.",
-      },
-      {
-        Icon: Sparkles,
-        title: "Commerce with Purpose",
-        body: "Transactions also help support payment processing, the selected parish or cause, and the ParishMart platform.",
-      },
-    ],
     cta: "Start Selling",
-  },
-  {
-    id: "featured",
-    name: "Featured Supporter",
-    description:
-      "Best for businesses that want premium placement and stronger visibility.",
-    price: "$150",
-    priceSuffix: "/ month",
-    features: [
-      "Everything in Community",
-      "Featured placement",
-      "Parish store footer placement",
-      "Priority support",
-      "Monthly performance summary",
-    ],
-    cta: "Select Featured",
   },
 ];
 
@@ -196,30 +159,6 @@ function PlanCard({
           ))}
         </ul>
       </div>
-
-      {/* Highlights */}
-      {plan.highlights && plan.highlights.length > 0 ? (
-        <div className="grid gap-2">
-          {plan.highlights.map((h) => (
-            <div
-              key={h.title}
-              className="flex items-start gap-3 rounded-2xl border border-pm-border bg-pm-soft/50 p-3"
-            >
-              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-pm-blue ring-1 ring-pm-border">
-                <h.Icon className="h-3.5 w-3.5" aria-hidden />
-              </span>
-              <div>
-                <p className="text-xs font-extrabold text-pm-navy">
-                  {h.title}
-                </p>
-                <p className="mt-0.5 text-[11px] leading-relaxed text-pm-muted">
-                  {h.body}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : null}
 
       {/* CTA */}
       <span className="mt-auto rounded-full bg-pm-navy py-3 text-center text-xs font-extrabold text-white">
