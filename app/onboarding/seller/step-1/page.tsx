@@ -237,21 +237,6 @@ export default function LocalBizStep1() {
           <label className="block sm:col-span-2">
             <div className="flex items-baseline justify-between">
               <span className="block text-xs font-extrabold text-pm-navy">
-                Headline
-              </span>
-              <span className="text-[10px] font-medium text-pm-muted">
-                Max 220 characters
-              </span>
-            </div>
-            <input
-              maxLength={220}
-              defaultValue="Trusted family dental care for Weston families — gentle, faith-friendly and built on community."
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
-          </label>
-          <label className="block sm:col-span-2">
-            <div className="flex items-baseline justify-between">
-              <span className="block text-xs font-extrabold text-pm-navy">
                 Business Description
               </span>
               <span className="text-[10px] font-medium text-pm-muted">
