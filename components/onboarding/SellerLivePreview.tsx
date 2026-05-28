@@ -1,5 +1,6 @@
 "use client";
 
+import { Heart } from "lucide-react";
 import { Photo } from "@/components/Photo";
 import { useSellerProfile } from "./SellerProfileContext";
 
@@ -176,6 +177,16 @@ export function SellerLivePreview() {
             Contact us
           </span>
         </div>
+      </div>
+
+      {/* Community contribution strip */}
+      <div className="flex items-center gap-2.5 border-t border-pm-border bg-pm-soft/60 p-4">
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-pm-blue ring-1 ring-pm-border">
+          <Heart className="h-3.5 w-3.5" aria-hidden />
+        </span>
+        <p className="text-[11px] font-extrabold text-pm-navy">
+          50% of your membership supports a parish or cause.
+        </p>
       </div>
     </>
   );
