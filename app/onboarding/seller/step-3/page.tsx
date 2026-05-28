@@ -1,42 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import {
-  SellerPreviewHero,
-  SellerPreviewBody,
-  PreviewLabel,
-} from "@/components/onboarding/SellerPreviewCard";
+import { SellerLivePreview } from "@/components/onboarding/SellerLivePreview";
+import { useSellerProfile } from "@/components/onboarding/SellerProfileContext";
 
-export const metadata = {
-  title: "Step 3 · Services, Offer & CTA · ParishMart",
-};
-
-const SERVICES = [
-  "Family Dentistry",
-  "Emergency Dental Care",
-  "Cosmetic Dentistry",
-  "Children's Dentistry",
-];
-
-const SERVICE_ITEMS = [
-  {
-    title: "Family Dentistry",
-    description:
-      "Comprehensive preventive and routine care for the whole family.",
-    price: "From $150",
-  },
-  {
-    title: "Emergency Dental Care",
-    description: "Same-day appointments for urgent dental needs.",
-    price: "Get a Quote",
-  },
-  {
-    title: "Cosmetic Dentistry",
-    description: "Smile makeover, whitening and aesthetic dental services.",
-    price: "From $250",
-  },
+const MAIN_CTAS = [
+  "Request Information",
+  "Call Business",
+  "Book Appointment",
+  "Visit Website",
 ];
 
 export default function LocalBizStep3() {
+  const { profile, update, updateService, addService } = useSellerProfile();
+
   return (
     <SellerStepShell
       step={3}
@@ -48,41 +26,7 @@ export default function LocalBizStep3() {
         </>
       }
       description="Add the services you provide, create a simple community offer, and choose the main call to action."
-      preview={
-        <>
-          <SellerPreviewHero
-            kind="business"
-            initials="FD"
-            title="Weston Family Dental"
-            subtitle="Trusted family dental care · Supporting SKD Parish."
-          />
-          <SellerPreviewBody>
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
-              <PreviewLabel>Community Offer</PreviewLabel>
-              <p className="mt-1 text-base font-extrabold text-amber-700">
-                10% off first consultation
-              </p>
-              <p className="text-xs text-amber-700/70">No expiration</p>
-            </div>
-            <div>
-              <PreviewLabel>Services</PreviewLabel>
-              <div className="mt-2 grid gap-2 text-xs font-extrabold text-pm-navy">
-                {SERVICES.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-2xl border border-pm-border bg-pm-soft/60 p-2.5"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <span className="block rounded-full bg-pm-navy py-3 text-center text-sm font-extrabold text-white">
-              Request Information
-            </span>
-          </SellerPreviewBody>
-        </>
-      }
+      preview={<SellerLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4">
@@ -94,8 +38,8 @@ export default function LocalBizStep3() {
               ParishMart Concierge
             </p>
             <p className="mt-1 text-sm text-pm-muted">
-              The community offer becomes the primary conversion hook. Keep it
-              simple and easy to claim.
+              Services and offer become the primary conversion hooks. The
+              preview on the right updates as you type.
             </p>
           </div>
         </div>
@@ -106,13 +50,13 @@ export default function LocalBizStep3() {
               Main CTA
             </span>
             <select
-              defaultValue="Request Information"
+              value={profile.mainCta}
+              onChange={(e) => update({ mainCta: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             >
-              <option>Request Information</option>
-              <option>Call Business</option>
-              <option>Book Appointment</option>
-              <option>Visit Website</option>
+              {MAIN_CTAS.map((o) => (
+                <option key={o}>{o}</option>
+              ))}
             </select>
           </label>
           <label className="block">
@@ -125,7 +69,8 @@ export default function LocalBizStep3() {
               </span>
             </div>
             <input
-              defaultValue="10% off first consultation"
+              value={profile.communityOffer}
+              onChange={(e) => update({ communityOffer: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
@@ -134,28 +79,37 @@ export default function LocalBizStep3() {
               Offer Expiration
             </span>
             <input
-              defaultValue="No expiration"
+              value={profile.offerExpiration}
+              onChange={(e) => update({ offerExpiration: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
-          <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">
-              Short Description of Discount
-            </span>
-            <textarea
-              rows={2}
-              maxLength={220}
-              defaultValue="Schedule your first consultation and receive 10% off as a ParishMart community member."
-              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
-            />
-          </label>
-          <label className="block sm:col-span-2">
+          <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">
               Booking Link
             </span>
             <input
+              value={profile.bookingLink}
+              onChange={(e) => update({ bookingLink: e.target.value })}
               placeholder="Optional booking URL"
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue placeholder:text-pm-muted/70"
+            />
+          </label>
+          <label className="block sm:col-span-2">
+            <div className="flex items-baseline justify-between">
+              <span className="block text-xs font-extrabold text-pm-navy">
+                Short Description of Discount
+              </span>
+              <span className="text-[10px] font-medium text-pm-muted">
+                {profile.offerDescription.length} / 220
+              </span>
+            </div>
+            <textarea
+              rows={2}
+              maxLength={220}
+              value={profile.offerDescription}
+              onChange={(e) => update({ offerDescription: e.target.value })}
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
           <div className="sm:col-span-2">
@@ -168,9 +122,9 @@ export default function LocalBizStep3() {
               </span>
             </div>
             <div className="mt-2 grid gap-3">
-              {SERVICE_ITEMS.map((s, i) => (
+              {profile.services.map((s, i) => (
                 <div
-                  key={s.title}
+                  key={i}
                   className="rounded-2xl border border-pm-border bg-pm-soft/40 p-4"
                 >
                   <div className="mb-2 flex items-center justify-between gap-3">
@@ -188,7 +142,10 @@ export default function LocalBizStep3() {
                       </span>
                       <input
                         maxLength={30}
-                        defaultValue={s.title}
+                        value={s.title}
+                        onChange={(e) =>
+                          updateService(i, { title: e.target.value })
+                        }
                         className="mt-1 w-full rounded-xl border border-pm-border bg-white px-3 py-2 text-xs font-extrabold text-pm-navy outline-none focus:border-pm-blue"
                       />
                     </label>
@@ -198,7 +155,10 @@ export default function LocalBizStep3() {
                       </span>
                       <input
                         maxLength={100}
-                        defaultValue={s.description}
+                        value={s.description}
+                        onChange={(e) =>
+                          updateService(i, { description: e.target.value })
+                        }
                         className="mt-1 w-full rounded-xl border border-pm-border bg-white px-3 py-2 text-xs text-pm-ink outline-none focus:border-pm-blue"
                       />
                     </label>
@@ -207,7 +167,10 @@ export default function LocalBizStep3() {
                         Price
                       </span>
                       <input
-                        defaultValue={s.price}
+                        value={s.price}
+                        onChange={(e) =>
+                          updateService(i, { price: e.target.value })
+                        }
                         placeholder="From $150 · Get a Quote"
                         className="mt-1 w-full rounded-xl border border-pm-border bg-white px-3 py-2 text-xs font-bold text-pm-blue outline-none focus:border-pm-blue"
                       />
@@ -217,6 +180,7 @@ export default function LocalBizStep3() {
               ))}
               <button
                 type="button"
+                onClick={addService}
                 className="rounded-2xl border border-dashed border-pm-blue/40 bg-pm-soft/30 px-4 py-3 text-xs font-extrabold text-pm-blue transition hover:border-pm-blue hover:bg-pm-soft/60"
               >
                 + Add another service

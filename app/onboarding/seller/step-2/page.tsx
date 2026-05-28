@@ -1,14 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import {
-  SellerPreviewHero,
-  SellerPreviewBody,
-  PreviewLabel,
-} from "@/components/onboarding/SellerPreviewCard";
-
-export const metadata = {
-  title: "Step 2 · Owner Story & Community · ParishMart",
-};
+import { SellerLivePreview } from "@/components/onboarding/SellerLivePreview";
+import { useSellerProfile } from "@/components/onboarding/SellerProfileContext";
 
 const SUPPORTED_OPTIONS = [
   "Saint Katharine Drexel Parish",
@@ -18,6 +13,8 @@ const SUPPORTED_OPTIONS = [
 ];
 
 export default function LocalBizStep2() {
+  const { profile, update } = useSellerProfile();
+
   return (
     <SellerStepShell
       step={2}
@@ -29,42 +26,7 @@ export default function LocalBizStep2() {
         </>
       }
       description="Tell us who runs the business and which parish, cause or ministry you want to support."
-      preview={
-        <>
-          <SellerPreviewHero
-            kind="business"
-            initials="FD"
-            title="Weston Family Dental"
-            subtitle="Local family dental practice supporting Saint Katharine Drexel Parish."
-          />
-          <SellerPreviewBody>
-            <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-4">
-              <PreviewLabel>About the Owner</PreviewLabel>
-              <p className="mt-2 text-sm text-pm-muted">
-                Dr. Maria Lopez is a local dentist and community supporter who
-                believes strong families and strong local businesses help
-                strengthen parish life.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-4">
-              <PreviewLabel>Why we support the community</PreviewLabel>
-              <p className="mt-2 text-sm text-pm-muted">
-                We want to serve families in our area and contribute to the
-                parish community through our Local Biz Supporter membership.
-              </p>
-            </div>
-            <blockquote className="border-l-4 border-pm-cyan pl-4">
-              <p className="text-sm font-extrabold tracking-tight text-pm-navy">
-                &ldquo;A trusted local dental practice proud to support Saint
-                Katharine Drexel Parish.&rdquo;
-              </p>
-              <p className="mt-2 text-xs text-pm-muted">
-                Suggested tagline by ParishMart AI
-              </p>
-            </blockquote>
-          </SellerPreviewBody>
-        </>
-      }
+      preview={<SellerLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4">
@@ -77,7 +39,7 @@ export default function LocalBizStep2() {
             </p>
             <p className="mt-1 text-sm text-pm-muted">
               A short owner story turns a directory listing into a trusted
-              local supporter. I&rsquo;ll polish the copy automatically.
+              local supporter. The preview updates as you type.
             </p>
           </div>
         </div>
@@ -88,7 +50,8 @@ export default function LocalBizStep2() {
               Owner Name
             </span>
             <input
-              defaultValue="Dr. Maria Lopez"
+              value={profile.ownerName}
+              onChange={(e) => update({ ownerName: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
@@ -97,7 +60,8 @@ export default function LocalBizStep2() {
               Parish / Cause Supported
             </span>
             <select
-              defaultValue={SUPPORTED_OPTIONS[0]}
+              value={profile.parishSupported}
+              onChange={(e) => update({ parishSupported: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             >
               {SUPPORTED_OPTIONS.map((o) => (
@@ -106,12 +70,19 @@ export default function LocalBizStep2() {
             </select>
           </label>
           <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">
-              About the Owner
-            </span>
+            <div className="flex items-baseline justify-between">
+              <span className="block text-xs font-extrabold text-pm-navy">
+                About the Owner
+              </span>
+              <span className="text-[10px] font-medium text-pm-muted">
+                {profile.aboutOwner.length} / 300
+              </span>
+            </div>
             <textarea
               rows={3}
-              defaultValue="Dr. Maria Lopez is a local dentist and community supporter who believes that strong families and strong local businesses help strengthen parish life."
+              maxLength={300}
+              value={profile.aboutOwner}
+              onChange={(e) => update({ aboutOwner: e.target.value })}
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
@@ -121,7 +92,8 @@ export default function LocalBizStep2() {
             </span>
             <textarea
               rows={3}
-              defaultValue="We want to serve families in our area and contribute to the parish community through our Local Biz Supporter membership."
+              value={profile.whySupport}
+              onChange={(e) => update({ whySupport: e.target.value })}
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>

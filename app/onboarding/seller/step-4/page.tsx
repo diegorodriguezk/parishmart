@@ -1,10 +1,6 @@
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import {
-  SellerPreviewHero,
-  SellerPreviewBody,
-  PreviewLabel,
-} from "@/components/onboarding/SellerPreviewCard";
+import { SellerLivePreview } from "@/components/onboarding/SellerLivePreview";
 
 export const metadata = {
   title: "Step 4 · Media, Trust & Preview · ParishMart",
@@ -32,44 +28,7 @@ export default function LocalBizStep4() {
         </>
       }
       description="Upload visual assets and trust elements. The public page preview updates as the business completes the fields."
-      preview={
-        <>
-          <SellerPreviewHero
-            kind="business"
-            initials="FD"
-            title="Weston Family Dental"
-            subtitle="Trusted family dental care · Supporting SKD Parish."
-          />
-          <SellerPreviewBody>
-            <div className="grid grid-cols-3 gap-2">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="aspect-[4/3] rounded-2xl border border-pm-border bg-pm-soft"
-                />
-              ))}
-            </div>
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <PreviewLabel>Page Preview</PreviewLabel>
-                <p className="mt-1 text-base font-extrabold text-pm-navy">
-                  Your page now feels real and trustworthy.
-                </p>
-              </div>
-              <span className="rounded-full bg-pm-soft px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-pm-blue">
-                Ready
-              </span>
-            </div>
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-sm font-extrabold text-amber-700">
-              10% off first consultation
-            </div>
-            <p className="text-xs text-pm-muted">
-              ParishMart concierge can approve, edit and publish your page
-              after review.
-            </p>
-          </SellerPreviewBody>
-        </>
-      }
+      preview={<SellerLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4">

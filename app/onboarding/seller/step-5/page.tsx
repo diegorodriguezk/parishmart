@@ -1,17 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import {
-  SellerPreviewHero,
-  SellerPreviewBody,
-  PreviewLabel,
-} from "@/components/onboarding/SellerPreviewCard";
-
-export const metadata = {
-  title: "Step 5 · Select Membership Plan · ParishMart",
-};
+import { SellerLivePreview } from "@/components/onboarding/SellerLivePreview";
+import { useSellerProfile } from "@/components/onboarding/SellerProfileContext";
 
 const PLANS = [
   {
+    id: "starter",
     name: "Starter Supporter",
     price: "$49",
     body: "Best for businesses that want a basic presence in the community directory.",
@@ -24,6 +20,7 @@ const PLANS = [
     cta: "Select Starter",
   },
   {
+    id: "community",
     name: "Community Supporter",
     price: "$99",
     body: "Best for active local businesses that want better visibility and an offer/coupon.",
@@ -38,6 +35,7 @@ const PLANS = [
     featured: true,
   },
   {
+    id: "featured",
     name: "Featured Supporter",
     price: "$150",
     body: "Best for businesses that want premium placement and stronger visibility.",
@@ -53,6 +51,8 @@ const PLANS = [
 ];
 
 export default function LocalBizStep5() {
+  const { profile, update } = useSellerProfile();
+
   return (
     <SellerStepShell
       step={5}
@@ -65,46 +65,7 @@ export default function LocalBizStep5() {
         </>
       }
       description="The monthly plan controls visibility, placement and support level. Payment activates the Local Biz Service page after approval."
-      preview={
-        <>
-          <SellerPreviewHero
-            kind="business"
-            initials="FD"
-            title="Weston Family Dental"
-            subtitle="Trusted family dental care · Supporting Saint Katharine Drexel Parish."
-          />
-          <SellerPreviewBody>
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-sm font-extrabold text-amber-700">
-              10% off first consultation
-            </div>
-            <div>
-              <PreviewLabel>Services</PreviewLabel>
-              <div className="mt-2 grid gap-2 text-xs font-extrabold text-pm-navy">
-                {["Family Dentistry", "Emergency Dental Care", "Cosmetic Dentistry"].map(
-                  (s) => (
-                    <span
-                      key={s}
-                      className="rounded-2xl border border-pm-border bg-pm-soft/60 p-2.5"
-                    >
-                      {s}
-                    </span>
-                  ),
-                )}
-              </div>
-            </div>
-            <div className="rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
-              <PreviewLabel>Community Support</PreviewLabel>
-              <p className="mt-2 text-xs text-pm-muted">
-                This business supports Saint Katharine Drexel through its
-                ParishMart membership.
-              </p>
-            </div>
-            <span className="block rounded-full bg-pm-navy py-3 text-center text-sm font-extrabold text-white">
-              Request Information
-            </span>
-          </SellerPreviewBody>
-        </>
-      }
+      preview={<SellerLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4 rounded-2xl border border-pm-cyan/30 bg-gradient-to-br from-pm-soft to-white p-4">
@@ -126,47 +87,58 @@ export default function LocalBizStep5() {
         </div>
 
         <div className="grid gap-3 lg:grid-cols-3">
-          {PLANS.map((p) => (
-            <div
-              key={p.name}
-              className={`relative flex flex-col gap-3 rounded-3xl border p-5 ${
-                p.featured
-                  ? "border-pm-cyan bg-gradient-to-br from-white to-pm-soft shadow-pm-card"
-                  : "border-pm-border bg-white"
-              }`}
-            >
-              {p.featured ? (
-                <span className="absolute right-4 top-4 rounded-full bg-pm-navy px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                  Recommended
-                </span>
-              ) : null}
-              <p className="pr-24 text-lg font-extrabold tracking-tight text-pm-navy">
-                {p.name}
-              </p>
-              <p className="text-3xl font-extrabold leading-none text-pm-navy">
-                {p.price}
-                <span className="ml-1 text-xs font-bold text-pm-muted">
-                  / month
-                </span>
-              </p>
-              <p className="text-xs text-pm-muted">{p.body}</p>
-              <ul className="grid gap-1.5 text-xs text-pm-muted">
-                {p.features.map((f) => (
-                  <li key={f}>✓ {f}</li>
-                ))}
-              </ul>
+          {PLANS.map((p) => {
+            const isSelected = profile.selectedPlan === p.id;
+            return (
               <button
+                key={p.id}
                 type="button"
-                className={`mt-auto rounded-full px-4 py-3 text-xs font-extrabold ${
-                  p.featured
-                    ? "bg-pm-navy text-white"
-                    : "border border-pm-border bg-white text-pm-navy"
+                onClick={() => update({ selectedPlan: p.id })}
+                className={`relative flex flex-col gap-3 rounded-3xl border p-5 text-left transition ${
+                  isSelected
+                    ? "border-pm-blue bg-gradient-to-br from-white to-pm-soft shadow-pm-card"
+                    : p.featured
+                    ? "border-pm-cyan bg-gradient-to-br from-white to-pm-soft shadow-pm-card"
+                    : "border-pm-border bg-white hover:-translate-y-0.5 hover:border-pm-blue/40 hover:shadow-pm-soft"
                 }`}
               >
-                {p.cta}
+                {p.featured && !isSelected ? (
+                  <span className="absolute right-4 top-4 rounded-full bg-pm-navy px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
+                    Recommended
+                  </span>
+                ) : null}
+                {isSelected ? (
+                  <span className="absolute right-4 top-4 rounded-full bg-pm-blue px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
+                    Selected
+                  </span>
+                ) : null}
+                <p className="pr-24 text-lg font-extrabold tracking-tight text-pm-navy">
+                  {p.name}
+                </p>
+                <p className="text-3xl font-extrabold leading-none text-pm-navy">
+                  {p.price}
+                  <span className="ml-1 text-xs font-bold text-pm-muted">
+                    / month
+                  </span>
+                </p>
+                <p className="text-xs text-pm-muted">{p.body}</p>
+                <ul className="grid gap-1.5 text-xs text-pm-muted">
+                  {p.features.map((f) => (
+                    <li key={f}>✓ {f}</li>
+                  ))}
+                </ul>
+                <span
+                  className={`mt-auto rounded-full px-4 py-3 text-center text-xs font-extrabold ${
+                    isSelected || p.featured
+                      ? "bg-pm-navy text-white"
+                      : "border border-pm-border bg-white text-pm-navy"
+                  }`}
+                >
+                  {isSelected ? "Selected" : p.cta}
+                </span>
               </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <label className="mt-5 flex items-start gap-3 rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
