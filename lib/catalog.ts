@@ -34,7 +34,7 @@ export const PRODUCTS: Product[] = [
     features: ["Embroidered SKD seal", "Mid-weight microfleece", "Men's regular fit", "Full-zip closure", "Machine washable"],
     category: "parish-merch",
     label: "Supports SKD",
-    seller: "SKD Parish Store",
+    seller: "skd-parish-store",
     cause: "Saint Katharine Drexel",
     photo: "apparel",
   },
@@ -46,7 +46,7 @@ export const PRODUCTS: Product[] = [
     meta: "Parish merch · Women's microfleece, embroidered SKD seal.",
     category: "parish-merch",
     label: "Supports SKD",
-    seller: "SKD Parish Store",
+    seller: "skd-parish-store",
     cause: "Saint Katharine Drexel",
     photo: "apparel",
   },
@@ -58,7 +58,7 @@ export const PRODUCTS: Product[] = [
     meta: "Two-tone cotton canvas tote · Community merch.",
     category: "apparel",
     label: "Community Merch",
-    seller: "Harps Club",
+    seller: "harps-club",
     photo: "merch",
   },
   {
@@ -69,7 +69,7 @@ export const PRODUCTS: Product[] = [
     meta: "Unisex crewneck · Soft cotton blend.",
     category: "apparel",
     label: "Community Merch",
-    seller: "Harps Club",
+    seller: "harps-club",
     photo: "apparel",
   },
   {
@@ -80,7 +80,7 @@ export const PRODUCTS: Product[] = [
     meta: "Brushed twill cap with embroidered logo.",
     category: "apparel",
     label: "Community Merch",
-    seller: "Harps Club",
+    seller: "harps-club",
     photo: "apparel",
   },
   {
@@ -192,20 +192,35 @@ export function productsByCategory(category: ProductCategory): Product[] {
   return PRODUCTS.filter((p) => p.category === category);
 }
 
+export type ServiceEntry = {
+  name: string;
+  description: string;
+  price: string;
+};
+
 export type Business = {
   id: string;
+  kind: "service" | "product-seller";
   name: string;
   initials: string;
   logoSrc: string;
   category: string;
   location: string;
   description: string;
-  href: string;
+  about?: string;
+  parishSupported?: string;
+  email?: string;
+  phone?: string;
+  website?: string;
+  services?: ServiceEntry[];
+  founderName?: string;
+  founderShortDesc?: string;
 };
 
 export const BUSINESSES: Business[] = [
   {
     id: "aquatic-adventures-fl",
+    kind: "service",
     name: "Aquatic Adventures FL",
     initials: "AA",
     logoSrc: "/brand/businesses/aquatic-adventures.jpg",
@@ -213,10 +228,10 @@ export const BUSINESSES: Business[] = [
     location: "Fort Lauderdale, FL",
     description:
       "Family swim programs and aquatic adventures supporting local parish families.",
-    href: "/local-businesses/profile",
   },
   {
     id: "armando-fit",
+    kind: "service",
     name: "Armando Fit",
     initials: "AF",
     logoSrc: "/brand/businesses/armando-fit.jpg",
@@ -224,10 +239,10 @@ export const BUSINESSES: Business[] = [
     location: "Weston, FL",
     description:
       "Personal training and wellness programs serving the SKD community.",
-    href: "/local-businesses/profile",
   },
   {
     id: "meraki",
+    kind: "service",
     name: "Meraki",
     initials: "MK",
     logoSrc: "/brand/businesses/meraki.jpg",
@@ -235,7 +250,43 @@ export const BUSINESSES: Business[] = [
     location: "Doral, FL",
     description:
       "Handcrafted goods and lifestyle products from a local supporter.",
-    href: "/local-businesses/profile",
+  },
+  {
+    id: "harps-club",
+    kind: "product-seller",
+    name: "Harps Club",
+    initials: "HC",
+    logoSrc: "",
+    category: "Merch & Apparel",
+    location: "South Florida",
+    description: "Custom apparel, parish merch and ministry products designed to help communities raise funds and build identity.",
+    about: "Harps Club offers thoughtfully curated community products, custom apparel and healthy essentials for everyday parish families. We partner with trusted suppliers to bring clean, effective and reliable products that support better habits and stronger communities. Every purchase helps fund parish programs and family education.",
+    parishSupported: "Saint Katharine Drexel",
+    website: "harpsclub.com",
+    founderName: "Sarah Martinez",
+    founderShortDesc: "As a mom, wellness advocate and parish volunteer, Sarah created Harps Club to make meaningful merchandise accessible for families and faith communities.",
+  },
+  {
+    id: "maria-studios",
+    kind: "service",
+    name: "Maria's Studios",
+    initials: "MS",
+    logoSrc: "",
+    category: "Photography",
+    location: "Weston, FL",
+    description: "Photography services for parish events, retreats and SKD family celebrations.",
+    about: "Maria's Studios has been serving the SKD community for over a decade, capturing the moments that matter most — from baptisms and quinceañeras to Emmaus retreats and parish galas.",
+    parishSupported: "Saint Katharine Drexel",
+    email: "hello@mariastudios.com",
+    phone: "(954) 555-0200",
+    website: "mariastudios.com",
+    services: [
+      { name: "Family Photography", description: "Indoor and outdoor family portraits.", price: "From $150" },
+      { name: "Emmaus Retreat Coverage", description: "Full event coverage for men's and women's retreats.", price: "From $350" },
+      { name: "Parish Event Coverage", description: "Galas, quinceañeras and community events.", price: "Quote" },
+      { name: "Baptism / First Communion", description: "Sacramental milestone photography.", price: "From $200" },
+      { name: "Quinceañera", description: "Full day coverage packages.", price: "From $300" },
+    ],
   },
 ];
 

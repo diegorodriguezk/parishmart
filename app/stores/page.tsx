@@ -279,7 +279,7 @@ export default async function ParishStoreSKDPage() {
           {businesses.map((b, i) => (
             <LocalBizCard
               key={b.id}
-              href={b.href}
+              href={`/local-businesses/${b.id}`}
               photo={i === 0 ? "community" : i === 1 ? "business" : "merch"}
               initials={b.initials}
               logoSrc={b.logoSrc}

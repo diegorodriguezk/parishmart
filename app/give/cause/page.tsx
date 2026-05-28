@@ -367,7 +367,7 @@ export default async function CauseDetailPage() {
           {SUPPORTERS.map((b, i) => (
             <LocalBizCard
               key={b.id}
-              href={b.href}
+              href={`/local-businesses/${b.id}`}
               photo={SUPPORTER_PHOTOS[i % SUPPORTER_PHOTOS.length]}
               initials={b.initials}
               logoSrc={b.logoSrc}

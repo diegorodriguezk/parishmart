@@ -177,7 +177,7 @@ export default async function LocalBusinessCategoryPage() {
                 className="pm-card group flex flex-col overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
               >
                 {/* Photo with offer pill top-left + business logo bottom-right */}
-                <Link href={b.href} className="relative block">
+                <Link href={`/local-businesses/${b.id}`} className="relative block">
                   <Photo
                     kind={PHOTOS[i % PHOTOS.length]}
                     ratio="4/3"
@@ -205,7 +205,7 @@ export default async function LocalBusinessCategoryPage() {
                 {/* Content */}
                 <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-8">
                   <span className="pm-label w-fit">{b.category}</span>
-                  <Link href={b.href} className="block">
+                  <Link href={`/local-businesses/${b.id}`} className="block">
                     <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">
                       {b.name}
                     </h3>
@@ -224,7 +224,7 @@ export default async function LocalBusinessCategoryPage() {
 
                   {/* Arrow link */}
                   <div className="mt-auto pt-1">
-                    <Link href={b.href} className="text-sm font-bold text-pm-blue hover:text-pm-navy">
+                    <Link href={`/local-businesses/${b.id}`} className="text-sm font-bold text-pm-blue hover:text-pm-navy">
                       View more →
                     </Link>
                   </div>
