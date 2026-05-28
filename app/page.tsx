@@ -385,17 +385,32 @@ export default async function HomePage() {
               ) : null}
 
               {idx === 2 ? (
-                <div className="relative z-[1] mt-7 border-t border-pm-border/60 pt-8">
-                  <div className="text-center">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.32em] text-pm-muted">
-                      Preferred Partners
-                    </p>
-                    <span
-                      className="mx-auto mt-2 block h-px w-12 bg-pm-border"
-                      aria-hidden
-                    />
+                <div className="relative z-[1] mt-7 border-t border-pm-border/60 pt-6">
+                  <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+                    <div>
+                      <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-pm-muted">
+                        <span
+                          className="h-2 w-2 rounded-full bg-emerald-500"
+                          aria-hidden
+                        />
+                        Backing the mission
+                      </span>
+                      <h4 className="mt-1 text-lg font-extrabold text-pm-navy">
+                        Preferred Partners
+                      </h4>
+                      <p className="text-xs text-pm-muted">
+                        Sponsors already supporting parishes, missions and
+                        community causes.
+                      </p>
+                    </div>
+                    <Link
+                      href="/sponsors"
+                      className="text-sm font-bold text-pm-blue hover:underline"
+                    >
+                      View all →
+                    </Link>
                   </div>
-                  <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">
+                  <ul className="flex flex-wrap items-center gap-x-10 gap-y-6 sm:gap-x-14">
                     {SPONSORS.map((s) => (
                       <li
                         key={s.initials}
@@ -406,14 +421,6 @@ export default async function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 text-center">
-                    <Link
-                      href="/onboarding/sponsor"
-                      className="text-xs font-bold text-pm-blue hover:underline"
-                    >
-                      Become a sponsor →
-                    </Link>
-                  </p>
                 </div>
               ) : null}
 
