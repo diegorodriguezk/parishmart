@@ -71,20 +71,28 @@ export function ParishTabsNav({ active: initialActive = "shop" }: { active?: Tab
   }
 
   return (
-    <nav className="mx-auto flex max-w-[1320px] items-center justify-center gap-6 overflow-x-auto px-4 pb-3 pt-1 sm:gap-10 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      {TABS.map((tab) => (
-        <Link
-          key={tab.key}
-          href={tab.href}
-          aria-current={active === tab.key ? "page" : undefined}
-          onClick={(e) => handleClick(e, tab)}
-          className={`shrink-0 whitespace-nowrap text-base font-bold transition ${
-            active === tab.key ? "text-pm-blue" : "text-pm-navy hover:text-pm-blue"
-          }`}
-        >
-          {tab.label}
-        </Link>
-      ))}
+    <nav className="relative mx-auto flex max-w-[1320px] items-center pb-3 pt-1 pr-20 sm:pr-28">
+      <div className="flex flex-1 items-center justify-center gap-6 overflow-x-auto px-4 sm:gap-10 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {TABS.map((tab) => (
+          <Link
+            key={tab.key}
+            href={tab.href}
+            aria-current={active === tab.key ? "page" : undefined}
+            onClick={(e) => handleClick(e, tab)}
+            className={`shrink-0 whitespace-nowrap text-base font-bold transition ${
+              active === tab.key ? "text-pm-blue" : "text-pm-navy hover:text-pm-blue"
+            }`}
+          >
+            {tab.label}
+          </Link>
+        ))}
+      </div>
+      <Link
+        href="/onboarding"
+        className="pm-btn pm-btn-primary absolute right-4 shrink-0 !px-3 !py-2 text-xs sm:right-6 sm:!px-4 sm:text-sm"
+      >
+        Join Us
+      </Link>
     </nav>
   );
 }
