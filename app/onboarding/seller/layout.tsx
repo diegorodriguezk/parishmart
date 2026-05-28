@@ -1,10 +1,6 @@
 import type { ReactNode } from "react";
-import { SellerProfileProvider } from "@/components/onboarding/SellerProfileContext";
+import { ProductSellerProvider } from "@/components/onboarding/ProductSellerContext";
 
-export default function SellerOnboardingLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  return <SellerProfileProvider>{children}</SellerProfileProvider>;
+export default function SellerOnboardingLayout({ children }: { children: ReactNode }) {
+  return <ProductSellerProvider>{children}</ProductSellerProvider>;
 }

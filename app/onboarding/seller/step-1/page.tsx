@@ -1,26 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import { LocalBizServicePreview } from "@/components/onboarding/OnboardingPreviews";
+import { ProductSellerLivePreview } from "@/components/onboarding/ProductSellerLivePreview";
+import { useProductSeller } from "@/components/onboarding/ProductSellerContext";
 
-export const metadata = { title: "Step 1 · Business Profile · ParishMart" };
+const STEP_TITLES = ["Profile", "Story", "Products", "Media", "Launch"];
 
-const STEP_TITLES = ["Profile", "Story", "Services", "Media", "Launch"];
-
-const FIELDS = [
-  { label: "Business Name",            value: "Maria's Studios",          type: "input" },
-  { label: "Service Category",         value: "Photography",              type: "select",
-    options: ["Photography", "Wellness", "Restaurants", "Real Estate", "Professional Services", "Legal Services", "Home Services", "Other"] },
-  { label: "Phone",                    value: "(954) 555-0142",           type: "input" },
-  { label: "Email",                    value: "hello@mariastudios.com",   type: "input" },
-  { label: "Website",                  value: "mariastudios.com",         type: "input" },
-  { label: "Contact Us link",          value: "mariastudios.com/contact", type: "input" },
-  { label: "Address",                  value: "123 Town Center Dr",       type: "input" },
-  { label: "City",                     value: "Weston",                   type: "input" },
-  { label: "State",                    value: "FL",                       type: "input" },
-  { label: "Zip Code",                 value: "33327",                    type: "input" },
+const PRODUCT_CATEGORIES = [
+  "Merch & Apparel",
+  "Health & Wellness",
+  "Home & Garden",
+  "Books & Education",
+  "Food & Beverage",
+  "Gifts & Collectibles",
+  "Arts & Crafts",
+  "Electronics",
+  "Sports & Outdoors",
+  "Other",
 ];
 
-export default function LocalBizStep1() {
+export default function SellerStep1() {
+  const { profile, update } = useProductSeller();
+
   return (
     <SellerStepShell
       step={1}
@@ -28,56 +30,90 @@ export default function LocalBizStep1() {
       allStepTitles={STEP_TITLES}
       badge="Required"
       eyebrow="Step 1 of 5 · Business Profile"
-      title={<>Let&rsquo;s create your <span className="pm-gradient-text">service business page</span>.</>}
-      description="Basic information to identify the business, location, service area and main category."
-      preview={<LocalBizServicePreview />}
+      title={<>Let&rsquo;s create your <span className="pm-gradient-text">product seller page</span>.</>}
+      description="Basic information to identify your business, location and what you sell."
+      preview={<ProductSellerLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-pm-border bg-pm-soft text-sm font-extrabold text-pm-blue">
-            AI
-          </span>
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-pm-border bg-pm-soft text-sm font-extrabold text-pm-blue">AI</span>
           <div>
             <p className="text-xs font-extrabold text-pm-blue">ParishMart Concierge</p>
-            <p className="mt-1 text-sm text-pm-muted">
-              Start with a few simple answers. The next steps adapt to your service category automatically.
-            </p>
+            <p className="mt-1 text-sm text-pm-muted">Start with the basics — the preview on the right updates live as you type.</p>
           </div>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          {FIELDS.map((f) => (
-            <label key={f.label} className="block">
-              <span className="block text-xs font-extrabold text-pm-navy">{f.label}</span>
-              {f.type === "select" ? (
-                <select
-                  defaultValue={f.value}
-                  className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-                >
-                  {f.options?.map((o) => <option key={o}>{o}</option>)}
-                </select>
-              ) : (
-                <input
-                  defaultValue={f.value}
-                  className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-                />
-              )}
-            </label>
-          ))}
-          <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Short Business Description</span>
-            <textarea
-              rows={3}
-              defaultValue="Photography for SKD families, Emmaus retreats and parish events. A local business helping the community preserve meaningful moments."
-              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
-            />
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Business Name</span>
+            <input value={profile.businessName} onChange={(e) => update({ businessName: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Contact Full Name</span>
+            <input value={profile.contactFullName} onChange={(e) => update({ contactFullName: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Products Category</span>
+            <select value={profile.productCategory} onChange={(e) => update({ productCategory: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue">
+              <option value="">Select category</option>
+              {PRODUCT_CATEGORIES.map((c) => <option key={c}>{c}</option>)}
+            </select>
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Phone</span>
+            <input type="tel" value={profile.phone} onChange={(e) => update({ phone: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Email</span>
+            <input type="email" value={profile.email} onChange={(e) => update({ email: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">
+              Website or Social Media <span className="font-normal text-pm-muted">(optional)</span>
+            </span>
+            <input value={profile.websiteOrSocial} onChange={(e) => update({ websiteOrSocial: e.target.value })}
+              placeholder="yoursite.com or @handle"
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Address</span>
+            <input value={profile.address} onChange={(e) => update({ address: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">City</span>
+            <input value={profile.city} onChange={(e) => update({ city: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">State</span>
+            <input value={profile.state} onChange={(e) => update({ state: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Zip Code</span>
+            <input value={profile.zipCode} onChange={(e) => update({ zipCode: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Service Area</span>
-            <input
-              defaultValue="Weston, Southwest Ranches, Davie, Pembroke Pines"
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
+            <span className="block text-xs font-extrabold text-pm-navy">Country</span>
+            <input value={profile.country} onChange={(e) => update({ country: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block sm:col-span-2">
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Short Description / Headline
+              <span className="font-normal text-pm-muted">{profile.shortDescription.length}/220</span>
+            </span>
+            <textarea rows={3} maxLength={220}
+              value={profile.shortDescription}
+              onChange={(e) => update({ shortDescription: e.target.value })}
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
           </label>
         </div>
 

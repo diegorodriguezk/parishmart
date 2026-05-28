@@ -6,6 +6,91 @@
 import { Photo } from "@/components/Photo";
 
 /* ─────────────────────────────────────────────
+   PRODUCT SELLER — mirrors /local-businesses/products/profile
+   ───────────────────────────────────────────── */
+export function ProductSellerPreview() {
+  return (
+    <>
+      {/* Hero: dark navy banner with merch photo + left gradient */}
+      <div className="relative min-h-[210px] overflow-hidden">
+        <Photo
+          kind="merch"
+          ratio="auto"
+          rounded="rounded-none"
+          className="absolute inset-0 !rounded-none h-full"
+          overlay="none"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-pm-navy/95 via-pm-navy/80 to-transparent" />
+
+        <div className="relative flex h-full gap-3 p-4">
+          {/* Left: logo + name + tagline + CTAs */}
+          <div className="flex flex-1 flex-col justify-between gap-2 text-white">
+            <div className="flex flex-col gap-1.5">
+              <span className="text-[8px] font-bold uppercase tracking-widest text-white/50">
+                Merch &amp; Apparel
+              </span>
+              {/* Logo badge */}
+              <div className="mb-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white shadow-pm-soft">
+                <span className="pm-gradient-text text-[9px] font-extrabold">HC</span>
+              </div>
+              <p className="text-lg font-extrabold leading-none tracking-tight">
+                Harps <span className="pm-gradient-text">Club</span>
+              </p>
+              <p className="text-[9px] font-semibold text-white/60">
+                Supporting Saint Katharine Drexel
+              </p>
+              <p className="text-[9px] leading-relaxed text-white/70">
+                Custom apparel, parish merch and ministry products.
+              </p>
+            </div>
+            <div className="flex gap-1.5">
+              <span className="cursor-default rounded-full bg-pm-blue px-2.5 py-1 text-[9px] font-extrabold text-white">
+                Shop Products
+              </span>
+              <span className="cursor-default rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[9px] font-extrabold text-white">
+                See Community
+              </span>
+            </div>
+          </div>
+
+          {/* Right: founder card */}
+          <div className="w-36 shrink-0 self-center rounded-[16px] border border-pm-border bg-white p-3 shadow-pm-soft">
+            <div className="flex items-start gap-2">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan text-[10px] font-extrabold text-white shadow-pm-soft">
+                SM
+              </div>
+              <div>
+                <p className="text-[8px] font-bold uppercase tracking-wider text-pm-blue">Founder</p>
+                <p className="mt-0.5 text-[10px] font-extrabold text-pm-navy">Sarah Martinez</p>
+                <p className="text-[8px] text-pm-muted">Wellness Advocate</p>
+              </div>
+            </div>
+            <p className="mt-2 text-[8px] leading-relaxed text-pm-muted line-clamp-3">
+              As a mom and parish volunteer, I created Harps Club to make meaningful merch accessible for faith communities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Products mini-grid */}
+      <div className="border-t border-pm-border p-3">
+        <div className="mb-2 flex items-center justify-between">
+          <p className="text-[9px] font-bold uppercase tracking-wider text-pm-muted">Featured Products</p>
+          <span className="cursor-default text-[9px] text-pm-blue">View all →</span>
+        </div>
+        <div className="grid grid-cols-4 gap-1.5">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="overflow-hidden rounded-xl border border-pm-border">
+              <Photo kind="merch" ratio="1/1" rounded="rounded-none" className="!rounded-none" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ─────────────────────────────────────────────
    LOCAL BUSINESS (services) — mirrors /local-businesses/services/profile
    ───────────────────────────────────────────── */
 export function LocalBizServicePreview() {
