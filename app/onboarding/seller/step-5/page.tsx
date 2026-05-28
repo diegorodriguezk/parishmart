@@ -57,21 +57,6 @@ const PLANS: Plan[] = [
     cta: "Request Invitation",
   },
   {
-    id: "starter",
-    name: "Starter Supporter",
-    description:
-      "Best for businesses that want a basic presence in the community directory.",
-    price: "$49",
-    priceSuffix: "/ month",
-    features: [
-      "Public business profile",
-      "Parish/cause supporter badge",
-      "Contact CTA",
-      "Basic category listing",
-    ],
-    cta: "Select Starter",
-  },
-  {
     id: "community",
     badge: { label: "Products", tone: "amber" },
     name: "Community Seller",
