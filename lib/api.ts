@@ -4,17 +4,21 @@ import {
   CAUSES,
   PARISHES,
   PRODUCTS,
+  SPONSORS,
   getBusiness,
   getCause,
   getParish,
   getProduct,
+  getSponsor,
   listCauses,
   listParishes,
+  listSponsors,
   type Business,
   type Cause,
   type Parish,
   type Product,
   type ProductCategory,
+  type Sponsor,
 } from "./catalog";
 
 function externalBase(): string | null {
@@ -120,10 +124,31 @@ export async function fetchBusiness(id: string): Promise<Business | null> {
   return data?.business ?? null;
 }
 
-export async function fetchCauses(): Promise<Cause[]> {
-  if (!externalBase()) return listCauses();
-  const data = await apiFetch<{ causes: Cause[] }>("/api/causes");
+function localSponsors(): Sponsor[] {
+  return listSponsors();
+}
+
+export async function fetchCauses(opts?: { parishSlug?: string }): Promise<Cause[]> {
+  if (!externalBase()) return listCauses(opts);
+  const qs = new URLSearchParams();
+  if (opts?.parishSlug) qs.set("parishSlug", opts.parishSlug);
+  const path = `/api/causes${qs.toString() ? `?${qs}` : ""}`;
+  const data = await apiFetch<{ causes: Cause[] }>(path);
   return data?.causes ?? [];
+}
+
+export async function fetchSponsors(): Promise<Sponsor[]> {
+  if (!externalBase()) return localSponsors();
+  const data = await apiFetch<{ sponsors: Sponsor[] }>("/api/sponsors");
+  return data?.sponsors ?? [];
+}
+
+export async function fetchSponsor(id: string): Promise<Sponsor | null> {
+  if (!externalBase()) return getSponsor(id) ?? null;
+  const data = await apiFetch<{ sponsor: Sponsor } | null>(
+    `/api/sponsors/${encodeURIComponent(id)}`,
+  );
+  return data?.sponsor ?? null;
 }
 
 export async function fetchCause(key: string): Promise<Cause | null> {
@@ -148,7 +173,8 @@ export async function fetchParishes(): Promise<Parish[]> {
   return data?.parishes ?? [];
 }
 
-// Silence unused-import warnings — keeps CAUSES/PARISHES exports loadable
+// Silence unused-import warnings — keeps CAUSES/PARISHES/SPONSORS exports loadable
 // for callers that may reach for the raw map in the future.
 void CAUSES;
 void PARISHES;
+void SPONSORS;
