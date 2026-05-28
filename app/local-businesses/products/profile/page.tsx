@@ -60,21 +60,27 @@ export default async function ProductSellerProfilePage() {
                   Merch &amp; Apparel
                 </span>
                 <div>
+                  <div className="mb-3 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border-2 border-white/20 bg-white shadow-pm-soft">
+                    <span className="pm-gradient-text text-xl font-extrabold">HC</span>
+                  </div>
                   <h1
                     className="font-extrabold leading-none tracking-tight"
                     style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
                   >
-                    Harps <span className="pm-gradient-text">Club</span>
+                    Harps <span className="pm-gradient-text">Club robotics</span>
                   </h1>
                   <p className="mt-2 text-sm font-semibold text-white/70">
                     Supporting Saint Katharine Drexel
                   </p>
-                  <p className="max-w-xs text-sm leading-relaxed text-white/80">
+                  
+                </div>
+                <p className="max-w-s text-sm leading-relaxed text-white/80">
                   Custom apparel, parish merch, ministry products and
+                  campaign-based merchandise designed to help communities raise
+                  funds and build identity.Custom apparel, parish merch, ministry products and
                   campaign-based merchandise designed to help communities raise
                   funds and build identity.
                 </p>
-                </div>
               </div>
               {/* Description + CTAs pinned to bottom — paragraph width matches button row */}
               <div className="flex flex-col gap-3">
@@ -91,7 +97,7 @@ export default async function ProductSellerProfilePage() {
             </div>
 
             {/* RIGHT — founder card: square photo top-left, name top-right, bio below */}
-            <div className="pm-card w-full shrink-0 p-5 lg:w-[540px]">
+            <div className="pm-card w-full shrink-0 p-5 lg:w-[540px] h-full">
               {/* Top row: photo left + founder info right */}
               <div className="flex items-start gap-4">
                 {/* Square photo with rounded edges */}
