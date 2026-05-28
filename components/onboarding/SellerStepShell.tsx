@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Fragment, ReactNode } from "react";
 import { Logo } from "@/components/Logo";
 import { Check } from "lucide-react";
@@ -34,6 +37,8 @@ export function SellerStepShell({
   preview: ReactNode;
 }) {
   const titles = allStepTitles ?? DEFAULT_STEP_TITLES.slice(0, totalSteps);
+  const pathname = usePathname() ?? "";
+  const basePath = pathname.replace(/\/step-\d+\/?$/, "");
 
   return (
     <main className="min-h-dvh bg-gradient-to-br from-white via-pm-soft to-white">
@@ -72,20 +77,26 @@ export function SellerStepShell({
           <div className="mb-8 flex max-w-[440px] items-start">
             {Array.from({ length: totalSteps }).map((_, i) => {
               const n = i + 1;
-              const isDone   = n < step;
+              const isDone = n < step;
               const isActive = n === step;
+              const href = `${basePath}/step-${n}`;
               return (
                 <Fragment key={i}>
-                  {/* Circle + label */}
-                  <div className="flex shrink-0 flex-col items-center gap-1.5">
+                  {/* Circle + label (clickable) */}
+                  <Link
+                    href={href}
+                    aria-label={`Go to step ${n}: ${titles[i] ?? `Step ${n}`}`}
+                    aria-current={isActive ? "step" : undefined}
+                    className="group flex shrink-0 flex-col items-center gap-1.5 rounded-lg transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-pm-blue focus-visible:ring-offset-2"
+                  >
                     <span
                       className={[
-                        "grid h-7 w-7 place-items-center rounded-full text-[11px] font-extrabold transition-all",
+                        "grid h-7 w-7 place-items-center rounded-full text-[11px] font-extrabold transition-all group-hover:scale-110",
                         isActive
                           ? "bg-gradient-to-br from-pm-blue to-pm-cyan text-white shadow-[0_0_0_4px_rgba(69,177,225,.18)]"
                           : isDone
                           ? "bg-pm-blue/15 text-pm-blue"
-                          : "border border-pm-border bg-white text-pm-muted",
+                          : "border border-pm-border bg-white text-pm-muted group-hover:border-pm-blue group-hover:text-pm-blue",
                       ].join(" ")}
                     >
                       {isDone ? (
@@ -101,15 +112,16 @@ export function SellerStepShell({
                           ? "text-pm-blue"
                           : isDone
                           ? "text-pm-blue/60"
-                          : "text-pm-muted",
+                          : "text-pm-muted group-hover:text-pm-blue",
                       ].join(" ")}
                     >
                       {titles[i] ?? `Step ${n}`}
                     </span>
-                  </div>
+                  </Link>
                   {/* Connecting line */}
                   {i < totalSteps - 1 && (
                     <span
+                      aria-hidden
                       className={[
                         "mx-2 mt-3.5 h-px flex-1",
                         n < step ? "bg-pm-blue/30" : "bg-pm-border",
