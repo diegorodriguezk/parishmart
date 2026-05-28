@@ -17,6 +17,25 @@ const SERVICES = [
   "Children's Dentistry",
 ];
 
+const SERVICE_ITEMS = [
+  {
+    title: "Family Dentistry",
+    description:
+      "Comprehensive preventive and routine care for the whole family.",
+    price: "From $150",
+  },
+  {
+    title: "Emergency Dental Care",
+    description: "Same-day appointments for urgent dental needs.",
+    price: "Get a Quote",
+  },
+  {
+    title: "Cosmetic Dentistry",
+    description: "Smile makeover, whitening and aesthetic dental services.",
+    price: "From $250",
+  },
+];
+
 export default function LocalBizStep3() {
   return (
     <SellerStepShell
@@ -97,9 +116,14 @@ export default function LocalBizStep3() {
             </select>
           </label>
           <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">
-              Community Offer
-            </span>
+            <div className="flex items-baseline justify-between">
+              <span className="block text-xs font-extrabold text-pm-navy">
+                Community Offer / Discount
+              </span>
+              <span className="text-[10px] font-medium text-pm-muted">
+                Optional
+              </span>
+            </div>
             <input
               defaultValue="10% off first consultation"
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
@@ -114,7 +138,18 @@ export default function LocalBizStep3() {
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
-          <label className="block">
+          <label className="block sm:col-span-2">
+            <span className="block text-xs font-extrabold text-pm-navy">
+              Short Description of Discount
+            </span>
+            <textarea
+              rows={2}
+              maxLength={220}
+              defaultValue="Schedule your first consultation and receive 10% off as a ParishMart community member."
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
+            />
+          </label>
+          <label className="block sm:col-span-2">
             <span className="block text-xs font-extrabold text-pm-navy">
               Booking Link
             </span>
@@ -124,21 +159,68 @@ export default function LocalBizStep3() {
             />
           </label>
           <div className="sm:col-span-2">
-            <p className="text-xs font-extrabold text-pm-navy">
-              Services Offered
-            </p>
-            <div className="mt-2 grid gap-2.5 sm:grid-cols-2">
-              {SERVICES.map((s) => (
-                <span
-                  key={s}
-                  className="flex items-center justify-between gap-2 rounded-2xl border border-pm-border bg-pm-soft/50 px-3.5 py-3 text-sm font-extrabold text-pm-blue"
+            <div className="flex items-baseline justify-between">
+              <p className="text-xs font-extrabold text-pm-navy">
+                Services Offered
+              </p>
+              <span className="text-[10px] font-medium text-pm-muted">
+                Title (30 ch) · Description (100 ch) · Price
+              </span>
+            </div>
+            <div className="mt-2 grid gap-3">
+              {SERVICE_ITEMS.map((s, i) => (
+                <div
+                  key={s.title}
+                  className="rounded-2xl border border-pm-border bg-pm-soft/40 p-4"
                 >
-                  {s}
-                  <span className="grid h-5 w-5 place-items-center rounded-full border border-pm-border bg-white text-[10px] font-extrabold text-pm-cyan">
-                    ✓
-                  </span>
-                </span>
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-pm-blue">
+                      Service {i + 1}
+                    </span>
+                    <span className="grid h-5 w-5 place-items-center rounded-full bg-white text-[10px] font-extrabold text-pm-cyan ring-1 ring-pm-border">
+                      ✓
+                    </span>
+                  </div>
+                  <div className="grid gap-2.5 sm:grid-cols-[1.2fr_2fr_1fr]">
+                    <label className="block">
+                      <span className="block text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
+                        Title
+                      </span>
+                      <input
+                        maxLength={30}
+                        defaultValue={s.title}
+                        className="mt-1 w-full rounded-xl border border-pm-border bg-white px-3 py-2 text-xs font-extrabold text-pm-navy outline-none focus:border-pm-blue"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="block text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
+                        Brief description
+                      </span>
+                      <input
+                        maxLength={100}
+                        defaultValue={s.description}
+                        className="mt-1 w-full rounded-xl border border-pm-border bg-white px-3 py-2 text-xs text-pm-ink outline-none focus:border-pm-blue"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="block text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
+                        Price
+                      </span>
+                      <input
+                        defaultValue={s.price}
+                        placeholder="From $150 · Get a Quote"
+                        className="mt-1 w-full rounded-xl border border-pm-border bg-white px-3 py-2 text-xs font-bold text-pm-blue outline-none focus:border-pm-blue"
+                      />
+                    </label>
+                  </div>
+                </div>
               ))}
+              <button
+                type="button"
+                className="rounded-2xl border border-dashed border-pm-blue/40 bg-pm-soft/30 px-4 py-3 text-xs font-extrabold text-pm-blue transition hover:border-pm-blue hover:bg-pm-soft/60"
+              >
+                + Add another service
+              </button>
             </div>
           </div>
         </div>

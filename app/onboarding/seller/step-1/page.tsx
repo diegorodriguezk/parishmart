@@ -42,6 +42,7 @@ const FIELDS = [
   { label: "City", value: "Weston", type: "input" },
   { label: "State", value: "FL", type: "input" },
   { label: "Zip Code", value: "33327", type: "input" },
+  { label: "Country", value: "United States", type: "input" },
 ];
 
 export default function LocalBizStep1() {
@@ -154,12 +155,33 @@ export default function LocalBizStep1() {
             </label>
           ))}
           <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">
-              Short Business Description
-            </span>
+            <div className="flex items-baseline justify-between">
+              <span className="block text-xs font-extrabold text-pm-navy">
+                Headline
+              </span>
+              <span className="text-[10px] font-medium text-pm-muted">
+                Max 220 characters
+              </span>
+            </div>
+            <input
+              maxLength={220}
+              defaultValue="Trusted family dental care for Weston families — gentle, faith-friendly and built on community."
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
+            />
+          </label>
+          <label className="block sm:col-span-2">
+            <div className="flex items-baseline justify-between">
+              <span className="block text-xs font-extrabold text-pm-navy">
+                Business Description
+              </span>
+              <span className="text-[10px] font-medium text-pm-muted">
+                Max 2,600 characters
+              </span>
+            </div>
             <textarea
-              rows={3}
-              defaultValue="Family dental practice serving Weston with preventive, cosmetic and emergency dental care for children, adults and seniors."
+              rows={5}
+              maxLength={2600}
+              defaultValue="Weston Family Dental is a local family-owned dental practice serving the Weston community with preventive, cosmetic and emergency dental care for children, adults and seniors. We focus on long-term family relationships, gentle care for kids, and modern technology delivered in a calm and welcoming environment."
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>

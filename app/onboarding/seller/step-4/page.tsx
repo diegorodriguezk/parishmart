@@ -12,11 +12,11 @@ export const metadata = {
 
 const UPLOADS = [
   { label: "Business Logo", hint: "PNG, JPG or SVG" },
-  { label: "Cover Photo", hint: "Business, team or location" },
-  { label: "Owner Photo", hint: "Professional profile image" },
-  { label: "Gallery Photos", hint: "Office, team, work samples" },
+  { label: "Banner / Cover Photo", hint: "Business, team or location" },
+  { label: "Founder Profile Picture", hint: "Professional headshot" },
+  { label: "Pictures of Services", hint: "Work samples · before/after" },
   { label: "Certifications", hint: "Licenses, awards, documents" },
-  { label: "Reviews", hint: "Google link or testimonials" },
+  { label: "Video", hint: "Optional · 30-60 second intro · MP4" },
 ];
 
 export default function LocalBizStep4() {
