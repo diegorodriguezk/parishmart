@@ -6,7 +6,7 @@ export const metadata = { title: "Step 1 · Business Profile · ParishMart" };
 
 const FIELDS = [
   { label: "Business Name", value: "Weston Family Dental", type: "input" },
-  { label: "Contact Name", value: "Maria", type: "input" },
+  { label: "Contact Full Name", value: "Maria Lopez", type: "input" },
   {
     label: "Service Category",
     value: "Health & Wellness",
