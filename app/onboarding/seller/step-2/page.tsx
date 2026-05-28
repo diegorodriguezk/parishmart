@@ -47,7 +47,7 @@ export default function LocalBizStep2() {
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">
-              Owner Name
+              Founder Name
             </span>
             <input
               value={profile.ownerName}
@@ -72,7 +72,7 @@ export default function LocalBizStep2() {
           <label className="block sm:col-span-2">
             <div className="flex items-baseline justify-between">
               <span className="block text-xs font-extrabold text-pm-navy">
-                About the Owner
+                About the Founder
               </span>
               <span className="text-[10px] font-medium text-pm-muted">
                 {profile.aboutOwner.length} / 300
