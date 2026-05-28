@@ -52,9 +52,18 @@ export default function LocalBusinessProfilePage() {
               </span>
 
               {/* Name */}
-              <h1 className="text-4xl font-extrabold tracking-tight text-pm-navy md:text-5xl">
-                Maria&rsquo;s <span className="pm-gradient-text">Studios</span>
-              </h1>
+              <div>
+                <h1 className="text-4xl font-extrabold tracking-tight text-pm-navy md:text-5xl">
+                  Maria&rsquo;s <span className="pm-gradient-text">Studios</span>
+                </h1>
+                <Link
+                  href="/give/cause"
+                  className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-pm-blue hover:underline"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-pm-cyan" />
+                  Supporting Emmaus Men&rsquo;s Retreat
+                </Link>
+              </div>
 
               {/* Description */}
               <p className="text-sm text-pm-muted">
@@ -64,7 +73,7 @@ export default function LocalBusinessProfilePage() {
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2">
-                {["Weston, FL", "Supports Emmaus", "Photography"].map((t) => (
+                {["Weston, FL", "Photography"].map((t) => (
                   <span key={t} className="pm-label">{t}</span>
                 ))}
               </div>

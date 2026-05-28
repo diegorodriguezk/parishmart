@@ -29,7 +29,7 @@ const OPTIONS: Option[] = [
     title: "I sell products",
     description:
       "Physical or digital items connected to a parish cause. Set up a product storefront.",
-    href: "/onboarding/seller/step-1",
+    href: "/onboarding/local-business/step-1",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function SellerTypeChooser() {
 
         <div className="mx-auto max-w-3xl space-y-8">
           <Link
-            href="/onboarding/seller"
+            href="/onboarding/local-business"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-pm-blue hover:text-pm-navy"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
