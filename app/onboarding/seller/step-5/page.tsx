@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import { SellerLivePreview } from "@/components/onboarding/SellerLivePreview";
-import { useSellerProfile } from "@/components/onboarding/SellerProfileContext";
+import { ProductSellerLivePreview } from "@/components/onboarding/ProductSellerLivePreview";
+import { useProductSeller } from "@/components/onboarding/ProductSellerContext";
+
+const STEP_TITLES = ["Profile", "Story", "Products", "Media", "Launch"];
 
 type Plan = {
   id: string;
@@ -168,13 +170,15 @@ function PlanCard({
   );
 }
 
-export default function LocalBizStep5() {
-  const { profile, update } = useSellerProfile();
+export default function SellerStep5() {
+  const { profile, update } = useProductSeller();
 
   return (
     <SellerStepShell
       step={5}
-      eyebrow="Step 5 of 5 · Review & Activate"
+      totalSteps={5}
+      allStepTitles={STEP_TITLES}
+      eyebrow="Step 5 of 5 · Launch"
       title={
         <>
           Choose your{" "}
@@ -183,7 +187,7 @@ export default function LocalBizStep5() {
         </>
       }
       description="The monthly plan controls visibility, placement and support level. Payment activates the Local Biz Service page after approval."
-      preview={<SellerLivePreview />}
+      preview={<ProductSellerLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4 rounded-2xl border border-pm-cyan/30 bg-gradient-to-br from-pm-soft to-white p-4">
