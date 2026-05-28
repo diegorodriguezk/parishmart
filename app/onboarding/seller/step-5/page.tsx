@@ -105,98 +105,94 @@ function PlanCard({
     <button
       type="button"
       onClick={onSelect}
-      className={`relative flex flex-col gap-4 rounded-3xl border p-6 text-left transition ${
+      className={`relative flex flex-col gap-3 rounded-3xl border p-5 text-left transition ${
         isSelected
           ? "border-pm-blue bg-gradient-to-br from-white to-pm-soft shadow-pm-card"
           : "border-pm-border bg-white hover:-translate-y-0.5 hover:border-pm-blue/40 hover:shadow-pm-soft"
       }`}
     >
-      {/* Badge / Selected pill */}
-      <div className="flex items-center justify-between gap-3">
-        {plan.badge ? (
-          <span
-            className={`inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${BADGE_TONE[plan.badge.tone]}`}
-          >
-            {plan.badge.label}
-          </span>
-        ) : (
-          <span />
-        )}
-        {isSelected ? (
-          <span className="rounded-full bg-pm-blue px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-            Selected
-          </span>
-        ) : null}
-      </div>
-
-      {/* Title + description */}
-      <div>
-        <p className="text-2xl font-extrabold tracking-tight text-pm-navy">
-          {plan.name}
-        </p>
-        <p className="mt-1 text-xs text-pm-muted">{plan.description}</p>
-      </div>
-
-      {/* Price block */}
-      <div className="border-t border-pm-border pt-4">
-        {plan.oldPrice ? (
-          <p className="text-xs font-medium text-pm-muted line-through">
-            {plan.oldPrice}
+      {/* Header: title + price + badge */}
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <div className="mb-1.5 flex flex-wrap items-center gap-2">
+            {plan.badge ? (
+              <span
+                className={`inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${BADGE_TONE[plan.badge.tone]}`}
+              >
+                {plan.badge.label}
+              </span>
+            ) : null}
+            {isSelected ? (
+              <span className="rounded-full bg-pm-blue px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
+                Selected
+              </span>
+            ) : null}
+          </div>
+          <p className="text-xl font-extrabold tracking-tight text-pm-navy">
+            {plan.name}
           </p>
-        ) : null}
-        <p className="text-4xl font-extrabold leading-none tracking-tight text-pm-navy">
-          {plan.price}
+          <p className="mt-1 text-xs text-pm-muted">{plan.description}</p>
+        </div>
+        <div className="shrink-0 text-right">
+          {plan.oldPrice ? (
+            <p className="text-[11px] font-medium text-pm-muted line-through">
+              {plan.oldPrice}
+            </p>
+          ) : null}
+          <p className="text-3xl font-extrabold leading-none tracking-tight text-pm-navy">
+            {plan.price}
+          </p>
           {plan.priceSuffix ? (
-            <span className="ml-1.5 text-xs font-bold text-pm-muted">
+            <p className="text-[11px] font-bold text-pm-muted">
               {plan.priceSuffix}
+            </p>
+          ) : null}
+        </div>
+      </div>
+
+      {(plan.priceCaption || plan.priceNote) && (
+        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+          {plan.priceCaption ? (
+            <span className="text-xs font-extrabold text-pm-blue">
+              {plan.priceCaption}
             </span>
           ) : null}
-        </p>
-        {plan.priceCaption ? (
-          <p className="mt-2 text-xs font-extrabold text-pm-blue">
-            {plan.priceCaption}
-          </p>
-        ) : null}
-        {plan.priceNote ? (
-          <p className="mt-1 text-[11px] text-pm-muted">{plan.priceNote}</p>
-        ) : null}
-      </div>
+          {plan.priceNote ? (
+            <span className="text-[11px] text-pm-muted">{plan.priceNote}</span>
+          ) : null}
+        </div>
+      )}
 
-      {/* Features */}
-      <div>
-        <p className="text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
-          Includes
-        </p>
-        <ul className="mt-2 grid gap-1.5 text-xs text-pm-ink">
-          {plan.features.map((f) => (
-            <li key={f} className="inline-flex items-start gap-1.5">
-              <Check
-                className="mt-0.5 h-3.5 w-3.5 shrink-0 text-pm-blue"
-                strokeWidth={2.5}
-                aria-hidden
-              />
-              {f}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Features — 2 columns to keep cards compact */}
+      <ul className="grid gap-x-3 gap-y-1.5 text-xs text-pm-ink sm:grid-cols-2">
+        {plan.features.map((f) => (
+          <li key={f} className="inline-flex items-start gap-1.5">
+            <Check
+              className="mt-0.5 h-3.5 w-3.5 shrink-0 text-pm-blue"
+              strokeWidth={2.5}
+              aria-hidden
+            />
+            {f}
+          </li>
+        ))}
+      </ul>
 
-      {/* Highlights */}
+      {/* Highlights — compact, side by side when there are two */}
       {plan.highlights && plan.highlights.length > 0 ? (
-        <div className="grid gap-2">
+        <div className="grid gap-2 sm:grid-cols-2">
           {plan.highlights.map((h) => (
             <div
               key={h.title}
-              className="flex items-start gap-3 rounded-2xl border border-pm-border bg-pm-soft/50 p-3"
+              className="flex items-start gap-2.5 rounded-2xl border border-pm-border bg-pm-soft/50 p-2.5"
             >
-              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-pm-blue ring-1 ring-pm-border">
-                <h.Icon className="h-3.5 w-3.5" aria-hidden />
+              <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white text-pm-blue ring-1 ring-pm-border">
+                <h.Icon className="h-3 w-3" aria-hidden />
               </span>
               <div>
-                <p className="text-xs font-extrabold text-pm-navy">
+                <p className="text-[11px] font-extrabold text-pm-navy">
                   {h.title}
                 </p>
-                <p className="mt-0.5 text-[11px] leading-relaxed text-pm-muted">
+                <p className="mt-0.5 text-[10px] leading-relaxed text-pm-muted">
                   {h.body}
                 </p>
               </div>
@@ -206,7 +202,7 @@ function PlanCard({
       ) : null}
 
       {/* CTA */}
-      <span className="mt-auto rounded-full bg-pm-navy py-3 text-center text-xs font-extrabold text-white">
+      <span className="mt-auto rounded-full bg-pm-navy py-2.5 text-center text-xs font-extrabold text-white">
         {isSelected ? "Selected" : plan.cta}
       </span>
     </button>
