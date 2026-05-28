@@ -10,8 +10,8 @@ export const metadata = { title: "Maria's Studios · Local Business" };
 
 const SERVICES = [
   { name: "Family Photography", desc: "Outdoor or studio session · 45 min", price: "From $150" },
-  { name: "Emmaus Retreat Coverage", desc: "Retreat storytelling, group photos", price: "From $350" },
-  { name: "Parish Event Coverage", desc: "Mass, ministry events, fundraising", price: "Quote" },
+  // { name: "Emmaus Retreat Coverage", desc: "Retreat storytelling, group photos", price: "From $350" },
+  // { name: "Parish Event Coverage", desc: "Mass, ministry events, fundraising", price: "Quote" },
 ];
 
 export default function LocalBusinessProfilePage() {
@@ -175,18 +175,40 @@ export default function LocalBusinessProfilePage() {
               and SKD family celebrations.
             </p>
 
-            {/* Services list */}
-            <div className="divide-y divide-pm-border rounded-2xl border border-pm-border">
-              {SERVICES.map((s) => (
-                <div key={s.name} className="flex items-center justify-between px-4 py-3">
-                  <div>
-                    <p className="text-sm font-bold text-pm-navy">{s.name}</p>
-                    <p className="text-[11px] text-pm-muted">{s.desc}</p>
+            {/* Services list — single card / row list / capped list */}
+            {SERVICES.length === 1 ? (
+              <div className="rounded-2xl border border-pm-border bg-gradient-to-br from-pm-soft to-white p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex flex-col gap-1.5">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">Featured Service</p>
+                    <p className="text-lg font-extrabold text-pm-navy">{SERVICES[0].name}</p>
+                    <p className="text-xs text-pm-muted">{SERVICES[0].desc}</p>
                   </div>
-                  <span className="text-xs font-bold text-pm-blue shrink-0">{s.price}</span>
+                  <span className="shrink-0 rounded-full bg-pm-blue px-3 py-1 text-xs font-extrabold text-white">
+                    {SERVICES[0].price}
+                  </span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div className="divide-y divide-pm-border rounded-2xl border border-pm-border">
+                {SERVICES.slice(0, 5).map((s) => (
+                  <div key={s.name} className="flex items-center justify-between px-4 py-3">
+                    <div>
+                      <p className="text-sm font-bold text-pm-navy">{s.name}</p>
+                      <p className="text-[11px] text-pm-muted">{s.desc}</p>
+                    </div>
+                    <span className="shrink-0 text-xs font-bold text-pm-blue">{s.price}</span>
+                  </div>
+                ))}
+                {SERVICES.length > 5 && (
+                  <div className="px-4 py-2.5 text-center">
+                    <span className="text-xs font-bold text-pm-blue">
+                      +{SERVICES.length - 5} more services
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* CTA */}
             <div className="mt-auto pt-2">
