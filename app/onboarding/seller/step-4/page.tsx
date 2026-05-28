@@ -11,7 +11,6 @@ const UPLOADS = [
   { label: "Banner / Cover Photo", hint: "Business, team or location" },
   { label: "Founder Profile Picture", hint: "Professional headshot" },
   { label: "Pictures of Services", hint: "Work samples · before/after" },
-  { label: "Certifications", hint: "Licenses, awards, documents" },
   { label: "Video", hint: "Optional · 30-60 second intro · MP4" },
 ];
 
