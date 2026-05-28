@@ -444,7 +444,9 @@ export default async function HomePage() {
                     </Link>
                   </div>
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                    {businesses.map((b, i) => (
+                    {businesses
+                      .filter((b) => b.id !== "maria-studios" && b.id !== "meraki")
+                      .map((b, i) => (
                       <LocalBizCard
                         key={b.id}
                         href={`/local-businesses/${b.id}`}
