@@ -34,6 +34,7 @@ const PLANS: Plan[] = [
     description:
       "For selected businesses invited to help launch the first ParishMart community experience.",
     price: "$0",
+    oldPrice: "$149/mo",
     priceSuffix: "/ pilot",
     priceCaption: "Complimentary during launch phase",
     features: [
