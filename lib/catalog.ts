@@ -438,3 +438,66 @@ export function getParish(slug: string): Parish | undefined {
 export function listParishes(): Parish[] {
   return Object.values(PARISHES);
 }
+
+export type Sponsor = {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  logoSrc?: string;
+  bannerSrc?: string;
+  website?: string;
+  category: string;
+  location: string;
+  offer?: string;
+  offerDaysLeft?: string;
+  contact: {
+    name: string;
+    email: string;
+    phone?: string;
+  };
+};
+
+export const SPONSORS: Sponsor[] = [
+  {
+    id: "cleveland-hospital",
+    name: "Cleveland Hospital",
+    tagline: "World-class care for your family.",
+    description: "Cleveland Hospital provides comprehensive healthcare services to SKD parishioners and the broader South Florida community. As a ParishMart sponsor, they offer a $100 care credit toward your first visit.",
+    category: "Healthcare",
+    location: "Weston, FL",
+    offer: "$100 credit",
+    offerDaysLeft: "30d left",
+    contact: { name: "Community Relations", email: "community@clevelandhospital.com", phone: "(954) 555-0300" },
+  },
+  {
+    id: "casa-manresa",
+    name: "Casa Manresa",
+    tagline: "Retreat programs for spiritual formation.",
+    description: "Casa Manresa offers retreat programs and spiritual direction connected to the Ignatian tradition. SKD parishioners receive a 15% benefit on retreat registrations.",
+    category: "Spiritual Formation",
+    location: "Miami, FL",
+    offer: "15% retreat benefit",
+    offerDaysLeft: "60d left",
+    contact: { name: "Retreat Office", email: "retreats@casamanresa.org" },
+  },
+  {
+    id: "community-bank-weston",
+    name: "Community Bank Weston",
+    tagline: "Banking built around your community.",
+    description: "Community Bank Weston is a locally-owned financial institution supporting parish families with personal banking, mortgages and small business services.",
+    category: "Finance",
+    location: "Weston, FL",
+    offer: "$50 cash back",
+    offerDaysLeft: "32d left",
+    contact: { name: "Branch Manager", email: "weston@communitybank.com", phone: "(954) 555-0400" },
+  },
+];
+
+export function listSponsors(): Sponsor[] {
+  return SPONSORS;
+}
+
+export function getSponsor(id: string): Sponsor | undefined {
+  return SPONSORS.find((s) => s.id === id);
+}
