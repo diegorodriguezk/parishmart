@@ -301,20 +301,17 @@ export function ParishStorefront({
             </>
           }
         />
+        {/* TODO: wire sponsor cards when fetchSponsors added to page */}
         <div className="grid gap-4 md:grid-cols-3">
-          {[
-            { p: "business" as const, n: "Maria's Studios", d: "Family, retreat and parish event photography for the SKD community.", offer: "10% parishioner benefit" },
-            { p: "praying" as const, n: "Casa Manresa", d: "Retreat programs and services connected to spiritual formation.", offer: "15% retreat support benefit" },
-            { p: "community" as const, n: "Featured Local Sponsor", d: "Mission-aligned business supporting parish causes.", offer: "Up to 8% community offer" },
-          ].map((s) => (
+          {businesses.slice(0, 3).map((b, i) => (
             <FeaturedCommunityCard
-              key={s.n}
-              href="/sponsors/cleveland-hospital"
-              photo={s.p}
+              key={b.id}
+              href={`/sponsors/${b.id}`}
+              photo={i === 0 ? "business" : i === 1 ? "praying" : "community"}
               category="Sponsor"
-              title={s.n}
-              description={s.d}
-              location={s.offer}
+              title={b.name}
+              description={b.description}
+              location={b.location}
             />
           ))}
         </div>

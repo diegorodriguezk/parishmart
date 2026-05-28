@@ -80,10 +80,10 @@ export function CauseProfile({
             </div>
             <div className="flex items-center gap-3 rounded-2xl bg-white/95 p-4 text-pm-navy">
               <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan text-xs font-extrabold text-white">
-                EM
+                {cause.name.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase()}
               </span>
               <div>
-                <p className="text-sm font-bold">{cause.name} · Weston, Florida</p>
+                <p className="text-sm font-bold">{cause.name}{cause.parishSlug ? ` · ${cause.parishSlug.toUpperCase()}` : ""}</p>
                 <p className="text-[11px] text-pm-muted">
                   Retreat ministry connected to the SKD parish community.
                 </p>
@@ -302,7 +302,7 @@ export function CauseProfile({
           {MERCH.map((m) => (
             <Link
               key={m.id}
-              href="/shop/product"
+              href={`/shop/products/${m.id}`}
               className="pm-card group flex flex-col gap-3 overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
             >
               <Photo

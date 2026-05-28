@@ -5,6 +5,17 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CollapsibleDescription } from "@/components/Collapsible";
 import type { Business } from "@/lib/catalog";
 
+function safeHref(url?: string): string | undefined {
+  if (!url) return undefined;
+  const withScheme = /^https?:\/\//i.test(url) ? url : `https://${url}`;
+  try {
+    const u = new URL(withScheme);
+    return u.protocol === "http:" || u.protocol === "https:" ? withScheme : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 export function ServiceBusinessProfile({ business }: { business: Business }) {
   const services = business.services ?? [];
 
@@ -208,8 +219,8 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
 
             {/* CTA */}
             <div className="mt-auto pt-2">
-              {business.website ? (
-                <a href={business.website} target="_blank" rel="noreferrer" className="pm-btn pm-btn-primary">
+              {safeHref(business.website) ? (
+                <a href={safeHref(business.website)} target="_blank" rel="noreferrer" className="pm-btn pm-btn-primary">
                   Contact us
                 </a>
               ) : business.email ? (

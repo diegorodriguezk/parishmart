@@ -1,11 +1,21 @@
 import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import { Photo } from "@/components/Photo";
-import { Section, SectionHeader } from "@/components/Sections";
+import { Section } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CollapsibleSection } from "@/components/Collapsible";
-import { SponsorOfferCard } from "@/components/Cards";
 import type { Sponsor } from "@/lib/catalog";
+
+function safeHref(url?: string): string | undefined {
+  if (!url) return undefined;
+  const withScheme = /^https?:\/\//i.test(url) ? url : `https://${url}`;
+  try {
+    const u = new URL(withScheme);
+    return u.protocol === "http:" || u.protocol === "https:" ? withScheme : undefined;
+  } catch {
+    return undefined;
+  }
+}
 
 export function SponsorProfile({ sponsor }: { sponsor: Sponsor }) {
   return (
@@ -89,7 +99,7 @@ export function SponsorProfile({ sponsor }: { sponsor: Sponsor }) {
             {/* CTAs */}
             <div className="flex flex-wrap gap-3">
               <a
-                href={sponsor.website ?? "https://example.com/offer"}
+                href={safeHref(sponsor.website) ?? "https://example.com"}
                 target="_blank"
                 rel="noreferrer"
                 className="pm-btn pm-btn-primary"
@@ -136,20 +146,7 @@ export function SponsorProfile({ sponsor }: { sponsor: Sponsor }) {
         </div>
       </Section>
 
-      {/* RELATED SPONSOR OFFERS */}
-      <Section width="wide">
-        <SectionHeader
-          title="More sponsor offers"
-          description="Other businesses supporting your parish community."
-          right={<Link href="/sponsors" className="font-bold text-pm-blue">View all →</Link>}
-        />
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          <SponsorOfferCard photo="retreat" initials="MS" title="Maria's Studios" offer="10% cash back" daysLeft="40d left" />
-          <SponsorOfferCard photo="house" initials="BK" title="Community Bank" offer="$50 cash back" daysLeft="32d left" />
-          <SponsorOfferCard photo="food" initials="BG" title="Baires Grill" offer="5% cash back" daysLeft="18d left" />
-          <SponsorOfferCard photo="merch" initials="PM" title="Pretzelmaker" offer="10% cash back" daysLeft="24d left" isNew />
-        </div>
-      </Section>
+      {/* Related sponsors: wire when relatedSponsors prop is available */}
     </>
   );
 }
