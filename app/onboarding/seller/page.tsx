@@ -57,14 +57,14 @@ export default function LocalBizOnboardingIntro() {
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
                 <Link
-                  href="/onboarding/seller/step-1"
+                  href="/onboarding/seller/type"
                   className="pm-btn pm-btn-dark inline-flex items-center gap-1.5"
                 >
                   Start with Concierge
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>
                 <Link
-                  href="/onboarding/seller/step-1"
+                  href="/onboarding/seller/type"
                   className="pm-btn pm-btn-secondary"
                 >
                   Prefer manual setup
