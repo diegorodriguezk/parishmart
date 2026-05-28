@@ -176,7 +176,7 @@ export default async function HomePage() {
                   href="/give/cause"
                   className="pm-btn pm-btn-secondary !px-4 !py-2 text-sm"
                 >
-                  Support SKD
+                  Support Now
                 </Link>
               </div>
             </div>
