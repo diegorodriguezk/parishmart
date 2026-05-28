@@ -10,7 +10,7 @@ const UPLOADS = [
   { label: "Business Logo", hint: "PNG, JPG or SVG" },
   { label: "Banner / Cover Photo", hint: "Business, team or location" },
   { label: "Founder Profile Picture", hint: "Professional headshot" },
-  { label: "Pictures of Services", hint: "Work samples · before/after" },
+  { label: "Pictures of Services", hint: "Work samples · up to 3 pictures" },
   { label: "Video", hint: "Optional · 30-60 second intro · MP4" },
 ];
 
