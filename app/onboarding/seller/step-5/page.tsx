@@ -90,22 +90,6 @@ const PLANS: Plan[] = [
     ],
     cta: "Start Selling",
   },
-  {
-    id: "featured",
-    name: "Featured Supporter",
-    description:
-      "Best for businesses that want premium placement and stronger visibility.",
-    price: "$150",
-    priceSuffix: "/ month",
-    features: [
-      "Everything in Community",
-      "Featured placement",
-      "Parish store footer placement",
-      "Priority support",
-      "Monthly performance summary",
-    ],
-    cta: "Select Featured",
-  },
 ];
 
 function PlanCard({
