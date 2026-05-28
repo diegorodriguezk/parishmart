@@ -1,10 +1,6 @@
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import {
-  SellerPreviewHero,
-  SellerPreviewBody,
-  PreviewLabel,
-} from "@/components/onboarding/SellerPreviewCard";
+import { Photo } from "@/components/Photo";
 
 export const metadata = { title: "Step 1 · Business Profile · ParishMart" };
 
@@ -59,59 +55,144 @@ export default function LocalBizStep1() {
       description="Basic information to identify the business, location, service area and main category."
       preview={
         <>
-          <SellerPreviewHero
-            kind="business"
-            initials="FD"
-            title="Weston Family Dental"
-            subtitle="Family dental practice serving Weston, FL."
-          />
-          <SellerPreviewBody>
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <PreviewLabel>Draft Profile</PreviewLabel>
-                <p className="mt-1 text-base font-extrabold text-pm-navy">
-                  Business profile
-                </p>
-              </div>
-              <span className="rounded-full bg-pm-soft px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-pm-blue">
-                Draft
-              </span>
-            </div>
-            <p className="text-sm text-pm-muted">
-              Once you finish the simple business profile, the page will start
-              showing as a Local Biz Supporter in the community directory.
-            </p>
-            <div className="grid grid-cols-2 gap-2.5">
-              <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-3">
-                <p className="text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
-                  Category
-                </p>
-                <p className="mt-1 text-sm font-extrabold text-pm-navy">
-                  Health &amp; Wellness
-                </p>
-              </div>
-              <div className="rounded-2xl border border-pm-border bg-pm-soft/50 p-3">
-                <p className="text-[10px] font-extrabold uppercase tracking-wider text-pm-muted">
-                  Location
-                </p>
-                <p className="mt-1 text-sm font-extrabold text-pm-navy">
-                  Weston, FL
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center justify-between gap-3 rounded-2xl border border-pm-border bg-pm-soft/40 p-3">
-              <p className="text-xs text-pm-muted">
-                <span className="font-extrabold text-pm-navy">
-                  Service area:
+          {/* HERO — photo with white fade + content */}
+          <div className="relative min-h-[200px] overflow-hidden">
+            <Photo
+              kind="business"
+              ratio="auto"
+              rounded="rounded-none"
+              className="!rounded-none absolute inset-0 h-full"
+              overlay="none"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/10" />
+            <div className="relative flex items-start gap-4 p-5">
+              <div className="flex flex-1 flex-col gap-2.5">
+                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-pm-blue to-pm-cyan text-xs font-extrabold text-white shadow-pm-soft">
+                  MS
                 </span>
-                <br />
-                Weston, Southwest Ranches, Davie, Pembroke Pines.
+                <div>
+                  <h3 className="text-lg font-extrabold leading-tight tracking-tight text-pm-navy">
+                    Maria&rsquo;s Studios
+                  </h3>
+                  <p className="text-[11px] text-pm-muted">
+                    Photography for SKD families, retreats &amp; events.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {["Weston, FL", "Supports Emmaus", "Photography"].map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-pm-border bg-white px-2 py-0.5 text-[9px] font-medium text-pm-navy"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <span className="cursor-default rounded-full bg-pm-navy px-3 py-1.5 text-[10px] font-extrabold text-white">
+                    View Services
+                  </span>
+                  <span className="cursor-default rounded-full border border-pm-border bg-white px-3 py-1.5 text-[10px] font-extrabold text-pm-navy">
+                    Share
+                  </span>
+                </div>
+              </div>
+              <div className="w-28 shrink-0 rounded-[20px] border border-pm-border bg-white p-3 shadow-pm-soft">
+                <p className="text-[10px] font-extrabold text-pm-navy">
+                  Parishioner Coupon
+                </p>
+                <p className="mt-0.5 text-[9px] text-pm-muted">
+                  Exclusive for SKD parishioners.
+                </p>
+                <div className="mt-2 rounded-xl bg-gradient-to-br from-pm-blue to-pm-cyan p-2.5 text-white">
+                  <p className="text-[7px] font-bold uppercase tracking-wider opacity-80">
+                    Community offer
+                  </p>
+                  <p className="text-xl font-extrabold leading-none">10% OFF</p>
+                  <p className="mt-0.5 text-[8px] opacity-90">
+                    Photography sessions.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* FOUNDER — 2 cols text + photo */}
+          <div className="grid grid-cols-[1fr_1fr] border-t border-pm-border">
+            <div className="flex flex-col justify-center gap-2 p-4">
+              <p className="text-[9px] font-bold uppercase tracking-wider text-pm-blue">
+                Meet the founder
               </p>
-              <span className="rounded-xl bg-pm-navy px-2.5 py-2 text-[11px] font-extrabold text-white">
-                Step 2
+              <p className="text-sm font-extrabold text-pm-navy">
+                Maria Gonzalez
+              </p>
+              <p className="text-[10px] text-pm-muted">
+                Founder · Photographer · SKD &amp; Emmaus supporter
+              </p>
+              <p className="text-[10px] leading-relaxed text-pm-muted">
+                Local photographer serving SKD families for over three years,
+                capturing weddings, baptisms and retreats.
+              </p>
+            </div>
+            <div className="relative overflow-hidden">
+              <Photo
+                kind="retreat"
+                ratio="auto"
+                rounded="rounded-none"
+                className="!rounded-none !border-0 absolute inset-0 h-full"
+              />
+            </div>
+          </div>
+
+          {/* SERVICES — video + list */}
+          <div className="grid grid-cols-[1fr_1fr] border-t border-pm-border">
+            <div className="relative min-h-[130px] overflow-hidden">
+              <Photo
+                kind="retreat"
+                ratio="auto"
+                rounded="rounded-none"
+                className="!rounded-none absolute inset-0 h-full"
+                overlay="strong"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-white shadow-pm-card">
+                  <svg
+                    className="h-4 w-4 translate-x-0.5 text-pm-blue"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-1 p-4">
+              <p className="mb-2 text-[9px] font-bold uppercase tracking-wider text-pm-blue">
+                Services
+              </p>
+              {[
+                { name: "Family Photography", price: "From $150" },
+                { name: "Retreat Coverage", price: "From $350" },
+                { name: "Parish Events", price: "Quote" },
+              ].map((s) => (
+                <div
+                  key={s.name}
+                  className="flex items-center justify-between border-b border-pm-border/50 py-1 last:border-0"
+                >
+                  <p className="text-[10px] font-medium text-pm-navy">
+                    {s.name}
+                  </p>
+                  <span className="text-[10px] font-bold text-pm-blue">
+                    {s.price}
+                  </span>
+                </div>
+              ))}
+              <span className="mt-2 cursor-default rounded-full bg-pm-navy py-1.5 text-center text-[10px] font-extrabold text-white">
+                Contact us
               </span>
             </div>
-          </SellerPreviewBody>
+          </div>
         </>
       }
     >
