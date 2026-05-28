@@ -294,27 +294,19 @@ export function getBusiness(id: string): Business | undefined {
   return BUSINESSES.find((b) => b.id === id);
 }
 
-export type CauseKey =
-  | "christ-care-for-all"
-  | "face"
-  | "goyito"
-  | "cam"
-  | "forta"
-  | "marys-hope"
-  | "mater-18"
-  | "miami-presente"
-  | "missionaries-of-hope"
-  | "saint-vincent-de-paul"
-  | "schoenstatt-miami";
+export type CauseKey = string;
 
 export type Cause = {
   key: CauseKey;
   name: string;
   logoSrc: string;
   background: "white" | "dark";
+  parishSlug?: string;
+  tagline?: string;
+  description?: string;
 };
 
-export const CAUSES: Record<CauseKey, Cause> = {
+export const CAUSES: Record<string, Cause> = {
   "christ-care-for-all": {
     key: "christ-care-for-all",
     name: "Christlike Care for All",
@@ -381,14 +373,25 @@ export const CAUSES: Record<CauseKey, Cause> = {
     logoSrc: "/brand/causes/schoenstatt-miami.jpeg",
     background: "white",
   },
+  emmaus: {
+    key: "emmaus",
+    name: "Emmaus Retreat",
+    logoSrc: "/brand/causes/emmaus.png",
+    background: "white",
+    parishSlug: "skd",
+    tagline: "A journey of faith, renewal, friendship and service.",
+    description: "The Emmaus Retreat is an invitation to step away from the noise of everyday life and encounter Jesus in a personal and transformative way. Inspired by the Road to Emmaus, the ministry helps men and women rediscover faith, strengthen community, and return with a renewed desire to serve the parish.",
+  },
 };
 
 export function getCause(key: string): Cause | undefined {
   return CAUSES[key as CauseKey];
 }
 
-export function listCauses(): Cause[] {
-  return Object.values(CAUSES);
+export function listCauses(opts?: { parishSlug?: string }): Cause[] {
+  const all = Object.values(CAUSES);
+  if (opts?.parishSlug) return all.filter((c) => c.parishSlug === opts.parishSlug);
+  return all;
 }
 
 export type Parish = {
