@@ -50,12 +50,6 @@ export function SellerStepShell({
           {/* Top bar */}
           <div className="mb-10 flex items-center justify-between gap-3">
             <Logo />
-            <Link
-              href="/onboarding"
-              className="hidden text-sm font-bold text-pm-blue hover:underline sm:inline"
-            >
-              Save &amp; Exit
-            </Link>
           </div>
 
           {/* Step label + optional badge */}

@@ -47,14 +47,8 @@ export default function SellerTypeChooser() {
   return (
     <main className="min-h-dvh bg-gradient-to-br from-white via-pm-soft to-white">
       <div className="mx-auto max-w-[1320px] px-4 py-8 sm:px-6 lg:py-12">
-        <div className="mb-8 flex items-center justify-between gap-3">
+        <div className="mb-8 flex items-center gap-3">
           <Logo />
-          <Link
-            href="/onboarding"
-            className="hidden text-sm font-bold text-pm-blue hover:underline sm:inline"
-          >
-            Save &amp; Exit
-          </Link>
         </div>
 
         <div className="mx-auto max-w-3xl space-y-8">
@@ -67,16 +61,11 @@ export default function SellerTypeChooser() {
           </Link>
 
           <div className="text-center">
-            <p className="text-[10px] font-extrabold uppercase tracking-widest text-pm-muted">
-              Step 2 of 2 · Seller or Business
-            </p>
+            
             <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-pm-navy sm:text-4xl">
               What best describes what you offer?
             </h2>
-            <p className="mx-auto mt-3 max-w-md text-sm text-pm-muted">
-              This helps us point you to the right setup flow. You can always
-              expand your presence later.
-            </p>
+            
           </div>
 
           <div className="grid grid-cols-2 gap-4">
