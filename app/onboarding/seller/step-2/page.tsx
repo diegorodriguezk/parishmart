@@ -41,8 +41,8 @@ export default function SellerStep2() {
                 placeholder="e.g. Saint Katharine Drexel"
                 className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
             </label>
-          </div>
-        <div className="grid gap-4">
+        </div>
+        <div className="grid gap-4 mt-4">
           <label className="block">
             <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
               Short Founder Description

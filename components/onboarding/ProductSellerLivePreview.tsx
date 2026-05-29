@@ -120,7 +120,11 @@ export function ProductSellerLivePreview() {
           <div className="grid grid-cols-4 gap-1.5">
             {profile.products.slice(0, 4).map((p, i) => (
               <div key={i} className="overflow-hidden rounded-xl border border-pm-border">
-                <Photo kind="merch" ratio="1/1" rounded="rounded-none" className="!rounded-none" />
+                {p.images[0] ? (
+                  <img src={p.images[0]} alt={p.title || "Product"} className="aspect-square w-full object-cover" />
+                ) : (
+                  <Photo kind="merch" ratio="1/1" rounded="rounded-none" className="!rounded-none" />
+                )}
                 {p.title && (
                   <div className="p-1">
                     <p className="truncate text-[8px] font-bold text-pm-navy">{p.title}</p>

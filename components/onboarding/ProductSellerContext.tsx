@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { createEmptyProduct, MAX_PRODUCTS, normalizeProduct } from "./productCsv";
 
 export type ProductItem = {
   title: string;
@@ -16,10 +17,11 @@ export type ProductItem = {
   discountPrice: string;
   category: string;
   type: "Physical" | "Digital" | "";
-  variations: { color: boolean; size: boolean; material: boolean };
+  variations: { color: boolean; size: boolean };
   inventory: string;
   dimensions: string;
   weight: string;
+  images: string[];
 };
 
 export type ProductSellerProfile = {
@@ -49,19 +51,6 @@ export type ProductSellerProfile = {
   selectedPlan: string;
 };
 
-const DEFAULT_PRODUCT: ProductItem = {
-  title: "",
-  details: "",
-  price: "",
-  discountPrice: "",
-  category: "",
-  type: "Physical",
-  variations: { color: false, size: false, material: false },
-  inventory: "",
-  dimensions: "",
-  weight: "",
-};
-
 export const DEFAULT_PRODUCT_SELLER: ProductSellerProfile = {
   businessName: "Harps Club",
   contactFullName: "Sarah Martinez",
@@ -84,10 +73,7 @@ export const DEFAULT_PRODUCT_SELLER: ProductSellerProfile = {
     "We want to serve families in our area and contribute to the parish community through meaningful products.",
   founderShortDesc:
     "As a mom, wellness advocate and parish volunteer, Sarah created Harps Club to make meaningful merchandise accessible for families and faith-based causes.",
-  products: [
-    { title: "Harps Club Tote", details: "Canvas tote with parish logo", price: "$28", discountPrice: "", category: "Accessories", type: "Physical", variations: { color: true, size: false, material: false }, inventory: "50", dimensions: "", weight: "" },
-    { title: "Parish Crewneck", details: "Soft fleece crewneck sweatshirt", price: "$55", discountPrice: "$45", category: "Apparel", type: "Physical", variations: { color: true, size: true, material: false }, inventory: "30", dimensions: "", weight: "" },
-  ],
+  products: [createEmptyProduct()],
   deliveryMethods: ["Local Delivery", "Pickup"],
   selectedPlan: "seller",
 };
@@ -96,6 +82,7 @@ type ProductSellerCtx = {
   profile: ProductSellerProfile;
   update: (patch: Partial<ProductSellerProfile>) => void;
   updateProduct: (index: number, patch: Partial<ProductItem>) => void;
+  replaceProducts: (products: ProductItem[]) => void;
   addProduct: () => void;
   removeProduct: (index: number) => void;
 };
@@ -110,7 +97,16 @@ export function ProductSellerProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) setProfile({ ...DEFAULT_PRODUCT_SELLER, ...JSON.parse(stored) });
+      if (stored) {
+        const parsed = JSON.parse(stored) as Partial<ProductSellerProfile>;
+        setProfile({
+          ...DEFAULT_PRODUCT_SELLER,
+          ...parsed,
+          products: (parsed.products?.length ? parsed.products : DEFAULT_PRODUCT_SELLER.products)
+            .slice(0, MAX_PRODUCTS)
+            .map(normalizeProduct),
+        });
+      }
     } catch { /* ignore */ }
     setHydrated(true);
   }, []);
@@ -126,10 +122,17 @@ export function ProductSellerProvider({ children }: { children: ReactNode }) {
     updateProduct: (index, patch) =>
       setProfile((p) => ({
         ...p,
-        products: p.products.map((item, i) => i === index ? { ...item, ...patch } : item),
+        products: p.products.map((item, i) => i === index ? normalizeProduct({ ...item, ...patch }) : item),
+      })),
+    replaceProducts: (products) =>
+      setProfile((p) => ({
+        ...p,
+        products: products.slice(0, MAX_PRODUCTS).map(normalizeProduct),
       })),
     addProduct: () =>
-      setProfile((p) => ({ ...p, products: [...p.products, { ...DEFAULT_PRODUCT }] })),
+      setProfile((p) => p.products.length >= MAX_PRODUCTS
+        ? p
+        : { ...p, products: [...p.products, createEmptyProduct()] }),
     removeProduct: (index) =>
       setProfile((p) => ({ ...p, products: p.products.filter((_, i) => i !== index) })),
   }), [profile]);
