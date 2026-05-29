@@ -4,22 +4,11 @@ import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
+import { MediaUploadCard } from "@/components/onboarding/MediaUploadCard";
 
 const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
 
 const EVENT_CATEGORIES = ["Retreat", "Workshop", "Fundraiser", "Service", "Social", "Other"];
-
-function UploadBox({ label, hint }: { label: string; hint: string }) {
-  return (
-    <div className="mt-1.5 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-pm-border bg-pm-soft/40 p-6 text-center transition-colors hover:border-pm-blue hover:bg-pm-soft">
-      <svg className="h-6 w-6 text-pm-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-      </svg>
-      <p className="text-xs font-bold text-pm-navy">{label}</p>
-      <p className="text-[11px] text-pm-muted">{hint}</p>
-    </div>
-  );
-}
 
 export default function CauseStep3() {
   const { profile, update } = useCause();
@@ -51,56 +40,66 @@ export default function CauseStep3() {
         {/* DONATIONS */}
         <p className="text-sm font-extrabold text-pm-navy">Donations</p>
         <div className="mt-3 grid gap-4 sm:grid-cols-2">
-          <label className="block">
-            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-              Title
-              <span className="font-normal text-pm-muted">{profile.donationTitle.length}/30</span>
-            </span>
-            <input maxLength={30} value={profile.donationTitle} onChange={(e) => update({ donationTitle: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
-          <label className="block row-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Donation Image</span>
-            <UploadBox label="Upload donation image" hint="1:1 · min 400×400px" />
-          </label>
-          <label className="block">
-            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-              Brief description
-              <span className="font-normal text-pm-muted">{profile.donationDescription.length}/100</span>
-            </span>
-            <textarea rows={2} maxLength={100} value={profile.donationDescription} onChange={(e) => update({ donationDescription: e.target.value })}
-              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
+          <div className="grid content-start gap-4">
+            <label className="block">
+              <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                Title
+                <span className="font-normal text-pm-muted">{profile.donationTitle.length}/30</span>
+              </span>
+              <input maxLength={30} value={profile.donationTitle} onChange={(e) => update({ donationTitle: e.target.value })}
+                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+            </label>
+            <label className="block">
+              <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                Brief description
+                <span className="font-normal text-pm-muted">{profile.donationDescription.length}/100</span>
+              </span>
+              <textarea rows={2} maxLength={100} value={profile.donationDescription} onChange={(e) => update({ donationDescription: e.target.value })}
+                className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
+            </label>
+          </div>
+          <MediaUploadCard
+            eyebrow="Donation"
+            title="Donation Image"
+            description="A square image that represents this donation ask — the people or program it funds."
+            action="Upload Image"
+            badge="Optional"
+          />
         </div>
 
         {/* UPCOMING EVENTS */}
         <p className="mt-8 text-sm font-extrabold text-pm-navy">Upcoming Events</p>
         <div className="mt-3 grid gap-4 sm:grid-cols-2">
-          <label className="block">
-            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-              Title
-              <span className="font-normal text-pm-muted">{profile.eventTitle.length}/30</span>
-            </span>
-            <input maxLength={30} value={profile.eventTitle} onChange={(e) => update({ eventTitle: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
-          <label className="block row-span-3">
-            <span className="block text-xs font-extrabold text-pm-navy">Event Image</span>
-            <UploadBox label="Upload event image" hint="16:9 · min 1280×720px" />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Location</span>
-            <input value={profile.eventLocation} onChange={(e) => update({ eventLocation: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
-          <label className="block">
-            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-              Brief description
-              <span className="font-normal text-pm-muted">{profile.eventDescription.length}/100</span>
-            </span>
-            <textarea rows={2} maxLength={100} value={profile.eventDescription} onChange={(e) => update({ eventDescription: e.target.value })}
-              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
+          <div className="grid content-start gap-4">
+            <label className="block">
+              <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                Title
+                <span className="font-normal text-pm-muted">{profile.eventTitle.length}/30</span>
+              </span>
+              <input maxLength={30} value={profile.eventTitle} onChange={(e) => update({ eventTitle: e.target.value })}
+                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+            </label>
+            <label className="block">
+              <span className="block text-xs font-extrabold text-pm-navy">Location</span>
+              <input value={profile.eventLocation} onChange={(e) => update({ eventLocation: e.target.value })}
+                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+            </label>
+            <label className="block">
+              <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                Brief description
+                <span className="font-normal text-pm-muted">{profile.eventDescription.length}/100</span>
+              </span>
+              <textarea rows={2} maxLength={100} value={profile.eventDescription} onChange={(e) => update({ eventDescription: e.target.value })}
+                className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
+            </label>
+          </div>
+          <MediaUploadCard
+            eyebrow="Event"
+            title="Event Image"
+            description="A wide cover photo for this event — 16:9 works best for the event banner."
+            action="Upload Image"
+            badge="Optional"
+          />
         </div>
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <label className="block">
