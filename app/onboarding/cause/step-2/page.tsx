@@ -36,7 +36,7 @@ export default function CauseStep2() {
 
         <label className="block">
           <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-            Long Cause Description
+            Long Description
             <span className="font-normal text-pm-muted">{profile.longDescription.length}/2600</span>
           </span>
           <textarea

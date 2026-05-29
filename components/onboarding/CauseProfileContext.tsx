@@ -32,6 +32,7 @@ export type CauseProfile = {
   city: string;
   state: string;
   country: string;
+  tagline: string;
   shortDescription: string;
   associatedParish: string;
   // step 2 — story
@@ -62,6 +63,7 @@ export const DEFAULT_CAUSE: CauseProfile = {
   city: "Weston",
   state: "FL",
   country: "United States",
+  tagline: "Transforming lives one retreat weekend at a time.",
   shortDescription:
     "An annual men's spiritual retreat rooted in community, faith and brotherhood — transforming lives one weekend at a time.",
   associatedParish: "Saint Katharine Drexel Catholic Parish",

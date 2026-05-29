@@ -43,9 +43,9 @@ export function CauseLivePreview() {
             <h3 className="text-lg font-extrabold leading-tight">
               {profile.causeName || <span className="text-white/50">Your Cause Name</span>}
             </h3>
-            {profile.shortDescription && (
+            {(profile.tagline || profile.shortDescription) && (
               <p className="mt-1 line-clamp-2 text-[11px] text-white/80">
-                {profile.shortDescription}
+                {profile.tagline || profile.shortDescription}
               </p>
             )}
             <div className="mt-3 flex gap-2">
@@ -60,15 +60,22 @@ export function CauseLivePreview() {
         </div>
       </div>
 
-      {/* About — long description */}
-      {profile.longDescription && (
+      {/* About — mission + long description */}
+      {(profile.shortDescription || profile.longDescription) && (
         <div className="border-t border-pm-border p-4">
           <p className="text-[9px] font-bold uppercase tracking-wider text-pm-blue">
             About {profile.causeName || "the Cause"}
           </p>
-          <p className="mt-1.5 line-clamp-4 text-[11px] leading-relaxed text-pm-muted">
-            {profile.longDescription}
-          </p>
+          {profile.shortDescription && (
+            <p className="mt-1.5 line-clamp-2 text-[10px] font-semibold leading-relaxed text-pm-navy">
+              {profile.shortDescription}
+            </p>
+          )}
+          {profile.longDescription && (
+            <p className="mt-1 line-clamp-4 text-[11px] leading-relaxed text-pm-muted">
+              {profile.longDescription}
+            </p>
+          )}
         </div>
       )}
 

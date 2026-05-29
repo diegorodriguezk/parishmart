@@ -51,12 +51,12 @@ export default function CauseStep4() {
         <p className="text-sm font-extrabold text-pm-navy">Media</p>
         <div className="mt-3 grid gap-4 sm:grid-cols-2">
           <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Logo</span>
-            <UploadBox label="Upload logo" hint="1:1 · min 400×400px" />
+            <span className="block text-xs font-extrabold text-pm-navy">Logo / Icon</span>
+            <UploadBox label="Upload logo / icon" hint="1:1 · min 400×400px" />
           </label>
           <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Banner</span>
-            <UploadBox label="Upload banner" hint="16:9 · min 1280×720px" />
+            <span className="block text-xs font-extrabold text-pm-navy">Banner Photo</span>
+            <UploadBox label="Upload banner photo" hint="16:9 · min 1280×720px" />
           </label>
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">Pictures</span>

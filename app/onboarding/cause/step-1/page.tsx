@@ -38,13 +38,26 @@ export default function CauseStep1() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Cause Name</span>
+            <span className="block text-xs font-extrabold text-pm-navy">Cause / Ministry Name</span>
             <input value={profile.causeName} onChange={(e) => update({ causeName: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">Contact Full Name</span>
             <input value={profile.contactFullName} onChange={(e) => update({ contactFullName: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Category</span>
+            <select value={profile.category} onChange={(e) => update({ category: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue">
+              <option value="">Select category</option>
+              {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
+            </select>
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Address</span>
+            <input value={profile.address} onChange={(e) => update({ address: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block">
@@ -65,11 +78,6 @@ export default function CauseStep1() {
               placeholder="yoursite.org or @handle"
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
-          <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Address</span>
-            <input value={profile.address} onChange={(e) => update({ address: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">City</span>
             <input value={profile.city} onChange={(e) => update({ city: e.target.value })}
@@ -86,13 +94,13 @@ export default function CauseStep1() {
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Associated Parish <span className="font-normal text-pm-muted">(optional)</span></span>
-            <input value={profile.associatedParish} onChange={(e) => update({ associatedParish: e.target.value })}
+            <span className="block text-xs font-extrabold text-pm-navy">Cause / Ministry Tagline</span>
+            <input value={profile.tagline} onChange={(e) => update({ tagline: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block sm:col-span-2">
             <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-              Short Cause Description / Headline
+              Short Description / Mission Statement
               <span className="font-normal text-pm-muted">{profile.shortDescription.length}/220</span>
             </span>
             <textarea rows={3} maxLength={220}
@@ -100,25 +108,11 @@ export default function CauseStep1() {
               onChange={(e) => update({ shortDescription: e.target.value })}
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
           </label>
-        </div>
-
-        <p className="mb-3 mt-7 text-xs font-bold text-pm-navy">Cause Category</p>
-        <div className="flex flex-wrap gap-2">
-          {CATEGORIES.map((c) => (
-            <label
-              key={c}
-              className="flex cursor-pointer items-center gap-2 rounded-full border border-pm-border bg-white px-3.5 py-2 text-sm font-medium text-pm-navy has-[:checked]:border-pm-blue has-[:checked]:bg-pm-soft"
-            >
-              <input
-                type="radio"
-                name="category"
-                checked={profile.category === c}
-                onChange={() => update({ category: c })}
-                className="sr-only"
-              />
-              {c}
-            </label>
-          ))}
+          <label className="block sm:col-span-2">
+            <span className="block text-xs font-extrabold text-pm-navy">Associated Parish <span className="font-normal text-pm-muted">(optional)</span></span>
+            <input value={profile.associatedParish} onChange={(e) => update({ associatedParish: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
         </div>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
