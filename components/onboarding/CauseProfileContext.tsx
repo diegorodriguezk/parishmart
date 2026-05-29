@@ -9,15 +9,15 @@ import {
   type ReactNode,
 } from "react";
 
-export const STARTER_MERCH: { name: string; src: string }[] = [
+export const STARTER_MERCH: { name: string; src: string; faith?: boolean }[] = [
   { name: "Cause Tee", src: "/brand/products/crew-harps.png" },
   { name: "Hoodie", src: "/brand/products/jacket-men.png" },
   { name: "Tote Bag", src: "/brand/products/tote-harps.png" },
-  { name: "Candle", src: "/brand/products/unity-candleholder.jpg" },
   { name: "Cap", src: "/brand/products/cap-harps.png" },
-  { name: "Rosary", src: "/brand/products/rosary.jpg" },
-  { name: "Keepsake Dish", src: "/brand/products/keepsake-dish.jpg" },
-  { name: "Crucifix", src: "/brand/products/saint-benedict-crucifix.jpg" },
+  { name: "Candle", src: "/brand/products/unity-candleholder.jpg", faith: true },
+  { name: "Rosary", src: "/brand/products/rosary.jpg", faith: true },
+  { name: "Keepsake Dish", src: "/brand/products/keepsake-dish.jpg", faith: true },
+  { name: "Crucifix", src: "/brand/products/saint-benedict-crucifix.jpg", faith: true },
 ];
 
 export type CauseProfile = {
@@ -48,6 +48,7 @@ export type CauseProfile = {
   eventSpots: string;
   // step 4 — collection
   starterCollection: string[];
+  showFaithGifts: boolean;
   // step 5 — launch
   selectedPlan: string;
 };
@@ -79,14 +80,18 @@ export const DEFAULT_CAUSE: CauseProfile = {
   eventCategory: "Retreat",
   eventPrice: "$150",
   eventSpots: "40",
-  starterCollection: ["Cause Tee", "Hoodie", "Tote Bag", "Candle"],
+  starterCollection: ["Cause Tee", "Hoodie", "Tote Bag", "Cap"],
+  showFaithGifts: false,
   selectedPlan: "cause",
 };
+
+const FAITH_NAMES = new Set(STARTER_MERCH.filter((m) => m.faith).map((m) => m.name));
 
 type CauseCtx = {
   profile: CauseProfile;
   update: (patch: Partial<CauseProfile>) => void;
   toggleCollection: (item: string) => void;
+  setShowFaithGifts: (show: boolean) => void;
 };
 
 const Ctx = createContext<CauseCtx | null>(null);
@@ -118,6 +123,14 @@ export function CauseProfileProvider({ children }: { children: ReactNode }) {
         starterCollection: p.starterCollection.includes(item)
           ? p.starterCollection.filter((i) => i !== item)
           : [...p.starterCollection, item],
+      })),
+    setShowFaithGifts: (show) =>
+      setProfile((p) => ({
+        ...p,
+        showFaithGifts: show,
+        starterCollection: show
+          ? p.starterCollection
+          : p.starterCollection.filter((name) => !FAITH_NAMES.has(name)),
       })),
   }), [profile]);
 

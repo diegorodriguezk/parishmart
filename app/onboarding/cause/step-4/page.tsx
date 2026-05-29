@@ -4,24 +4,38 @@ import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause, STARTER_MERCH } from "@/components/onboarding/CauseProfileContext";
+import { MediaUploadCard } from "@/components/onboarding/MediaUploadCard";
 import { Photo } from "@/components/Photo";
 
 const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
 
-function UploadBox({ label, hint }: { label: string; hint: string }) {
-  return (
-    <div className="mt-1.5 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-pm-border bg-pm-soft/40 p-6 text-center transition-colors hover:border-pm-blue hover:bg-pm-soft">
-      <svg className="h-6 w-6 text-pm-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-      </svg>
-      <p className="text-xs font-bold text-pm-navy">{label}</p>
-      <p className="text-[11px] text-pm-muted">{hint}</p>
-    </div>
-  );
-}
+const MEDIA_CARDS = [
+  {
+    eyebrow: "Logo / Icon",
+    title: "Cause Logo or Icon",
+    description: "Upload a square or horizontal logo. A clean mark helps your page look professional.",
+    action: "Upload Logo",
+    badge: "Required",
+  },
+  {
+    eyebrow: "Banner",
+    title: "Banner Photo",
+    description: "A wide cover photo for the top of your cause page that explains your mission.",
+    action: "Upload Photo",
+    badge: "Required",
+  },
+  {
+    eyebrow: "Pictures",
+    title: "Cause Pictures",
+    description: "Add up to 6 photos of your community, events or the impact you create.",
+    action: "Add Photos",
+    badge: "Optional",
+  },
+];
 
 export default function CauseStep4() {
-  const { profile, toggleCollection } = useCause();
+  const { profile, toggleCollection, setShowFaithGifts } = useCause();
+  const visibleMerch = STARTER_MERCH.filter((m) => profile.showFaithGifts || !m.faith);
 
   return (
     <SellerStepShell
@@ -50,29 +64,42 @@ export default function CauseStep4() {
         {/* MEDIA */}
         <p className="text-sm font-extrabold text-pm-navy">Media</p>
         <div className="mt-3 grid gap-4 sm:grid-cols-2">
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Logo / Icon</span>
-            <UploadBox label="Upload logo / icon" hint="1:1 · min 400×400px" />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Banner Photo</span>
-            <UploadBox label="Upload banner photo" hint="16:9 · min 1280×720px" />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Pictures</span>
-            <UploadBox label="Upload pictures" hint="Up to 6 images · JPG or PNG" />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Video <span className="font-normal text-pm-muted">(optional)</span></span>
-            <UploadBox label="Upload video or paste link" hint="MP4 or YouTube/Vimeo URL" />
-          </label>
+          {MEDIA_CARDS.map((c) => (
+            <MediaUploadCard key={c.eyebrow} {...c} />
+          ))}
+        </div>
+
+        {/* FAITH GIFTS TOGGLE */}
+        <div className="mt-8 flex items-center justify-between gap-4 rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
+          <div>
+            <p className="text-sm font-bold text-pm-navy">Do you want to showcase religious and faith gifts?</p>
+            <p className="mt-0.5 text-xs text-pm-muted">
+              Adds rosaries, crucifixes, candles and devotional keepsakes to your starter collection.
+            </p>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={profile.showFaithGifts}
+            aria-label="Showcase religious and faith gifts"
+            onClick={() => setShowFaithGifts(!profile.showFaithGifts)}
+            className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
+              profile.showFaithGifts ? "bg-pm-blue" : "bg-pm-border"
+            }`}
+          >
+            <span
+              className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${
+                profile.showFaithGifts ? "translate-x-5" : "translate-x-0.5"
+              }`}
+            />
+          </button>
         </div>
 
         {/* STARTER COLLECTION */}
-        <p className="mt-8 text-sm font-extrabold text-pm-navy">Select your starter collection</p>
+        <p className="mt-6 text-sm font-extrabold text-pm-navy">Select your starter collection</p>
         <p className="mt-1 text-xs text-pm-muted">Choose the merch supporters can buy to fund your cause.</p>
         <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {STARTER_MERCH.map((m) => {
+          {visibleMerch.map((m) => {
             const selected = profile.starterCollection.includes(m.name);
             return (
               <button
