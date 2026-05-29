@@ -8,14 +8,67 @@ import { Photo } from "@/components/Photo";
 
 const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
 
-function UploadBox({ label, hint }: { label: string; hint: string }) {
+const MEDIA_CARDS = [
+  {
+    eyebrow: "Logo / Icon",
+    title: "Cause Logo or Icon",
+    description: "Upload a square or horizontal logo. A clean mark helps your page look professional.",
+    action: "Upload Logo",
+    badge: "Required",
+  },
+  {
+    eyebrow: "Banner",
+    title: "Banner Photo",
+    description: "A wide cover photo for the top of your cause page that explains your mission.",
+    action: "Upload Photo",
+    badge: "Required",
+  },
+  {
+    eyebrow: "Pictures",
+    title: "Cause Pictures",
+    description: "Add up to 6 photos of your community, events or the impact you create.",
+    action: "Add Photos",
+    badge: "Optional",
+  },
+  {
+    eyebrow: "Video",
+    title: "Short Intro Video",
+    description: "A 20–40 second welcome video can be added later. Do not block activation.",
+    action: "Add Later",
+    badge: "Optional",
+  },
+];
+
+function MediaCard({
+  eyebrow,
+  title,
+  description,
+  action,
+  badge,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+  action: string;
+  badge: string;
+}) {
   return (
-    <div className="mt-1.5 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-pm-border bg-pm-soft/40 p-6 text-center transition-colors hover:border-pm-blue hover:bg-pm-soft">
-      <svg className="h-6 w-6 text-pm-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-      </svg>
-      <p className="text-xs font-bold text-pm-navy">{label}</p>
-      <p className="text-[11px] text-pm-muted">{hint}</p>
+    <div className="flex flex-col rounded-2xl border border-pm-border bg-white p-5 shadow-pm-soft">
+      <div className="flex items-start justify-between gap-2">
+        <span className="text-[11px] font-bold uppercase tracking-wider text-pm-muted">{eyebrow}</span>
+        <span className="rounded-full bg-pm-soft px-2.5 py-0.5 text-[10px] font-bold text-pm-blue">{badge}</span>
+      </div>
+      <h4 className="mt-2 text-base font-extrabold text-pm-navy">{title}</h4>
+      <p className="mt-1 flex-1 text-sm leading-relaxed text-pm-muted">{description}</p>
+      <button
+        type="button"
+        className="mt-4 inline-flex w-fit items-center gap-2 rounded-xl border border-pm-border bg-white px-4 py-2 text-sm font-bold text-pm-blue transition-colors hover:border-pm-blue hover:bg-pm-soft"
+      >
+        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+        </svg>
+        {action}
+      </button>
     </div>
   );
 }
@@ -51,22 +104,9 @@ export default function CauseStep4() {
         {/* MEDIA */}
         <p className="text-sm font-extrabold text-pm-navy">Media</p>
         <div className="mt-3 grid gap-4 sm:grid-cols-2">
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Logo / Icon</span>
-            <UploadBox label="Upload logo / icon" hint="1:1 · min 400×400px" />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Banner Photo</span>
-            <UploadBox label="Upload banner photo" hint="16:9 · min 1280×720px" />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Pictures</span>
-            <UploadBox label="Upload pictures" hint="Up to 6 images · JPG or PNG" />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Video <span className="font-normal text-pm-muted">(optional)</span></span>
-            <UploadBox label="Upload video or paste link" hint="MP4 or YouTube/Vimeo URL" />
-          </label>
+          {MEDIA_CARDS.map((c) => (
+            <MediaCard key={c.eyebrow} {...c} />
+          ))}
         </div>
 
         {/* FAITH GIFTS TOGGLE */}
