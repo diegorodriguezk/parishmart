@@ -332,7 +332,7 @@ export default function SellerStep3() {
           </div>
           <label className="mt-4 flex cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-pm-blue/40 bg-white px-4 py-5 text-center transition hover:border-pm-blue hover:bg-white/80">
             <span className="text-sm font-bold text-pm-blue">Upload CSV</span>
-            <span className="mt-1 text-xs text-pm-muted">Imports up to {MAX_PRODUCTS} products and replaces the current product list.</span>
+            <span className="mt-1 text-xs text-pm-muted">The upload will save all products but only preview the first {MAX_PRODUCTS} products.</span>
             <input
               type="file"
               accept=".csv,text/csv"
