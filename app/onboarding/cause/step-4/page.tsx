@@ -21,7 +21,8 @@ function UploadBox({ label, hint }: { label: string; hint: string }) {
 }
 
 export default function CauseStep4() {
-  const { profile, toggleCollection } = useCause();
+  const { profile, toggleCollection, setShowFaithGifts } = useCause();
+  const visibleMerch = STARTER_MERCH.filter((m) => profile.showFaithGifts || !m.faith);
 
   return (
     <SellerStepShell
@@ -68,11 +69,37 @@ export default function CauseStep4() {
           </label>
         </div>
 
+        {/* FAITH GIFTS TOGGLE */}
+        <div className="mt-8 flex items-center justify-between gap-4 rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
+          <div>
+            <p className="text-sm font-bold text-pm-navy">Do you want to showcase religious and faith gifts?</p>
+            <p className="mt-0.5 text-xs text-pm-muted">
+              Adds rosaries, crucifixes, candles and devotional keepsakes to your starter collection.
+            </p>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={profile.showFaithGifts}
+            aria-label="Showcase religious and faith gifts"
+            onClick={() => setShowFaithGifts(!profile.showFaithGifts)}
+            className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
+              profile.showFaithGifts ? "bg-pm-blue" : "bg-pm-border"
+            }`}
+          >
+            <span
+              className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${
+                profile.showFaithGifts ? "translate-x-5" : "translate-x-0.5"
+              }`}
+            />
+          </button>
+        </div>
+
         {/* STARTER COLLECTION */}
-        <p className="mt-8 text-sm font-extrabold text-pm-navy">Select your starter collection</p>
+        <p className="mt-6 text-sm font-extrabold text-pm-navy">Select your starter collection</p>
         <p className="mt-1 text-xs text-pm-muted">Choose the merch supporters can buy to fund your cause.</p>
         <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {STARTER_MERCH.map((m) => {
+          {visibleMerch.map((m) => {
             const selected = profile.starterCollection.includes(m.name);
             return (
               <button
