@@ -23,7 +23,7 @@ export default function StoresMinistriesPage() {
             <span className="pm-gradient-text">purpose.</span>
           </>
         }
-        heroDescription="Discover the ministries, retreats and outreach communities at Saint Katharine Drexel. Each one connects parishioners with formation, service and faith."
+        heroDescription="Discover the ministries, retreats and outreach causes at Saint Katharine Drexel. Each one connects parishioners with formation, service and faith."
         searchPlaceholder="Search SKD ministries, retreats, missions and outreach…"
         parish="skd"
       />

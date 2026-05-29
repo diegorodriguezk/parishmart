@@ -45,7 +45,7 @@ export function SponsorRecruitSection() {
           </h3>
           <p className="mt-1 max-w-sm text-xs text-white/85">
             Apply to become a ParishMart sponsor and reach parishes, ministries
-            and local communities aligned with your brand.
+            and local causes aligned with your brand.
           </p>
           <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-bold text-pm-navy">
             Apply now

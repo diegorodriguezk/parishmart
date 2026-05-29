@@ -93,7 +93,7 @@ export default function AboutUsPage() {
               ParishMart is the first Catholic marketplace that connects parishes,
               causes and faith-driven entrepreneurs — a new revenue and engagement
               ecosystem that helps parishes and causes turn commerce into recurring
-              support and stronger communities.
+              support and stronger causes.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/onboarding" className="pm-btn pm-btn-primary">
@@ -103,7 +103,7 @@ export default function AboutUsPage() {
                 href="/communities"
                 className="pm-btn bg-white/15 text-white hover:bg-white/25"
               >
-                Explore communities
+                Explore Causes
               </Link>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function AboutUsPage() {
             </h2>
             <p className="mt-3 text-sm text-pm-muted">
               To inspire a movement where purpose-driven commerce fuels generosity
-              — enabling missions to flourish, communities to thrive and local
+              — enabling missions to flourish, causes to thrive and local
               businesses to succeed through shared purpose and meaningful support.
             </p>
             <p className="mt-3 text-sm text-pm-muted">
@@ -155,8 +155,8 @@ export default function AboutUsPage() {
             </h2>
             <p className="mt-4 text-sm text-pm-muted">
               ParishMart was born from a simple insight: parishes, missionaries
-              and faith-driven entrepreneurs were already serving their
-              communities — they just needed a way for everyday commerce to
+              and faith-driven entrepreneurs were already advancing causes —
+              they just needed a way for everyday commerce to
               support that work in a sustainable, organized way.
             </p>
             <p className="mt-3 text-sm text-pm-muted">
@@ -168,7 +168,7 @@ export default function AboutUsPage() {
             </p>
             <p className="mt-3 text-sm text-pm-muted">
               When you buy, sell or support ParishMart, you help build stronger
-              communities and bring faith to life through action.
+              causes and bring faith to life through action.
             </p>
           </div>
           <Photo kind="community" ratio="4/3" rounded="rounded-3xl" />
@@ -221,7 +221,7 @@ export default function AboutUsPage() {
       <Section width="wide">
         <SectionHeader
           title="Trusted by parishes and apostolic movements"
-          description="ParishMart is helping faith-driven communities turn engagement into tangible support."
+          description="ParishMart is helping faith-driven causes turn engagement into tangible support."
         />
         <div className="grid gap-4 md:grid-cols-2">
           <figure className="pm-card p-6">

@@ -35,7 +35,7 @@ export default async function SearchPage({
       <Section width="wide">
         <DarkPanel
           title="No exact match? Keep the journey alive."
-          description="When there's no exact result, ParishMart suggests related communities, causes and stores instead of showing a dead end."
+          description="When there's no exact result, ParishMart suggests related causes and stores instead of showing a dead end."
         />
       </Section>
 

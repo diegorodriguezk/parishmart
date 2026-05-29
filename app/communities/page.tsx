@@ -14,7 +14,7 @@ import { SponsorBanner } from "@/components/sponsors/SponsorBanner";
 import { SponsorRecruitSection } from "@/components/sponsors/SponsorRecruitSection";
 
 export const metadata = {
-  title: "Communities · Parishes & Causes · ParishMart",
+  title: "Causes · Parishes & Causes · ParishMart",
 };
 
 export default function CommunitiesPage() {
@@ -24,20 +24,20 @@ export default function CommunitiesPage() {
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Communities" }]}
+          items={[{ label: "Home", href: "/" }, { label: "Causes" }]}
         />
       </Section>
 
       <Section width="wide" className="!pt-2 !pb-3">
         <div className="pm-card relative grid gap-0 overflow-hidden lg:grid-cols-[1.5fr_1fr]">
           <div className="flex flex-col justify-center gap-4 p-6 sm:p-10">
-            <span className="pm-kicker w-fit">Communities</span>
+            <span className="pm-kicker w-fit">Causes</span>
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-5xl">
-              Communities connected through{" "}
+              Causes connected through{" "}
               <span className="pm-gradient-text">purpose.</span>
             </h1>
             <p className="max-w-md text-sm text-pm-muted">
-              Discover parishes, causes and communities — and the everyday
+              Discover parishes and causes — and the everyday
               giving and local support that connect them back to clear, real
               impact.
             </p>

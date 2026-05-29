@@ -77,7 +77,7 @@ export default function ShareImpactPage() {
         <div className="grid gap-5 md:grid-cols-2">
           {[
             { p: "house", t: "Emmaus Retreat", k: "SKD Weston · Community Impact", body: "Your impact helped support:", desc: "Retreat formation, scholarships, hospitality and future Emmaus experiences for the SKD community.", stats: [ { l: "Cause", v: "Emmaus" }, { l: "Giving", v: "$20" }, { l: "Products", v: "2" } ], primary: "Share to WhatsApp", secondary: "Share to Instagram" },
-            { p: "people", t: "Emmaus Community", k: "Retreat · Fellowship · Impact", body: "Help us grow more communities", desc: "Every share helps more parishes, ministries, sponsors and local businesses discover ParishMart.", stats: [ { l: "Parish", v: "SKD" }, { l: "Community", v: "Weston" }, { l: "Mission", v: "Grow" } ], primary: "Invite a Parish", secondary: "Invite a Business" },
+            { p: "people", t: "Emmaus Community", k: "Retreat · Fellowship · Impact", body: "Help us grow more causes", desc: "Every share helps more parishes, ministries, sponsors and local businesses discover ParishMart.", stats: [ { l: "Parish", v: "SKD" }, { l: "Community", v: "Weston" }, { l: "Mission", v: "Grow" } ], primary: "Invite a Parish", secondary: "Invite a Business" },
           ].map((c) => (
             <div key={c.t} className="pm-card overflow-hidden">
               <Photo kind={c.p as "house" | "people"} ratio="16/9" rounded="rounded-none" className="!rounded-t-[24px] !rounded-b-none" />
@@ -107,7 +107,7 @@ export default function ShareImpactPage() {
       <Section width="wide">
         <DarkPanel
           title="Commerce with purpose spreads through community."
-          description="ParishMart grows when parishioners share causes, invite businesses and help communities discover new ways to support each other."
+          description="ParishMart grows when parishioners share causes, invite businesses and help causes discover new ways to support each other."
           cta="Continue Exploring"
           ctaHref="/"
           ctaSecondary="Open Your Store"

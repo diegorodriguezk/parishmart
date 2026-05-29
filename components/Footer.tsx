@@ -47,7 +47,7 @@ const COLS = [
     links: [
       { label: "Shop", href: "/shop" },
       { label: "Give", href: "/give" },
-      { label: "Communities", href: "/communities" },
+      { label: "Causes", href: "/communities" },
       { label: "Local Businesses", href: "/local-businesses" },
       { label: "Sponsors", href: "/sponsors" },
     ],
@@ -105,7 +105,7 @@ export function Footer() {
             <LogoMark variant="white" className="h-10 w-auto sm:h-12" />
           </Link>
           <p className="max-w-xs text-sm text-white/70">
-            Unifying faith, commerce and compassion to build stronger communities.
+            Unifying faith, commerce and compassion to build stronger causes.
           </p>
           <div className="flex items-center gap-3">
             {SOCIAL.map(({ icon: Icon, label, href }) => (

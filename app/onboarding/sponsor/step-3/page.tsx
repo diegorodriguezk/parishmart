@@ -55,7 +55,7 @@ export default function SponsorStep3() {
             <span className="block text-xs font-extrabold text-pm-navy">Offer Description</span>
             <textarea
               rows={3}
-              defaultValue="Participating parish communities can receive up to $100 in annual preventive care services at no cost to the parishioner."
+              defaultValue="Participating parish causes can receive up to $100 in annual preventive care services at no cost to the parishioner."
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>

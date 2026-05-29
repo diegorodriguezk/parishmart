@@ -255,7 +255,7 @@ export default async function SellerProfilePage() {
             </p>
             <p className="mt-3 text-sm text-pm-muted">
               The company believes commerce can become a force for good when
-              local entrepreneurs, communities, and parishes work together.
+              local entrepreneurs, causes, and parishes work together.
               Through ParishMart, each order helps create sustainable support
               for the community.
             </p>

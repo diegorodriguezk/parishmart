@@ -115,7 +115,7 @@ const TRUST = [
   {
     Icon: Sparkles,
     title: "Support local businesses",
-    body: "Empower Catholic entrepreneurs and their communities.",
+    body: "Empower Catholic entrepreneurs and their causes.",
   },
   {
     Icon: ShieldCheck,

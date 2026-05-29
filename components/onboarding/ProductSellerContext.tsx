@@ -75,15 +75,15 @@ export const DEFAULT_PRODUCT_SELLER: ProductSellerProfile = {
   zipCode: "33327",
   country: "United States",
   shortDescription:
-    "Custom apparel, parish merch and ministry products designed to help communities raise funds and build identity.",
+    "Custom apparel, parish merch and ministry products designed to help causes raise funds and build identity.",
   longDescription:
-    "Harps Club offers thoughtfully curated community products, custom apparel and healthy essentials for everyday parish families. We partner with trusted suppliers to bring clean, effective and reliable products that support better habits and stronger communities. Every purchase helps fund parish programs and family education.",
+    "Harps Club offers thoughtfully curated community products, custom apparel and healthy essentials for everyday parish families. We partner with trusted suppliers to bring clean, effective and reliable products that support better habits and stronger causes. Every purchase helps fund parish programs and family education.",
   founderName: "Sarah Martinez",
   parishSupported: "Saint Katharine Drexel",
   whySupport:
     "We want to serve families in our area and contribute to the parish community through meaningful products.",
   founderShortDesc:
-    "As a mom, wellness advocate and parish volunteer, Sarah created Harps Club to make meaningful merchandise accessible for families and faith communities.",
+    "As a mom, wellness advocate and parish volunteer, Sarah created Harps Club to make meaningful merchandise accessible for families and faith-based causes.",
   products: [
     { title: "Harps Club Tote", details: "Canvas tote with parish logo", price: "$28", discountPrice: "", category: "Accessories", type: "Physical", variations: { color: true, size: false, material: false }, inventory: "50", dimensions: "", weight: "" },
     { title: "Parish Crewneck", details: "Soft fleece crewneck sweatshirt", price: "$55", discountPrice: "$45", category: "Apparel", type: "Physical", variations: { color: true, size: true, material: false }, inventory: "30", dimensions: "", weight: "" },

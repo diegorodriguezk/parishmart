@@ -66,7 +66,7 @@ export function ProductSellerPreview() {
               </div>
             </div>
             <p className="mt-2 text-[8px] leading-relaxed text-pm-muted line-clamp-3">
-              As a mom and parish volunteer, I created Harps Club to make meaningful merch accessible for faith communities.
+              As a mom and parish volunteer, I created Harps Club to make meaningful merch accessible for faith-based causes.
             </p>
           </div>
         </div>
@@ -306,7 +306,7 @@ export function SponsorProfilePreview() {
           </p>
           <p className="mt-1.5 text-[11px] leading-relaxed text-pm-muted">
             A leading healthcare provider in South Florida, committed to
-            serving faith-based communities through integrated, compassionate
+            serving faith-based causes through integrated, compassionate
             care programs.
           </p>
         </div>
@@ -315,7 +315,7 @@ export function SponsorProfilePreview() {
             About the Offer
           </p>
           <p className="mt-1.5 text-[11px] leading-relaxed text-pm-muted">
-            Participating parish communities can receive up to $100 in annual
+            Participating parish causes can receive up to $100 in annual
             preventive care services at no cost.
           </p>
         </div>

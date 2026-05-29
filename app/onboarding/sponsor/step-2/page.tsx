@@ -56,7 +56,7 @@ export default function SponsorStep2() {
           <span className="mt-0.5 block text-[11px] text-pm-muted">Why does your business support this community?</span>
           <textarea
             rows={4}
-            defaultValue="We are proud to support parishes and communities that use evidence-based care and meaningful relationships to strengthen family well-being, engagement and long-term health."
+            defaultValue="We are proud to support parishes and causes that use evidence-based care and meaningful relationships to strengthen family well-being, engagement and long-term health."
             className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
           />
         </label>

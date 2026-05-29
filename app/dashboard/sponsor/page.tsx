@@ -22,7 +22,7 @@ export default function SponsorDashboardPage() {
           <StatTile label="Active campaigns" value="3" hint="1 premium banner" />
           <StatTile label="Reach" value="12.4K" hint="+18% vs last quarter" />
           <StatTile label="Redeemed offers" value="284" hint="By 162 parishioners" />
-          <StatTile label="Communities supported" value="4" hint="SKD, Emmaus, FACE, CM" />
+          <StatTile label="Causes supported" value="4" hint="SKD, Emmaus, FACE, CM" />
         </div>
       </Section>
 

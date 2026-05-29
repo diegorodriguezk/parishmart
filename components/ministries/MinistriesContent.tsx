@@ -127,7 +127,7 @@ const TRUST = [
 export function MinistriesContent({
   heroKicker = "Ministries · Explore your parish",
   heroTitle,
-  heroDescription = "Find the ministries, retreats and outreach communities at your parish. Step into formation, service and faith with your community.",
+  heroDescription = "Find the ministries, retreats and outreach causes at your parish. Step into formation, service and faith with your community.",
   searchPlaceholder = "Search ministries, retreats, missions and outreach…",
   listingHref = "/communities",
   ministryHref = "/give/cause",

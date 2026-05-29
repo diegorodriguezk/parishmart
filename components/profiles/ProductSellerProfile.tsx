@@ -174,7 +174,7 @@ export function ProductSellerProfile({
             </h3>
             <p className="text-sm text-white/80">
               Join ParishMart as a Product Seller and connect your catalog to
-              communities, parishes and causes that value meaningful impact.
+              causes and parishes that value meaningful impact.
             </p>
           </div>
           <Link href="/onboarding/seller" className="pm-btn bg-white !text-pm-navy shrink-0">

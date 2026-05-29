@@ -174,7 +174,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                 {business.initials}
               </span>
               <h2 className="text-xl font-extrabold leading-tight text-pm-navy">
-                Services that help communities preserve meaningful moments.
+                Services that help causes preserve meaningful moments.
               </h2>
             </div>
 

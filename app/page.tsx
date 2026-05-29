@@ -48,16 +48,16 @@ const FEATURED_STORES = [
     label: "Retreat Community",
     title: "Emmaus SKD Weston",
     location: "SKD · Weston, FL",
-    text: "Separate experiences for Emmaus Men and Emmaus Women retreat communities.",
+    text: "Separate experiences for Emmaus Men and Emmaus Women retreat causes.",
     href: "/give/cause",
   },
   {
     photo: "stained-glass" as const,
     src: undefined as string | undefined,
-    label: "Causes & Communities",
+    label: "Causes",
     title: "Schoenstatt, FACE & Casa Manresa",
     location: "South Florida",
-    text: "Faith-driven communities, retreats and entrepreneurs connected to impact.",
+    text: "Faith-driven causes, retreats and entrepreneurs connected to impact.",
     href: "/communities",
   },
 ];
@@ -91,8 +91,8 @@ export default async function HomePage() {
               supporters in one simple community marketplace.
             </p>
             <p className="mt-3 max-w-xl text-base font-medium text-pm-ink">
-              Discover products, services, businesses, and causes that support
-              communities through commerce and giving.
+              Discover products, services, businesses, and ways to support
+              causes through commerce and giving.
             </p>
 
             <form
@@ -225,13 +225,13 @@ export default async function HomePage() {
               kicker: "Businesses activate the economy",
               title: "Grow your business with purpose.",
               description:
-                "Offer products or services while supporting the communities your customers care about.",
+                "Offer products or services while supporting the causes your customers care about.",
               options: [
                 {
                   Icon: ShoppingBag,
                   title: "Product Seller",
                   description:
-                    "Sell products that support parishes, causes and communities.",
+                    "Sell products that support parishes and causes.",
                   cta: "Sell Products",
                   href: "/onboarding/seller",
                 },
@@ -239,7 +239,7 @@ export default async function HomePage() {
                   Icon: Briefcase,
                   title: "Service Business",
                   description:
-                    "Offer services and connect with local faith-driven communities.",
+                    "Offer services and connect with local faith-driven causes.",
                   cta: "Offer Services",
                   href: "/onboarding/local-business",
                 },
@@ -249,7 +249,7 @@ export default async function HomePage() {
               kicker: "Sponsors fuel the movement",
               title: "Sponsor with purpose.",
               description:
-                "Grow visibility in faith-driven communities while helping fund missions, youth programs and local causes.",
+                "Grow visibility in faith-driven causes while helping fund missions, youth programs and local causes.",
               options: [
                 {
                   Icon: Megaphone,
@@ -440,7 +440,7 @@ export default async function HomePage() {
                       </h4>
                       <p className="text-xs text-pm-muted">
                         Trusted local businesses already supporting parish
-                        communities.
+                        causes.
                       </p>
                     </div>
                     <Link

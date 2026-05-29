@@ -72,7 +72,7 @@ export default async function LocalBusinessCategoryPage() {
             </h1>
             <p className="max-w-md text-sm text-pm-muted">
               Find trusted services, products and offers from local businesses
-              connected to parishes, causes and communities.
+              connected to parishes and causes.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="#featured" className="pm-btn pm-btn-primary">
@@ -113,14 +113,14 @@ export default async function LocalBusinessCategoryPage() {
       <Section width="wide" className="!py-5">
         <div className="mb-3">
           <p className="text-sm font-bold text-pm-navy">Filter by parish, city, category or offer</p>
-          <p className="text-xs text-pm-muted">Help parishioners discover businesses that support the communities they care about.</p>
+          <p className="text-xs text-pm-muted">Help parishioners discover businesses that support the causes they care about.</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <div className="flex flex-1 min-w-[180px] items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-2 shadow-pm-soft">
             <Search className="h-4 w-4 shrink-0 text-pm-muted" aria-hidden />
             <input className="pm-input text-sm" placeholder="Search local businesses…" aria-label="Search" />
           </div>
-          {["All Categories", "All Communities", "All Cities"].map((label) => (
+          {["All Categories", "All Causes", "All Cities"].map((label) => (
             <button
               key={label}
               type="button"
@@ -263,7 +263,7 @@ export default async function LocalBusinessCategoryPage() {
               <span className="pm-label w-fit">Product Seller</span>
               <h3 className="text-base font-bold text-pm-navy group-hover:text-pm-blue">Harps Club</h3>
               <p className="text-[11px] font-medium text-pm-blue">South Florida · Custom Merch</p>
-              <p className="text-xs text-pm-muted">Custom apparel, parish merch and ministry products helping communities raise funds.</p>
+              <p className="text-xs text-pm-muted">Custom apparel, parish merch and ministry products helping causes raise funds.</p>
               <div className="mt-auto pt-2">
                 <span className="text-sm font-bold text-pm-blue">View product profile →</span>
               </div>

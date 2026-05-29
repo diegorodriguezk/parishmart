@@ -73,7 +73,7 @@ export default function SponsorStep1() {
             <span className="block text-xs font-extrabold text-pm-navy">Short Business Description</span>
             <textarea
               rows={3}
-              defaultValue="A leading healthcare provider in South Florida committed to serving faith-based communities through integrated, compassionate care."
+              defaultValue="A leading healthcare provider in South Florida committed to serving faith-based causes through integrated, compassionate care."
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>

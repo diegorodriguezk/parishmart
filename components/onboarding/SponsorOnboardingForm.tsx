@@ -71,11 +71,11 @@ export function SponsorOnboardingForm() {
         description:
           "Ministry Brands helps churches and faith-based organizations simplify administration, giving and community management through technology.",
         purposeMessage:
-          "We are proud to support parishes and communities that use technology to strengthen engagement, giving and mission-driven impact.",
+          "We are proud to support parishes and causes that use technology to strengthen engagement, giving and mission-driven impact.",
         offerType: "Discount",
         offerTitle: "Exclusive community benefit",
         offerDescription:
-          "Participating parish communities can request more information about available solutions and special partner benefits.",
+          "Participating parish causes can request more information about available solutions and special partner benefits.",
         ctaLabel: "Request Information",
         ctaUrl: "https://www.ministrybrands.com/parishes",
         supportArea: "Specific Parish",
