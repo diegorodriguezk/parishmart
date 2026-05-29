@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { fetchParish, fetchProducts, fetchBusinesses } from "@/lib/api";
 import { ParishStorefront } from "@/components/profiles/ParishStorefront";
-import { Header } from "@/components/Header";
+import { ParishLayout } from "@/components/profiles/ParishLayout";
 import { Footer } from "@/components/Footer";
 
 export async function generateStaticParams() {
@@ -33,8 +33,9 @@ export default async function ParishPage({
   const products = await fetchProducts({ limit: 6 });
   return (
     <>
-      <Header />
-      <ParishStorefront parish={parish} products={products} businesses={businesses} />
+      <ParishLayout parish={parish} activeTab="shop">
+        <ParishStorefront parish={parish} products={products} businesses={businesses} />
+      </ParishLayout>
       <Footer />
     </>
   );
