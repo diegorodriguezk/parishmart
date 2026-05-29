@@ -5,7 +5,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Giving", "Launch"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
 
 const CATEGORIES = ["Retreat", "Youth Ministry", "Social Justice", "Mission Trip", "Formation", "Other"];
 
@@ -15,12 +15,12 @@ export default function CauseStep1() {
   return (
     <SellerStepShell
       step={1}
-      totalSteps={4}
+      totalSteps={5}
       allStepTitles={STEP_TITLES}
       badge="Required"
-      eyebrow="Step 1 of 4 · Cause Profile"
+      eyebrow="Step 1 of 5 · Cause Profile"
       title={<>Activate your <span className="pm-gradient-text">cause or ministry</span>.</>}
-      description="Basic information to create your cause page — where supporters can give, shop and rally around your community initiative."
+      description="Basic information to create your cause page — the preview on the right updates live as you type."
       preview={<CauseLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
@@ -31,57 +31,78 @@ export default function CauseStep1() {
           <div>
             <p className="text-xs font-extrabold text-pm-blue">ParishMart Concierge</p>
             <p className="mt-1 text-sm text-pm-muted">
-              Start with the basics — the preview on the right updates live as you type.
+              Start with the basics. You can add your story, donations, events and media in the next steps.
             </p>
           </div>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Cause / Ministry Name</span>
-            <input
-              value={profile.causeName}
-              onChange={(e) => update({ causeName: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Cause Name</span>
+            <input value={profile.causeName} onChange={(e) => update({ causeName: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Lead Person Name</span>
-            <input
-              value={profile.leadName}
-              onChange={(e) => update({ leadName: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
+            <span className="block text-xs font-extrabold text-pm-navy">Contact Full Name</span>
+            <input value={profile.contactFullName} onChange={(e) => update({ contactFullName: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Contact Email</span>
-            <input
-              type="email"
-              value={profile.contactEmail}
-              onChange={(e) => update({ contactEmail: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
+            <span className="block text-xs font-extrabold text-pm-navy">Phone</span>
+            <input type="tel" value={profile.phone} onChange={(e) => update({ phone: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Email</span>
+            <input type="email" value={profile.email} onChange={(e) => update({ email: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Parish Connection (optional)</span>
-            <input
-              value={profile.parishConnection}
-              onChange={(e) => update({ parishConnection: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
+            <span className="block text-xs font-extrabold text-pm-navy">
+              Website or Social Media <span className="font-normal text-pm-muted">(optional)</span>
+            </span>
+            <input value={profile.websiteOrSocial} onChange={(e) => update({ websiteOrSocial: e.target.value })}
+              placeholder="yoursite.org or @handle"
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
           <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Short Description</span>
-            <textarea
-              rows={3}
+            <span className="block text-xs font-extrabold text-pm-navy">Address</span>
+            <input value={profile.address} onChange={(e) => update({ address: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">City</span>
+            <input value={profile.city} onChange={(e) => update({ city: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">State</span>
+            <input value={profile.state} onChange={(e) => update({ state: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block sm:col-span-2">
+            <span className="block text-xs font-extrabold text-pm-navy">Country</span>
+            <input value={profile.country} onChange={(e) => update({ country: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block sm:col-span-2">
+            <span className="block text-xs font-extrabold text-pm-navy">Associated Parish <span className="font-normal text-pm-muted">(optional)</span></span>
+            <input value={profile.associatedParish} onChange={(e) => update({ associatedParish: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block sm:col-span-2">
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Short Cause Description / Headline
+              <span className="font-normal text-pm-muted">{profile.shortDescription.length}/220</span>
+            </span>
+            <textarea rows={3} maxLength={220}
               value={profile.shortDescription}
               onChange={(e) => update({ shortDescription: e.target.value })}
-              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
-            />
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
           </label>
         </div>
 
-        <p className="mb-3 mt-7 text-xs font-bold text-pm-navy">Category</p>
+        <p className="mb-3 mt-7 text-xs font-bold text-pm-navy">Cause Category</p>
         <div className="flex flex-wrap gap-2">
           {CATEGORIES.map((c) => (
             <label

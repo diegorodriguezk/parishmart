@@ -5,9 +5,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Giving", "Launch"];
-
-const CTA_OPTIONS = ["Give Now", "Support the Cause", "Join the Retreat", "Shop & Support", "Share the Impact"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
 
 export default function CauseStep2() {
   const { profile, update } = useCause();
@@ -15,12 +13,12 @@ export default function CauseStep2() {
   return (
     <SellerStepShell
       step={2}
-      totalSteps={4}
+      totalSteps={5}
       allStepTitles={STEP_TITLES}
       badge="Recommended"
-      eyebrow="Step 2 of 4 · Story & Mission"
+      eyebrow="Step 2 of 5 · Story & Mission"
       title={<>Tell your <span className="pm-gradient-text">cause&rsquo;s story</span>.</>}
-      description="Share your mission and tagline to connect with supporters. A compelling story increases giving by up to 3×."
+      description="Share the full story behind your cause. A compelling story increases giving by up to 3×."
       preview={<CauseLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
@@ -36,76 +34,19 @@ export default function CauseStep2() {
           </div>
         </div>
 
-        <div className="grid gap-4">
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Cause Tagline</span>
-            <input
-              value={profile.tagline}
-              onChange={(e) => update({ tagline: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Mission Statement</span>
-            <textarea
-              rows={3}
-              value={profile.mission}
-              onChange={(e) => update({ mission: e.target.value })}
-              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
-            />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Full Story (optional)</span>
-            <textarea
-              rows={4}
-              value={profile.fullStory}
-              onChange={(e) => update({ fullStory: e.target.value })}
-              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
-            />
-          </label>
-        </div>
-
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Cover Photo</span>
-            <div className="mt-1.5 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-pm-border bg-pm-soft/40 p-6 text-center transition-colors hover:border-pm-blue hover:bg-pm-soft">
-              <svg className="h-6 w-6 text-pm-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-              </svg>
-              <p className="text-xs font-bold text-pm-navy">Upload cover photo</p>
-              <p className="text-[11px] text-pm-muted">16:9 · min 1280×720px</p>
-            </div>
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Cause Logo / Icon (optional)</span>
-            <div className="mt-1.5 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-pm-border bg-pm-soft/40 p-6 text-center transition-colors hover:border-pm-blue hover:bg-pm-soft">
-              <svg className="h-6 w-6 text-pm-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-              </svg>
-              <p className="text-xs font-bold text-pm-navy">Upload logo</p>
-              <p className="text-[11px] text-pm-muted">1:1 · min 400×400px</p>
-            </div>
-          </label>
-        </div>
-
-        <p className="mb-3 mt-7 text-xs font-bold text-pm-navy">Primary Call to Action</p>
-        <div className="flex flex-wrap gap-2">
-          {CTA_OPTIONS.map((o) => (
-            <label
-              key={o}
-              className="flex cursor-pointer items-center gap-2 rounded-full border border-pm-border bg-white px-3.5 py-2 text-sm font-medium text-pm-navy has-[:checked]:border-pm-blue has-[:checked]:bg-pm-soft"
-            >
-              <input
-                type="radio"
-                name="cta"
-                checked={profile.primaryCta === o}
-                onChange={() => update({ primaryCta: o })}
-                className="sr-only"
-              />
-              {o}
-            </label>
-          ))}
-        </div>
+        <label className="block">
+          <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+            Long Cause Description
+            <span className="font-normal text-pm-muted">{profile.longDescription.length}/2600</span>
+          </span>
+          <textarea
+            rows={12}
+            maxLength={2600}
+            value={profile.longDescription}
+            onChange={(e) => update({ longDescription: e.target.value })}
+            className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
+          />
+        </label>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
           <Link href="/onboarding/cause/step-1" className="pm-btn pm-btn-secondary">Back</Link>

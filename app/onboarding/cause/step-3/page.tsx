@@ -5,15 +5,21 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Giving", "Launch"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
 
-const PRESET_AMOUNTS = ["$25", "$50", "$100", "$250", "$500", "Custom"];
+const EVENT_CATEGORIES = ["Retreat", "Workshop", "Fundraiser", "Service", "Social", "Other"];
 
-const GIVING_TIERS = [
-  { key: "supporter",  label: "Supporter",  amount: "$25",  perk: "Name on thank-you board" },
-  { key: "champion",  label: "Champion",   amount: "$100", perk: "Retreat program listing" },
-  { key: "patron",    label: "Patron",     amount: "$250", perk: "Special recognition + gift" },
-];
+function UploadBox({ label, hint }: { label: string; hint: string }) {
+  return (
+    <div className="mt-1.5 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-pm-border bg-pm-soft/40 p-6 text-center transition-colors hover:border-pm-blue hover:bg-pm-soft">
+      <svg className="h-6 w-6 text-pm-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+      </svg>
+      <p className="text-xs font-bold text-pm-navy">{label}</p>
+      <p className="text-[11px] text-pm-muted">{hint}</p>
+    </div>
+  );
+}
 
 export default function CauseStep3() {
   const { profile, update } = useCause();
@@ -21,12 +27,12 @@ export default function CauseStep3() {
   return (
     <SellerStepShell
       step={3}
-      totalSteps={4}
+      totalSteps={5}
       allStepTitles={STEP_TITLES}
       badge="Important"
-      eyebrow="Step 3 of 4 · Giving Setup"
-      title={<>Set up your <span className="pm-gradient-text">giving campaign</span>.</>}
-      description="Define your goal, campaign end date and optional giving tiers to encourage higher donations."
+      eyebrow="Step 3 of 5 · Donations & Events"
+      title={<>Set up <span className="pm-gradient-text">donations and events</span>.</>}
+      description="Add a donation ask supporters can rally around and an upcoming event for your community to join."
       preview={<CauseLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
@@ -37,71 +43,86 @@ export default function CauseStep3() {
           <div>
             <p className="text-xs font-extrabold text-pm-blue">ParishMart Concierge</p>
             <p className="mt-1 text-sm text-pm-muted">
-              Campaigns with giving tiers raise 40% more on average. Add at least one tier to unlock the achievement badge.
+              A clear donation ask plus an upcoming event gives supporters two easy ways to engage.
             </p>
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        {/* DONATIONS */}
+        <p className="text-sm font-extrabold text-pm-navy">Donations</p>
+        <div className="mt-3 grid gap-4 sm:grid-cols-2">
           <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Giving Goal ($)</span>
-            <input
-              type="number"
-              value={profile.givingGoal}
-              onChange={(e) => update({ givingGoal: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Title
+              <span className="font-normal text-pm-muted">{profile.donationTitle.length}/30</span>
+            </span>
+            <input maxLength={30} value={profile.donationTitle} onChange={(e) => update({ donationTitle: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block row-span-2">
+            <span className="block text-xs font-extrabold text-pm-navy">Donation Image</span>
+            <UploadBox label="Upload donation image" hint="1:1 · min 400×400px" />
           </label>
           <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Campaign End Date</span>
-            <input
-              type="date"
-              value={profile.endDate}
-              onChange={(e) => update({ endDate: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
-            />
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Brief description
+              <span className="font-normal text-pm-muted">{profile.donationDescription.length}/100</span>
+            </span>
+            <textarea rows={2} maxLength={100} value={profile.donationDescription} onChange={(e) => update({ donationDescription: e.target.value })}
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
           </label>
         </div>
 
-        <p className="mb-3 mt-7 text-xs font-bold text-pm-navy">Quick-Give Amounts</p>
-        <div className="flex flex-wrap gap-2">
-          {PRESET_AMOUNTS.map((a) => (
-            <label
-              key={a}
-              className="flex cursor-pointer items-center gap-2 rounded-full border border-pm-border bg-white px-3.5 py-2 text-sm font-medium text-pm-navy has-[:checked]:border-pm-blue has-[:checked]:bg-pm-soft"
-            >
-              <input type="checkbox" defaultChecked={["$25", "$50", "$100", "$250"].includes(a)} className="sr-only" />
-              {a}
-            </label>
-          ))}
+        {/* UPCOMING EVENTS */}
+        <p className="mt-8 text-sm font-extrabold text-pm-navy">Upcoming Events</p>
+        <div className="mt-3 grid gap-4 sm:grid-cols-2">
+          <label className="block">
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Title
+              <span className="font-normal text-pm-muted">{profile.eventTitle.length}/30</span>
+            </span>
+            <input maxLength={30} value={profile.eventTitle} onChange={(e) => update({ eventTitle: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block row-span-3">
+            <span className="block text-xs font-extrabold text-pm-navy">Event Image</span>
+            <UploadBox label="Upload event image" hint="16:9 · min 1280×720px" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Location</span>
+            <input value={profile.eventLocation} onChange={(e) => update({ eventLocation: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Brief description
+              <span className="font-normal text-pm-muted">{profile.eventDescription.length}/100</span>
+            </span>
+            <textarea rows={2} maxLength={100} value={profile.eventDescription} onChange={(e) => update({ eventDescription: e.target.value })}
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
         </div>
-
-        <p className="mb-3 mt-7 text-xs font-bold text-pm-navy">Giving Tiers (optional)</p>
-        <div className="grid gap-2.5 sm:grid-cols-3">
-          {GIVING_TIERS.map((t) => (
-            <label
-              key={t.key}
-              className="flex cursor-pointer flex-col gap-2 rounded-2xl border border-pm-border bg-pm-soft/40 p-4 has-[:checked]:border-pm-blue has-[:checked]:bg-pm-soft"
-            >
-              <input type="checkbox" defaultChecked className="sr-only" />
-              <p className="text-sm font-bold text-pm-navy">{t.label}</p>
-              <p className="text-2xl font-extrabold text-pm-blue">{t.amount}</p>
-              <p className="text-xs text-pm-muted">{t.perk}</p>
-            </label>
-          ))}
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Event Category <span className="font-normal text-pm-muted">(optional)</span></span>
+            <select value={profile.eventCategory} onChange={(e) => update({ eventCategory: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue">
+              <option value="">Select category</option>
+              {EVENT_CATEGORIES.map((c) => <option key={c}>{c}</option>)}
+            </select>
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Price</span>
+            <input value={profile.eventPrice} onChange={(e) => update({ eventPrice: e.target.value })}
+              placeholder="$0 or Free"
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Available Spots <span className="font-normal text-pm-muted">(optional)</span></span>
+            <input type="number" value={profile.eventSpots} onChange={(e) => update({ eventSpots: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
         </div>
-
-        <label className="mt-6 block">
-          <span className="block text-xs font-extrabold text-pm-navy">Giving Page URL (auto-generated)</span>
-          <div className="mt-1.5 flex items-center gap-2 rounded-2xl border border-pm-border bg-pm-soft/40 px-4 py-3">
-            <span className="text-xs text-pm-muted">parishmart.com/give/</span>
-            <input
-              value={profile.givingSlug}
-              onChange={(e) => update({ givingSlug: e.target.value })}
-              className="flex-1 bg-transparent text-sm text-pm-ink outline-none"
-            />
-          </div>
-        </label>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
           <Link href="/onboarding/cause/step-2" className="pm-btn pm-btn-secondary">Back</Link>
