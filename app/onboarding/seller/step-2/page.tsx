@@ -29,7 +29,19 @@ export default function SellerStep2() {
             <p className="mt-1 text-sm text-pm-muted">A personal story increases trust and community support. The preview updates in real time.</p>
           </div>
         </div>
-
+        <div className="grid gap-4 sm:grid-cols-2">
+            <label className="block">
+              <span className="block text-xs font-extrabold text-pm-navy">Founder Name</span>
+              <input value={profile.founderName} onChange={(e) => update({ founderName: e.target.value })}
+                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+            </label>
+            <label className="block">
+              <span className="block text-xs font-extrabold text-pm-navy">Parish / Cause Supported</span>
+              <input value={profile.parishSupported} onChange={(e) => update({ parishSupported: e.target.value })}
+                placeholder="e.g. Saint Katharine Drexel"
+                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
+            </label>
+          </div>
         <div className="grid gap-4">
           <label className="block">
             <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
@@ -52,19 +64,7 @@ export default function SellerStep2() {
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
           </label>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block">
-              <span className="block text-xs font-extrabold text-pm-navy">Founder Name</span>
-              <input value={profile.founderName} onChange={(e) => update({ founderName: e.target.value })}
-                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-            </label>
-            <label className="block">
-              <span className="block text-xs font-extrabold text-pm-navy">Parish / Cause Supported</span>
-              <input value={profile.parishSupported} onChange={(e) => update({ parishSupported: e.target.value })}
-                placeholder="e.g. Saint Katharine Drexel"
-                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-            </label>
-          </div>
+          
 
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">
