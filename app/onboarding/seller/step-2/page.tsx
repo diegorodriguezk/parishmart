@@ -33,6 +33,16 @@ export default function SellerStep2() {
         <div className="grid gap-4">
           <label className="block">
             <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Short Founder Description
+              <span className="font-normal text-pm-muted">{profile.founderShortDesc.length}/300</span>
+            </span>
+            <textarea rows={3} maxLength={300}
+              value={profile.founderShortDesc}
+              onChange={(e) => update({ founderShortDesc: e.target.value })}
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
+          </label>
+          <label className="block">
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
               Long Business Description
               <span className="font-normal text-pm-muted">{profile.longDescription.length}/2600</span>
             </span>
@@ -63,17 +73,6 @@ export default function SellerStep2() {
             <textarea rows={2}
               value={profile.whySupport}
               onChange={(e) => update({ whySupport: e.target.value })}
-              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
-
-          <label className="block">
-            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-              Short Founder Description
-              <span className="font-normal text-pm-muted">{profile.founderShortDesc.length}/300</span>
-            </span>
-            <textarea rows={3} maxLength={300}
-              value={profile.founderShortDesc}
-              onChange={(e) => update({ founderShortDesc: e.target.value })}
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
           </label>
         </div>
