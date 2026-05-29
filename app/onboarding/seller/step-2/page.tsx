@@ -33,7 +33,7 @@ export default function SellerStep2() {
         <div className="grid gap-4">
           <label className="block">
             <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-              About Our Business
+              Long Business Description
               <span className="font-normal text-pm-muted">{profile.longDescription.length}/2600</span>
             </span>
             <textarea rows={5} maxLength={2600}

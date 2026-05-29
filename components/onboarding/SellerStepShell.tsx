@@ -8,18 +8,10 @@ import { Check } from "lucide-react";
 
 const DEFAULT_STEP_TITLES = ["Profile", "Story", "Services", "Media", "Launch"];
 
-const BADGE_STYLE: Record<string, string> = {
-  Required:    "bg-pm-blue/10 text-pm-blue",
-  Recommended: "bg-amber-50 text-amber-700",
-  Important:   "bg-emerald-50 text-emerald-700",
-  Final:       "bg-pm-navy/10 text-pm-navy",
-};
-
 export function SellerStepShell({
   step,
   totalSteps = 5,
   allStepTitles,
-  badge,
   eyebrow,
   title,
   description,
@@ -52,19 +44,12 @@ export function SellerStepShell({
             <Logo />
           </div>
 
-          {/* Step label + optional badge */}
+          {/* Step label */}
           <div className="mb-4 flex flex-wrap items-center gap-2.5">
             <span className="inline-flex items-center gap-2 rounded-full bg-pm-soft px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-pm-blue">
               <span className="h-2 w-2 rounded-full bg-pm-cyan shadow-[0_0_0_5px_rgba(69,177,225,.18)]" />
               {eyebrow}
             </span>
-            {badge && (
-              <span
-                className={`rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${BADGE_STYLE[badge]}`}
-              >
-                {badge}
-              </span>
-            )}
           </div>
 
           {/* Numbered step progress */}
