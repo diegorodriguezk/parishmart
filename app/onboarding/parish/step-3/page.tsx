@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import { ParishStorePreview } from "@/components/onboarding/OnboardingPreviews";
+import { ParishLivePreview } from "@/components/onboarding/ParishLivePreview";
 
 export const metadata = { title: "Step 3 · Ministries & Modules · ParishMart" };
 
@@ -30,7 +30,7 @@ export default function ParishStep3() {
       eyebrow="Step 3 of 4 · Ministries & Modules"
       title={<>Choose your <span className="pm-gradient-text">experience modules</span>.</>}
       description="Select the features that appear on your parish store page and which active ministries to highlight."
-      preview={<ParishStorePreview />}
+      preview={<ParishLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4">

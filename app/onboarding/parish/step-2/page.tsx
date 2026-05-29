@@ -1,14 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import { ParishStorePreview } from "@/components/onboarding/OnboardingPreviews";
-
-export const metadata = { title: "Step 2 · Story & Mission · ParishMart" };
+import { ParishLivePreview } from "@/components/onboarding/ParishLivePreview";
+import { useParish } from "@/components/onboarding/ParishProfileContext";
 
 const STEP_TITLES = ["Profile", "Story", "Modules", "Launch"];
 
 const CTA_OPTIONS = ["Shop with Parish", "Give with Love", "Support a Cause", "Join a Ministry", "Share the Impact"];
 
 export default function ParishStep2() {
+  const { profile, update } = useParish();
+
   return (
     <SellerStepShell
       step={2}
@@ -18,7 +21,7 @@ export default function ParishStep2() {
       eyebrow="Step 2 of 4 · Story & Mission"
       title={<>Tell your <span className="pm-gradient-text">parish&rsquo;s story</span>.</>}
       description="Share your mission, your pastor's name and the tagline that represents your community in the ParishMart ecosystem."
-      preview={<ParishStorePreview />}
+      preview={<ParishLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4">
@@ -37,14 +40,16 @@ export default function ParishStep2() {
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">Pastor / Leader Name</span>
             <input
-              defaultValue="Fr. John Smith"
+              value={profile.pastorName}
+              onChange={(e) => update({ pastorName: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">Diocese (optional)</span>
             <input
-              defaultValue="Archdiocese of Miami"
+              value={profile.diocese}
+              onChange={(e) => update({ diocese: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
@@ -52,14 +57,16 @@ export default function ParishStep2() {
             <span className="block text-xs font-extrabold text-pm-navy">Mission Statement</span>
             <textarea
               rows={3}
-              defaultValue="To accompany all people in their encounter with Jesus Christ through the sacraments, community and service."
+              value={profile.mission}
+              onChange={(e) => update({ mission: e.target.value })}
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
           <label className="block sm:col-span-2">
             <span className="block text-xs font-extrabold text-pm-navy">Parish Tagline</span>
             <input
-              defaultValue="The parish at the center of the community."
+              value={profile.tagline}
+              onChange={(e) => update({ tagline: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
@@ -72,7 +79,13 @@ export default function ParishStep2() {
               key={o}
               className="flex cursor-pointer items-center gap-2 rounded-full border border-pm-border bg-white px-3.5 py-2 text-sm font-medium text-pm-navy has-[:checked]:border-pm-blue has-[:checked]:bg-pm-soft"
             >
-              <input type="radio" name="cta" defaultChecked={o === "Shop with Parish"} className="sr-only" />
+              <input
+                type="radio"
+                name="cta"
+                checked={profile.primaryCta === o}
+                onChange={() => update({ primaryCta: o })}
+                className="sr-only"
+              />
               {o}
             </label>
           ))}

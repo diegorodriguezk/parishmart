@@ -1,14 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import { CauseGivePreview } from "@/components/onboarding/OnboardingPreviews";
-
-export const metadata = { title: "Step 2 · Story & Mission · ParishMart" };
+import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
+import { useCause } from "@/components/onboarding/CauseProfileContext";
 
 const STEP_TITLES = ["Profile", "Story", "Giving", "Launch"];
 
 const CTA_OPTIONS = ["Give Now", "Support the Cause", "Join the Retreat", "Shop & Support", "Share the Impact"];
 
 export default function CauseStep2() {
+  const { profile, update } = useCause();
+
   return (
     <SellerStepShell
       step={2}
@@ -18,7 +21,7 @@ export default function CauseStep2() {
       eyebrow="Step 2 of 4 · Story & Mission"
       title={<>Tell your <span className="pm-gradient-text">cause&rsquo;s story</span>.</>}
       description="Share your mission and tagline to connect with supporters. A compelling story increases giving by up to 3×."
-      preview={<CauseGivePreview />}
+      preview={<CauseLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-5 flex items-start gap-4">
@@ -37,7 +40,8 @@ export default function CauseStep2() {
           <label className="block">
             <span className="block text-xs font-extrabold text-pm-navy">Cause Tagline</span>
             <input
-              defaultValue="Transforming lives one retreat weekend at a time."
+              value={profile.tagline}
+              onChange={(e) => update({ tagline: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
@@ -45,7 +49,8 @@ export default function CauseStep2() {
             <span className="block text-xs font-extrabold text-pm-navy">Mission Statement</span>
             <textarea
               rows={3}
-              defaultValue="To encounter Jesus Christ in community through a weekend of reflection, brotherhood and renewal — equipping men to be better husbands, fathers and leaders."
+              value={profile.mission}
+              onChange={(e) => update({ mission: e.target.value })}
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
@@ -53,7 +58,8 @@ export default function CauseStep2() {
             <span className="block text-xs font-extrabold text-pm-navy">Full Story (optional)</span>
             <textarea
               rows={4}
-              defaultValue="The Emmaus Men's Retreat has been a cornerstone of our parish community for over 20 years. What started as a small gathering of 12 men has grown into a movement that has touched the lives of hundreds of fathers, sons and brothers."
+              value={profile.fullStory}
+              onChange={(e) => update({ fullStory: e.target.value })}
               className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
             />
           </label>
@@ -89,7 +95,13 @@ export default function CauseStep2() {
               key={o}
               className="flex cursor-pointer items-center gap-2 rounded-full border border-pm-border bg-white px-3.5 py-2 text-sm font-medium text-pm-navy has-[:checked]:border-pm-blue has-[:checked]:bg-pm-soft"
             >
-              <input type="radio" name="cta" defaultChecked={o === "Give Now"} className="sr-only" />
+              <input
+                type="radio"
+                name="cta"
+                checked={profile.primaryCta === o}
+                onChange={() => update({ primaryCta: o })}
+                className="sr-only"
+              />
               {o}
             </label>
           ))}

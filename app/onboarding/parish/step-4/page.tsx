@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
-import { ParishStorePreview } from "@/components/onboarding/OnboardingPreviews";
+import { ParishLivePreview } from "@/components/onboarding/ParishLivePreview";
 
 export const metadata = { title: "Step 4 · Launch · ParishMart" };
 
@@ -41,7 +41,7 @@ export default function ParishStep4() {
       eyebrow="Step 4 of 4 · Launch"
       title={<>Submit for review and <span className="pm-gradient-text">go live</span>.</>}
       description="Select a plan and submit your parish page for review. Your page goes live within 24 hours of approval."
-      preview={<ParishStorePreview />}
+      preview={<ParishLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
         <div className="mb-6 flex items-start gap-4">
