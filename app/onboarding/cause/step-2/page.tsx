@@ -34,19 +34,42 @@ export default function CauseStep2() {
           </div>
         </div>
 
-        <label className="block">
-          <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-            Long Description
-            <span className="font-normal text-pm-muted">{profile.longDescription.length}/2600</span>
-          </span>
-          <textarea
-            rows={12}
-            maxLength={2600}
-            value={profile.longDescription}
-            onChange={(e) => update({ longDescription: e.target.value })}
-            className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
-          />
-        </label>
+        <div className="grid gap-4">
+          <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Cause / Ministry Tagline</span>
+            <input
+              value={profile.tagline}
+              onChange={(e) => update({ tagline: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
+            />
+          </label>
+          <label className="block">
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Short Description / Mission Statement
+              <span className="font-normal text-pm-muted">{profile.shortDescription.length}/220</span>
+            </span>
+            <textarea
+              rows={3}
+              maxLength={220}
+              value={profile.shortDescription}
+              onChange={(e) => update({ shortDescription: e.target.value })}
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
+            />
+          </label>
+          <label className="block">
+            <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+              Long Description
+              <span className="font-normal text-pm-muted">{profile.longDescription.length}/2600</span>
+            </span>
+            <textarea
+              rows={10}
+              maxLength={2600}
+              value={profile.longDescription}
+              onChange={(e) => update({ longDescription: e.target.value })}
+              className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
+            />
+          </label>
+        </div>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
           <Link href="/onboarding/cause/step-1" className="pm-btn pm-btn-secondary">Back</Link>
