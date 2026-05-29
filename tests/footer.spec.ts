@@ -21,8 +21,7 @@ test.describe("Footer", () => {
     await expect(page.getByRole("link", { name: "Activate Community" })).toBeVisible();
   });
 
-  test("Information column only has FAQs and Contact Us", async ({ page }) => {
+  test("Support column has FAQs", async ({ page }) => {
     await expect(page.getByRole("link", { name: "FAQs" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Contact Us" })).toBeVisible();
   });
 });

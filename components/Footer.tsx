@@ -43,7 +43,7 @@ function YouTubeIcon() {
 
 const COLS = [
   {
-    title: "Quick Links",
+    title: "Platform",
     links: [
       { label: "Shop", href: "/shop" },
       { label: "Give", href: "/give" },
@@ -53,30 +53,23 @@ const COLS = [
     ],
   },
   {
-    title: "Our Company",
+    title: "Company",
     links: [
-      { label: "Join Us", href: "/onboarding" },
-      { label: "About Us", href: "/about-us" },
-      { label: "How it Works", href: "/how-it-works" },
+      { label: "Join us", href: "/onboarding" },
+      { label: "About us", href: "/about-us" },
       { label: "Partners", href: "/partners" },
+      { label: "Impact calculator", href: "/share-impact" },
+      { label: "How it works", href: "/how-it-works" },
     ],
   },
   {
-    title: "Information",
-    links: [
-      { label: "FAQs", href: "/" },
-      { label: "Contact Us", href: "/contact-us" },
-      { label: "Refund Policy", href: "/" },
-    ],
-  },
-  {
-    title: "My Account",
+    title: "Support",
     links: [
       { label: "View your orders", href: "/dashboard" },
       { label: "Register an account", href: "/onboarding" },
       { label: "Login to your account", href: "/sign-in" },
       { label: "Forgot Password", href: "/sign-in" },
-      { label: "Shopping Cart", href: "/shop/cart" },
+      { label: "FAQs", href: "/" },
     ],
   },
 ];
@@ -98,7 +91,7 @@ export function Footer() {
   return (
     <footer className="mt-20 bg-pm-navy text-white">
       {/* Main grid: brand + link cols + CTA */}
-      <div className="mx-auto grid max-w-[1280px] gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(4,_0.9fr)_1.2fr]">
+      <div className="mx-auto grid max-w-[1280px] gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,_1fr)_1.2fr]">
         {/* Brand + social */}
         <div className="space-y-5">
           <Link href="/" className="inline-flex items-center" aria-label="ParishMart home">
