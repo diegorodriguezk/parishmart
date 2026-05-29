@@ -93,11 +93,6 @@ export default function CauseStep1() {
             <input value={profile.country} onChange={(e) => update({ country: e.target.value })}
               className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
           </label>
-          <label className="block sm:col-span-2">
-            <span className="block text-xs font-extrabold text-pm-navy">Associated Parish <span className="font-normal text-pm-muted">(optional)</span></span>
-            <input value={profile.associatedParish} onChange={(e) => update({ associatedParish: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
         </div>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">

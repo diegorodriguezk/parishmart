@@ -44,6 +44,14 @@ export default function CauseStep2() {
             />
           </label>
           <label className="block">
+            <span className="block text-xs font-extrabold text-pm-navy">Associated Parish <span className="font-normal text-pm-muted">(optional)</span></span>
+            <input
+              value={profile.associatedParish}
+              onChange={(e) => update({ associatedParish: e.target.value })}
+              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
+            />
+          </label>
+          <label className="block">
             <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
               Short Description / Mission Statement
               <span className="font-normal text-pm-muted">{profile.shortDescription.length}/220</span>
