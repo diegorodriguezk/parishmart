@@ -43,19 +43,19 @@ export function CardsCarousel({
   };
 
   return (
-    <div className="relative">
+    <div className="flex items-center gap-3">
       <button
         type="button"
         onClick={() => scrollBy(-1)}
         aria-label="Previous"
         disabled={atStart}
-        className="absolute -left-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-pm-border bg-white text-pm-navy shadow-pm-card transition hover:border-pm-blue hover:text-pm-blue disabled:cursor-not-allowed disabled:opacity-0"
+        className="shrink-0 grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy shadow-pm-card transition hover:border-pm-blue hover:text-pm-blue disabled:cursor-not-allowed disabled:opacity-0"
       >
         <ChevronLeft className="h-5 w-5" aria-hidden />
       </button>
       <div
         ref={scrollerRef}
-        className="-mx-1 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-smooth px-1 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex-1 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {Array.isArray(children)
           ? children.map((child, i) => (
@@ -77,7 +77,7 @@ export function CardsCarousel({
         onClick={() => scrollBy(1)}
         aria-label="Next"
         disabled={atEnd}
-        className="absolute -right-3 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-pm-border bg-white text-pm-navy shadow-pm-card transition hover:border-pm-blue hover:text-pm-blue disabled:cursor-not-allowed disabled:opacity-0"
+        className="shrink-0 grid h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy shadow-pm-card transition hover:border-pm-blue hover:text-pm-blue disabled:cursor-not-allowed disabled:opacity-0"
       >
         <ChevronRight className="h-5 w-5" aria-hidden />
       </button>
