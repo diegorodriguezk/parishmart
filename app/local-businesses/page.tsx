@@ -7,7 +7,7 @@ import { Section, SectionHeader } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SkdLogo } from "@/components/SkdLogo";
 import { fetchBusinesses, fetchSponsors } from "@/lib/api";
-import { SponsorBannerCarousel } from "@/components/SponsorBannerCarousel";
+import { CardsCarousel } from "@/components/CardsCarousel";
 import { SponsorOfferCard } from "@/components/Cards";
 
 export const metadata = { title: "Local Biz Supporters · ParishMart" };
@@ -288,34 +288,43 @@ export default async function LocalBusinessCategoryPage() {
         </div>
       </Section>
 
-      <Section width="wide" className="!pt-3">
+      <Section id="offers" width="wide" className="!pt-3">
         <SectionHeader
-          title="Sponsors & Parishioner Benefits"
-          description="Mission-aligned businesses that support parish communities while offering exclusive benefits to parishioners."
+          title="Sponsor Offers"
+          description="Exclusive benefits from mission-aligned businesses that support the parish community."
           right={<Link href="/sponsors" className="font-bold text-pm-blue">View all sponsors →</Link>}
         />
-        <SponsorBannerCarousel />
-      </Section>
-
-      <Section id="offers" width="wide" className="!pt-2">
-        <SectionHeader
-          title="All Sponsor Offers"
-          description="Compact cards with logo, coupon and quick redeem action."
-        />
-        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-          {sponsors.map((s) => (
-            <SponsorOfferCard
-              key={s.id}
-              href={`/sponsors/${s.id}`}
-              compact
-              photo="business"
-              initials={s.name.slice(0, 2).toUpperCase()}
-              title={s.name}
-              offer={s.offer ?? ""}
-              daysLeft={s.offerDaysLeft ?? ""}
-            />
-          ))}
-        </div>
+        {sponsors.length > 5 ? (
+          <CardsCarousel lgCols={4}>
+            {sponsors.map((s) => (
+              <SponsorOfferCard
+                key={s.id}
+                href={`/sponsors/${s.id}`}
+                compact
+                photo="business"
+                initials={s.name.slice(0, 2).toUpperCase()}
+                title={s.name}
+                offer={s.offer ?? ""}
+                daysLeft={s.offerDaysLeft ?? ""}
+              />
+            ))}
+          </CardsCarousel>
+        ) : (
+          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+            {sponsors.map((s) => (
+              <SponsorOfferCard
+                key={s.id}
+                href={`/sponsors/${s.id}`}
+                compact
+                photo="business"
+                initials={s.name.slice(0, 2).toUpperCase()}
+                title={s.name}
+                offer={s.offer ?? ""}
+                daysLeft={s.offerDaysLeft ?? ""}
+              />
+            ))}
+          </div>
+        )}
       </Section>
 
       <Footer />
