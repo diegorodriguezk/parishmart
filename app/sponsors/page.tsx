@@ -83,16 +83,16 @@ export default async function SponsorsCategoryPage() {
         />
         <LoadMoreGrid initialCount={5} step={5} gridClassName="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
           {sponsors.map((s) => (
-            <Link key={s.id} href={`/sponsors/${s.id}`}>
-              <SponsorOfferCard
-                compact
-                photo="business"
-                initials={s.name.slice(0, 2).toUpperCase()}
-                title={s.name}
-                offer={s.offer ?? ""}
-                daysLeft={s.offerDaysLeft ?? ""}
-              />
-            </Link>
+            <SponsorOfferCard
+              key={s.id}
+              href={`/sponsors/${s.id}`}
+              compact
+              photo="business"
+              initials={s.name.slice(0, 2).toUpperCase()}
+              title={s.name}
+              offer={s.offer ?? ""}
+              daysLeft={s.offerDaysLeft ?? ""}
+            />
           ))}
         </LoadMoreGrid>
       </Section>
