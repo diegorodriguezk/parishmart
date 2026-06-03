@@ -26,7 +26,7 @@ const PRIMARY = [
   { href: "/shop", label: "Shop", Icon: ShoppingBag },
   { href: "/give", label: "Give", Icon: HandHeart },
   { href: "/communities", label: "Parishes & Causes", Icon: Users },
-  { href: "/local-businesses", label: "Local Businesses", Icon: Building2 },
+  { href: "/local-businesses", label: "Business Supporters", Icon: Building2 },
   { href: "/sponsors", label: "Sponsors", Icon: Megaphone },
 ];
 

@@ -48,7 +48,7 @@ const COLS = [
       { label: "Shop", href: "/shop" },
       { label: "Give", href: "/give" },
       { label: "Parishes & Causes", href: "/communities" },
-      { label: "Local Businesses", href: "/local-businesses" },
+      { label: "Business Supporters", href: "/local-businesses" },
       { label: "Sponsors", href: "/sponsors" },
     ],
   },
