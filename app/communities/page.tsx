@@ -49,7 +49,7 @@ export default function CommunitiesPage() {
           </div>
 
           {/* Right card — parish photo with overlay */}
-          <div className="relative isolate overflow-hidden rounded-3xl border border-pm-border shadow-pm-card">
+          <Link href="/parishes/skd" className="relative isolate overflow-hidden rounded-3xl border border-pm-border shadow-pm-card transition hover:-translate-y-0.5 hover:shadow-pm-soft">
             <Photo
               kind="church"
               src="/brand/skd/church.jpg"
@@ -68,7 +68,7 @@ export default function CommunitiesPage() {
               </h2>
               <p className="text-sm text-white/85">Weston, FL</p>
             </div>
-          </div>
+          </Link>
         </div>
       </Section>
 
