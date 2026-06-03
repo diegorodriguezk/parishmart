@@ -112,7 +112,7 @@ export function Header() {
   );
 }
 
-type TabKey = "shop" | "give" | "ministries" | "local-biz" | "sponsors" | "about";
+type TabKey = "shop" | "give" | "ministries" | "local-biz" | "events" | "about";
 
 const PARISH_TABS: { key: TabKey; href: string; label: string }[] = [
   { key: "about", href: "/about-us", label: "About" },

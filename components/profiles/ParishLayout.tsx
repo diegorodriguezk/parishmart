@@ -9,7 +9,7 @@ export function ParishLayout({
   children,
 }: {
   parish: Parish;
-  activeTab: "shop" | "give" | "ministries" | "local-biz" | "sponsors" | "about";
+  activeTab: "shop" | "give" | "ministries" | "local-biz" | "events" | "about";
   searchPlaceholder?: string;
   children: ReactNode;
 }) {
