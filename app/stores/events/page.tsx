@@ -253,52 +253,6 @@ export default function StoresEventsPage() {
         </div>
       </Section>
 
-      {/* MORE THAN A CALENDAR */}
-      <Section width="wide">
-        <span className="pm-kicker">What every event page should include</span>
-        <SectionHeader title="More than an event calendar" description="ParishMart Events should convert community activity into registrations, sponsorships, product sales and support for causes." />
-        <div className="grid gap-4 sm:grid-cols-3">
-          {[
-            { title: "Parish / Cause", desc: "Who the event supports, donation link, ministry profile and impact story." },
-            { title: "Local Businesses", desc: "Products or services related to the event: food, printing, wellness, classes or gifts." },
-            { title: "Sponsors", desc: "Visibility packages: event sponsor, meal sponsor, family sponsor or community sponsor." },
-          ].map((item) => (
-            <div key={item.title} className="rounded-2xl border border-pm-border bg-white p-5 shadow-pm-soft">
-              <h3 className="text-base font-extrabold text-pm-navy">{item.title}</h3>
-              <p className="mt-2 text-sm text-pm-muted">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* SPONSOR OPPORTUNITIES */}
-      <Section width="wide">
-        <span className="pm-kicker">Sponsor Opportunities</span>
-        <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-pm-navy md:text-4xl">
-          Let businesses support events with purpose
-        </h2>
-        <p className="mt-2 max-w-xl text-sm text-pm-muted">
-          Suggested sponsorship tiers: Community Sponsor $100, Event Sponsor $250, Presenting Sponsor $500.
-        </p>
-        <div className="mt-5">
-          <button type="button" className="pm-btn pm-btn-primary">Request Sponsor Info</button>
-        </div>
-      </Section>
-
-      {/* SUBMIT AN EVENT */}
-      <Section width="wide">
-        <span className="pm-kicker">Submit an Event</span>
-        <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-pm-navy md:text-4xl">
-          Allow parishes, ministries and causes to publish events
-        </h2>
-        <p className="mt-2 max-w-xl text-sm text-pm-muted">
-          For Phase 1, keep this as a simple lead form: event name, date, location, organizer, parish/cause, image, description, CTA link and sponsor needs.
-        </p>
-        <div className="mt-5">
-          <button type="button" className="pm-btn pm-btn-primary">Submit Event Form</button>
-        </div>
-      </Section>
-
       <Footer />
     </>
   );

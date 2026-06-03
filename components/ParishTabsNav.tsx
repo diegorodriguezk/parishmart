@@ -16,10 +16,10 @@ type Tab = {
 
 const TABS: Tab[] = [
   { key: "about",      href: "#about",             label: "About",               anchor: "about" },
-  { key: "events",     href: "/stores/events",     label: "Events" },
   { key: "shop",       href: "/stores/shop",       label: "Shop" },
   { key: "give",       href: "/stores/give",       label: "Give" },
   { key: "ministries", href: "/stores/ministries", label: "Ministries" },
+  { key: "events",     href: "/stores/events",     label: "Events" },
   { key: "local-biz",  href: "#local-biz",         label: "Business Supporters", anchor: "local-biz" },
 ];
 
