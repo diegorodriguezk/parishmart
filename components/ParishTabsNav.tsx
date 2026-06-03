@@ -15,11 +15,11 @@ type Tab = {
 };
 
 const TABS: Tab[] = [
-  { key: "about",      href: "#about",      label: "About",            anchor: "about" },
-  { key: "shop",       href: "/stores/shop",       label: "Shop" },
-  { key: "give",       href: "/stores/give",       label: "Give" },
-  { key: "ministries", href: "/stores/ministries", label: "Ministries" },
-  { key: "local-biz",  href: "#local-biz",  label: "Local Businesses", anchor: "local-biz" },
+  { key: "about",      href: "#about",       label: "About",               anchor: "about" },
+  { key: "shop",       href: "#shop",        label: "Shop",                anchor: "shop" },
+  { key: "give",       href: "#give",        label: "Give",                anchor: "give" },
+  { key: "ministries", href: "#ministries",  label: "Ministries",          anchor: "ministries" },
+  { key: "local-biz",  href: "#local-biz",  label: "Business Supporters", anchor: "local-biz" },
 ];
 
 export function ParishTabsNav({ active: initialActive = "shop" }: { active?: TabKey }) {

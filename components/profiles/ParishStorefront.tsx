@@ -141,7 +141,7 @@ export function ParishStorefront({
           {[
             { p: "rosary" as const, kicker: "Shop", h: "Religious Gifts", d: "Faith-centered products that support the parish.", href: "/shop" },
             { p: "praying" as const, kicker: "Give", h: "Parish Causes", d: "Support ministries, missions and urgent needs.", href: "/stores/give" },
-            { p: "business" as const, kicker: "Local Biz", h: "Community Supporters", d: "Discover businesses connected to SKD.", href: "/local-businesses" },
+            { p: "business" as const, kicker: "Business Supporters", h: "Community Supporters", d: "Discover businesses connected to SKD.", href: "/local-businesses" },
           ].map((c) => (
             <Link key={c.h} href={c.href} className="pm-card group relative overflow-hidden p-0 transition hover:-translate-y-0.5">
               <Photo kind={c.p} ratio="16/9" rounded="rounded-none" className="!rounded-t-[24px] !rounded-b-none" />
@@ -249,7 +249,7 @@ export function ParishStorefront({
 
       <Section id="local-biz" width="wide">
         <SectionHeader
-          title="Local Biz Supporters"
+          title="Business Supporters"
           description="Local businesses become visible inside the parish ecosystem while supporting SKD causes."
           right={
             <>
