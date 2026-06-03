@@ -4,28 +4,27 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type TabKey = "shop" | "give" | "ministries" | "local-biz" | "sponsors" | "about";
+type TabKey = "shop" | "give" | "ministries" | "local-biz" | "about";
 
 type Tab = {
   key: TabKey;
   href: string;
   label: string;
-  /** Anchor id present on /stores landing. If set, clicking from /stores scrolls. */
+  /** Anchor id present on parish landing pages. If set, clicking scrolls to that section. */
   anchor?: string;
 };
 
 const TABS: Tab[] = [
-  { key: "about",      href: "/stores#about",      label: "About",            anchor: "about" },
+  { key: "about",      href: "#about",      label: "About",            anchor: "about" },
   { key: "shop",       href: "/stores/shop",       label: "Shop" },
   { key: "give",       href: "/stores/give",       label: "Give" },
   { key: "ministries", href: "/stores/ministries", label: "Ministries" },
-  { key: "local-biz",  href: "/stores#local-biz",  label: "Local Businesses", anchor: "local-biz" },
-  { key: "sponsors",   href: "/stores#sponsors",   label: "Sponsors",         anchor: "sponsors" },
+  { key: "local-biz",  href: "#local-biz",  label: "Local Businesses", anchor: "local-biz" },
 ];
 
 export function ParishTabsNav({ active: initialActive = "shop" }: { active?: TabKey }) {
   const pathname = usePathname() ?? "";
-  const onLanding = pathname === "/stores";
+  const onLanding = pathname === "/stores" || pathname.startsWith("/parishes/");
   const [active, setActive] = useState<TabKey>(initialActive);
 
   // Scroll-spy only on /stores landing where anchor sections actually exist.
