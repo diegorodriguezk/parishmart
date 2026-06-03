@@ -44,7 +44,6 @@ export default function CommunitiesPage() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="#parish-stores" className="pm-btn pm-btn-primary">Explore Parishes &amp; Causes</Link>
-              <Link href="/onboarding/parish" className="pm-btn pm-btn-secondary">Register a Parish</Link>
             </div>
           </div>
 
