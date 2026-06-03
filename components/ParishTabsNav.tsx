@@ -15,11 +15,11 @@ type Tab = {
 };
 
 const TABS: Tab[] = [
-  { key: "about",      href: "#about",       label: "About",               anchor: "about" },
-  { key: "shop",       href: "#shop",        label: "Shop",                anchor: "shop" },
-  { key: "give",       href: "#give",        label: "Give",                anchor: "give" },
-  { key: "ministries", href: "#ministries",  label: "Ministries",          anchor: "ministries" },
-  { key: "local-biz",  href: "#local-biz",  label: "Business Supporters", anchor: "local-biz" },
+  { key: "about",      href: "#about",             label: "About",               anchor: "about" },
+  { key: "shop",       href: "/stores/shop",       label: "Shop" },
+  { key: "give",       href: "/stores/give",       label: "Give" },
+  { key: "ministries", href: "/stores/ministries", label: "Ministries" },
+  { key: "local-biz",  href: "#local-biz",         label: "Business Supporters", anchor: "local-biz" },
 ];
 
 export function ParishTabsNav({ active: initialActive = "shop" }: { active?: TabKey }) {
@@ -54,11 +54,23 @@ export function ParishTabsNav({ active: initialActive = "shop" }: { active?: Tab
     return () => observer.disconnect();
   }, [onLanding, initialActive]);
 
-  function handleClick(
-    e: React.MouseEvent<HTMLAnchorElement>,
-    tab: Tab,
-  ) {
-    if (!onLanding || !tab.anchor) return;
+  // Derive the landing path from current pathname
+  // e.g. /stores/shop → /stores  |  /parishes/skd/anything → /parishes/skd
+  function landingPath(): string {
+    if (pathname.startsWith("/parishes/")) return "/" + pathname.split("/").slice(1, 3).join("/");
+    return "/stores";
+  }
+
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>, tab: Tab) {
+    if (!tab.anchor) return;
+
+    if (!onLanding) {
+      // Navigate back to landing page with the anchor
+      e.preventDefault();
+      window.location.href = `${landingPath()}#${tab.anchor}`;
+      return;
+    }
+
     const target = document.getElementById(tab.anchor);
     if (!target) return;
     e.preventDefault();
