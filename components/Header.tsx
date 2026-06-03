@@ -60,7 +60,6 @@ const PRIMARY_NAV = [
   { href: "/give", label: "Give" },
   { href: "/communities", label: "Parishes & Causes" },
   { href: "/local-businesses", label: "Business Supporters" },
-  { href: "/sponsors", label: "Sponsors" },
 ];
 
 export function Header() {
@@ -121,7 +120,6 @@ const PARISH_TABS: { key: TabKey; href: string; label: string }[] = [
   { key: "give", href: "/give", label: "Give" },
   { key: "ministries", href: "/communities", label: "Parishes & Causes" },
   { key: "local-biz", href: "/local-businesses", label: "Business Supporters" },
-  { key: "sponsors", href: "/sponsors", label: "Sponsors" },
 ];
 
 function ParishTabs({ active = "shop" }: { active?: TabKey }) {

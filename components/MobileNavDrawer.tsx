@@ -27,7 +27,6 @@ const PRIMARY = [
   { href: "/give", label: "Give", Icon: HandHeart },
   { href: "/communities", label: "Parishes & Causes", Icon: Users },
   { href: "/local-businesses", label: "Business Supporters", Icon: Building2 },
-  { href: "/sponsors", label: "Sponsors", Icon: Megaphone },
 ];
 
 const SECONDARY = [
