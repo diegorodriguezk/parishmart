@@ -58,8 +58,8 @@ function HeaderActions() {
 const PRIMARY_NAV = [
   { href: "/shop", label: "Shop" },
   { href: "/give", label: "Give" },
-  { href: "/communities", label: "Causes" },
-  { href: "/local-businesses", label: "Local Businesses" },
+  { href: "/communities", label: "Parishes & Causes" },
+  { href: "/local-businesses", label: "Business Supporters" },
   { href: "/sponsors", label: "Sponsors" },
 ];
 
@@ -119,8 +119,8 @@ const PARISH_TABS: { key: TabKey; href: string; label: string }[] = [
   { key: "about", href: "/about-us", label: "About" },
   { key: "shop", href: "/shop", label: "Shop" },
   { key: "give", href: "/give", label: "Give" },
-  { key: "ministries", href: "/communities", label: "Causes" },
-  { key: "local-biz", href: "/local-businesses", label: "Local Businesses" },
+  { key: "ministries", href: "/communities", label: "Parishes & Causes" },
+  { key: "local-biz", href: "/local-businesses", label: "Business Supporters" },
   { key: "sponsors", href: "/sponsors", label: "Sponsors" },
 ];
 

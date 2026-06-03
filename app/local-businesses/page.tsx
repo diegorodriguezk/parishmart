@@ -7,6 +7,7 @@ import { Section, SectionHeader } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SkdLogo } from "@/components/SkdLogo";
 import { fetchBusinesses } from "@/lib/api";
+import { SponsorBannerCarousel } from "@/components/SponsorBannerCarousel";
 
 export const metadata = { title: "Local Biz Supporters · ParishMart" };
 
@@ -284,6 +285,15 @@ export default async function LocalBusinessCategoryPage() {
             Become a Local Biz
           </Link>
         </div>
+      </Section>
+
+      <Section width="wide" className="!pt-3">
+        <SectionHeader
+          title="Sponsors & Parishioner Benefits"
+          description="Mission-aligned businesses that support parish communities while offering exclusive benefits to parishioners."
+          right={<Link href="/sponsors" className="font-bold text-pm-blue">View all sponsors →</Link>}
+        />
+        <SponsorBannerCarousel />
       </Section>
 
       <Footer />
