@@ -6,8 +6,9 @@ import { Photo } from "@/components/Photo";
 import { Section, SectionHeader } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SkdLogo } from "@/components/SkdLogo";
-import { fetchBusinesses } from "@/lib/api";
+import { fetchBusinesses, fetchSponsors } from "@/lib/api";
 import { SponsorBannerCarousel } from "@/components/SponsorBannerCarousel";
+import { SponsorOfferCard } from "@/components/Cards";
 
 export const metadata = { title: "Local Biz Supporters · ParishMart" };
 
@@ -50,7 +51,7 @@ const BIZ_META: Record<string, {
 const PHOTOS = ["community", "business", "merch"] as const;
 
 export default async function LocalBusinessCategoryPage() {
-  const businesses = await fetchBusinesses();
+  const [businesses, sponsors] = await Promise.all([fetchBusinesses(), fetchSponsors()]);
   return (
     <>
       <Header />
@@ -294,6 +295,27 @@ export default async function LocalBusinessCategoryPage() {
           right={<Link href="/sponsors" className="font-bold text-pm-blue">View all sponsors →</Link>}
         />
         <SponsorBannerCarousel />
+      </Section>
+
+      <Section id="offers" width="wide" className="!pt-2">
+        <SectionHeader
+          title="All Sponsor Offers"
+          description="Compact cards with logo, coupon and quick redeem action."
+        />
+        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+          {sponsors.map((s) => (
+            <SponsorOfferCard
+              key={s.id}
+              href={`/sponsors/${s.id}`}
+              compact
+              photo="business"
+              initials={s.name.slice(0, 2).toUpperCase()}
+              title={s.name}
+              offer={s.offer ?? ""}
+              daysLeft={s.offerDaysLeft ?? ""}
+            />
+          ))}
+        </div>
       </Section>
 
       <Footer />
