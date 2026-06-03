@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type TabKey = "shop" | "give" | "ministries" | "local-biz" | "about";
+type TabKey = "shop" | "give" | "ministries" | "local-biz" | "about" | "events";
 
 type Tab = {
   key: TabKey;
@@ -16,6 +16,7 @@ type Tab = {
 
 const TABS: Tab[] = [
   { key: "about",      href: "#about",             label: "About",               anchor: "about" },
+  { key: "events",     href: "/stores/events",     label: "Events" },
   { key: "shop",       href: "/stores/shop",       label: "Shop" },
   { key: "give",       href: "/stores/give",       label: "Give" },
   { key: "ministries", href: "/stores/ministries", label: "Ministries" },
