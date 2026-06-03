@@ -24,16 +24,16 @@ export default function CommunitiesPage() {
 
       <Section width="wide" className="!py-4">
         <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Causes" }]}
+          items={[{ label: "Home", href: "/" }, { label: "Parishes & Causes" }]}
         />
       </Section>
 
       <Section width="wide" className="!pt-2 !pb-3">
         <div className="pm-card relative grid gap-0 overflow-hidden lg:grid-cols-[1.5fr_1fr]">
           <div className="flex flex-col justify-center gap-4 p-6 sm:p-10">
-            <span className="pm-kicker w-fit">Causes</span>
+            <span className="pm-kicker w-fit">Parishes &amp; Causes</span>
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-5xl">
-              Causes connected through{" "}
+              Parishes &amp; causes connected through{" "}
               <span className="pm-gradient-text">purpose.</span>
             </h1>
             <p className="max-w-md text-sm text-pm-muted">
