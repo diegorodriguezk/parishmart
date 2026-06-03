@@ -28,38 +28,46 @@ export default function CommunitiesPage() {
         />
       </Section>
 
-      <Section width="wide" className="!pt-2 !pb-3">
-        <div className="pm-card relative grid gap-0 overflow-hidden lg:grid-cols-[1.5fr_1fr]">
-          <div className="flex flex-col justify-center gap-4 p-6 sm:p-10">
-            <span className="pm-kicker w-fit">Parishes &amp; Causes</span>
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-5xl">
+      <Section width="wide" className="!pb-2 !pt-0">
+        <div className="grid gap-4 lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
+          {/* Left card — text */}
+          <div className="pm-card flex min-h-[340px] flex-col justify-center gap-5 p-6 sm:p-8">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-pm-soft px-3 py-1 text-[11px] font-bold text-pm-blue">
+              Parishes &amp; Causes
+            </span>
+            <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-4xl">
               Parishes &amp; causes connected through{" "}
               <span className="pm-gradient-text">purpose.</span>
             </h1>
             <p className="max-w-md text-sm text-pm-muted">
-              Discover parishes and causes — and the everyday
-              giving and local support that connect them back to clear, real
-              impact.
+              Discover parishes and causes — and the everyday giving and local support that connect them back to clear, real impact.
             </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="#parish-stores" className="pm-btn pm-btn-primary">Explore Parishes &amp; Causes</Link>
+              <Link href="/onboarding/parish" className="pm-btn pm-btn-secondary">Register a Parish</Link>
+            </div>
           </div>
 
-          <div className="p-4 sm:p-6 lg:py-6 lg:pl-0 lg:pr-6">
-            <Link
-              href="/stores"
-              className="relative isolate block min-h-[220px] overflow-hidden rounded-3xl border border-pm-border shadow-pm-card transition hover:-translate-y-0.5 hover:shadow-pm-soft lg:min-h-[280px]"
-            >
-              <Photo
-                kind="church"
-                src="/brand/skd/church.jpg"
-                ratio="auto"
-                rounded="rounded-none"
-                className="absolute inset-0 -z-10 !rounded-none border-0"
-                overlay="none"
-              />
-              <span className="pm-label absolute left-4 top-4 sm:left-5 sm:top-5">
+          {/* Right card — parish photo with overlay */}
+          <div className="relative isolate overflow-hidden rounded-3xl border border-pm-border shadow-pm-card">
+            <Photo
+              kind="church"
+              src="/brand/skd/church.jpg"
+              ratio="auto"
+              rounded="rounded-none"
+              className="absolute inset-0 -z-10 !rounded-none"
+              overlay="none"
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/35 via-black/15 to-black/55" />
+            <div className="flex h-full flex-col justify-end gap-3 p-6 text-white sm:p-8">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white/85 backdrop-blur">
                 Featured Parish Store
               </span>
-            </Link>
+              <h2 className="text-2xl font-extrabold leading-tight md:text-3xl">
+                Saint Katharine Drexel
+              </h2>
+              <p className="text-sm text-white/85">Weston, FL</p>
+            </div>
           </div>
         </div>
       </Section>
