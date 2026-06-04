@@ -93,22 +93,6 @@ export function CauseProfile({
         </div>
       </Section>
 
-      <Section width="wide" className="!pt-3">
-        <div className="flex flex-wrap gap-2">
-          {["Overview", "Giving", "Merch", "Local Supporters"].map(
-            (t, i) => (
-              <span
-                key={t}
-                className="pm-chip"
-                data-active={i === 0 ? "true" : undefined}
-              >
-                {t}
-              </span>
-            ),
-          )}
-        </div>
-      </Section>
-
       <Section width="wide">
         <SectionHeader
           title={`About ${cause.name}`}

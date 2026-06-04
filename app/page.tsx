@@ -29,7 +29,6 @@ const SPONSORS = [
   { name: "Casa Manresa", initials: "CM" },
   { name: "Simplisafe", initials: "SS" },
   { name: "Pretzelmaker", initials: "PM" },
-  { name: "Family Streaming", initials: "TV" },
 ];
 
 const FEATURED_STORES = [

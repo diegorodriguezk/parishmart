@@ -140,7 +140,7 @@ export function ParishStorefront({
         <div className="grid gap-4 md:grid-cols-3">
           {[
             { p: "rosary" as const, kicker: "Shop", h: "Religious Gifts", d: "Faith-centered products that support the parish.", href: "/shop" },
-            { p: "praying" as const, kicker: "Give", h: "Parish Causes", d: "Support ministries, missions and urgent needs.", href: "/stores/give" },
+            { p: "praying" as const, kicker: "Give", h: "Giving", d: "Support ministries, missions and urgent needs.", href: "/stores/give" },
             { p: "business" as const, kicker: "Business Supporters", h: "Community Supporters", d: "Discover businesses connected to SKD.", href: "/local-businesses" },
           ].map((c) => (
             <Link key={c.h} href={c.href} className="pm-card group relative overflow-hidden p-0 transition hover:-translate-y-0.5">

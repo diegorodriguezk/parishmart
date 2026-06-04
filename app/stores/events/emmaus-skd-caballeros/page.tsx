@@ -204,49 +204,43 @@ export default function EmmausSkdCaballerosPage() {
 
       {/* ABOUT + QUESTIONS */}
       <Section width="wide" className="!pt-4">
-        <div className="grid gap-5 lg:grid-cols-[1.7fr_1fr] lg:items-start">
-          {/* Main */}
-          <div className="space-y-5">
-            <div className="pm-card p-6 sm:p-8">
-              <p className="pm-kicker">About the Retreat</p>
-              <h2 className="mt-2 text-2xl font-extrabold leading-tight text-pm-navy md:text-3xl">
-                Una experiencia de fe, hermandad y encuentro personal.
-              </h2>
-              <p className="mt-3 text-sm text-pm-muted">
-                Emmaus SKD Caballeros invita a nuevos caminantes a vivir un retiro de un
-                día para detenerse, escuchar, orar y compartir con otros hombres de la
-                comunidad. El retiro está diseñado para crear un espacio sencillo,
-                profundo y fraterno, con momentos de reflexión, oración, sacramentos y
-                convivencia.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              {MINI_CARDS.map((c) => (
-                <div key={c.title} className="pm-card p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-pm-muted">
-                    {c.label}
-                  </p>
-                  <p className="mt-1 text-base font-extrabold text-pm-navy">{c.title}</p>
-                  <p className="mt-2 text-xs text-pm-muted">{c.body}</p>
-                </div>
-              ))}
-            </div>
+        <div className="space-y-5">
+          <div className="pm-card p-6 sm:p-8">
+            <p className="pm-kicker">About the Retreat</p>
+            <h2 className="mt-2 text-2xl font-extrabold leading-tight text-pm-navy md:text-3xl">
+              Una experiencia de fe, hermandad y encuentro personal.
+            </h2>
+            <p className="mt-3 text-sm text-pm-muted">
+              Emmaus SKD Caballeros invita a nuevos caminantes a vivir un retiro de un
+              día para detenerse, escuchar, orar y compartir con otros hombres de la
+              comunidad. El retiro está diseñado para crear un espacio sencillo,
+              profundo y fraterno, con momentos de reflexión, oración, sacramentos y
+              convivencia.
+            </p>
           </div>
 
-          {/* Side */}
-          <aside className="space-y-5">
-            <div className="pm-card p-6">
-              <h2 className="text-lg font-extrabold text-pm-navy">Questions</h2>
-              <p className="mt-2 text-sm text-pm-muted">
-                Para dudas de elegibilidad, becas o patrocinio, contacta al coordinador
-                antes de reservar.
-              </p>
-              <a href={MAILTO_QUESTION} className="pm-btn pm-btn-secondary mt-4 w-full">
-                Ask coordinator
-              </a>
-            </div>
-          </aside>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {MINI_CARDS.map((c) => (
+              <div key={c.title} className="pm-card p-5">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-pm-muted">
+                  {c.label}
+                </p>
+                <p className="mt-1 text-base font-extrabold text-pm-navy">{c.title}</p>
+                <p className="mt-2 text-xs text-pm-muted">{c.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="pm-card p-6">
+            <h2 className="text-lg font-extrabold text-pm-navy">Questions</h2>
+            <p className="mt-2 text-sm text-pm-muted">
+              Para dudas de elegibilidad, becas o patrocinio, contacta al coordinador
+              antes de reservar.
+            </p>
+            <a href={MAILTO_QUESTION} className="pm-btn pm-btn-secondary mt-4 w-full sm:w-auto">
+              Ask coordinator
+            </a>
+          </div>
         </div>
       </Section>
 
