@@ -105,33 +105,6 @@ export function CartView() {
             ))}
           </div>
         </div>
-
-        <div className="pm-card p-5 sm:p-6">
-          <h3 className="text-lg font-bold text-pm-navy">Support ParishMart</h3>
-          <p className="mt-1 text-xs text-pm-muted">
-            Like a restaurant tip, this optional contribution helps cover platform,
-            payment and community support costs.
-          </p>
-          <div className="mt-3 grid grid-cols-4 gap-2">
-            {[15, 18, 20, 0].map((pct) => (
-              <button
-                key={pct}
-                onClick={() => cart.setSupportPct(pct)}
-                data-active={cart.supportPct === pct ? "true" : undefined}
-                className="pm-chip flex-col !rounded-2xl !py-3"
-              >
-                <span className="text-sm font-extrabold">
-                  {pct === 0 ? "Skip" : `${pct}%`}
-                </span>
-                <span className="text-[11px] opacity-80">
-                  {pct === 0
-                    ? "$0.00"
-                    : `$${((cart.totals.subtotal + cart.totals.donations) * pct / 100).toFixed(2)}`}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       <aside className="space-y-5">
