@@ -82,6 +82,25 @@ export default function StoresGivingCampaignPage() {
               by the SKD youth ministry.
             </p>
 
+            <h2 className="text-2xl font-extrabold leading-tight text-pm-navy md:text-3xl">
+              Empower Young Hearts. Build a{" "}
+              <span className="pm-gradient-text">Brighter Tomorrow</span>.
+            </h2>
+            <p className="text-sm text-pm-ink">
+              Every donation supports retreats, leadership formation, mentoring
+              sessions and community service projects led by SKD&rsquo;s young
+              leaders. Together we equip the next generation to live their faith
+              with purpose.
+            </p>
+            <ul className="space-y-2 pl-5 text-sm text-pm-ink [list-style:disc] marker:text-pm-blue">
+              {PROGRAM_PILLARS.map((p) => (
+                <li key={p.title}>
+                  <span className="font-extrabold text-pm-navy">{p.title}.</span>{" "}
+                  <span className="text-pm-muted">{p.body}</span>
+                </li>
+              ))}
+            </ul>
+
             <div className="flex flex-wrap gap-3 pt-1">
               <button
                 type="button"
@@ -102,40 +121,6 @@ export default function StoresGivingCampaignPage() {
         </div>
       </Section>
 
-      {/* PROGRAM OVERVIEW */}
-      <Section width="wide">
-        <div className="pm-card overflow-hidden p-0 lg:grid lg:grid-cols-[1.05fr_.95fr] lg:items-stretch">
-          <div className="space-y-4 p-6 text-sm text-pm-ink sm:p-7">
-            <h2 className="text-2xl font-extrabold leading-tight text-pm-navy md:text-3xl">
-              Empower Young Hearts. Build a{" "}
-              <span className="pm-gradient-text">Brighter Tomorrow</span>.
-            </h2>
-            <p>
-              Every donation supports retreats, leadership formation, mentoring
-              sessions and community service projects led by SKD&rsquo;s young
-              leaders. Together we equip the next generation to live their
-              faith with purpose.
-            </p>
-            <ul className="space-y-2 pl-5 text-sm text-pm-ink [list-style:disc] marker:text-pm-blue">
-              {PROGRAM_PILLARS.map((p) => (
-                <li key={p.title}>
-                  <span className="font-extrabold text-pm-navy">
-                    {p.title}.
-                  </span>{" "}
-                  <span className="text-pm-muted">{p.body}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <Photo
-            kind="community"
-            ratio="auto"
-            rounded="rounded-none"
-            className="!rounded-none h-full min-h-[280px] lg:!rounded-r-[24px]"
-          />
-        </div>
-      </Section>
-
       {/* CTA STRIP */}
       <Section width="wide" className="!pb-12">
         <div className="pm-card flex flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
@@ -149,9 +134,6 @@ export default function StoresGivingCampaignPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <button type="button" className="pm-btn pm-btn-primary">
-              Support Now
-            </button>
             <Link href="/stores/give" className="pm-btn pm-btn-secondary">
               Explore other causes
             </Link>
