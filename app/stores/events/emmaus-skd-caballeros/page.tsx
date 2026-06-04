@@ -1,7 +1,7 @@
 import { ParishProfileHeader } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
-import { Section, SectionHeader } from "@/components/Sections";
+import { Section } from "@/components/Sections";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export const metadata = {
@@ -48,13 +48,6 @@ const MINI_CARDS = [
     title: "SKD Ministries",
     body: "El registro ayuda a sostener la experiencia y puede apoyar becas para caminantes.",
   },
-];
-
-const SUPPORT = [
-  { title: "Scholarship fund", note: "Becas para caminantes que necesitan apoyo." },
-  { title: "Meal sponsor", note: "Patrocinio específico para comidas del retiro." },
-  { title: "Prayer intentions", note: "Intenciones que el equipo puede llevar al retiro." },
-  { title: "Emmaus updates", note: "Lista para próximos retiros y reuniones de comunidad." },
 ];
 
 function DateBadge() {
@@ -241,23 +234,6 @@ export default function EmmausSkdCaballerosPage() {
               Ask coordinator
             </a>
           </div>
-        </div>
-      </Section>
-
-      {/* SUPPORT STRIP */}
-      <Section width="wide">
-        <span className="pm-kicker">Support the retreat</span>
-        <SectionHeader
-          title="Simple ways to help"
-          description="Opciones conectadas al retiro, pensadas para aportar valor sin sobrecargar la experiencia."
-        />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {SUPPORT.map((s) => (
-            <div key={s.title} className="pm-card p-5">
-              <p className="text-base font-extrabold text-pm-navy">{s.title}</p>
-              <p className="mt-2 text-xs text-pm-muted">{s.note}</p>
-            </div>
-          ))}
         </div>
       </Section>
 
