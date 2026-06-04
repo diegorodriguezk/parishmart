@@ -409,17 +409,20 @@ export default async function HomePage() {
                       View all →
                     </Link>
                   </div>
-                  <ul className="flex flex-wrap items-center gap-x-10 gap-y-6 sm:gap-x-14">
-                    {SPONSORS.map((s) => (
-                      <li
-                        key={s.initials}
-                        title={s.name}
-                        className="text-base font-bold tracking-tight text-pm-muted/80 grayscale transition hover:text-pm-navy hover:grayscale-0 md:text-lg"
-                      >
-                        {s.name}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="pm-marquee">
+                    <ul className="pm-marquee-track flex items-center">
+                      {[...SPONSORS, ...SPONSORS].map((s, i) => (
+                        <li
+                          key={`${s.initials}-${i}`}
+                          title={s.name}
+                          aria-hidden={i >= SPONSORS.length ? true : undefined}
+                          className="whitespace-nowrap pr-10 text-base font-bold tracking-tight text-pm-muted/80 grayscale transition hover:text-pm-navy hover:grayscale-0 sm:pr-14 md:text-lg"
+                        >
+                          {s.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ) : null}
 

@@ -6,6 +6,7 @@ import { MobileNavDrawer } from "./MobileNavDrawer";
 import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ParishTabsNav } from "./ParishTabsNav";
+import { HeaderSearch } from "./HeaderSearch";
 
 function SearchForm({
   placeholder = "Search products, causes, businesses, gifts and services…",
@@ -84,13 +85,7 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
-          <Link
-            href="/search"
-            aria-label="Open search"
-            className="hidden h-10 w-10 place-items-center rounded-full border border-pm-border bg-white text-pm-navy hover:border-pm-blue hover:text-pm-blue sm:grid"
-          >
-            <Search className="h-4 w-4" aria-hidden />
-          </Link>
+          <HeaderSearch />
           <CartButton compact />
           <Link
             href="/sign-in"
