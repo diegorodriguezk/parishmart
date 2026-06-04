@@ -32,7 +32,7 @@ export function CartView() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div>
       <div className="pm-card p-5 sm:p-6">
         <h3 className="text-lg font-bold text-pm-navy">Your cart</h3>
         <p className="mt-1 text-xs text-pm-muted">
