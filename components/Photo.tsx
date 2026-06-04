@@ -20,7 +20,8 @@ export type PhotoKind =
   | "merch"
   | "business"
   | "food"
-  | "house";
+  | "house"
+  | "weston";
 
 const SOURCES: Record<PhotoKind, string> = {
   church:
@@ -63,6 +64,8 @@ const SOURCES: Record<PhotoKind, string> = {
     "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80",
   house:
     "https://images.unsplash.com/photo-1647579350413-a6ada4e480ed?auto=format&fit=crop&w=1600&q=80",
+  weston:
+    "https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=1600&q=80",
 };
 
 type LegacyKind = "people";

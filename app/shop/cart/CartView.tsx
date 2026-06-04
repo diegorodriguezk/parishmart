@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/components/cart/CartContext";
 import { Photo, PhotoKind } from "@/components/Photo";
-import { TrustBadge } from "@/components/TrustBadge";
 import { QtyControl } from "@/components/InteractiveFilters";
 
 export function CartView() {
@@ -33,15 +32,14 @@ export function CartView() {
   }
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]">
-      <div className="space-y-5">
-        <div className="pm-card p-5 sm:p-6">
-          <h3 className="text-lg font-bold text-pm-navy">Your cart</h3>
-          <p className="mt-1 text-xs text-pm-muted">
-            Products and optional impact connected to causes you choose.
-          </p>
-          <div className="mt-4 space-y-3">
-            {cart.items.map((it) => (
+    <div className="mx-auto max-w-3xl">
+      <div className="pm-card p-5 sm:p-6">
+        <h3 className="text-lg font-bold text-pm-navy">Your cart</h3>
+        <p className="mt-1 text-xs text-pm-muted">
+          Products and optional impact connected to causes you choose.
+        </p>
+        <div className="mt-4 space-y-3">
+          {cart.items.map((it) => (
               <div
                 key={it.id}
                 className="flex flex-col gap-3 rounded-2xl border border-pm-border bg-white p-3 sm:flex-row sm:items-center"
@@ -104,62 +102,27 @@ export function CartView() {
               </div>
             ))}
           </div>
+
+          <div className="mt-5 border-t border-pm-border pt-4">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-extrabold text-pm-navy">Subtotal</span>
+              <span className="text-2xl font-extrabold text-pm-navy">
+                ${(cart.totals.subtotal + cart.totals.donations).toFixed(2)}
+              </span>
+            </div>
+            <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+              <Link
+                href="/share-impact"
+                className="pm-btn pm-btn-primary sm:flex-1"
+              >
+                Continue to Checkout
+              </Link>
+              <Link href="/shop" className="pm-btn pm-btn-secondary sm:flex-1">
+                Keep Shopping
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-
-      <aside className="space-y-5">
-        <div className="pm-card p-5 sm:p-6">
-          <h3 className="text-lg font-bold text-pm-navy">Order summary</h3>
-          <dl className="mt-4 divide-y divide-pm-border text-sm">
-            <div className="flex justify-between py-2">
-              <dt className="text-pm-muted">Products subtotal</dt>
-              <dd className="font-bold text-pm-navy">
-                ${cart.totals.subtotal.toFixed(2)}
-              </dd>
-            </div>
-            <div className="flex justify-between py-2">
-              <dt className="text-pm-muted">Donations</dt>
-              <dd className="font-bold text-pm-navy">
-                ${cart.totals.donations.toFixed(2)}
-              </dd>
-            </div>
-            <div className="flex justify-between py-2">
-              <dt className="text-pm-muted">
-                Platform support ({cart.supportPct}%)
-              </dt>
-              <dd className="font-bold text-pm-navy">
-                ${cart.totals.support.toFixed(2)}
-              </dd>
-            </div>
-            <div className="flex justify-between py-2">
-              <dt className="text-pm-muted">Estimated tax</dt>
-              <dd className="font-bold text-pm-navy">$0.00</dd>
-            </div>
-            <div className="flex justify-between py-2">
-              <dt className="text-pm-muted">Shipping</dt>
-              <dd className="font-bold text-pm-navy">Calculated next</dd>
-            </div>
-          </dl>
-          <div className="mt-3 flex items-center justify-between border-t border-pm-border pt-3">
-            <span className="text-sm font-extrabold text-pm-navy">Total</span>
-            <span className="text-2xl font-extrabold text-pm-navy">
-              ${cart.totals.total.toFixed(2)}
-            </span>
-          </div>
-          <div className="mt-4 flex items-center gap-2">
-            <TrustBadge variant="secured" />
-            <span className="text-[11px] text-pm-muted">256-bit SSL · Stripe</span>
-          </div>
-          <div className="mt-4 flex flex-col gap-2">
-            <Link href="/share-impact" className="pm-btn pm-btn-primary">
-              Continue to Checkout
-            </Link>
-            <Link href="/shop" className="pm-btn pm-btn-secondary">
-              Keep Shopping
-            </Link>
-          </div>
-        </div>
-      </aside>
-    </div>
   );
 }
