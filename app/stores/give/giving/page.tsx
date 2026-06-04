@@ -76,16 +76,6 @@ export default function StoresGivingCampaignPage() {
                 Saint Katharine Drexel Parish · Weston, FL
               </p>
             </div>
-            <p className="text-sm text-pm-muted">
-              Helping young people grow in faith, leadership and community
-              service through formation, retreats and outreach activities led
-              by the SKD youth ministry.
-            </p>
-
-            <h2 className="text-2xl font-extrabold leading-tight text-pm-navy md:text-3xl">
-              Empower Young Hearts. Build a{" "}
-              <span className="pm-gradient-text">Brighter Tomorrow</span>.
-            </h2>
             <p className="text-sm text-pm-ink">
               Every donation supports retreats, leadership formation, mentoring
               sessions and community service projects led by SKD&rsquo;s young
