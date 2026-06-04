@@ -177,10 +177,6 @@ export function MiniCart() {
                   <dd>${cart.totals.donations.toFixed(2)}</dd>
                 </div>
               ) : null}
-              <div className="flex justify-between text-pm-muted">
-                <dt>Platform support ({cart.supportPct}%)</dt>
-                <dd>${cart.totals.support.toFixed(2)}</dd>
-              </div>
               <div className="flex items-center justify-between border-t border-pm-border pt-2">
                 <dt className="text-base font-extrabold text-pm-navy">Total</dt>
                 <dd className="text-base font-extrabold text-pm-navy">
@@ -197,11 +193,11 @@ export function MiniCart() {
                 Continue to Checkout
               </Link>
               <Link
-                href="/shop"
+                href="/shop/cart"
                 onClick={cart.close}
                 className="pm-btn pm-btn-secondary"
               >
-                Keep Shopping
+                View Cart
               </Link>
             </div>
           </footer>

@@ -63,7 +63,7 @@ const STORAGE_KEY = "parishmart-cart-v1";
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [donations, setDonations] = useState<DonationItem[]>([]);
-  const [supportPct, setSupportPct] = useState(18);
+  const [supportPct, setSupportPct] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
@@ -75,7 +75,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         const parsed = JSON.parse(raw);
         setItems(parsed.items ?? []);
         setDonations(parsed.donations ?? []);
-        setSupportPct(parsed.supportPct ?? 18);
+        setSupportPct(parsed.supportPct ?? 0);
       }
     } catch {
       // start with empty cart on error
