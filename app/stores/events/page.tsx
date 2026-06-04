@@ -35,6 +35,7 @@ const UPCOMING_EVENTS = [
     description: "Faith, brotherhood and community for SKD parishioners.",
     price: "$65",
     filter: "Retreats",
+    href: "/stores/events/emmaus-skd-caballeros",
   },
   {
     month: "SEP", day: "12", weekday: "SAT",
@@ -42,6 +43,7 @@ const UPCOMING_EVENTS = [
     description: "Families, ministries and local businesses together after Mass.",
     price: "Free",
     filter: "Family",
+    href: "#",
   },
   {
     month: "OCT", day: "04", weekday: "SUN",
@@ -49,6 +51,7 @@ const UPCOMING_EVENTS = [
     description: "Help entrepreneurs join ParishMart and support their community.",
     price: "$25",
     filter: "Workshops",
+    href: "#",
   },
   {
     month: "NOV", day: "08", weekday: "SAT",
@@ -56,6 +59,7 @@ const UPCOMING_EVENTS = [
     description: "A community experience supporting youth programs and causes.",
     price: "$15",
     filter: "Youth",
+    href: "#",
   },
 ];
 
@@ -244,7 +248,7 @@ export default function StoresEventsPage() {
                 <h3 className="text-base font-extrabold text-pm-navy">{ev.title}</h3>
                 <p className="text-xs text-pm-muted">{ev.description}</p>
                 <div className="mt-auto flex items-center justify-between pt-3">
-                  <Link href="#" className="text-sm font-bold text-pm-blue hover:text-pm-navy">View Event →</Link>
+                  <Link href={ev.href} className="text-sm font-bold text-pm-blue hover:text-pm-navy">View Event →</Link>
                   <span className="text-sm font-extrabold text-pm-navy">{ev.price}</span>
                 </div>
               </div>
