@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/components/cart/CartContext";
 import { Photo, PhotoKind } from "@/components/Photo";
-import { ImpactBreakdown } from "@/components/ImpactBreakdown";
 import { TrustBadge } from "@/components/TrustBadge";
 import { QtyControl } from "@/components/InteractiveFilters";
 
@@ -47,7 +46,7 @@ export function CartView() {
                 key={it.id}
                 className="flex flex-col gap-3 rounded-2xl border border-pm-border bg-white p-3 sm:flex-row sm:items-center"
               >
-                <div className="h-20 w-20 shrink-0 sm:h-16 sm:w-16">
+                <div className="h-24 w-24 shrink-0 sm:h-28 sm:w-28">
                   <Photo
                     kind={(it.photo as PhotoKind) ?? "merch"}
                     ratio="1/1"
@@ -133,13 +132,6 @@ export function CartView() {
             ))}
           </div>
         </div>
-
-        <ImpactBreakdown
-          amount={cart.totals.subtotal + cart.totals.donations}
-          causePct={10}
-          platformPct={4}
-          causeName="Selected causes"
-        />
       </div>
 
       <aside className="space-y-5">
