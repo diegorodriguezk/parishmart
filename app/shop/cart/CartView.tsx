@@ -110,15 +110,12 @@ export function CartView() {
                 ${(cart.totals.subtotal + cart.totals.donations).toFixed(2)}
               </span>
             </div>
-            <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+            <div className="mt-4 flex flex-col gap-2">
               <Link
                 href="/share-impact"
-                className="pm-btn pm-btn-primary sm:flex-1"
+                className="pm-btn pm-btn-primary"
               >
                 Continue to Checkout
-              </Link>
-              <Link href="/shop" className="pm-btn pm-btn-secondary sm:flex-1">
-                View Cart
               </Link>
             </div>
           </div>
