@@ -118,7 +118,7 @@ export function CartView() {
                 Continue to Checkout
               </Link>
               <Link href="/shop" className="pm-btn pm-btn-secondary sm:flex-1">
-                Keep Shopping
+                View Cart
               </Link>
             </div>
           </div>
