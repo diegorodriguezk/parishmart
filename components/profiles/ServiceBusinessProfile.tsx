@@ -45,12 +45,6 @@ const SERVICE_PHOTOS: PhotoKind[] = [
   "retreat",
 ];
 
-const FOUNDER_STATS = [
-  { value: "10+", label: "Years of experience" },
-  { value: "250+", label: "Projects" },
-  { value: "500+", label: "Happy clients" },
-];
-
 export function ServiceBusinessProfile({ business }: { business: Business }) {
   const services = business.services ?? [];
   const websiteHref = safeHref(business.website);
@@ -250,17 +244,6 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                       `${founderName} leads ${business.name}, a local business committed to the community with a personal, high-quality service.`}
                   </p>
                 </div>
-              </div>
-              <div className="mt-5 grid grid-cols-3 gap-3">
-                {FOUNDER_STATS.map((s) => (
-                  <div
-                    key={s.label}
-                    className="rounded-2xl border border-pm-border bg-pm-soft/40 p-3 text-center"
-                  >
-                    <p className="text-xl font-extrabold text-pm-navy">{s.value}</p>
-                    <p className="text-[11px] text-pm-muted">{s.label}</p>
-                  </div>
-                ))}
               </div>
             </div>
 
