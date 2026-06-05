@@ -46,9 +46,9 @@ const SERVICE_PHOTOS: PhotoKind[] = [
 ];
 
 const FOUNDER_STATS = [
-  { value: "10+", label: "Años de experiencia" },
-  { value: "250+", label: "Proyectos" },
-  { value: "500+", label: "Clientes felices" },
+  { value: "10+", label: "Years of experience" },
+  { value: "250+", label: "Projects" },
+  { value: "500+", label: "Happy clients" },
 ];
 
 export function ServiceBusinessProfile({ business }: { business: Business }) {
@@ -69,16 +69,11 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
       ];
 
   const contactStrip = [
-    { Icon: MessageCircle, label: "La mejor forma de contacto", value: "WhatsApp" },
-    { Icon: Phone, label: "Teléfono", value: business.phone ?? "—" },
-    { Icon: Mail, label: "Correo", value: business.email ?? "—" },
-    { Icon: Globe, label: "Sitio Web", value: business.website ?? "—" },
-    { Icon: MapPin, label: "Ciudad", value: city },
-    {
-      Icon: Navigation,
-      label: "Área de Servicio",
-      value: `${city} y áreas cercanas`,
-    },
+    { Icon: MessageCircle, label: "Best way to contact", value: "WhatsApp" },
+    { Icon: Phone, label: "Phone", value: business.phone ?? "—" },
+    { Icon: Mail, label: "Email", value: business.email ?? "—" },
+    { Icon: Globe, label: "Website", value: business.website ?? "—" },
+    { Icon: MapPin, label: "City", value: city },
   ];
 
   return (
@@ -86,7 +81,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
       <Section width="wide" className="!py-4">
         <Breadcrumbs
           items={[
-            { label: "Inicio", href: "/" },
+            { label: "Home", href: "/" },
             { label: "Local Businesses", href: "/local-businesses" },
             { label: business.name },
           ]}
@@ -155,7 +150,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                 rel={websiteHref ? "noreferrer" : undefined}
                 className="pm-btn pm-btn-primary !text-white"
               >
-                {websiteHref ? "Visitar Sitio Web" : "Contact Us"}
+                {websiteHref ? "Visit Website" : "Contact Us"}
               </a>
               <a
                 href={whatsappHref ?? "/share-impact"}
@@ -181,7 +176,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
 
         {/* CONTACT STRIP */}
         <div className="relative z-10 -mt-6 mx-3 rounded-3xl border border-pm-border bg-white p-5 shadow-pm-card sm:mx-6">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {contactStrip.map((c) => (
               <div key={c.label} className="flex items-start gap-2.5">
                 <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-pm-soft text-pm-blue">
@@ -209,7 +204,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
             {/* About */}
             <div className="pm-card p-6 sm:p-8">
               <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy md:text-3xl">
-                Sobre {business.name}
+                About {business.name}
               </h2>
               <p className="mt-1 text-[11px] font-bold uppercase tracking-wider text-pm-blue">
                 {business.category}
@@ -218,7 +213,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                 {business.description}
               </p>
               <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-pm-muted">
-                Descripción del Negocio
+                Business Description
               </p>
               <p className="mt-2 text-sm text-pm-muted">
                 {business.about ?? business.description}
@@ -228,7 +223,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
             {/* Founder */}
             <div className="pm-card p-6 sm:p-8">
               <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
-                Fundador / a
+                Founder
               </p>
               <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-start">
                 <div className="h-28 w-28 shrink-0 overflow-hidden rounded-2xl">
@@ -245,14 +240,14 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                     {founderName}
                   </h3>
                   <p className="text-xs font-semibold text-pm-muted">
-                    Fundador/a · Director/a Creativo/a
+                    Founder · Creative Director
                   </p>
                   <p className="mt-3 text-[10px] font-bold uppercase tracking-wider text-pm-muted">
-                    Sobre el / la fundador / a
+                    About the founder
                   </p>
                   <p className="mt-1 text-sm text-pm-muted">
                     {business.founderShortDesc ??
-                      `${founderName} lidera ${business.name}, un negocio local comprometido con la comunidad y con un servicio cercano y de calidad.`}
+                      `${founderName} leads ${business.name}, a local business committed to the community with a personal, high-quality service.`}
                   </p>
                 </div>
               </div>
@@ -273,22 +268,22 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
             {business.parishSupported ? (
               <div className="pm-card p-6 sm:p-8">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
-                  Parroquia / Causa que Apoya
+                  Parish / Cause Supported
                 </p>
                 <h3 className="mt-2 text-lg font-extrabold text-pm-navy">
                   {business.parishSupported}
                 </h3>
                 <p className="mt-1 text-sm text-pm-muted">
-                  Apoyamos actividades juveniles, formación espiritual y proyectos
-                  comunitarios.
+                  We support youth activities, spiritual formation and community
+                  projects.
                 </p>
                 <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-pm-muted">
-                  ¿Por qué quieres apoyar a esta comunidad?
+                  Why do you want to support this community?
                 </p>
                 <p className="mt-1 text-sm text-pm-muted">
-                  Creemos firmemente en el poder de la comunidad y en brindar
-                  oportunidades. Queremos aportar nuestros talentos para ayudar a
-                  crecer y fortalecer nuestra comunidad.
+                  We strongly believe in the power of community and in creating
+                  opportunities. We want to share our talents to help our community
+                  grow and thrive.
                 </p>
               </div>
             ) : null}
@@ -313,10 +308,10 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
             <div className="pm-card p-5">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-extrabold text-pm-navy">
-                  Galería de Servicios
+                  Services Gallery
                 </h3>
                 <span className="text-xs font-bold text-pm-blue">
-                  Ver todas las fotos
+                  View all photos
                 </span>
               </div>
               <div className="mt-3 grid grid-cols-3 gap-2">
@@ -334,7 +329,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
             {/* Video */}
             <div className="pm-card p-5">
               <h3 className="text-sm font-extrabold text-pm-navy">
-                Video <span className="text-pm-muted">(Opcional)</span>
+                Video <span className="text-pm-muted">(Optional)</span>
               </h3>
               <div className="relative mt-3 aspect-video overflow-hidden rounded-2xl">
                 <Photo
@@ -367,12 +362,12 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                 </span>
                 <div>
                   <p className="text-[11px] font-bold uppercase tracking-wider text-amber-700">
-                    Descuento Especial para la Comunidad
+                    Special Community Discount
                   </p>
                   <p className="text-2xl font-extrabold text-amber-700">15% OFF</p>
                   <p className="mt-1 text-xs text-amber-800/90">
-                    Válido para miembros de la comunidad ParishMart. Menciona que nos
-                    encontraste en ParishMart para aplicar.
+                    Valid for ParishMart community members. Mention that you found us
+                    on ParishMart to redeem.
                   </p>
                 </div>
               </div>
@@ -387,18 +382,18 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
           {/* Contact info */}
           <div className="pm-card p-6 sm:p-8">
             <h2 className="text-xl font-extrabold text-pm-navy">
-              Información de Contacto
+              Contact Information
             </h2>
             <dl className="mt-4 grid gap-4 sm:grid-cols-2">
               {[
-                { Icon: User, label: "Nombre de Contacto", value: founderName },
-                { Icon: Phone, label: "Teléfono", value: business.phone ?? "—" },
-                { Icon: Mail, label: "Correo", value: business.email ?? "—" },
-                { Icon: Globe, label: "Sitio Web", value: business.website ?? "—" },
-                { Icon: MessageCircle, label: "La mejor forma de contacto", value: "WhatsApp" },
-                { Icon: MapPin, label: "Ciudad", value: city },
-                { Icon: Building2, label: "Estado / Provincia", value: business.location.split(",")[1]?.trim() ?? city },
-                { Icon: Navigation, label: "Área de Servicio", value: `${city} y áreas cercanas` },
+                { Icon: User, label: "Contact Name", value: founderName },
+                { Icon: Phone, label: "Phone", value: business.phone ?? "—" },
+                { Icon: Mail, label: "Email", value: business.email ?? "—" },
+                { Icon: Globe, label: "Website", value: business.website ?? "—" },
+                { Icon: MessageCircle, label: "Best way to contact", value: "WhatsApp" },
+                { Icon: MapPin, label: "City", value: city },
+                { Icon: Building2, label: "State / Province", value: business.location.split(",")[1]?.trim() ?? city },
+                { Icon: Navigation, label: "Service Area", value: `${city} and nearby areas` },
               ].map((c) => (
                 <div key={c.label} className="flex items-start gap-2.5">
                   <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-pm-soft text-pm-blue">
@@ -429,7 +424,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
               />
               <div className="absolute left-4 top-4 rounded-2xl bg-white px-4 py-2 shadow-pm-card">
                 <p className="text-[10px] font-bold uppercase tracking-wider text-pm-blue">
-                  Ubicación
+                  Location
                 </p>
                 <p className="text-sm font-extrabold text-pm-navy">{business.name}</p>
                 <p className="text-[11px] text-pm-muted">{business.location}</p>
@@ -443,7 +438,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                 className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-bold text-pm-navy shadow-pm-card hover:text-pm-blue"
               >
                 <MapPin className="h-3.5 w-3.5 text-pm-blue" aria-hidden />
-                Abrir en Google Maps
+                Open in Google Maps
               </a>
             </div>
           </div>
@@ -453,7 +448,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
       {/* SERVICES WE OFFER */}
       <Section width="wide">
         <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy md:text-3xl">
-          Servicios que Ofrecemos
+          Services We Offer
         </h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {offered.map((s, i) => (
@@ -489,10 +484,10 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
         <div className="flex flex-col items-start gap-4 rounded-3xl border border-pm-border bg-gradient-to-r from-pm-navy via-pm-blue to-pm-cyan p-7 text-white shadow-pm-card sm:flex-row sm:items-center sm:justify-between sm:p-9">
           <div>
             <h2 className="text-2xl font-extrabold leading-tight">
-              ¿Listo para trabajar juntos?
+              Ready to work together?
             </h2>
             <p className="mt-1 text-sm text-white/85">
-              Creemos imágenes que cuenten tu historia y eleven tu marca.
+              We create images that tell your story and elevate your brand.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -502,7 +497,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
               rel={websiteHref ? "noreferrer" : undefined}
               className="pm-btn bg-white !text-pm-blue hover:bg-white/90"
             >
-              {websiteHref ? "Visitar Sitio Web" : "Contact Us"}
+              {websiteHref ? "Visit Website" : "Contact Us"}
             </a>
             <a
               href={whatsappHref ?? "/share-impact"}
@@ -513,7 +508,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
               {whatsappHref ? (
                 <>
                   <MessageCircle className="h-4 w-4" aria-hidden />
-                  Contactar por WhatsApp
+                  Contact via WhatsApp
                 </>
               ) : (
                 <>
