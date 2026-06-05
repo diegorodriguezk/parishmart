@@ -86,7 +86,7 @@ export default function CombinedStep3() {
             </label>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4">
             <label className="block">
               <div className="flex items-baseline justify-between">
                 <span className="block text-xs font-extrabold text-pm-navy">
@@ -97,7 +97,7 @@ export default function CombinedStep3() {
                 </span>
               </div>
               <textarea
-                rows={3}
+                rows={5}
                 maxLength={300}
                 value={profile.founderDesc}
                 onChange={(e) => update({ founderDesc: e.target.value })}
@@ -110,7 +110,7 @@ export default function CombinedStep3() {
                 <span className="font-medium text-pm-muted">(optional)</span>
               </span>
               <textarea
-                rows={3}
+                rows={5}
                 value={profile.whySupport}
                 onChange={(e) => update({ whySupport: e.target.value })}
                 className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
