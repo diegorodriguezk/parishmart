@@ -39,7 +39,7 @@ const OPTIONS: Option[] = [
     title: "Seller or Business",
     description:
       "Sell products or offer services — connected to causes your customers and community care about.",
-    href: "/onboarding/seller",
+    href: "/onboarding/local-business-combined",
   },
   {
     id: "sponsor",
