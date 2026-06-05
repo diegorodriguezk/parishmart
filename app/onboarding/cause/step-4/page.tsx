@@ -1,41 +1,27 @@
 "use client";
 
 import Link from "next/link";
+import { Plus, Trash2, ImagePlus } from "lucide-react";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
-import { useCause, STARTER_MERCH } from "@/components/onboarding/CauseProfileContext";
-import { MediaUploadCard } from "@/components/onboarding/MediaUploadCard";
-import { Photo } from "@/components/Photo";
+import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
 
-const MEDIA_CARDS = [
-  {
-    eyebrow: "Logo / Icon",
-    title: "Cause Logo or Icon",
-    description: "Upload a square or horizontal logo. A clean mark helps your page look professional.",
-    action: "Upload Logo",
-    badge: "Required",
-  },
-  {
-    eyebrow: "Banner",
-    title: "Banner Photo",
-    description: "A wide cover photo for the top of your cause page that explains your mission.",
-    action: "Upload Photo",
-    badge: "Required",
-  },
-  {
-    eyebrow: "Pictures",
-    title: "Cause Pictures",
-    description: "Add up to 6 photos of your community, events or the impact you create.",
-    action: "Add Photos",
-    badge: "Optional",
-  },
+const EVENT_CATEGORIES = [
+  "Retreat",
+  "Workshop",
+  "Fundraiser",
+  "Service",
+  "Social",
+  "Other",
 ];
 
+const inputCls =
+  "mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue";
+
 export default function CauseStep4() {
-  const { profile, toggleCollection, setShowFaithGifts } = useCause();
-  const visibleMerch = STARTER_MERCH.filter((m) => profile.showFaithGifts || !m.faith);
+  const { profile, updateEvent, addEvent, removeEvent } = useCause();
 
   return (
     <SellerStepShell
@@ -43,9 +29,13 @@ export default function CauseStep4() {
       totalSteps={5}
       allStepTitles={STEP_TITLES}
       badge="Recommended"
-      eyebrow="Step 4 of 5 · Media & Collection"
-      title={<>Add <span className="pm-gradient-text">media and merch</span>.</>}
-      description="Upload your visuals and pick a starter merch collection supporters can buy to back your cause."
+      eyebrow="Step 4 of 5 · Upcoming Events"
+      title={
+        <>
+          Add your <span className="pm-gradient-text">upcoming events</span>.
+        </>
+      }
+      description="Optional. Add events your community can join — each with dates, location, price and details."
       preview={<CauseLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
@@ -54,91 +44,201 @@ export default function CauseStep4() {
             AI
           </span>
           <div>
-            <p className="text-xs font-extrabold text-pm-blue">ParishMart Concierge</p>
+            <p className="text-xs font-extrabold text-pm-blue">
+              ParishMart Concierge
+            </p>
             <p className="mt-1 text-sm text-pm-muted">
-              Pages with a logo, banner and a starter merch collection convert visitors into supporters faster.
+              Events give supporters a reason to show up. You can add as many as
+              you like, or skip this step.
             </p>
           </div>
         </div>
 
-        {/* MEDIA */}
-        <p className="text-sm font-extrabold text-pm-navy">Media</p>
-        <div className="mt-3 grid gap-4 sm:grid-cols-2">
-          {MEDIA_CARDS.map((c) => (
-            <MediaUploadCard key={c.eyebrow} {...c} />
+        <div className="space-y-5">
+          {profile.events.map((ev, i) => (
+            <div
+              key={i}
+              className="rounded-2xl border border-pm-border bg-white p-4 shadow-pm-soft"
+            >
+              <div className="mb-3 flex items-center justify-between">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-pm-blue">
+                  Event {i + 1}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => removeEvent(i)}
+                  aria-label={`Remove event ${i + 1}`}
+                  className="inline-flex items-center gap-1 text-xs font-bold text-pm-muted hover:text-pm-navy"
+                >
+                  <Trash2 className="h-3.5 w-3.5" aria-hidden />
+                  Remove
+                </button>
+              </div>
+
+              <div className="flex gap-4">
+                <button
+                  type="button"
+                  className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border border-dashed border-pm-border bg-pm-soft/50 text-pm-blue hover:border-pm-blue"
+                  aria-label="Upload event image"
+                >
+                  <ImagePlus className="h-5 w-5" aria-hidden />
+                </button>
+                <div className="grid flex-1 gap-3">
+                  <label className="block">
+                    <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                      Title
+                      <span className="font-normal text-pm-muted">
+                        {ev.title.length}/30
+                      </span>
+                    </span>
+                    <input
+                      maxLength={30}
+                      value={ev.title}
+                      onChange={(e) => updateEvent(i, { title: e.target.value })}
+                      className={inputCls}
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="block text-xs font-extrabold text-pm-navy">
+                      Location
+                    </span>
+                    <input
+                      value={ev.location}
+                      onChange={(e) =>
+                        updateEvent(i, { location: e.target.value })
+                      }
+                      className={inputCls}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <label className="block">
+                  <span className="block text-xs font-extrabold text-pm-navy">
+                    Start Date &amp; Time
+                  </span>
+                  <input
+                    type="datetime-local"
+                    value={ev.startDateTime}
+                    onChange={(e) =>
+                      updateEvent(i, { startDateTime: e.target.value })
+                    }
+                    className={inputCls}
+                  />
+                </label>
+                <label className="block">
+                  <span className="block text-xs font-extrabold text-pm-navy">
+                    End Date &amp; Time
+                  </span>
+                  <input
+                    type="datetime-local"
+                    value={ev.endDateTime}
+                    onChange={(e) =>
+                      updateEvent(i, { endDateTime: e.target.value })
+                    }
+                    className={inputCls}
+                  />
+                </label>
+              </div>
+
+              <label className="mt-3 block">
+                <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                  Brief description
+                  <span className="font-normal text-pm-muted">
+                    {ev.briefDescription.length}/100
+                  </span>
+                </span>
+                <textarea
+                  rows={2}
+                  maxLength={100}
+                  value={ev.briefDescription}
+                  onChange={(e) =>
+                    updateEvent(i, { briefDescription: e.target.value })
+                  }
+                  className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
+                />
+              </label>
+
+              <label className="mt-3 block">
+                <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                  Long description
+                  <span className="font-normal text-pm-muted">
+                    {ev.longDescription.length}/100
+                  </span>
+                </span>
+                <textarea
+                  rows={3}
+                  maxLength={100}
+                  value={ev.longDescription}
+                  onChange={(e) =>
+                    updateEvent(i, { longDescription: e.target.value })
+                  }
+                  className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
+                />
+              </label>
+
+              <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                <label className="block">
+                  <span className="block text-xs font-extrabold text-pm-navy">
+                    Price
+                  </span>
+                  <input
+                    value={ev.price}
+                    onChange={(e) => updateEvent(i, { price: e.target.value })}
+                    placeholder="$0 or Free"
+                    className={inputCls}
+                  />
+                </label>
+                <label className="block">
+                  <span className="block text-xs font-extrabold text-pm-navy">
+                    Available Spots
+                  </span>
+                  <input
+                    type="number"
+                    value={ev.spots}
+                    onChange={(e) => updateEvent(i, { spots: e.target.value })}
+                    className={inputCls}
+                  />
+                </label>
+                <label className="block">
+                  <span className="block text-xs font-extrabold text-pm-navy">
+                    Category
+                  </span>
+                  <select
+                    value={ev.category}
+                    onChange={(e) =>
+                      updateEvent(i, { category: e.target.value })
+                    }
+                    className={inputCls}
+                  >
+                    <option value="">Select</option>
+                    {EVENT_CATEGORIES.map((c) => (
+                      <option key={c}>{c}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+            </div>
           ))}
-        </div>
 
-        {/* FAITH GIFTS TOGGLE */}
-        <div className="mt-8 flex items-center justify-between gap-4 rounded-2xl border border-pm-border bg-pm-soft/40 p-4">
-          <div>
-            <p className="text-sm font-bold text-pm-navy">Do you want to showcase religious and faith gifts?</p>
-            <p className="mt-0.5 text-xs text-pm-muted">
-              Adds rosaries, crucifixes, candles and devotional keepsakes to your starter collection.
-            </p>
-          </div>
           <button
             type="button"
-            role="switch"
-            aria-checked={profile.showFaithGifts}
-            aria-label="Showcase religious and faith gifts"
-            onClick={() => setShowFaithGifts(!profile.showFaithGifts)}
-            className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
-              profile.showFaithGifts ? "bg-pm-blue" : "bg-pm-border"
-            }`}
+            onClick={addEvent}
+            className="inline-flex items-center gap-2 rounded-2xl border border-dashed border-pm-border bg-white px-4 py-3 text-sm font-bold text-pm-blue hover:border-pm-blue hover:bg-pm-soft"
           >
-            <span
-              className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${
-                profile.showFaithGifts ? "translate-x-5" : "translate-x-0.5"
-              }`}
-            />
+            <Plus className="h-4 w-4" aria-hidden />
+            Add another event
           </button>
         </div>
 
-        {/* STARTER COLLECTION */}
-        <p className="mt-6 text-sm font-extrabold text-pm-navy">Select your starter collection</p>
-        <p className="mt-1 text-xs text-pm-muted">Choose the merch supporters can buy to fund your cause.</p>
-        <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {visibleMerch.map((m) => {
-            const selected = profile.starterCollection.includes(m.name);
-            return (
-              <button
-                key={m.name}
-                type="button"
-                onClick={() => toggleCollection(m.name)}
-                aria-pressed={selected}
-                className={`group flex flex-col overflow-hidden rounded-2xl border text-left transition ${
-                  selected ? "border-pm-blue ring-2 ring-pm-blue/30" : "border-pm-border hover:border-pm-blue"
-                }`}
-              >
-                <div className="relative aspect-square bg-white">
-                  <Photo
-                    kind="merch"
-                    src={m.src}
-                    ratio="auto"
-                    rounded="rounded-none"
-                    className="absolute inset-0 !rounded-none border-0"
-                    overlay="none"
-                    fit="contain"
-                    alt={m.name}
-                  />
-                  {selected && (
-                    <span className="absolute right-2 top-2 grid h-5 w-5 place-items-center rounded-full bg-pm-blue text-white">
-                      <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                  )}
-                </div>
-                <span className="px-2.5 py-2 text-xs font-bold text-pm-navy">{m.name}</span>
-              </button>
-            );
-          })}
-        </div>
-
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
-          <Link href="/onboarding/cause/step-3" className="pm-btn pm-btn-secondary">Back</Link>
-          <Link href="/onboarding/cause/step-5" className="pm-btn pm-btn-primary">Continue</Link>
+          <Link href="/onboarding/cause/step-3" className="pm-btn pm-btn-secondary">
+            Back
+          </Link>
+          <Link href="/onboarding/cause/step-5" className="pm-btn pm-btn-primary">
+            Continue
+          </Link>
         </div>
       </div>
     </SellerStepShell>

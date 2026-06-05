@@ -1,17 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { Plus, Trash2, ImagePlus } from "lucide-react";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
-import { MediaUploadCard } from "@/components/onboarding/MediaUploadCard";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
 
-const EVENT_CATEGORIES = ["Retreat", "Workshop", "Fundraiser", "Service", "Social", "Other"];
+const inputCls =
+  "mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue";
 
 export default function CauseStep3() {
-  const { profile, update } = useCause();
+  const { profile, updateDonation, addDonation, removeDonation } = useCause();
 
   return (
     <SellerStepShell
@@ -19,9 +20,13 @@ export default function CauseStep3() {
       totalSteps={5}
       allStepTitles={STEP_TITLES}
       badge="Important"
-      eyebrow="Step 3 of 5 · Donations & Events"
-      title={<>Set up <span className="pm-gradient-text">donations and events</span>.</>}
-      description="Add a donation ask supporters can rally around and an upcoming event for your community to join."
+      eyebrow="Step 3 of 5 · Donations"
+      title={
+        <>
+          Set up your <span className="pm-gradient-text">donations</span>.
+        </>
+      }
+      description="Add one or more donation asks supporters can rally around. Each can include a short description and an image."
       preview={<CauseLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
@@ -30,102 +35,102 @@ export default function CauseStep3() {
             AI
           </span>
           <div>
-            <p className="text-xs font-extrabold text-pm-blue">ParishMart Concierge</p>
+            <p className="text-xs font-extrabold text-pm-blue">
+              ParishMart Concierge
+            </p>
             <p className="mt-1 text-sm text-pm-muted">
-              A clear donation ask plus an upcoming event gives supporters two easy ways to engage.
+              A clear, specific donation ask raises more than a generic goal.
+              You can add several.
             </p>
           </div>
         </div>
 
-        {/* DONATIONS */}
-        <p className="text-sm font-extrabold text-pm-navy">Donations</p>
-        <div className="mt-3 grid gap-4 sm:grid-cols-2">
-          <div className="grid content-start gap-4">
-            <label className="block">
-              <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-                Title
-                <span className="font-normal text-pm-muted">{profile.donationTitle.length}/30</span>
-              </span>
-              <input maxLength={30} value={profile.donationTitle} onChange={(e) => update({ donationTitle: e.target.value })}
-                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-            </label>
-            <label className="block">
-              <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-                Brief description
-                <span className="font-normal text-pm-muted">{profile.donationDescription.length}/100</span>
-              </span>
-              <textarea rows={2} maxLength={100} value={profile.donationDescription} onChange={(e) => update({ donationDescription: e.target.value })}
-                className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
-            </label>
-          </div>
-          <MediaUploadCard
-            eyebrow="Donation"
-            title="Donation Image"
-            description="A square image that represents this donation ask — the people or program it funds."
-            action="Upload Image"
-            badge="Optional"
-          />
-        </div>
+        <div className="space-y-4">
+          {profile.donations.map((d, i) => (
+            <div
+              key={i}
+              className="rounded-2xl border border-pm-border bg-white p-4 shadow-pm-soft"
+            >
+              <div className="mb-3 flex items-center justify-between">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-pm-blue">
+                  Donation {i + 1}
+                </span>
+                {profile.donations.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeDonation(i)}
+                    aria-label={`Remove donation ${i + 1}`}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-pm-muted hover:text-pm-navy"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" aria-hidden />
+                    Remove
+                  </button>
+                )}
+              </div>
+              <div className="flex gap-4">
+                <button
+                  type="button"
+                  className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border border-dashed border-pm-border bg-pm-soft/50 text-pm-blue hover:border-pm-blue"
+                  aria-label="Upload donation image"
+                >
+                  <ImagePlus className="h-5 w-5" aria-hidden />
+                </button>
+                <div className="grid flex-1 gap-3">
+                  <label className="block">
+                    <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                      Title
+                      <span className="font-normal text-pm-muted">
+                        {d.title.length}/30
+                      </span>
+                    </span>
+                    <input
+                      maxLength={30}
+                      value={d.title}
+                      onChange={(e) =>
+                        updateDonation(i, { title: e.target.value })
+                      }
+                      className={inputCls}
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
+                      Brief description
+                      <span className="font-normal text-pm-muted">
+                        {d.description.length}/100
+                      </span>
+                    </span>
+                    <textarea
+                      rows={2}
+                      maxLength={100}
+                      value={d.description}
+                      onChange={(e) =>
+                        updateDonation(i, { description: e.target.value })
+                      }
+                      className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+          ))}
 
-        {/* UPCOMING EVENTS */}
-        <p className="mt-8 text-sm font-extrabold text-pm-navy">Upcoming Events</p>
-        <div className="mt-3 grid gap-4 sm:grid-cols-2">
-          <div className="grid content-start gap-4">
-            <label className="block">
-              <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-                Title
-                <span className="font-normal text-pm-muted">{profile.eventTitle.length}/30</span>
-              </span>
-              <input maxLength={30} value={profile.eventTitle} onChange={(e) => update({ eventTitle: e.target.value })}
-                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-            </label>
-            <label className="block">
-              <span className="block text-xs font-extrabold text-pm-navy">Location</span>
-              <input value={profile.eventLocation} onChange={(e) => update({ eventLocation: e.target.value })}
-                className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-            </label>
-            <label className="block">
-              <span className="flex items-center justify-between text-xs font-extrabold text-pm-navy">
-                Brief description
-                <span className="font-normal text-pm-muted">{profile.eventDescription.length}/100</span>
-              </span>
-              <textarea rows={2} maxLength={100} value={profile.eventDescription} onChange={(e) => update({ eventDescription: e.target.value })}
-                className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue" />
-            </label>
-          </div>
-          <MediaUploadCard
-            eyebrow="Event"
-            title="Event Image"
-            description="A wide cover photo for this event — 16:9 works best for the event banner."
-            action="Upload Image"
-            badge="Optional"
-          />
-        </div>
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Event Category <span className="font-normal text-pm-muted">(optional)</span></span>
-            <select value={profile.eventCategory} onChange={(e) => update({ eventCategory: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue">
-              <option value="">Select category</option>
-              {EVENT_CATEGORIES.map((c) => <option key={c}>{c}</option>)}
-            </select>
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Price</span>
-            <input value={profile.eventPrice} onChange={(e) => update({ eventPrice: e.target.value })}
-              placeholder="$0 or Free"
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
-          <label className="block">
-            <span className="block text-xs font-extrabold text-pm-navy">Available Spots <span className="font-normal text-pm-muted">(optional)</span></span>
-            <input type="number" value={profile.eventSpots} onChange={(e) => update({ eventSpots: e.target.value })}
-              className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue" />
-          </label>
+          <button
+            type="button"
+            onClick={addDonation}
+            className="inline-flex items-center gap-2 rounded-2xl border border-dashed border-pm-border bg-white px-4 py-3 text-sm font-bold text-pm-blue hover:border-pm-blue hover:bg-pm-soft"
+          >
+            <Plus className="h-4 w-4" aria-hidden />
+            Add another donation
+          </button>
         </div>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
-          <Link href="/onboarding/cause/step-2" className="pm-btn pm-btn-secondary">Back</Link>
-          <Link href="/onboarding/cause/step-4" className="pm-btn pm-btn-primary">Continue</Link>
+          <Link href="/onboarding/cause/step-2" className="pm-btn pm-btn-secondary">
+            Back
+          </Link>
+          <Link href="/onboarding/cause/step-4" className="pm-btn pm-btn-primary">
+            Continue
+          </Link>
         </div>
       </div>
     </SellerStepShell>

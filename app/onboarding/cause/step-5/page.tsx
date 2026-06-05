@@ -3,32 +3,35 @@
 import Link from "next/link";
 import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
+import { MediaUploadCard } from "@/components/onboarding/MediaUploadCard";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
 
-const PLANS = [
+const MEDIA_CARDS = [
   {
-    key: "community",
-    name: "Community",
-    price: "Free",
-    tag: "Get started",
-    features: ["Basic cause page", "1 active campaign", "Give module", "Share module"],
+    eyebrow: "Logo / Icon",
+    title: "Cause Logo or Icon",
+    description:
+      "Upload a square or horizontal logo. A clean mark helps your page look professional.",
+    action: "Upload Logo",
+    badge: "Recommended",
   },
   {
-    key: "cause",
-    name: "Cause Plus",
-    price: "$49",
-    tag: "Recommended",
-    recommended: true,
-    features: ["Full cause store", "Unlimited campaigns", "All modules", "Analytics dashboard"],
+    eyebrow: "Banner",
+    title: "Banner Photo",
+    description:
+      "A wide cover photo for the top of your cause page that explains your mission.",
+    action: "Upload Photo",
+    badge: "Recommended",
   },
   {
-    key: "parish",
-    name: "Parish Bundle",
-    price: "$79",
-    tag: "For parishes",
-    features: ["Linked to parish page", "Multi-cause management", "Shared sponsor pool", "Priority placement"],
+    eyebrow: "Pictures",
+    title: "Cause Pictures",
+    description:
+      "Add up to 6 photos of your community, events or the impact you create.",
+    action: "Add Photos",
+    badge: "Optional",
   },
 ];
 
@@ -41,62 +44,52 @@ export default function CauseStep5() {
       totalSteps={5}
       allStepTitles={STEP_TITLES}
       badge="Final"
-      eyebrow="Step 5 of 5 · Launch"
-      title={<>Submit for review and <span className="pm-gradient-text">go live</span>.</>}
-      description="Select a plan and submit your cause page for review. Your page goes live within 24 hours of approval."
+      eyebrow="Step 5 of 5 · Media"
+      title={
+        <>
+          Add your <span className="pm-gradient-text">media</span>.
+        </>
+      }
+      description="Upload your visuals and share a video link. Then submit your cause page for review."
       preview={<CauseLivePreview />}
     >
       <div className="rounded-[28px] border border-pm-border bg-white/90 p-6 shadow-pm-card backdrop-blur sm:p-7">
-        <div className="mb-6 flex items-start gap-4">
+        <div className="mb-5 flex items-start gap-4">
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-pm-border bg-pm-soft text-sm font-extrabold text-pm-blue">
             AI
           </span>
           <div>
-            <p className="text-xs font-extrabold text-pm-blue">ParishMart Concierge</p>
+            <p className="text-xs font-extrabold text-pm-blue">
+              ParishMart Concierge
+            </p>
             <p className="mt-1 text-sm text-pm-muted">
-              Start with Community (free) to launch quickly. Upgrade to Cause Plus for analytics and unlimited campaigns at any time.
+              Pages with a logo, banner and photos convert visitors into
+              supporters faster.
             </p>
           </div>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-3">
-          {PLANS.map((p) => (
-            <label
-              key={p.key}
-              className="relative flex cursor-pointer flex-col gap-3 rounded-[22px] border border-pm-border bg-white p-5 has-[:checked]:border-pm-blue has-[:checked]:bg-pm-soft has-[:checked]:shadow-pm-soft"
-            >
-              <input
-                type="radio"
-                name="plan"
-                checked={profile.selectedPlan === p.key}
-                onChange={() => update({ selectedPlan: p.key })}
-                className="sr-only"
-              />
-              {p.recommended && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-pm-blue px-3 py-0.5 text-[10px] font-extrabold text-white">
-                  Recommended
-                </span>
-              )}
-              <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-wider text-pm-blue">{p.tag}</p>
-                <p className="mt-1 text-base font-extrabold text-pm-navy">{p.name}</p>
-                <p className="mt-2 text-3xl font-extrabold text-pm-navy">
-                  {p.price}
-                  {p.price !== "Free" && (
-                    <span className="text-xs font-medium text-pm-muted"> /mo</span>
-                  )}
-                </p>
-              </div>
-              <ul className="space-y-1 text-xs text-pm-ink">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-1.5">
-                    <span className="mt-0.5 text-pm-blue">·</span> {f}
-                  </li>
-                ))}
-              </ul>
-            </label>
+        <p className="text-sm font-extrabold text-pm-navy">Media</p>
+        <div className="mt-3 grid gap-4 sm:grid-cols-2">
+          {MEDIA_CARDS.map((c) => (
+            <MediaUploadCard key={c.eyebrow} {...c} />
           ))}
         </div>
+
+        <label className="mt-4 block">
+          <span className="block text-xs font-extrabold text-pm-navy">
+            Video{" "}
+            <span className="font-normal text-pm-muted">
+              (optional · share link)
+            </span>
+          </span>
+          <input
+            value={profile.videoLink}
+            onChange={(e) => update({ videoLink: e.target.value })}
+            placeholder="Paste a YouTube or Vimeo link…"
+            className="mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue"
+          />
+        </label>
 
         <label className="mt-6 flex items-start gap-2 text-xs text-pm-ink">
           <input type="checkbox" className="mt-0.5" required />
@@ -110,7 +103,9 @@ export default function CauseStep5() {
         </label>
 
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
-          <Link href="/onboarding/cause/step-4" className="pm-btn pm-btn-secondary">Back</Link>
+          <Link href="/onboarding/cause/step-4" className="pm-btn pm-btn-secondary">
+            Back
+          </Link>
           <Link href="/onboarding/success" className="pm-btn pm-btn-primary">
             Submit for Approval
           </Link>

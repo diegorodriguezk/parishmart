@@ -5,7 +5,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Media", "Launch"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
 
 const CATEGORIES = ["Retreat", "Youth Ministry", "Social Justice", "Mission Trip", "Formation", "Other"];
 

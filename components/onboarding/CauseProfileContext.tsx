@@ -9,16 +9,22 @@ import {
   type ReactNode,
 } from "react";
 
-export const STARTER_MERCH: { name: string; src: string; faith?: boolean }[] = [
-  { name: "Cause Tee", src: "/brand/products/crew-harps.png" },
-  { name: "Hoodie", src: "/brand/products/jacket-men.png" },
-  { name: "Tote Bag", src: "/brand/products/tote-harps.png" },
-  { name: "Cap", src: "/brand/products/cap-harps.png" },
-  { name: "Candle", src: "/brand/products/unity-candleholder.jpg", faith: true },
-  { name: "Rosary", src: "/brand/products/rosary.jpg", faith: true },
-  { name: "Keepsake Dish", src: "/brand/products/keepsake-dish.jpg", faith: true },
-  { name: "Crucifix", src: "/brand/products/saint-benedict-crucifix.jpg", faith: true },
-];
+export type CauseDonation = {
+  title: string;
+  description: string;
+};
+
+export type CauseEvent = {
+  title: string;
+  location: string;
+  startDateTime: string;
+  endDateTime: string;
+  briefDescription: string;
+  longDescription: string;
+  price: string;
+  spots: string;
+  category: string;
+};
 
 export type CauseProfile = {
   // step 1 — profile
@@ -32,25 +38,17 @@ export type CauseProfile = {
   city: string;
   state: string;
   country: string;
+  // step 2 — story
   tagline: string;
   shortDescription: string;
   associatedParish: string;
-  // step 2 — story
   longDescription: string;
-  // step 3 — donations & events
-  donationTitle: string;
-  donationDescription: string;
-  eventTitle: string;
-  eventLocation: string;
-  eventDescription: string;
-  eventCategory: string;
-  eventPrice: string;
-  eventSpots: string;
-  // step 4 — collection
-  starterCollection: string[];
-  showFaithGifts: boolean;
-  // step 5 — launch
-  selectedPlan: string;
+  // step 3 — donations
+  donations: CauseDonation[];
+  // step 4 — upcoming events
+  events: CauseEvent[];
+  // step 5 — media
+  videoLink: string;
 };
 
 export const DEFAULT_CAUSE: CauseProfile = {
@@ -70,32 +68,60 @@ export const DEFAULT_CAUSE: CauseProfile = {
   associatedParish: "Saint Katharine Drexel Catholic Parish",
   longDescription:
     "The Emmaus Men's Retreat has been a cornerstone of our parish community for over 20 years. What started as a small gathering of 12 men has grown into a movement that has touched the lives of hundreds of fathers, sons and brothers. Each weekend is an invitation to step away from the noise of everyday life, encounter Jesus in community and return to the parish transformed — equipped to be better husbands, fathers and leaders.",
-  donationTitle: "Sponsor a Retreatant",
-  donationDescription:
-    "Cover the cost for a man who can't afford the retreat weekend.",
-  eventTitle: "Emmaus Fall Retreat 2026",
-  eventLocation: "Saint Katharine Drexel, Weston FL",
-  eventDescription:
-    "A transformative weekend of prayer, reflection and brotherhood.",
-  eventCategory: "Retreat",
-  eventPrice: "$150",
-  eventSpots: "40",
-  starterCollection: ["Cause Tee", "Hoodie", "Tote Bag", "Cap"],
-  showFaithGifts: false,
-  selectedPlan: "cause",
+  donations: [
+    {
+      title: "Sponsor a Retreatant",
+      description: "Cover the cost for a man who can't afford the retreat weekend.",
+    },
+    {
+      title: "Retreat Materials Fund",
+      description: "Help provide books, meals and supplies for the weekend.",
+    },
+  ],
+  events: [
+    {
+      title: "Emmaus Fall Retreat 2026",
+      location: "Saint Katharine Drexel, Weston FL",
+      startDateTime: "2026-10-16T18:00",
+      endDateTime: "2026-10-18T16:00",
+      briefDescription:
+        "A transformative weekend of prayer, reflection and brotherhood.",
+      longDescription:
+        "Three days of talks, prayer, sacraments and community to grow in faith.",
+      price: "$150",
+      spots: "40",
+      category: "Retreat",
+    },
+  ],
+  videoLink: "",
 };
-
-const FAITH_NAMES = new Set(STARTER_MERCH.filter((m) => m.faith).map((m) => m.name));
 
 type CauseCtx = {
   profile: CauseProfile;
   update: (patch: Partial<CauseProfile>) => void;
-  toggleCollection: (item: string) => void;
-  setShowFaithGifts: (show: boolean) => void;
+  updateDonation: (index: number, patch: Partial<CauseDonation>) => void;
+  addDonation: () => void;
+  removeDonation: (index: number) => void;
+  updateEvent: (index: number, patch: Partial<CauseEvent>) => void;
+  addEvent: () => void;
+  removeEvent: (index: number) => void;
 };
 
 const Ctx = createContext<CauseCtx | null>(null);
 const STORAGE_KEY = "pm.cause-onboarding";
+
+const EMPTY_DONATION: CauseDonation = { title: "", description: "" };
+const EMPTY_EVENT: CauseEvent = {
+  title: "",
+  location: "",
+  startDateTime: "",
+  endDateTime: "",
+  briefDescription: "",
+  longDescription: "",
+  price: "",
+  spots: "",
+  category: "",
+};
 
 export function CauseProfileProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<CauseProfile>(DEFAULT_CAUSE);
@@ -105,34 +131,60 @@ export function CauseProfileProvider({ children }: { children: ReactNode }) {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) setProfile({ ...DEFAULT_CAUSE, ...JSON.parse(stored) });
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
     setHydrated(true);
   }, []);
 
   useEffect(() => {
     if (!hydrated) return;
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(profile)); } catch { /* ignore */ }
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+    } catch {
+      /* ignore */
+    }
   }, [profile, hydrated]);
 
-  const value = useMemo<CauseCtx>(() => ({
-    profile,
-    update: (patch) => setProfile((p) => ({ ...p, ...patch })),
-    toggleCollection: (item) =>
-      setProfile((p) => ({
-        ...p,
-        starterCollection: p.starterCollection.includes(item)
-          ? p.starterCollection.filter((i) => i !== item)
-          : [...p.starterCollection, item],
-      })),
-    setShowFaithGifts: (show) =>
-      setProfile((p) => ({
-        ...p,
-        showFaithGifts: show,
-        starterCollection: show
-          ? p.starterCollection
-          : p.starterCollection.filter((name) => !FAITH_NAMES.has(name)),
-      })),
-  }), [profile]);
+  const value = useMemo<CauseCtx>(
+    () => ({
+      profile,
+      update: (patch) => setProfile((p) => ({ ...p, ...patch })),
+      updateDonation: (index, patch) =>
+        setProfile((p) => ({
+          ...p,
+          donations: p.donations.map((d, i) =>
+            i === index ? { ...d, ...patch } : d,
+          ),
+        })),
+      addDonation: () =>
+        setProfile((p) => ({
+          ...p,
+          donations: [...p.donations, { ...EMPTY_DONATION }],
+        })),
+      removeDonation: (index) =>
+        setProfile((p) => ({
+          ...p,
+          donations: p.donations.filter((_, i) => i !== index),
+        })),
+      updateEvent: (index, patch) =>
+        setProfile((p) => ({
+          ...p,
+          events: p.events.map((e, i) => (i === index ? { ...e, ...patch } : e)),
+        })),
+      addEvent: () =>
+        setProfile((p) => ({
+          ...p,
+          events: [...p.events, { ...EMPTY_EVENT }],
+        })),
+      removeEvent: (index) =>
+        setProfile((p) => ({
+          ...p,
+          events: p.events.filter((_, i) => i !== index),
+        })),
+    }),
+    [profile],
+  );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
