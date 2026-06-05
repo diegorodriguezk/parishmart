@@ -281,15 +281,6 @@ export function CauseProfile({
       </Section>
 
       <Section id="merch" width="wide">
-        <SectionHeader
-          title={`${cause.name} Merch`}
-          description="Merch should feel like belonging, not just products. Keep it simple: shirts, hoodies, hats and retreat campaign items."
-          right={
-            <Link href="/shop/listing" className="font-bold text-pm-blue">
-              View All Merch
-            </Link>
-          }
-        />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {MERCH.map((m) => (
             <Link
