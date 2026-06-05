@@ -281,17 +281,17 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
           {/* RIGHT — sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24">
             {/* Community discount */}
-            <div className="overflow-hidden rounded-3xl border border-amber-200 bg-amber-50 p-5">
+            <div className="overflow-hidden rounded-3xl border border-pm-blue/20 bg-pm-soft p-5">
               <div className="flex items-start gap-3">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-amber-400 text-white">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-pm-blue text-white">
                   <Gift className="h-5 w-5" aria-hidden />
                 </span>
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-amber-700">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
                     Special Community Discount
                   </p>
-                  <p className="text-2xl font-extrabold text-amber-700">15% OFF</p>
-                  <p className="mt-1 text-xs text-amber-800/90">
+                  <p className="text-2xl font-extrabold text-pm-blue">15% OFF</p>
+                  <p className="mt-1 text-xs text-pm-navy/80">
                     Valid for ParishMart community members. Mention that you found us
                     on ParishMart to redeem.
                   </p>
