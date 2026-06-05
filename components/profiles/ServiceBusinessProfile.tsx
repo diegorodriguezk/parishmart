@@ -6,7 +6,6 @@ import {
   Globe,
   MessageCircle,
   Share2,
-  Heart,
   Gift,
   Building2,
   Navigation,
@@ -176,13 +175,6 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                   </>
                 )}
               </a>
-              <button
-                type="button"
-                aria-label="Guardar"
-                className="grid h-10 w-10 place-items-center rounded-full bg-white/15 text-white backdrop-blur hover:bg-white/25"
-              >
-                <Heart className="h-4 w-4" aria-hidden />
-              </button>
             </div>
           </div>
         </div>
