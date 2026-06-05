@@ -119,6 +119,10 @@ export function CauseProfile({
       </Section>
 
       <Section width="wide">
+        <SectionHeader
+          title="Give with Love"
+          description="Support this cause directly through the parish's official giving experience."
+        />
         <div className="pm-card overflow-hidden p-0 lg:grid lg:grid-cols-[1.05fr_.95fr]">
           <Photo
             kind="praying"
@@ -153,6 +157,10 @@ export function CauseProfile({
       </Section>
 
       <Section width="wide">
+        <SectionHeader
+          title="Upcoming Experiences"
+          description="Retreats, gatherings and events connected to this ministry."
+        />
         <div className="pm-card overflow-hidden p-0 lg:grid lg:grid-cols-[1fr_1.25fr]">
           {/* Left — photo with overlays */}
           <div className="relative isolate min-h-[320px] lg:min-h-[420px]">
