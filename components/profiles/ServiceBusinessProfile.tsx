@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  Star,
   MapPin,
   Phone,
   Mail,
@@ -11,7 +10,6 @@ import {
   Building2,
   Navigation,
   User,
-  CheckCircle2,
 } from "lucide-react";
 import { Photo, PhotoKind } from "@/components/Photo";
 import { Section } from "@/components/Sections";
@@ -52,24 +50,6 @@ const FOUNDER_STATS = [
   { value: "250+", label: "Proyectos" },
   { value: "500+", label: "Clientes felices" },
 ];
-
-function Stars({ rating = 4.9 }: { rating?: number }) {
-  return (
-    <span className="inline-flex items-center gap-1">
-      <span className="flex">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star
-            key={i}
-            className="h-4 w-4 fill-amber-400 text-amber-400"
-            aria-hidden
-          />
-        ))}
-      </span>
-      <span className="text-sm font-bold text-white">{rating.toFixed(1)}</span>
-      <span className="text-xs text-white/70">(reseñas)</span>
-    </span>
-  );
-}
 
 export function ServiceBusinessProfile({ business }: { business: Business }) {
   const services = business.services ?? [];
@@ -152,15 +132,13 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                 <p className="text-[11px] font-bold uppercase tracking-wider text-white/75">
                   {business.category}
                 </p>
-                <h1 className="mt-1 flex items-center gap-2 text-3xl font-extrabold tracking-tight md:text-4xl">
+                <h1 className="mt-1 text-3xl font-extrabold tracking-tight md:text-4xl">
                   {business.name}
-                  <CheckCircle2 className="h-6 w-6 fill-pm-blue text-white" aria-hidden />
                 </h1>
                 <p className="mt-1 max-w-xl text-sm text-white/85">
                   {business.description}
                 </p>
                 <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <Stars />
                   <span className="inline-flex items-center gap-1 text-sm text-white/85">
                     <MapPin className="h-4 w-4" aria-hidden />
                     {business.location}
@@ -195,10 +173,6 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
               >
                 <Heart className="h-4 w-4" aria-hidden />
               </button>
-              <span className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300">
-                <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                Abierto ahora · 9:00 AM – 6:00 PM
-              </span>
             </div>
           </div>
         </div>
