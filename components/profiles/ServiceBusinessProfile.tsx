@@ -299,19 +299,6 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
               </div>
             </div>
 
-            {/* Banner */}
-            <div className="pm-card overflow-hidden p-0">
-              <div className="relative h-36">
-                <Photo
-                  kind="business"
-                  ratio="auto"
-                  rounded="rounded-none"
-                  className="absolute inset-0 !rounded-none h-full"
-                  overlay="subtle"
-                />
-              </div>
-            </div>
-
             {/* Gallery */}
             <div className="pm-card p-5">
               <div className="flex items-center justify-between">
