@@ -83,11 +83,12 @@ export default function CombinedStep3() {
                   {profile.founderDesc.length} / 300
                 </span>
               </div>
-              <input
+              <textarea
+                rows={3}
                 maxLength={300}
                 value={profile.founderDesc}
                 onChange={(e) => update({ founderDesc: e.target.value })}
-                className={inputCls}
+                className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
               />
             </label>
           </div>
@@ -108,10 +109,11 @@ export default function CombinedStep3() {
                 Why do you want to support this community?{" "}
                 <span className="font-medium text-pm-muted">(optional)</span>
               </span>
-              <input
+              <textarea
+                rows={3}
                 value={profile.whySupport}
                 onChange={(e) => update({ whySupport: e.target.value })}
-                className={inputCls}
+                className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
               />
             </label>
           </div>
