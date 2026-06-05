@@ -6,7 +6,7 @@ import { MediaUploadCard } from "@/components/onboarding/MediaUploadCard";
 import { CombinedBizLivePreview } from "@/components/onboarding/CombinedBizLivePreview";
 import { useCombinedBiz } from "@/components/onboarding/CombinedBizContext";
 
-const STEP_TITLES = ["Business", "Contact", "Story", "Offerings", "Media"];
+const STEP_TITLES = ["Business", "Contact", "Story", "Offerings", "Media", "Plans"];
 
 const MEDIA = [
   {
@@ -45,8 +45,9 @@ export default function CombinedStep5() {
   return (
     <SellerStepShell
       step={5}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
-      eyebrow="Step 5 of 5 · Media"
+      eyebrow="Step 5 of 6 · Media"
       title={
         <>
           Add your <span className="pm-gradient-text">media</span>.
@@ -81,8 +82,11 @@ export default function CombinedStep5() {
           >
             Back
           </Link>
-          <Link href="/onboarding/success" className="pm-btn pm-btn-primary">
-            Submit for review
+          <Link
+            href="/onboarding/local-business-combined/step-6"
+            className="pm-btn pm-btn-primary"
+          >
+            Continue
           </Link>
         </div>
       </div>

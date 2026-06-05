@@ -45,6 +45,8 @@ export type CombinedBizProfile = {
   offerings: CombinedOffering[];
   // Step 5 — Media
   videoLink: string;
+  // Step 6 — Plan
+  selectedPlan: string;
 };
 
 export const DEFAULT_COMBINED_PROFILE: CombinedBizProfile = {
@@ -88,6 +90,7 @@ export const DEFAULT_COMBINED_PROFILE: CombinedBizProfile = {
     },
   ],
   videoLink: "",
+  selectedPlan: "community",
 };
 
 type CombinedCtx = {

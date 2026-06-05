@@ -5,7 +5,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CombinedBizLivePreview } from "@/components/onboarding/CombinedBizLivePreview";
 import { useCombinedBiz } from "@/components/onboarding/CombinedBizContext";
 
-const STEP_TITLES = ["Business", "Contact", "Story", "Offerings", "Media"];
+const STEP_TITLES = ["Business", "Contact", "Story", "Offerings", "Media", "Plans"];
 
 const inputCls =
   "mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue";
@@ -16,8 +16,9 @@ export default function CombinedStep3() {
   return (
     <SellerStepShell
       step={3}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
-      eyebrow="Step 3 of 5 · Story"
+      eyebrow="Step 3 of 6 · Story"
       title={
         <>
           Tell your <span className="pm-gradient-text">story</span>.

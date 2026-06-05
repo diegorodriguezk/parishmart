@@ -5,7 +5,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media", "Launch"];
 
 const CATEGORIES = ["Retreat", "Youth Ministry", "Social Justice", "Mission Trip", "Formation", "Other"];
 
@@ -15,10 +15,10 @@ export default function CauseStep1() {
   return (
     <SellerStepShell
       step={1}
-      totalSteps={5}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
       badge="Required"
-      eyebrow="Step 1 of 5 · Cause Profile"
+      eyebrow="Step 1 of 6 · Cause Profile"
       title={<>Activate your <span className="pm-gradient-text">cause or ministry</span>.</>}
       description="Basic information to create your cause page — the preview on the right updates live as you type."
       preview={<CauseLivePreview />}

@@ -49,6 +49,8 @@ export type CauseProfile = {
   events: CauseEvent[];
   // step 5 — media
   videoLink: string;
+  // step 6 — plan
+  selectedPlan: string;
 };
 
 export const DEFAULT_CAUSE: CauseProfile = {
@@ -94,6 +96,7 @@ export const DEFAULT_CAUSE: CauseProfile = {
     },
   ],
   videoLink: "",
+  selectedPlan: "cause",
 };
 
 type CauseCtx = {

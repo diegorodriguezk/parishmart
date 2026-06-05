@@ -5,7 +5,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CombinedBizLivePreview } from "@/components/onboarding/CombinedBizLivePreview";
 import { useCombinedBiz } from "@/components/onboarding/CombinedBizContext";
 
-const STEP_TITLES = ["Business", "Contact", "Story", "Offerings", "Media"];
+const STEP_TITLES = ["Business", "Contact", "Story", "Offerings", "Media", "Plans"];
 
 const inputCls =
   "mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue";
@@ -16,8 +16,9 @@ export default function CombinedStep2() {
   return (
     <SellerStepShell
       step={2}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
-      eyebrow="Step 2 of 5 · Contact & Location"
+      eyebrow="Step 2 of 6 · Contact & Location"
       title={
         <>
           How can people{" "}

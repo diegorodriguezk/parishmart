@@ -5,7 +5,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media", "Launch"];
 
 export default function CauseStep2() {
   const { profile, update } = useCause();
@@ -13,10 +13,10 @@ export default function CauseStep2() {
   return (
     <SellerStepShell
       step={2}
-      totalSteps={5}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
       badge="Recommended"
-      eyebrow="Step 2 of 5 · Story & Mission"
+      eyebrow="Step 2 of 6 · Story & Mission"
       title={<>Tell your <span className="pm-gradient-text">cause&rsquo;s story</span>.</>}
       description="Share the full story behind your cause. A compelling story increases giving by up to 3×."
       preview={<CauseLivePreview />}

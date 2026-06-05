@@ -6,7 +6,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media", "Launch"];
 
 const inputCls =
   "mt-1.5 w-full rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm text-pm-ink outline-none focus:border-pm-blue";
@@ -17,10 +17,10 @@ export default function CauseStep3() {
   return (
     <SellerStepShell
       step={3}
-      totalSteps={5}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
       badge="Important"
-      eyebrow="Step 3 of 5 · Donations"
+      eyebrow="Step 3 of 6 · Donations"
       title={
         <>
           Set up your <span className="pm-gradient-text">donations</span>.

@@ -6,7 +6,7 @@ import { SellerStepShell } from "@/components/onboarding/SellerStepShell";
 import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media", "Launch"];
 
 const EVENT_CATEGORIES = [
   "Retreat",
@@ -26,10 +26,10 @@ export default function CauseStep4() {
   return (
     <SellerStepShell
       step={4}
-      totalSteps={5}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
       badge="Recommended"
-      eyebrow="Step 4 of 5 · Upcoming Events"
+      eyebrow="Step 4 of 6 · Upcoming Events"
       title={
         <>
           Add your <span className="pm-gradient-text">upcoming events</span>.

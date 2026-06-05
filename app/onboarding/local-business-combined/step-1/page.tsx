@@ -8,7 +8,7 @@ import {
   type OfferType,
 } from "@/components/onboarding/CombinedBizContext";
 
-const STEP_TITLES = ["Business", "Contact", "Story", "Offerings", "Media"];
+const STEP_TITLES = ["Business", "Contact", "Story", "Offerings", "Media", "Plans"];
 
 const PRODUCT_CATEGORIES = [
   "Apparel & Merch",
@@ -50,8 +50,9 @@ export default function CombinedStep1() {
   return (
     <SellerStepShell
       step={1}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
-      eyebrow="Step 1 of 5 · Business"
+      eyebrow="Step 1 of 6 · Business"
       title={
         <>
           Let&rsquo;s create your{" "}

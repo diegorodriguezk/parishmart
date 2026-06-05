@@ -6,7 +6,7 @@ import { CauseLivePreview } from "@/components/onboarding/CauseLivePreview";
 import { MediaUploadCard } from "@/components/onboarding/MediaUploadCard";
 import { useCause } from "@/components/onboarding/CauseProfileContext";
 
-const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media"];
+const STEP_TITLES = ["Profile", "Story", "Donations", "Events", "Media", "Launch"];
 
 const MEDIA_CARDS = [
   {
@@ -41,10 +41,10 @@ export default function CauseStep5() {
   return (
     <SellerStepShell
       step={5}
-      totalSteps={5}
+      totalSteps={6}
       allStepTitles={STEP_TITLES}
       badge="Final"
-      eyebrow="Step 5 of 5 · Media"
+      eyebrow="Step 5 of 6 · Media"
       title={
         <>
           Add your <span className="pm-gradient-text">media</span>.
@@ -91,23 +91,12 @@ export default function CauseStep5() {
           />
         </label>
 
-        <label className="mt-6 flex items-start gap-2 text-xs text-pm-ink">
-          <input type="checkbox" className="mt-0.5" required />
-          <span>
-            I have read and agree to the{" "}
-            <a href="#" className="font-bold text-pm-blue underline">
-              ParishMart cause terms &amp; conditions
-            </a>
-            .
-          </span>
-        </label>
-
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-pm-border pt-5">
           <Link href="/onboarding/cause/step-4" className="pm-btn pm-btn-secondary">
             Back
           </Link>
-          <Link href="/onboarding/success" className="pm-btn pm-btn-primary">
-            Submit for Approval
+          <Link href="/onboarding/cause/step-6" className="pm-btn pm-btn-primary">
+            Continue
           </Link>
         </div>
       </div>
