@@ -15,21 +15,12 @@ const SUPPORTER_PHOTOS = ["community", "business", "merch"] as const;
 
 export function CauseProfile({
   cause,
-  products,
   businesses,
 }: {
   cause: Cause;
   products: Product[];
   businesses: Business[];
 }) {
-  const MERCH = products.map((p) => ({
-    id: p.id,
-    name: p.name,
-    price: p.price,
-    desc: p.meta,
-    photo: p.photo,
-    src: p.src,
-  }));
   const SUPPORTERS = businesses.slice(0, 3);
 
   return (
@@ -280,46 +271,9 @@ export function CauseProfile({
         </div>
       </Section>
 
-      <Section id="merch" width="wide">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {MERCH.map((m) => (
-            <Link
-              key={m.id}
-              href={`/shop/products/${m.id}`}
-              className="pm-card group flex flex-col gap-3 overflow-hidden p-3 transition hover:-translate-y-0.5 hover:shadow-pm-soft"
-            >
-              <Photo
-                kind={m.photo}
-                src={m.src}
-                alt={m.name}
-                ratio="1/1"
-                rounded="rounded-2xl"
-                fit="contain"
-                overlay="none"
-                className="bg-white"
-              />
-              <div className="space-y-1.5 px-2 pb-2">
-                <p className="line-clamp-2 text-sm font-bold text-pm-navy group-hover:text-pm-blue">
-                  {m.name}
-                </p>
-                <p className="line-clamp-2 text-[11px] text-pm-muted">{m.desc}</p>
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-sm font-extrabold text-pm-navy">
-                    {m.price}
-                  </p>
-                  <span className="pm-btn pm-btn-primary !px-4 !py-1.5 text-xs">
-                    Add
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </Section>
-
       <Section width="wide">
         <SectionHeader
-          title="Community Supporters"
+          title="Business Supporters"
           description="Optional but powerful: local businesses and sponsors can appear here as supporters of this cause."
         />
         <CardsCarousel lgCols={3}>
