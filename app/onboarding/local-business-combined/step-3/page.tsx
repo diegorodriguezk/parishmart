@@ -75,6 +75,19 @@ export default function CombinedStep3() {
               />
             </label>
             <label className="block">
+              <span className="block text-xs font-extrabold text-pm-navy">
+                Parish / Cause Supported
+              </span>
+              <input
+                value={profile.parishSupported}
+                onChange={(e) => update({ parishSupported: e.target.value })}
+                className={inputCls}
+              />
+            </label>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="block">
               <div className="flex items-baseline justify-between">
                 <span className="block text-xs font-extrabold text-pm-navy">
                   Brief Description of Founder
@@ -89,19 +102,6 @@ export default function CombinedStep3() {
                 value={profile.founderDesc}
                 onChange={(e) => update({ founderDesc: e.target.value })}
                 className="mt-1.5 w-full resize-none rounded-2xl border border-pm-border bg-white px-4 py-3 text-sm leading-relaxed text-pm-ink outline-none focus:border-pm-blue"
-              />
-            </label>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block">
-              <span className="block text-xs font-extrabold text-pm-navy">
-                Parish / Cause Supported
-              </span>
-              <input
-                value={profile.parishSupported}
-                onChange={(e) => update({ parishSupported: e.target.value })}
-                className={inputCls}
               />
             </label>
             <label className="block">
