@@ -193,11 +193,11 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
 
       {/* MAIN — about/founder + sidebar */}
       <Section width="wide">
-        <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-stretch">
           {/* LEFT */}
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             {/* About */}
-            <div className="pm-card p-6 sm:p-8">
+            <div className="pm-card grow p-7 sm:p-9">
               <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy md:text-3xl">
                 About {business.name}
               </h2>
@@ -216,12 +216,12 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
             </div>
 
             {/* Founder */}
-            <div className="pm-card p-6 sm:p-8">
+            <div className="pm-card grow p-7 sm:p-9">
               <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
                 Founder
               </p>
               <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-start">
-                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-2xl">
+                <div className="h-36 w-36 shrink-0 overflow-hidden rounded-2xl">
                   <Photo
                     kind="volunteers"
                     ratio="1/1"
