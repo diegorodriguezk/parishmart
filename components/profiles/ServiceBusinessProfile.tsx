@@ -10,6 +10,7 @@ import {
   Building2,
   Navigation,
   User,
+  Church,
 } from "lucide-react";
 import { Photo, PhotoKind } from "@/components/Photo";
 import { Section } from "@/components/Sections";
@@ -248,28 +249,33 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
             </div>
 
             {/* Parish supported */}
-            {business.parishSupported ? (
-              <div className="pm-card p-6 sm:p-8">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
-                  Parish / Cause Supported
-                </p>
-                <h3 className="mt-2 text-lg font-extrabold text-pm-navy">
-                  {business.parishSupported}
-                </h3>
-                <p className="mt-1 text-sm text-pm-muted">
-                  We support youth activities, spiritual formation and community
-                  projects.
-                </p>
-                <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-pm-muted">
-                  Why do you want to support this community?
-                </p>
-                <p className="mt-1 text-sm text-pm-muted">
-                  We strongly believe in the power of community and in creating
-                  opportunities. We want to share our talents to help our community
-                  grow and thrive.
-                </p>
+            <div className="pm-card p-6 sm:p-8">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
+                Parish / Cause Supported
+              </p>
+              <div className="mt-4 flex items-start gap-4">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-pm-soft text-pm-blue">
+                  <Church className="h-7 w-7" aria-hidden />
+                </span>
+                <div>
+                  <h3 className="text-lg font-extrabold text-pm-navy">
+                    {business.parishSupported ?? "Saint Katharine Drexel"}
+                  </h3>
+                  <p className="mt-1 text-sm text-pm-muted">
+                    We support youth activities, spiritual formation and community
+                    projects.
+                  </p>
+                </div>
               </div>
-            ) : null}
+              <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-pm-muted">
+                Why do you want to support this community?
+              </p>
+              <p className="mt-1 text-sm text-pm-muted">
+                We strongly believe in the power of community and in creating
+                opportunities. We want to share our talents to help our community
+                grow and thrive.
+              </p>
+            </div>
           </div>
 
           {/* RIGHT — sidebar */}
