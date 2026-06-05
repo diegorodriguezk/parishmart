@@ -5,6 +5,7 @@ import {
   Mail,
   Globe,
   MessageCircle,
+  Share2,
   Heart,
   Gift,
   Building2,
@@ -153,18 +154,27 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                 href={websiteHref ?? "#contacto"}
                 target={websiteHref ? "_blank" : undefined}
                 rel={websiteHref ? "noreferrer" : undefined}
-                className="pm-btn pm-btn-primary"
+                className="pm-btn pm-btn-primary !text-white"
               >
-                Visitar Sitio Web
+                {websiteHref ? "Visitar Sitio Web" : "Contact Us"}
               </a>
               <a
-                href={whatsappHref ?? "#contacto"}
+                href={whatsappHref ?? "/share-impact"}
                 target={whatsappHref ? "_blank" : undefined}
                 rel={whatsappHref ? "noreferrer" : undefined}
-                className="pm-btn bg-pm-navy text-white hover:bg-pm-navy/90 inline-flex items-center gap-2"
+                className="pm-btn bg-pm-navy !text-white hover:bg-pm-navy/90 inline-flex items-center gap-2"
               >
-                <MessageCircle className="h-4 w-4" aria-hidden />
-                WhatsApp
+                {whatsappHref ? (
+                  <>
+                    <MessageCircle className="h-4 w-4" aria-hidden />
+                    WhatsApp
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="h-4 w-4" aria-hidden />
+                    Share
+                  </>
+                )}
               </a>
               <button
                 type="button"
@@ -500,16 +510,25 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
               rel={websiteHref ? "noreferrer" : undefined}
               className="pm-btn bg-white !text-pm-blue hover:bg-white/90"
             >
-              Visitar Sitio Web
+              {websiteHref ? "Visitar Sitio Web" : "Contact Us"}
             </a>
             <a
-              href={whatsappHref ?? "#contacto"}
+              href={whatsappHref ?? "/share-impact"}
               target={whatsappHref ? "_blank" : undefined}
               rel={whatsappHref ? "noreferrer" : undefined}
-              className="pm-btn bg-pm-navy text-white hover:bg-pm-navy/90 inline-flex items-center gap-2"
+              className="pm-btn bg-pm-navy !text-white hover:bg-pm-navy/90 inline-flex items-center gap-2"
             >
-              <MessageCircle className="h-4 w-4" aria-hidden />
-              Contactar por WhatsApp
+              {whatsappHref ? (
+                <>
+                  <MessageCircle className="h-4 w-4" aria-hidden />
+                  Contactar por WhatsApp
+                </>
+              ) : (
+                <>
+                  <Share2 className="h-4 w-4" aria-hidden />
+                  Share
+                </>
+              )}
             </a>
           </div>
         </div>
