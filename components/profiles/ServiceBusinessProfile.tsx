@@ -192,9 +192,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
 
       {/* MAIN — about/founder + sidebar */}
       <Section width="wide">
-        <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-start">
-          {/* LEFT */}
-          <div className="space-y-6">
+        <div className="space-y-6">
             {/* About */}
             <div className="pm-card p-6 sm:p-8">
               <h2 className="text-2xl font-extrabold tracking-tight text-pm-navy md:text-3xl">
@@ -247,36 +245,9 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
               </div>
             </div>
 
-            {/* Parish supported */}
-            {business.parishSupported ? (
-              <div className="pm-card p-6 sm:p-8">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
-                  Parish / Cause Supported
-                </p>
-                <h3 className="mt-2 text-lg font-extrabold text-pm-navy">
-                  {business.parishSupported}
-                </h3>
-                <p className="mt-1 text-sm text-pm-muted">
-                  We support youth activities, spiritual formation and community
-                  projects.
-                </p>
-                <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-pm-muted">
-                  Why do you want to support this community?
-                </p>
-                <p className="mt-1 text-sm text-pm-muted">
-                  We strongly believe in the power of community and in creating
-                  opportunities. We want to share our talents to help our community
-                  grow and thrive.
-                </p>
-              </div>
-            ) : null}
-          </div>
-
-          {/* RIGHT — sidebar */}
-          <aside className="space-y-6 lg:sticky lg:top-24">
             {/* Banner */}
             <div className="pm-card overflow-hidden p-0">
-              <div className="relative h-36">
+              <div className="relative h-44 sm:h-52">
                 <Photo
                   kind="business"
                   ratio="auto"
@@ -297,7 +268,7 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                   View all photos
                 </span>
               </div>
-              <div className="mt-3 grid grid-cols-3 gap-2">
+              <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-6">
                 {GALLERY.map((k, i) => (
                   <div
                     key={`${k}-${i}`}
@@ -355,7 +326,30 @@ export function ServiceBusinessProfile({ business }: { business: Business }) {
                 </div>
               </div>
             </div>
-          </aside>
+
+            {/* Parish supported */}
+            {business.parishSupported ? (
+              <div className="pm-card p-6 sm:p-8">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-pm-blue">
+                  Parish / Cause Supported
+                </p>
+                <h3 className="mt-2 text-lg font-extrabold text-pm-navy">
+                  {business.parishSupported}
+                </h3>
+                <p className="mt-1 text-sm text-pm-muted">
+                  We support youth activities, spiritual formation and community
+                  projects.
+                </p>
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-pm-muted">
+                  Why do you want to support this community?
+                </p>
+                <p className="mt-1 text-sm text-pm-muted">
+                  We strongly believe in the power of community and in creating
+                  opportunities. We want to share our talents to help our community
+                  grow and thrive.
+                </p>
+              </div>
+            ) : null}
         </div>
       </Section>
 
