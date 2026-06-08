@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Search, User } from "lucide-react";
+import { User } from "lucide-react";
 import { Logo, SubStoreBadge } from "./Logo";
 import { SkdLogo } from "./SkdLogo";
 import { MobileNavDrawer } from "./MobileNavDrawer";
@@ -7,35 +7,7 @@ import { CartButton } from "./cart/CartButton";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ParishTabsNav } from "./ParishTabsNav";
 import { HeaderSearch } from "./HeaderSearch";
-
-function SearchForm({
-  placeholder = "Search products, causes, businesses, gifts and services…",
-}: {
-  placeholder?: string;
-}) {
-  return (
-    <form
-      action="/search"
-      method="get"
-      className="flex flex-1 items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1 shadow-pm-soft"
-      role="search"
-    >
-      <Search className="h-4 w-4 shrink-0 text-pm-muted" aria-hidden />
-      <input
-        name="q"
-        className="pm-input h-9 w-full px-1 text-sm"
-        placeholder={placeholder}
-        aria-label="Search"
-      />
-      <button
-        type="submit"
-        className="pm-btn pm-btn-dark !px-3 !py-1.5 text-xs sm:!px-4 sm:text-sm"
-      >
-        Search
-      </button>
-    </form>
-  );
-}
+import { SearchAutocomplete } from "./SearchAutocomplete";
 
 function HeaderActions() {
   return (
@@ -77,7 +49,7 @@ export function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="rounded-full px-3 py-1.5 text-sm font-semibold text-pm-muted hover:bg-pm-soft hover:text-pm-navy"
+              className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-semibold text-pm-muted hover:bg-pm-soft hover:text-pm-navy"
             >
               {l.label}
             </Link>
@@ -176,14 +148,14 @@ export function ParishProfileHeader({
           </div>
         </Link>
         <div className="ml-3 hidden flex-1 md:flex">
-          <SearchForm placeholder={searchPlaceholder} />
+          <SearchAutocomplete placeholder={searchPlaceholder} className="w-full" />
         </div>
         <div className="ml-auto">
           <HeaderActions />
         </div>
       </div>
       <div className="px-4 pb-1 sm:px-6 md:hidden">
-        <SearchForm placeholder={searchPlaceholder} />
+        <SearchAutocomplete placeholder={searchPlaceholder} className="w-full" />
       </div>
       <ParishTabsNav active={activeTab} />
     </header>
@@ -207,14 +179,14 @@ export function SubStoreHeader({
           <SubStoreBadge name={parishName} location={location} />
         </div>
         <div className="ml-3 hidden flex-1 md:flex">
-          <SearchForm placeholder={searchPlaceholder} />
+          <SearchAutocomplete placeholder={searchPlaceholder} className="w-full" />
         </div>
         <div className="ml-auto">
           <HeaderActions />
         </div>
       </div>
       <div className="px-4 pb-1 sm:px-6 md:hidden">
-        <SearchForm placeholder={searchPlaceholder} />
+        <SearchAutocomplete placeholder={searchPlaceholder} className="w-full" />
       </div>
       <ParishTabsNav />
     </header>

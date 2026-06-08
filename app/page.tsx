@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  Search,
   Building2,
   HandHeart,
   ShoppingBag,
@@ -9,6 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Header } from "@/components/Header";
+import { SearchAutocomplete } from "@/components/SearchAutocomplete";
 import { Footer } from "@/components/Footer";
 import { Photo } from "@/components/Photo";
 import { Section, SectionHeader } from "@/components/Sections";
@@ -94,23 +94,7 @@ export default async function HomePage() {
               causes through commerce and giving.
             </p>
 
-            <form
-              action="/search"
-              method="get"
-              role="search"
-              className="mt-6 flex items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-1.5 shadow-pm-soft focus-within:border-pm-blue"
-            >
-              <Search className="ml-1 h-5 w-5 shrink-0 text-pm-muted" aria-hidden />
-              <input
-                name="q"
-                aria-label="Search ParishMart"
-                placeholder="Search products, causes, businesses, gifts and services…"
-                className="pm-input h-10 w-full min-w-0 px-1 text-sm"
-              />
-              <button type="submit" className="pm-btn pm-btn-primary !px-5 !py-2 text-sm">
-                Search
-              </button>
-            </form>
+            <SearchAutocomplete className="mt-6" />
 
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/shop" className="pm-btn pm-btn-primary">
