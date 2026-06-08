@@ -490,12 +490,12 @@ export default async function HomePage() {
                   {
                     n: 1,
                     t: "Choose a parish or cause",
-                    d: "Select the community, ministry, retreat or mission you want to support.",
+                    d: "Select a parish, cause, or ministry you want to support.",
                   },
                   {
                     n: 2,
-                    t: "Shop, give or partner",
-                    d: "Buy products, request services, make a donation or become a sponsor.",
+                    t: "Shop, Give, and Support",
+                    d: "Purchase products, give to a cause, or support local businesses.",
                   },
                   {
                     n: 3,
