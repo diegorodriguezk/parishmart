@@ -33,7 +33,7 @@ export default function CommunitiesPage() {
           {/* Left card — text */}
           <div className="pm-card flex min-h-[340px] flex-col justify-center gap-5 p-6 sm:p-8">
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-pm-soft px-3 py-1 text-[11px] font-bold text-pm-blue">
-              Parishes &amp; Causes
+              Global Parishes &amp; Causes · Community Missions
             </span>
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-4xl">
               Parishes &amp; causes connected through{" "}
@@ -75,8 +75,8 @@ export default function CommunitiesPage() {
 
       <Section width="wide" className="!pt-2">
         <SectionHeader
-          title="Parish Stores and Causes"
-          description="Active parish-led storefronts inside the ParishMart ecosystem."
+          title="Parish Stores & Causes"
+          description="Active community-led storefronts inside the ParishMart ecosystem."
           right={
             <Link href="/onboarding/parish" className="font-bold text-pm-blue">
               Open your parish store →
@@ -123,7 +123,7 @@ export default function CommunitiesPage() {
       <Section width="wide">
         <SectionHeader
           title="Ministries"
-          description="Ministries supported by parishes inside ParishMart."
+          description="Explore ministries led by parishioners and supporters inside ParishMart."
           right={
             <Link href="/communities" className="font-bold text-pm-blue">
               View all →
@@ -170,10 +170,10 @@ export default function CommunitiesPage() {
         <DarkPanel
           title="Don't see your community?"
           description="ParishMart is built to host any parish, ministry, mission or cause that wants to grow community impact."
-          cta="Open Your Store"
-          ctaHref="/onboarding/parish"
-          ctaSecondary="Talk to us"
-          ctaSecondaryHref="/onboarding"
+          cta="Share with your Community"
+          ctaHref="/share-impact"
+          ctaSecondary="Contact us"
+          ctaSecondaryHref="/contact-us"
         />
       </Section>
 
