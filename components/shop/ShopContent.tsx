@@ -22,7 +22,7 @@ const STEPS = [
   {
     n: 3,
     title: "Support with love",
-    body: "Each purchase connects back to a mission.",
+    body: "Each purchase gives back to a mission.",
   },
 ];
 
@@ -33,7 +33,7 @@ const FEATURED: ShopProduct[] = [
     price: "$24.99",
     src: "/brand/products/rosary.jpg",
     category: "Religious Gifts",
-    flags: { bestSeller: true },
+    flags: { bestSeller: true, mostPopular: true },
   },
   {
     title: "Faith Over Fear Hoodie",
@@ -41,7 +41,7 @@ const FEATURED: ShopProduct[] = [
     price: "$49.99",
     src: "/brand/products/crew-harps.png",
     category: "Parish Merch",
-    flags: { supportsParish: true, newArrival: true },
+    flags: { supportsParish: true, newArrival: true, mostPopular: true },
   },
   {
     title: "Be Still Candle",
@@ -81,7 +81,7 @@ const FEATURED: ShopProduct[] = [
     price: "$38.00",
     src: "/brand/products/holy-family-figure.jpg",
     category: "Home & Faith",
-    flags: { bestSeller: true },
+    flags: { bestSeller: true, mostPopular: true },
   },
   {
     title: "Communion Candle",
@@ -115,7 +115,7 @@ const TRUST = [
 export function ShopContent({
   heroKicker = "Global Shop · Community Marketplace",
   heroTitle,
-  heroDescription = "Find products, gifts, parish merch and Local Biz sellers. Every product clearly shows who sells it and which parish, cause or community it supports.",
+  heroDescription = "Browse a carefully curated selection of religious products and faith-inspired gifts designed to support meaningful missions.",
   searchPlaceholder = "Search product, business, parish, cause, city or ZIP",
   productHref = "/shop/product",
   parish,
