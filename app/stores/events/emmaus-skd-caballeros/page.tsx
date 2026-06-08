@@ -14,40 +14,10 @@ const MAILTO_RESERVE =
   "mailto:hello@parishmart.com?subject=Registro%20Retiro%20Emmaus%20SKD%20Caballeros%20Agosto%2023%202026";
 const MAILTO_POLO =
   "mailto:hello@parishmart.com?subject=Polo%20Emmaus%20SKD%20Caballeros";
-const MAILTO_QUESTION =
-  "mailto:hello@parishmart.com?subject=Pregunta%20Retiro%20Emmaus%20SKD%20Caballeros";
-
-const TAGS = ["Retreat", "Faith", "Brotherhood"];
 
 const DETAILS = [
   { label: "Starts", value: "Sun, Aug 23", note: "8:00 AM" },
   { label: "Ends", value: "Sun, Aug 23", note: "6:00 PM" },
-  { label: "Supports", value: "SKD Ministries", note: "Community impact" },
-  { label: "Organizer", value: "Emmaus SKD", note: "Men's ministry" },
-];
-
-const HELPER = [
-  { label: "Registration closes", value: "Aug 16" },
-  { label: "Availability", value: "12 spots left" },
-  { label: "Need help?", value: "Contact coordinator" },
-];
-
-const MINI_CARDS = [
-  {
-    label: "For",
-    title: "Nuevos caminantes",
-    body: "Hombres que desean iniciar o renovar su camino de fe junto a la comunidad SKD.",
-  },
-  {
-    label: "Includes",
-    title: "Meals + materials",
-    body: "Comidas, materiales del retiro, logística del evento y apoyo del equipo Emmaus.",
-  },
-  {
-    label: "Impact",
-    title: "SKD Ministries",
-    body: "El registro ayuda a sostener la experiencia y puede apoyar becas para caminantes.",
-  },
 ];
 
 function DateBadge() {
@@ -83,8 +53,7 @@ export default function EmmausSkdCaballerosPage() {
 
       {/* HERO — featured event */}
       <Section id="register" width="wide" className="!pb-2 !pt-0">
-        <span className="pm-kicker">Inscripciones abiertas</span>
-        <div className="mt-4 pm-card overflow-hidden lg:grid lg:grid-cols-[1fr_1.8fr_auto] lg:items-stretch">
+        <div className="pm-card overflow-hidden lg:grid lg:grid-cols-[1fr_1.8fr_auto] lg:items-stretch">
           {/* Photo column */}
           <div className="relative min-h-[220px] overflow-hidden lg:min-h-0">
             <Photo
@@ -117,13 +86,6 @@ export default function EmmausSkdCaballerosPage() {
                 Un día de encuentro, fe y hermandad para hombres que desean vivir la
                 experiencia de Emmaus como nuevos caminantes.
               </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {TAGS.map((t) => (
-                  <span key={t} className="pm-label">
-                    {t}
-                  </span>
-                ))}
-              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
@@ -144,12 +106,6 @@ export default function EmmausSkdCaballerosPage() {
 
           {/* Booking column */}
           <div className="flex flex-col gap-4 border-t border-pm-border p-6 lg:min-w-[260px] lg:border-l lg:border-t-0">
-            <div>
-              <p className="text-3xl font-extrabold text-pm-navy">$65.00</p>
-              <p className="mt-1 text-xs text-pm-muted">
-                General Admission · Includes meals, materials and event support.
-              </p>
-            </div>
             <div className="flex items-center gap-3 rounded-2xl border border-pm-border bg-pm-soft/40 px-4 py-2">
               <button type="button" aria-label="Disminuir" className="text-lg font-bold text-pm-navy">
                 −
@@ -162,15 +118,6 @@ export default function EmmausSkdCaballerosPage() {
             <a href={MAILTO_RESERVE} className="pm-btn pm-btn-primary w-full">
               Reserve My Spot
             </a>
-
-            <div className="space-y-2 rounded-2xl border border-pm-border bg-pm-soft/40 p-3 text-xs">
-              {HELPER.map((h) => (
-                <div key={h.label} className="flex items-center justify-between">
-                  <span className="text-pm-muted">{h.label}</span>
-                  <strong className="text-pm-navy">{h.value}</strong>
-                </div>
-              ))}
-            </div>
 
             {/* Add-on */}
             <div className="flex items-center gap-3 rounded-2xl border border-pm-border bg-white p-3">
@@ -195,45 +142,20 @@ export default function EmmausSkdCaballerosPage() {
         </div>
       </Section>
 
-      {/* ABOUT + QUESTIONS */}
+      {/* ABOUT */}
       <Section width="wide" className="!pt-4">
-        <div className="space-y-5">
-          <div className="pm-card p-6 sm:p-8">
-            <p className="pm-kicker">About the Retreat</p>
-            <h2 className="mt-2 text-2xl font-extrabold leading-tight text-pm-navy md:text-3xl">
-              Una experiencia de fe, hermandad y encuentro personal.
-            </h2>
-            <p className="mt-3 text-sm text-pm-muted">
-              Emmaus SKD Caballeros invita a nuevos caminantes a vivir un retiro de un
-              día para detenerse, escuchar, orar y compartir con otros hombres de la
-              comunidad. El retiro está diseñado para crear un espacio sencillo,
-              profundo y fraterno, con momentos de reflexión, oración, sacramentos y
-              convivencia.
-            </p>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-3">
-            {MINI_CARDS.map((c) => (
-              <div key={c.title} className="pm-card p-5">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-pm-muted">
-                  {c.label}
-                </p>
-                <p className="mt-1 text-base font-extrabold text-pm-navy">{c.title}</p>
-                <p className="mt-2 text-xs text-pm-muted">{c.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="pm-card p-6">
-            <h2 className="text-lg font-extrabold text-pm-navy">Questions</h2>
-            <p className="mt-2 text-sm text-pm-muted">
-              Para dudas de elegibilidad, becas o patrocinio, contacta al coordinador
-              antes de reservar.
-            </p>
-            <a href={MAILTO_QUESTION} className="pm-btn pm-btn-secondary mt-4 w-full sm:w-auto">
-              Ask coordinator
-            </a>
-          </div>
+        <div className="pm-card p-6 sm:p-8">
+          <p className="pm-kicker">About the Event</p>
+          <h2 className="mt-2 text-2xl font-extrabold leading-tight text-pm-navy md:text-3xl">
+            Una experiencia de fe, hermandad y encuentro personal.
+          </h2>
+          <p className="mt-3 text-sm text-pm-muted">
+            Emmaus SKD Caballeros invita a nuevos caminantes a vivir un retiro de un
+            día para detenerse, escuchar, orar y compartir con otros hombres de la
+            comunidad. El retiro está diseñado para crear un espacio sencillo,
+            profundo y fraterno, con momentos de reflexión, oración, sacramentos y
+            convivencia.
+          </p>
         </div>
       </Section>
 
