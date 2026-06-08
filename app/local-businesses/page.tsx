@@ -10,7 +10,7 @@ import { fetchBusinesses, fetchSponsors } from "@/lib/api";
 import { CardsCarousel } from "@/components/CardsCarousel";
 import { SponsorOfferCard } from "@/components/Cards";
 
-export const metadata = { title: "Local Biz Supporters · ParishMart" };
+export const metadata = { title: "Business Supporters · ParishMart" };
 
 const TABS = ["Featured", "Services", "Product Sellers", "Parishioner Offers"];
 
@@ -57,7 +57,7 @@ export default async function LocalBusinessCategoryPage() {
       <Header />
 
       <Section width="wide" className="!py-4">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Local Biz Supporters" }]} />
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Business Supporters" }]} />
       </Section>
 
       {/* HERO — two separate cards */}
@@ -66,15 +66,15 @@ export default async function LocalBusinessCategoryPage() {
           {/* Left card */}
           <div className="pm-card flex flex-col justify-center gap-5 p-6 sm:p-8 min-h-[340px]">
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-pm-soft px-3 py-1 text-[11px] font-bold text-pm-blue">
-              Local Biz Supporters
+              Global Business Supporters
             </span>
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-pm-navy md:text-4xl">
               Discover businesses that{" "}
               <span className="pm-gradient-text">support your community.</span>
             </h1>
             <p className="max-w-md text-sm text-pm-muted">
-              Find trusted services, products and offers from local businesses
-              connected to parishes and causes.
+              Find businesses, products, services, and special offers exclusive
+              to our community.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="#featured" className="pm-btn pm-btn-primary">
@@ -114,8 +114,7 @@ export default async function LocalBusinessCategoryPage() {
       {/* FILTER BAR */}
       <Section width="wide" className="!py-5">
         <div className="mb-3">
-          <p className="text-sm font-bold text-pm-navy">Filter by parish, city, category or offer</p>
-          <p className="text-xs text-pm-muted">Help parishioners discover businesses that support the causes they care about.</p>
+          <p className="text-sm font-bold text-pm-navy">Filter by category, city, offer, or mission supported</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <div className="flex flex-1 min-w-[180px] items-center gap-2 rounded-full border border-pm-border bg-white px-3 py-2 shadow-pm-soft">
