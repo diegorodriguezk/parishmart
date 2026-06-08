@@ -26,7 +26,7 @@ export function LiveProofTicker() {
         <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />
       </span>
       <p className="truncate text-xs text-pm-ink sm:text-sm">
-        <strong className="text-pm-navy">Live now</strong> ·{" "}
+        <strong className="text-pm-navy">Welcome!</strong> ·{" "}
         <span className="text-pm-muted">{PROOFS[idx]}</span>
       </p>
     </div>

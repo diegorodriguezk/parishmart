@@ -86,7 +86,7 @@ export default async function HomePage() {
               <br /> Give with <span className="pm-gradient-text">Love.</span>
             </h1>
             <p className="mt-5 max-w-xl text-base text-pm-muted">
-              ParishMart connects parish stores, causes, local businesses and
+              ParishMart connects parishes, causes, local businesses and
               supporters in one simple community marketplace.
             </p>
             <p className="mt-3 max-w-xl text-base font-medium text-pm-ink">
@@ -184,7 +184,7 @@ export default async function HomePage() {
               kicker: "Parishes & causes lead the mission",
               title: "Build your community and make an impact.",
               description:
-                "Open a storefront for your parish, ministry or cause. Launch campaigns, sell products, promote events and engage supporters around your mission.",
+                "Open a personalized storefront for your parish, ministry or cause. Launch giving campaigns, sell religious products, promote events and engage supporters around your mission.",
               options: [
                 {
                   Icon: Building2,
@@ -198,7 +198,7 @@ export default async function HomePage() {
                   Icon: HandHeart,
                   title: "Cause / Ministry",
                   description:
-                    "Activate your ministry, retreat or cause with campaigns, supporters and meaningful commerce.",
+                    "Activate your ministry or cause by sharing your story, running fundraising campaigns, promoting events, and engaging supporters around your cause.",
                   cta: "Start Cause",
                   href: "/onboarding/parish",
                 },
@@ -208,13 +208,13 @@ export default async function HomePage() {
               kicker: "Businesses activate the economy",
               title: "Grow your business with purpose.",
               description:
-                "Offer products or services while supporting the causes your customers care about.",
+                "Offer products or services while supporting the parishes and causes your customers and community care about.",
               options: [
                 {
                   Icon: ShoppingBag,
                   title: "Product Seller",
                   description:
-                    "Sell products that support parishes and causes.",
+                    "Sell products that support parishes, causes and the community your customers care about.",
                   cta: "Sell Products",
                   href: "/onboarding/seller",
                 },
@@ -222,7 +222,7 @@ export default async function HomePage() {
                   Icon: Briefcase,
                   title: "Service Business",
                   description:
-                    "Offer services and connect with local faith-driven causes.",
+                    "Offer services and connect with parishes, causes and local faith-driven communities.",
                   cta: "Offer Services",
                   href: "/onboarding/local-business",
                 },
@@ -232,13 +232,13 @@ export default async function HomePage() {
               kicker: "Sponsors fuel the movement",
               title: "Sponsor with purpose.",
               description:
-                "Grow visibility in faith-driven causes while helping fund missions, youth programs and local causes.",
+                "Support parishes and causes while growing your brand within faith-driven communities.",
               options: [
                 {
                   Icon: Megaphone,
                   title: "Brand Sponsor",
                   description:
-                    "Sponsor parishes, retreats and missions while building your brand within faith-driven audiences.",
+                    "Sponsor parishes, retreats and missions while reaching faith-driven audiences and communities.",
                   cta: "Become a Sponsor",
                   href: "/onboarding/sponsor",
                 },
@@ -379,7 +379,7 @@ export default async function HomePage() {
                         Backing the mission
                       </span>
                       <h4 className="mt-1 text-lg font-extrabold text-pm-navy">
-                        Preferred Partners
+                        Community Supporters
                       </h4>
                       <p className="text-xs text-pm-muted">
                         Sponsors already supporting parishes, missions and
@@ -394,15 +394,20 @@ export default async function HomePage() {
                     </Link>
                   </div>
                   <div className="pm-marquee">
-                    <ul className="pm-marquee-track flex items-center">
+                    <ul className="pm-marquee-track flex items-center gap-4">
                       {[...SPONSORS, ...SPONSORS].map((s, i) => (
                         <li
                           key={`${s.initials}-${i}`}
                           title={s.name}
                           aria-hidden={i >= SPONSORS.length ? true : undefined}
-                          className="whitespace-nowrap pr-10 text-base font-bold tracking-tight text-pm-muted/80 grayscale transition hover:text-pm-navy hover:grayscale-0 sm:pr-14 md:text-lg"
+                          className="flex shrink-0 items-center gap-2.5 rounded-2xl border border-pm-border bg-white px-4 py-2.5 shadow-pm-soft grayscale transition hover:grayscale-0"
                         >
-                          {s.name}
+                          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-pm-blue to-pm-cyan text-[11px] font-extrabold text-white">
+                            {s.initials}
+                          </span>
+                          <span className="whitespace-nowrap text-sm font-extrabold tracking-tight text-pm-navy">
+                            {s.name}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -425,7 +430,7 @@ export default async function HomePage() {
                         Local Businesses
                       </h4>
                       <p className="text-xs text-pm-muted">
-                        Trusted local businesses already supporting parish
+                        Trusted local businesses already supporting parishes and
                         causes.
                       </p>
                     </div>
