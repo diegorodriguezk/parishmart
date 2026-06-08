@@ -83,8 +83,8 @@ export function ParishTabsNav({ active: initialActive = "shop" }: { active?: Tab
   }
 
   return (
-    <nav className="relative mx-auto flex max-w-[1320px] items-center pb-3 pt-1 pr-20 sm:pr-28">
-      <div className="flex flex-1 items-center justify-center gap-6 overflow-x-auto px-4 sm:gap-10 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <nav className="mx-auto flex max-w-[1320px] items-center gap-2 px-4 pb-3 pt-1 sm:gap-3 sm:px-6">
+      <div className="flex flex-1 items-center justify-start gap-6 overflow-x-auto sm:gap-10 lg:justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {TABS.map((tab) => (
           <Link
             key={tab.key}
@@ -101,7 +101,7 @@ export function ParishTabsNav({ active: initialActive = "shop" }: { active?: Tab
       </div>
       <Link
         href="/onboarding"
-        className="pm-btn pm-btn-primary absolute right-4 shrink-0 !px-3 !py-2 text-xs sm:right-6 sm:!px-4 sm:text-sm"
+        className="pm-btn pm-btn-primary shrink-0 !px-3 !py-2 text-xs sm:!px-4 sm:text-sm"
       >
         Join Us
       </Link>
