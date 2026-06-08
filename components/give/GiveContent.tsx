@@ -18,13 +18,13 @@ import type { CauseKey } from "@/lib/catalog";
 const STEPS = [
   {
     n: 1,
-    title: "Choose your ministry",
-    body: "Find a ministry, mission or cause connected to your parish.",
+    title: "Choose a mission",
+    body: "Find a parish, cause, or ministry you want to support.",
   },
   {
     n: 2,
-    title: "Discover active campaigns",
-    body: "See ministries, outreach programs and missions you can support.",
+    title: "Discover giving opportunities",
+    body: "Explore campaigns, community initiatives, and missions making a difference.",
   },
   {
     n: 3,
@@ -44,13 +44,7 @@ const SIDEBAR = [
   "Memorial Funds",
 ];
 
-const CAUSE_TABS = [
-  "All",
-  "My Parish",
-  "Featured",
-  "Most Supported",
-  "Newly Launched",
-];
+const CAUSE_TABS = ["All", "Featured", "Newly Launched"];
 
 type CauseCopy = {
   photo: PhotoKind;
@@ -192,7 +186,7 @@ export async function GiveContent({
               {heroTitle ?? (
                 <>
                   Give with <span className="pm-gradient-text">love.</span>
-                  <br /> Fuel the ministries you{" "}
+                  <br /> Fuel the missions you{" "}
                   <span className="pm-gradient-text">believe in.</span>
                 </>
               )}
@@ -240,7 +234,8 @@ export async function GiveContent({
                 Not just a donation. A ministry you fuel.
               </h2>
               <p className="max-w-md text-sm text-white/85">
-                See exactly who your gift supports before you give.
+                Discover the people, ministries, and causes behind every
+                opportunity before you give.
               </p>
             </div>
           </div>
@@ -306,7 +301,7 @@ export async function GiveContent({
                   Featured giving
                 </h2>
                 <p className="mt-1 text-sm text-pm-muted">
-                  Curated by impact
+                  Curated for impact
                 </p>
               </div>
               <button
