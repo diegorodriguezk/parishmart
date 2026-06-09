@@ -22,7 +22,11 @@ import {
 } from "./catalog";
 
 function externalBase(): string | null {
-  const override = process.env.NEXT_PUBLIC_API_BASE;
+  // Point the data layer at the real backend via NEXT_PUBLIC_API_URL
+  // (falls back to NEXT_PUBLIC_API_BASE). When unset, the app serves its own
+  // internal /api/* routes (hardcoded catalog) so builds work without a backend.
+  const override =
+    process.env.NEXT_PUBLIC_API_URL ?? process.env.NEXT_PUBLIC_API_BASE;
   return override ? override.replace(/\/$/, "") : null;
 }
 
